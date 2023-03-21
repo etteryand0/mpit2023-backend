@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    container_name: mpit-db
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USER}
+      POTGRES_DB: ${DB_NAME}
+    ports:
+      - ${DB_PORT}:5432
+    volumes:
+      - ${DB_DATA}:/var/lib/postgresql/data
+    networks:
+      - mpit
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    
+  backend:
+    build: .
+    restart: always
+    container_name: mpit-backend
+    command: /bin/bash -c "/usr/src/app/init.sh"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      JWT_SECRET: ${JWT_SECRET}
+      TEMP_FILE_DIR: /tmp
+      DATABASE_URL: postgresql://${DB_USER}:${DB_PASSWORD}@mpit-db:${DB_PORT}/${DB_NAME}
+    volumes:
+      - ${FILE_UPLOAD_DIR}:/usr/src/app/uploads
+    ports:
+      - 4000:4000
+    networks:
+      - mpit
+
+networks:
+  mpit:

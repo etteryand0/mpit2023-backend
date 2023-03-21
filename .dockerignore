@@ -1,0 +1,4 @@
+.env
+.env.local
+README.md
+**/node_modules
