@@ -3,9 +3,9 @@ WORKDIR /usr/src/app
 COPY package.json ./
 COPY yarn.lock ./
 RUN yarn
-# RUN apk add --no-cache --upgrade bash
 
 COPY . .
+RUN chmod +x init.sh
 EXPOSE 4000
 
 ENTRYPOINT []
