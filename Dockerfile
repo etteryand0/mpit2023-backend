@@ -5,6 +5,7 @@ COPY yarn.lock ./
 RUN yarn
 
 COPY . .
+RUN mkdir uploads
 RUN chmod +x init.sh
 EXPOSE 4000
 
