@@ -9,8 +9,10 @@ export const User = objectType({
   definition(t) {
     t.string('id')
     t.string('username')
-    t.string('password')
     t.field('createdAt', { type: 'DateTime' })
+    t.string('password')
+    t.field('role', { type: 'UserRole' })
+    t.nullable.string('parentId')
     t.nullable.field('profile', {
       type: 'Profile',
       resolve(root: any) {
@@ -43,6 +45,60 @@ export const User = objectType({
       },
       resolve(root: any) {
         return root.chats
+      },
+    })
+    t.nullable.field('parent', {
+      type: 'User',
+      resolve(root: any) {
+        return root.parent
+      },
+    })
+    t.nullable.field('child', {
+      type: 'User',
+      resolve(root: any) {
+        return root.child
+      },
+    })
+    t.list.field('eventsResponsible', {
+      type: 'Event',
+      args: {
+        where: 'EventWhereInput',
+        orderBy: 'EventOrderByWithRelationInput',
+        cursor: 'EventWhereUniqueInput',
+        take: 'Int',
+        skip: 'Int',
+        distinct: 'EventScalarFieldEnum',
+      },
+      resolve(root: any) {
+        return root.eventsResponsible
+      },
+    })
+    t.list.field('eventsIssued', {
+      type: 'Event',
+      args: {
+        where: 'EventWhereInput',
+        orderBy: 'EventOrderByWithRelationInput',
+        cursor: 'EventWhereUniqueInput',
+        take: 'Int',
+        skip: 'Int',
+        distinct: 'EventScalarFieldEnum',
+      },
+      resolve(root: any) {
+        return root.eventsIssued
+      },
+    })
+    t.list.field('eventsParticipating', {
+      type: 'Event',
+      args: {
+        where: 'EventWhereInput',
+        orderBy: 'EventOrderByWithRelationInput',
+        cursor: 'EventWhereUniqueInput',
+        take: 'Int',
+        skip: 'Int',
+        distinct: 'EventScalarFieldEnum',
+      },
+      resolve(root: any) {
+        return root.eventsParticipating
       },
     })
     t.field('_count', {

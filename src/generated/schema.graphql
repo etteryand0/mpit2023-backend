@@ -2,10 +2,24 @@
 ### Do not make changes to this file directly
 
 
+type AggregateCategory {
+  _avg: CategoryAvgAggregateOutputType
+  _count: CategoryCountAggregateOutputType
+  _max: CategoryMaxAggregateOutputType
+  _min: CategoryMinAggregateOutputType
+  _sum: CategorySumAggregateOutputType
+}
+
 type AggregateChat {
   _count: ChatCountAggregateOutputType
   _max: ChatMaxAggregateOutputType
   _min: ChatMinAggregateOutputType
+}
+
+type AggregateEvent {
+  _count: EventCountAggregateOutputType
+  _max: EventMaxAggregateOutputType
+  _min: EventMinAggregateOutputType
 }
 
 type AggregateMessage {
@@ -18,6 +32,12 @@ type AggregateProfile {
   _count: ProfileCountAggregateOutputType
   _max: ProfileMaxAggregateOutputType
   _min: ProfileMinAggregateOutputType
+}
+
+type AggregateRoom {
+  _count: RoomCountAggregateOutputType
+  _max: RoomMaxAggregateOutputType
+  _min: RoomMinAggregateOutputType
 }
 
 type AggregateUser {
@@ -36,12 +56,267 @@ The `BigInt` scalar type represents non-fractional signed whole numeric values.
 """
 scalar BigInt
 
+input BoolFieldUpdateOperationsInput {
+  set: Boolean
+}
+
+input BoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input BoolWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedBoolFilter
+  _min: NestedBoolFilter
+  equals: Boolean
+  not: NestedBoolWithAggregatesFilter
+}
+
 """The `Byte` scalar type represents byte value as a Buffer"""
 scalar Bytes
+
+type Category {
+  _count: CategoryCountOutputType!
+  events(cursor: EventWhereUniqueInput, distinct: EventScalarFieldEnum, orderBy: EventOrderByWithRelationInput, skip: Int, take: Int, where: EventWhereInput): [Event!]!
+  id: Int!
+  title: String!
+}
+
+type CategoryAvgAggregateOutputType {
+  id: Float
+}
+
+input CategoryAvgOrderByAggregateInput {
+  id: SortOrder
+}
+
+type CategoryCountAggregateOutputType {
+  _all: Int!
+  id: Int!
+  title: Int!
+}
+
+input CategoryCountOrderByAggregateInput {
+  id: SortOrder
+  title: SortOrder
+}
+
+type CategoryCountOutputType {
+  events: Int!
+}
+
+input CategoryCreateInput {
+  events: EventCreateNestedManyWithoutCategoriesInput
+  title: String!
+}
+
+input CategoryCreateManyInput {
+  id: Int
+  title: String!
+}
+
+input CategoryCreateNestedManyWithoutEventsInput {
+  connect: [CategoryWhereUniqueInput]
+  connectOrCreate: [CategoryCreateOrConnectWithoutEventsInput]
+  create: [CategoryCreateWithoutEventsInput]
+}
+
+input CategoryCreateOrConnectWithoutEventsInput {
+  create: CategoryUncheckedCreateWithoutEventsInput!
+  where: CategoryWhereUniqueInput!
+}
+
+input CategoryCreateWithoutEventsInput {
+  title: String!
+}
+
+input CategoryListRelationFilter {
+  every: CategoryWhereInput
+  none: CategoryWhereInput
+  some: CategoryWhereInput
+}
+
+type CategoryMaxAggregateOutputType {
+  id: Int
+  title: String
+}
+
+input CategoryMaxOrderByAggregateInput {
+  id: SortOrder
+  title: SortOrder
+}
+
+type CategoryMinAggregateOutputType {
+  id: Int
+  title: String
+}
+
+input CategoryMinOrderByAggregateInput {
+  id: SortOrder
+  title: SortOrder
+}
+
+input CategoryOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input CategoryOrderByWithAggregationInput {
+  _avg: CategoryAvgOrderByAggregateInput
+  _count: CategoryCountOrderByAggregateInput
+  _max: CategoryMaxOrderByAggregateInput
+  _min: CategoryMinOrderByAggregateInput
+  _sum: CategorySumOrderByAggregateInput
+  id: SortOrder
+  title: SortOrder
+}
+
+input CategoryOrderByWithRelationInput {
+  events: EventOrderByRelationAggregateInput
+  id: SortOrder
+  title: SortOrder
+}
+
+enum CategoryScalarFieldEnum {
+  id
+  title
+}
+
+input CategoryScalarWhereInput {
+  AND: [CategoryScalarWhereInput]
+  NOT: [CategoryScalarWhereInput]
+  OR: [CategoryScalarWhereInput]
+  id: IntFilter
+  title: StringFilter
+}
+
+input CategoryScalarWhereWithAggregatesInput {
+  AND: [CategoryScalarWhereWithAggregatesInput]
+  NOT: [CategoryScalarWhereWithAggregatesInput]
+  OR: [CategoryScalarWhereWithAggregatesInput]
+  id: IntWithAggregatesFilter
+  title: StringWithAggregatesFilter
+}
+
+type CategorySumAggregateOutputType {
+  id: Int
+}
+
+input CategorySumOrderByAggregateInput {
+  id: SortOrder
+}
+
+input CategoryUncheckedCreateInput {
+  events: EventUncheckedCreateNestedManyWithoutCategoriesInput
+  id: Int
+  title: String!
+}
+
+input CategoryUncheckedCreateNestedManyWithoutEventsInput {
+  connect: [CategoryWhereUniqueInput]
+  connectOrCreate: [CategoryCreateOrConnectWithoutEventsInput]
+  create: [CategoryCreateWithoutEventsInput]
+}
+
+input CategoryUncheckedCreateWithoutEventsInput {
+  id: Int
+  title: String!
+}
+
+input CategoryUncheckedUpdateInput {
+  events: EventUncheckedUpdateManyWithoutCategoriesNestedInput
+  id: IntFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input CategoryUncheckedUpdateManyInput {
+  id: IntFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input CategoryUncheckedUpdateManyWithoutCategoriesInput {
+  id: IntFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input CategoryUncheckedUpdateManyWithoutEventsNestedInput {
+  connect: [CategoryWhereUniqueInput]
+  connectOrCreate: [CategoryCreateOrConnectWithoutEventsInput]
+  create: [CategoryCreateWithoutEventsInput]
+  delete: [CategoryWhereUniqueInput]
+  deleteMany: [CategoryScalarWhereInput]
+  disconnect: [CategoryWhereUniqueInput]
+  set: [CategoryWhereUniqueInput]
+  update: [CategoryUpdateWithWhereUniqueWithoutEventsInput]
+  updateMany: [CategoryUpdateManyWithWhereWithoutEventsInput]
+  upsert: [CategoryUpsertWithWhereUniqueWithoutEventsInput]
+}
+
+input CategoryUncheckedUpdateWithoutEventsInput {
+  id: IntFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input CategoryUpdateInput {
+  events: EventUpdateManyWithoutCategoriesNestedInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input CategoryUpdateManyMutationInput {
+  title: StringFieldUpdateOperationsInput
+}
+
+input CategoryUpdateManyWithWhereWithoutEventsInput {
+  data: CategoryUncheckedUpdateManyWithoutCategoriesInput!
+  where: CategoryScalarWhereInput!
+}
+
+input CategoryUpdateManyWithoutEventsNestedInput {
+  connect: [CategoryWhereUniqueInput]
+  connectOrCreate: [CategoryCreateOrConnectWithoutEventsInput]
+  create: [CategoryCreateWithoutEventsInput]
+  delete: [CategoryWhereUniqueInput]
+  deleteMany: [CategoryScalarWhereInput]
+  disconnect: [CategoryWhereUniqueInput]
+  set: [CategoryWhereUniqueInput]
+  update: [CategoryUpdateWithWhereUniqueWithoutEventsInput]
+  updateMany: [CategoryUpdateManyWithWhereWithoutEventsInput]
+  upsert: [CategoryUpsertWithWhereUniqueWithoutEventsInput]
+}
+
+input CategoryUpdateWithWhereUniqueWithoutEventsInput {
+  data: CategoryUncheckedUpdateWithoutEventsInput!
+  where: CategoryWhereUniqueInput!
+}
+
+input CategoryUpdateWithoutEventsInput {
+  title: StringFieldUpdateOperationsInput
+}
+
+input CategoryUpsertWithWhereUniqueWithoutEventsInput {
+  create: CategoryUncheckedCreateWithoutEventsInput!
+  update: CategoryUncheckedUpdateWithoutEventsInput!
+  where: CategoryWhereUniqueInput!
+}
+
+input CategoryWhereInput {
+  AND: [CategoryWhereInput]
+  NOT: [CategoryWhereInput]
+  OR: [CategoryWhereInput]
+  events: EventListRelationFilter
+  id: IntFilter
+  title: StringFilter
+}
+
+input CategoryWhereUniqueInput {
+  id: Int
+}
 
 type Chat {
   _count: ChatCountOutputType!
   createdAt: DateTime!
+  event: Event!
+  eventId: String!
   id: String!
   members(cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, orderBy: UserOrderByWithRelationInput, skip: Int, take: Int, where: UserWhereInput): [User!]!
   messages(cursor: MessageWhereUniqueInput, distinct: MessageScalarFieldEnum, orderBy: MessageOrderByWithRelationInput, skip: Int, take: Int, where: MessageWhereInput): [Message!]!
@@ -50,11 +325,13 @@ type Chat {
 type ChatCountAggregateOutputType {
   _all: Int!
   createdAt: Int!
+  eventId: Int!
   id: Int!
 }
 
 input ChatCountOrderByAggregateInput {
   createdAt: SortOrder
+  eventId: SortOrder
   id: SortOrder
 }
 
@@ -65,6 +342,7 @@ type ChatCountOutputType {
 
 input ChatCreateInput {
   createdAt: DateTime
+  event: EventCreateNestedOneWithoutChatInput!
   id: String
   members: UserCreateNestedManyWithoutChatsInput
   messages: MessageCreateNestedManyWithoutChatInput
@@ -72,6 +350,7 @@ input ChatCreateInput {
 
 input ChatCreateManyInput {
   createdAt: DateTime
+  eventId: String!
   id: String
 }
 
@@ -81,10 +360,21 @@ input ChatCreateNestedManyWithoutMembersInput {
   create: [ChatCreateWithoutMembersInput]
 }
 
+input ChatCreateNestedOneWithoutEventInput {
+  connect: ChatWhereUniqueInput
+  connectOrCreate: ChatCreateOrConnectWithoutEventInput
+  create: ChatUncheckedCreateWithoutEventInput
+}
+
 input ChatCreateNestedOneWithoutMessagesInput {
   connect: ChatWhereUniqueInput
   connectOrCreate: ChatCreateOrConnectWithoutMessagesInput
   create: ChatUncheckedCreateWithoutMessagesInput
+}
+
+input ChatCreateOrConnectWithoutEventInput {
+  create: ChatUncheckedCreateWithoutEventInput!
+  where: ChatWhereUniqueInput!
 }
 
 input ChatCreateOrConnectWithoutMembersInput {
@@ -97,14 +387,23 @@ input ChatCreateOrConnectWithoutMessagesInput {
   where: ChatWhereUniqueInput!
 }
 
+input ChatCreateWithoutEventInput {
+  createdAt: DateTime
+  id: String
+  members: UserCreateNestedManyWithoutChatsInput
+  messages: MessageCreateNestedManyWithoutChatInput
+}
+
 input ChatCreateWithoutMembersInput {
   createdAt: DateTime
+  event: EventCreateNestedOneWithoutChatInput!
   id: String
   messages: MessageCreateNestedManyWithoutChatInput
 }
 
 input ChatCreateWithoutMessagesInput {
   createdAt: DateTime
+  event: EventCreateNestedOneWithoutChatInput!
   id: String
   members: UserCreateNestedManyWithoutChatsInput
 }
@@ -117,21 +416,25 @@ input ChatListRelationFilter {
 
 type ChatMaxAggregateOutputType {
   createdAt: DateTime
+  eventId: String
   id: String
 }
 
 input ChatMaxOrderByAggregateInput {
   createdAt: SortOrder
+  eventId: SortOrder
   id: SortOrder
 }
 
 type ChatMinAggregateOutputType {
   createdAt: DateTime
+  eventId: String
   id: String
 }
 
 input ChatMinOrderByAggregateInput {
   createdAt: SortOrder
+  eventId: SortOrder
   id: SortOrder
 }
 
@@ -144,11 +447,14 @@ input ChatOrderByWithAggregationInput {
   _max: ChatMaxOrderByAggregateInput
   _min: ChatMinOrderByAggregateInput
   createdAt: SortOrder
+  eventId: SortOrder
   id: SortOrder
 }
 
 input ChatOrderByWithRelationInput {
   createdAt: SortOrder
+  event: EventOrderByWithRelationInput
+  eventId: SortOrder
   id: SortOrder
   members: UserOrderByRelationAggregateInput
   messages: MessageOrderByRelationAggregateInput
@@ -161,6 +467,7 @@ input ChatRelationFilter {
 
 enum ChatScalarFieldEnum {
   createdAt
+  eventId
   id
 }
 
@@ -169,6 +476,7 @@ input ChatScalarWhereInput {
   NOT: [ChatScalarWhereInput]
   OR: [ChatScalarWhereInput]
   createdAt: DateTimeFilter
+  eventId: StringFilter
   id: StringFilter
 }
 
@@ -177,11 +485,13 @@ input ChatScalarWhereWithAggregatesInput {
   NOT: [ChatScalarWhereWithAggregatesInput]
   OR: [ChatScalarWhereWithAggregatesInput]
   createdAt: DateTimeWithAggregatesFilter
+  eventId: StringWithAggregatesFilter
   id: StringWithAggregatesFilter
 }
 
 input ChatUncheckedCreateInput {
   createdAt: DateTime
+  eventId: String!
   id: String
   members: UserUncheckedCreateNestedManyWithoutChatsInput
   messages: MessageUncheckedCreateNestedManyWithoutChatInput
@@ -193,20 +503,36 @@ input ChatUncheckedCreateNestedManyWithoutMembersInput {
   create: [ChatCreateWithoutMembersInput]
 }
 
+input ChatUncheckedCreateNestedOneWithoutEventInput {
+  connect: ChatWhereUniqueInput
+  connectOrCreate: ChatCreateOrConnectWithoutEventInput
+  create: ChatUncheckedCreateWithoutEventInput
+}
+
+input ChatUncheckedCreateWithoutEventInput {
+  createdAt: DateTime
+  id: String
+  members: UserUncheckedCreateNestedManyWithoutChatsInput
+  messages: MessageUncheckedCreateNestedManyWithoutChatInput
+}
+
 input ChatUncheckedCreateWithoutMembersInput {
   createdAt: DateTime
+  eventId: String!
   id: String
   messages: MessageUncheckedCreateNestedManyWithoutChatInput
 }
 
 input ChatUncheckedCreateWithoutMessagesInput {
   createdAt: DateTime
+  eventId: String!
   id: String
   members: UserUncheckedCreateNestedManyWithoutChatsInput
 }
 
 input ChatUncheckedUpdateInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  eventId: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   members: UserUncheckedUpdateManyWithoutChatsNestedInput
   messages: MessageUncheckedUpdateManyWithoutChatNestedInput
@@ -214,11 +540,13 @@ input ChatUncheckedUpdateInput {
 
 input ChatUncheckedUpdateManyInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  eventId: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
 }
 
 input ChatUncheckedUpdateManyWithoutChatsInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  eventId: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
 }
 
@@ -235,20 +563,40 @@ input ChatUncheckedUpdateManyWithoutMembersNestedInput {
   upsert: [ChatUpsertWithWhereUniqueWithoutMembersInput]
 }
 
+input ChatUncheckedUpdateOneWithoutEventNestedInput {
+  connect: ChatWhereUniqueInput
+  connectOrCreate: ChatCreateOrConnectWithoutEventInput
+  create: ChatUncheckedCreateWithoutEventInput
+  delete: Boolean
+  disconnect: Boolean
+  update: ChatUncheckedUpdateWithoutEventInput
+  upsert: ChatUpsertWithoutEventInput
+}
+
+input ChatUncheckedUpdateWithoutEventInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  members: UserUncheckedUpdateManyWithoutChatsNestedInput
+  messages: MessageUncheckedUpdateManyWithoutChatNestedInput
+}
+
 input ChatUncheckedUpdateWithoutMembersInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  eventId: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   messages: MessageUncheckedUpdateManyWithoutChatNestedInput
 }
 
 input ChatUncheckedUpdateWithoutMessagesInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  eventId: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   members: UserUncheckedUpdateManyWithoutChatsNestedInput
 }
 
 input ChatUpdateInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  event: EventUpdateOneRequiredWithoutChatNestedInput
   id: StringFieldUpdateOperationsInput
   members: UserUpdateManyWithoutChatsNestedInput
   messages: MessageUpdateManyWithoutChatNestedInput
@@ -285,19 +633,38 @@ input ChatUpdateOneRequiredWithoutMessagesNestedInput {
   upsert: ChatUpsertWithoutMessagesInput
 }
 
+input ChatUpdateOneWithoutEventNestedInput {
+  connect: ChatWhereUniqueInput
+  connectOrCreate: ChatCreateOrConnectWithoutEventInput
+  create: ChatUncheckedCreateWithoutEventInput
+  delete: Boolean
+  disconnect: Boolean
+  update: ChatUncheckedUpdateWithoutEventInput
+  upsert: ChatUpsertWithoutEventInput
+}
+
 input ChatUpdateWithWhereUniqueWithoutMembersInput {
   data: ChatUncheckedUpdateWithoutMembersInput!
   where: ChatWhereUniqueInput!
 }
 
+input ChatUpdateWithoutEventInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  members: UserUpdateManyWithoutChatsNestedInput
+  messages: MessageUpdateManyWithoutChatNestedInput
+}
+
 input ChatUpdateWithoutMembersInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  event: EventUpdateOneRequiredWithoutChatNestedInput
   id: StringFieldUpdateOperationsInput
   messages: MessageUpdateManyWithoutChatNestedInput
 }
 
 input ChatUpdateWithoutMessagesInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  event: EventUpdateOneRequiredWithoutChatNestedInput
   id: StringFieldUpdateOperationsInput
   members: UserUpdateManyWithoutChatsNestedInput
 }
@@ -306,6 +673,11 @@ input ChatUpsertWithWhereUniqueWithoutMembersInput {
   create: ChatUncheckedCreateWithoutMembersInput!
   update: ChatUncheckedUpdateWithoutMembersInput!
   where: ChatWhereUniqueInput!
+}
+
+input ChatUpsertWithoutEventInput {
+  create: ChatUncheckedCreateWithoutEventInput!
+  update: ChatUncheckedUpdateWithoutEventInput!
 }
 
 input ChatUpsertWithoutMessagesInput {
@@ -318,12 +690,15 @@ input ChatWhereInput {
   NOT: [ChatWhereInput]
   OR: [ChatWhereInput]
   createdAt: DateTimeFilter
+  event: EventWhereInput
+  eventId: StringFilter
   id: StringFilter
   members: UserListRelationFilter
   messages: MessageListRelationFilter
 }
 
 input ChatWhereUniqueInput {
+  eventId: String
   id: String
 }
 
@@ -363,6 +738,1154 @@ input DateTimeWithAggregatesFilter {
 
 """An arbitrary-precision Decimal type"""
 scalar Decimal
+
+input EnumUserRoleFieldUpdateOperationsInput {
+  set: UserRole
+}
+
+input EnumUserRoleFilter {
+  equals: UserRole
+  in: [UserRole]
+  not: NestedEnumUserRoleFilter
+  notIn: [UserRole]
+}
+
+input EnumUserRoleWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedEnumUserRoleFilter
+  _min: NestedEnumUserRoleFilter
+  equals: UserRole
+  in: [UserRole]
+  not: NestedEnumUserRoleWithAggregatesFilter
+  notIn: [UserRole]
+}
+
+type Event {
+  _count: EventCountOutputType!
+  approved: Boolean!
+  categories(cursor: CategoryWhereUniqueInput, distinct: CategoryScalarFieldEnum, orderBy: CategoryOrderByWithRelationInput, skip: Int, take: Int, where: CategoryWhereInput): [Category!]!
+  chat: Chat
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  issuedBy: User
+  participants(cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, orderBy: UserOrderByWithRelationInput, skip: Int, take: Int, where: UserWhereInput): [User!]!
+  responsibles(cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, orderBy: UserOrderByWithRelationInput, skip: Int, take: Int, where: UserWhereInput): [User!]!
+  room: Room!
+  roomId: String!
+  shortDescription: String!
+  title: String!
+  userId: String
+}
+
+type EventCountAggregateOutputType {
+  _all: Int!
+  approved: Int!
+  date: Int!
+  description: Int!
+  id: Int!
+  image: Int!
+  roomId: Int!
+  shortDescription: Int!
+  title: Int!
+  userId: Int!
+}
+
+input EventCountOrderByAggregateInput {
+  approved: SortOrder
+  date: SortOrder
+  description: SortOrder
+  id: SortOrder
+  image: SortOrder
+  roomId: SortOrder
+  shortDescription: SortOrder
+  title: SortOrder
+  userId: SortOrder
+}
+
+type EventCountOutputType {
+  categories: Int!
+  participants: Int!
+  responsibles: Int!
+}
+
+input EventCreateInput {
+  approved: Boolean
+  categories: CategoryCreateNestedManyWithoutEventsInput
+  chat: ChatCreateNestedOneWithoutEventInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  issuedBy: UserCreateNestedOneWithoutEventsIssuedInput
+  participants: UserCreateNestedManyWithoutEventsParticipatingInput
+  responsibles: UserCreateNestedManyWithoutEventsResponsibleInput
+  room: RoomCreateNestedOneWithoutEventsInput!
+  shortDescription: String!
+  title: String!
+}
+
+input EventCreateManyInput {
+  approved: Boolean
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  roomId: String!
+  shortDescription: String!
+  title: String!
+  userId: String
+}
+
+input EventCreateManyIssuedByInput {
+  approved: Boolean
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  roomId: String!
+  shortDescription: String!
+  title: String!
+}
+
+input EventCreateManyIssuedByInputEnvelope {
+  data: EventCreateManyIssuedByInput!
+  skipDuplicates: Boolean
+}
+
+input EventCreateManyRoomInput {
+  approved: Boolean
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  shortDescription: String!
+  title: String!
+  userId: String
+}
+
+input EventCreateManyRoomInputEnvelope {
+  data: EventCreateManyRoomInput!
+  skipDuplicates: Boolean
+}
+
+input EventCreateNestedManyWithoutCategoriesInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutCategoriesInput]
+  create: [EventCreateWithoutCategoriesInput]
+}
+
+input EventCreateNestedManyWithoutIssuedByInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutIssuedByInput]
+  create: [EventCreateWithoutIssuedByInput]
+  createMany: EventCreateManyIssuedByInputEnvelope
+}
+
+input EventCreateNestedManyWithoutParticipantsInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutParticipantsInput]
+  create: [EventCreateWithoutParticipantsInput]
+}
+
+input EventCreateNestedManyWithoutResponsiblesInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutResponsiblesInput]
+  create: [EventCreateWithoutResponsiblesInput]
+}
+
+input EventCreateNestedManyWithoutRoomInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutRoomInput]
+  create: [EventCreateWithoutRoomInput]
+  createMany: EventCreateManyRoomInputEnvelope
+}
+
+input EventCreateNestedOneWithoutChatInput {
+  connect: EventWhereUniqueInput
+  connectOrCreate: EventCreateOrConnectWithoutChatInput
+  create: EventUncheckedCreateWithoutChatInput
+}
+
+input EventCreateOrConnectWithoutCategoriesInput {
+  create: EventUncheckedCreateWithoutCategoriesInput!
+  where: EventWhereUniqueInput!
+}
+
+input EventCreateOrConnectWithoutChatInput {
+  create: EventUncheckedCreateWithoutChatInput!
+  where: EventWhereUniqueInput!
+}
+
+input EventCreateOrConnectWithoutIssuedByInput {
+  create: EventUncheckedCreateWithoutIssuedByInput!
+  where: EventWhereUniqueInput!
+}
+
+input EventCreateOrConnectWithoutParticipantsInput {
+  create: EventUncheckedCreateWithoutParticipantsInput!
+  where: EventWhereUniqueInput!
+}
+
+input EventCreateOrConnectWithoutResponsiblesInput {
+  create: EventUncheckedCreateWithoutResponsiblesInput!
+  where: EventWhereUniqueInput!
+}
+
+input EventCreateOrConnectWithoutRoomInput {
+  create: EventUncheckedCreateWithoutRoomInput!
+  where: EventWhereUniqueInput!
+}
+
+input EventCreateWithoutCategoriesInput {
+  approved: Boolean
+  chat: ChatCreateNestedOneWithoutEventInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  issuedBy: UserCreateNestedOneWithoutEventsIssuedInput
+  participants: UserCreateNestedManyWithoutEventsParticipatingInput
+  responsibles: UserCreateNestedManyWithoutEventsResponsibleInput
+  room: RoomCreateNestedOneWithoutEventsInput!
+  shortDescription: String!
+  title: String!
+}
+
+input EventCreateWithoutChatInput {
+  approved: Boolean
+  categories: CategoryCreateNestedManyWithoutEventsInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  issuedBy: UserCreateNestedOneWithoutEventsIssuedInput
+  participants: UserCreateNestedManyWithoutEventsParticipatingInput
+  responsibles: UserCreateNestedManyWithoutEventsResponsibleInput
+  room: RoomCreateNestedOneWithoutEventsInput!
+  shortDescription: String!
+  title: String!
+}
+
+input EventCreateWithoutIssuedByInput {
+  approved: Boolean
+  categories: CategoryCreateNestedManyWithoutEventsInput
+  chat: ChatCreateNestedOneWithoutEventInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  participants: UserCreateNestedManyWithoutEventsParticipatingInput
+  responsibles: UserCreateNestedManyWithoutEventsResponsibleInput
+  room: RoomCreateNestedOneWithoutEventsInput!
+  shortDescription: String!
+  title: String!
+}
+
+input EventCreateWithoutParticipantsInput {
+  approved: Boolean
+  categories: CategoryCreateNestedManyWithoutEventsInput
+  chat: ChatCreateNestedOneWithoutEventInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  issuedBy: UserCreateNestedOneWithoutEventsIssuedInput
+  responsibles: UserCreateNestedManyWithoutEventsResponsibleInput
+  room: RoomCreateNestedOneWithoutEventsInput!
+  shortDescription: String!
+  title: String!
+}
+
+input EventCreateWithoutResponsiblesInput {
+  approved: Boolean
+  categories: CategoryCreateNestedManyWithoutEventsInput
+  chat: ChatCreateNestedOneWithoutEventInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  issuedBy: UserCreateNestedOneWithoutEventsIssuedInput
+  participants: UserCreateNestedManyWithoutEventsParticipatingInput
+  room: RoomCreateNestedOneWithoutEventsInput!
+  shortDescription: String!
+  title: String!
+}
+
+input EventCreateWithoutRoomInput {
+  approved: Boolean
+  categories: CategoryCreateNestedManyWithoutEventsInput
+  chat: ChatCreateNestedOneWithoutEventInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  issuedBy: UserCreateNestedOneWithoutEventsIssuedInput
+  participants: UserCreateNestedManyWithoutEventsParticipatingInput
+  responsibles: UserCreateNestedManyWithoutEventsResponsibleInput
+  shortDescription: String!
+  title: String!
+}
+
+input EventListRelationFilter {
+  every: EventWhereInput
+  none: EventWhereInput
+  some: EventWhereInput
+}
+
+type EventMaxAggregateOutputType {
+  approved: Boolean
+  date: DateTime
+  description: String
+  id: String
+  image: String
+  roomId: String
+  shortDescription: String
+  title: String
+  userId: String
+}
+
+input EventMaxOrderByAggregateInput {
+  approved: SortOrder
+  date: SortOrder
+  description: SortOrder
+  id: SortOrder
+  image: SortOrder
+  roomId: SortOrder
+  shortDescription: SortOrder
+  title: SortOrder
+  userId: SortOrder
+}
+
+type EventMinAggregateOutputType {
+  approved: Boolean
+  date: DateTime
+  description: String
+  id: String
+  image: String
+  roomId: String
+  shortDescription: String
+  title: String
+  userId: String
+}
+
+input EventMinOrderByAggregateInput {
+  approved: SortOrder
+  date: SortOrder
+  description: SortOrder
+  id: SortOrder
+  image: SortOrder
+  roomId: SortOrder
+  shortDescription: SortOrder
+  title: SortOrder
+  userId: SortOrder
+}
+
+input EventOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input EventOrderByWithAggregationInput {
+  _count: EventCountOrderByAggregateInput
+  _max: EventMaxOrderByAggregateInput
+  _min: EventMinOrderByAggregateInput
+  approved: SortOrder
+  date: SortOrder
+  description: SortOrder
+  id: SortOrder
+  image: SortOrder
+  roomId: SortOrder
+  shortDescription: SortOrder
+  title: SortOrder
+  userId: SortOrder
+}
+
+input EventOrderByWithRelationInput {
+  approved: SortOrder
+  categories: CategoryOrderByRelationAggregateInput
+  chat: ChatOrderByWithRelationInput
+  date: SortOrder
+  description: SortOrder
+  id: SortOrder
+  image: SortOrder
+  issuedBy: UserOrderByWithRelationInput
+  participants: UserOrderByRelationAggregateInput
+  responsibles: UserOrderByRelationAggregateInput
+  room: RoomOrderByWithRelationInput
+  roomId: SortOrder
+  shortDescription: SortOrder
+  title: SortOrder
+  userId: SortOrder
+}
+
+input EventRelationFilter {
+  is: EventWhereInput
+  isNot: EventWhereInput
+}
+
+enum EventScalarFieldEnum {
+  approved
+  date
+  description
+  id
+  image
+  roomId
+  shortDescription
+  title
+  userId
+}
+
+input EventScalarWhereInput {
+  AND: [EventScalarWhereInput]
+  NOT: [EventScalarWhereInput]
+  OR: [EventScalarWhereInput]
+  approved: BoolFilter
+  date: DateTimeFilter
+  description: StringFilter
+  id: StringFilter
+  image: StringNullableFilter
+  roomId: StringFilter
+  shortDescription: StringFilter
+  title: StringFilter
+  userId: StringNullableFilter
+}
+
+input EventScalarWhereWithAggregatesInput {
+  AND: [EventScalarWhereWithAggregatesInput]
+  NOT: [EventScalarWhereWithAggregatesInput]
+  OR: [EventScalarWhereWithAggregatesInput]
+  approved: BoolWithAggregatesFilter
+  date: DateTimeWithAggregatesFilter
+  description: StringWithAggregatesFilter
+  id: StringWithAggregatesFilter
+  image: StringNullableWithAggregatesFilter
+  roomId: StringWithAggregatesFilter
+  shortDescription: StringWithAggregatesFilter
+  title: StringWithAggregatesFilter
+  userId: StringNullableWithAggregatesFilter
+}
+
+input EventUncheckedCreateInput {
+  approved: Boolean
+  categories: CategoryUncheckedCreateNestedManyWithoutEventsInput
+  chat: ChatUncheckedCreateNestedOneWithoutEventInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  participants: UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
+  responsibles: UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
+  roomId: String!
+  shortDescription: String!
+  title: String!
+  userId: String
+}
+
+input EventUncheckedCreateNestedManyWithoutCategoriesInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutCategoriesInput]
+  create: [EventCreateWithoutCategoriesInput]
+}
+
+input EventUncheckedCreateNestedManyWithoutIssuedByInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutIssuedByInput]
+  create: [EventCreateWithoutIssuedByInput]
+  createMany: EventCreateManyIssuedByInputEnvelope
+}
+
+input EventUncheckedCreateNestedManyWithoutParticipantsInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutParticipantsInput]
+  create: [EventCreateWithoutParticipantsInput]
+}
+
+input EventUncheckedCreateNestedManyWithoutResponsiblesInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutResponsiblesInput]
+  create: [EventCreateWithoutResponsiblesInput]
+}
+
+input EventUncheckedCreateNestedManyWithoutRoomInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutRoomInput]
+  create: [EventCreateWithoutRoomInput]
+  createMany: EventCreateManyRoomInputEnvelope
+}
+
+input EventUncheckedCreateWithoutCategoriesInput {
+  approved: Boolean
+  chat: ChatUncheckedCreateNestedOneWithoutEventInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  participants: UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
+  responsibles: UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
+  roomId: String!
+  shortDescription: String!
+  title: String!
+  userId: String
+}
+
+input EventUncheckedCreateWithoutChatInput {
+  approved: Boolean
+  categories: CategoryUncheckedCreateNestedManyWithoutEventsInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  participants: UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
+  responsibles: UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
+  roomId: String!
+  shortDescription: String!
+  title: String!
+  userId: String
+}
+
+input EventUncheckedCreateWithoutIssuedByInput {
+  approved: Boolean
+  categories: CategoryUncheckedCreateNestedManyWithoutEventsInput
+  chat: ChatUncheckedCreateNestedOneWithoutEventInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  participants: UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
+  responsibles: UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
+  roomId: String!
+  shortDescription: String!
+  title: String!
+}
+
+input EventUncheckedCreateWithoutParticipantsInput {
+  approved: Boolean
+  categories: CategoryUncheckedCreateNestedManyWithoutEventsInput
+  chat: ChatUncheckedCreateNestedOneWithoutEventInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  responsibles: UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
+  roomId: String!
+  shortDescription: String!
+  title: String!
+  userId: String
+}
+
+input EventUncheckedCreateWithoutResponsiblesInput {
+  approved: Boolean
+  categories: CategoryUncheckedCreateNestedManyWithoutEventsInput
+  chat: ChatUncheckedCreateNestedOneWithoutEventInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  participants: UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
+  roomId: String!
+  shortDescription: String!
+  title: String!
+  userId: String
+}
+
+input EventUncheckedCreateWithoutRoomInput {
+  approved: Boolean
+  categories: CategoryUncheckedCreateNestedManyWithoutEventsInput
+  chat: ChatUncheckedCreateNestedOneWithoutEventInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  participants: UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
+  responsibles: UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
+  shortDescription: String!
+  title: String!
+  userId: String
+}
+
+input EventUncheckedUpdateInput {
+  approved: BoolFieldUpdateOperationsInput
+  categories: CategoryUncheckedUpdateManyWithoutEventsNestedInput
+  chat: ChatUncheckedUpdateOneWithoutEventNestedInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  participants: UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
+  responsibles: UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
+  roomId: StringFieldUpdateOperationsInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  userId: NullableStringFieldUpdateOperationsInput
+}
+
+input EventUncheckedUpdateManyInput {
+  approved: BoolFieldUpdateOperationsInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  roomId: StringFieldUpdateOperationsInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  userId: NullableStringFieldUpdateOperationsInput
+}
+
+input EventUncheckedUpdateManyWithoutCategoriesNestedInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutCategoriesInput]
+  create: [EventCreateWithoutCategoriesInput]
+  delete: [EventWhereUniqueInput]
+  deleteMany: [EventScalarWhereInput]
+  disconnect: [EventWhereUniqueInput]
+  set: [EventWhereUniqueInput]
+  update: [EventUpdateWithWhereUniqueWithoutCategoriesInput]
+  updateMany: [EventUpdateManyWithWhereWithoutCategoriesInput]
+  upsert: [EventUpsertWithWhereUniqueWithoutCategoriesInput]
+}
+
+input EventUncheckedUpdateManyWithoutEventsInput {
+  approved: BoolFieldUpdateOperationsInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  roomId: StringFieldUpdateOperationsInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  userId: NullableStringFieldUpdateOperationsInput
+}
+
+input EventUncheckedUpdateManyWithoutEventsIssuedInput {
+  approved: BoolFieldUpdateOperationsInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  roomId: StringFieldUpdateOperationsInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input EventUncheckedUpdateManyWithoutEventsParticipatingInput {
+  approved: BoolFieldUpdateOperationsInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  roomId: StringFieldUpdateOperationsInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  userId: NullableStringFieldUpdateOperationsInput
+}
+
+input EventUncheckedUpdateManyWithoutEventsResponsibleInput {
+  approved: BoolFieldUpdateOperationsInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  roomId: StringFieldUpdateOperationsInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  userId: NullableStringFieldUpdateOperationsInput
+}
+
+input EventUncheckedUpdateManyWithoutIssuedByNestedInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutIssuedByInput]
+  create: [EventCreateWithoutIssuedByInput]
+  createMany: EventCreateManyIssuedByInputEnvelope
+  delete: [EventWhereUniqueInput]
+  deleteMany: [EventScalarWhereInput]
+  disconnect: [EventWhereUniqueInput]
+  set: [EventWhereUniqueInput]
+  update: [EventUpdateWithWhereUniqueWithoutIssuedByInput]
+  updateMany: [EventUpdateManyWithWhereWithoutIssuedByInput]
+  upsert: [EventUpsertWithWhereUniqueWithoutIssuedByInput]
+}
+
+input EventUncheckedUpdateManyWithoutParticipantsNestedInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutParticipantsInput]
+  create: [EventCreateWithoutParticipantsInput]
+  delete: [EventWhereUniqueInput]
+  deleteMany: [EventScalarWhereInput]
+  disconnect: [EventWhereUniqueInput]
+  set: [EventWhereUniqueInput]
+  update: [EventUpdateWithWhereUniqueWithoutParticipantsInput]
+  updateMany: [EventUpdateManyWithWhereWithoutParticipantsInput]
+  upsert: [EventUpsertWithWhereUniqueWithoutParticipantsInput]
+}
+
+input EventUncheckedUpdateManyWithoutResponsiblesNestedInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutResponsiblesInput]
+  create: [EventCreateWithoutResponsiblesInput]
+  delete: [EventWhereUniqueInput]
+  deleteMany: [EventScalarWhereInput]
+  disconnect: [EventWhereUniqueInput]
+  set: [EventWhereUniqueInput]
+  update: [EventUpdateWithWhereUniqueWithoutResponsiblesInput]
+  updateMany: [EventUpdateManyWithWhereWithoutResponsiblesInput]
+  upsert: [EventUpsertWithWhereUniqueWithoutResponsiblesInput]
+}
+
+input EventUncheckedUpdateManyWithoutRoomNestedInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutRoomInput]
+  create: [EventCreateWithoutRoomInput]
+  createMany: EventCreateManyRoomInputEnvelope
+  delete: [EventWhereUniqueInput]
+  deleteMany: [EventScalarWhereInput]
+  disconnect: [EventWhereUniqueInput]
+  set: [EventWhereUniqueInput]
+  update: [EventUpdateWithWhereUniqueWithoutRoomInput]
+  updateMany: [EventUpdateManyWithWhereWithoutRoomInput]
+  upsert: [EventUpsertWithWhereUniqueWithoutRoomInput]
+}
+
+input EventUncheckedUpdateWithoutCategoriesInput {
+  approved: BoolFieldUpdateOperationsInput
+  chat: ChatUncheckedUpdateOneWithoutEventNestedInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  participants: UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
+  responsibles: UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
+  roomId: StringFieldUpdateOperationsInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  userId: NullableStringFieldUpdateOperationsInput
+}
+
+input EventUncheckedUpdateWithoutChatInput {
+  approved: BoolFieldUpdateOperationsInput
+  categories: CategoryUncheckedUpdateManyWithoutEventsNestedInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  participants: UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
+  responsibles: UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
+  roomId: StringFieldUpdateOperationsInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  userId: NullableStringFieldUpdateOperationsInput
+}
+
+input EventUncheckedUpdateWithoutIssuedByInput {
+  approved: BoolFieldUpdateOperationsInput
+  categories: CategoryUncheckedUpdateManyWithoutEventsNestedInput
+  chat: ChatUncheckedUpdateOneWithoutEventNestedInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  participants: UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
+  responsibles: UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
+  roomId: StringFieldUpdateOperationsInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input EventUncheckedUpdateWithoutParticipantsInput {
+  approved: BoolFieldUpdateOperationsInput
+  categories: CategoryUncheckedUpdateManyWithoutEventsNestedInput
+  chat: ChatUncheckedUpdateOneWithoutEventNestedInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  responsibles: UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
+  roomId: StringFieldUpdateOperationsInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  userId: NullableStringFieldUpdateOperationsInput
+}
+
+input EventUncheckedUpdateWithoutResponsiblesInput {
+  approved: BoolFieldUpdateOperationsInput
+  categories: CategoryUncheckedUpdateManyWithoutEventsNestedInput
+  chat: ChatUncheckedUpdateOneWithoutEventNestedInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  participants: UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
+  roomId: StringFieldUpdateOperationsInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  userId: NullableStringFieldUpdateOperationsInput
+}
+
+input EventUncheckedUpdateWithoutRoomInput {
+  approved: BoolFieldUpdateOperationsInput
+  categories: CategoryUncheckedUpdateManyWithoutEventsNestedInput
+  chat: ChatUncheckedUpdateOneWithoutEventNestedInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  participants: UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
+  responsibles: UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  userId: NullableStringFieldUpdateOperationsInput
+}
+
+input EventUpdateInput {
+  approved: BoolFieldUpdateOperationsInput
+  categories: CategoryUpdateManyWithoutEventsNestedInput
+  chat: ChatUpdateOneWithoutEventNestedInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  issuedBy: UserUpdateOneWithoutEventsIssuedNestedInput
+  participants: UserUpdateManyWithoutEventsParticipatingNestedInput
+  responsibles: UserUpdateManyWithoutEventsResponsibleNestedInput
+  room: RoomUpdateOneRequiredWithoutEventsNestedInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input EventUpdateManyMutationInput {
+  approved: BoolFieldUpdateOperationsInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input EventUpdateManyWithWhereWithoutCategoriesInput {
+  data: EventUncheckedUpdateManyWithoutEventsInput!
+  where: EventScalarWhereInput!
+}
+
+input EventUpdateManyWithWhereWithoutIssuedByInput {
+  data: EventUncheckedUpdateManyWithoutEventsIssuedInput!
+  where: EventScalarWhereInput!
+}
+
+input EventUpdateManyWithWhereWithoutParticipantsInput {
+  data: EventUncheckedUpdateManyWithoutEventsParticipatingInput!
+  where: EventScalarWhereInput!
+}
+
+input EventUpdateManyWithWhereWithoutResponsiblesInput {
+  data: EventUncheckedUpdateManyWithoutEventsResponsibleInput!
+  where: EventScalarWhereInput!
+}
+
+input EventUpdateManyWithWhereWithoutRoomInput {
+  data: EventUncheckedUpdateManyWithoutEventsInput!
+  where: EventScalarWhereInput!
+}
+
+input EventUpdateManyWithoutCategoriesNestedInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutCategoriesInput]
+  create: [EventCreateWithoutCategoriesInput]
+  delete: [EventWhereUniqueInput]
+  deleteMany: [EventScalarWhereInput]
+  disconnect: [EventWhereUniqueInput]
+  set: [EventWhereUniqueInput]
+  update: [EventUpdateWithWhereUniqueWithoutCategoriesInput]
+  updateMany: [EventUpdateManyWithWhereWithoutCategoriesInput]
+  upsert: [EventUpsertWithWhereUniqueWithoutCategoriesInput]
+}
+
+input EventUpdateManyWithoutIssuedByNestedInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutIssuedByInput]
+  create: [EventCreateWithoutIssuedByInput]
+  createMany: EventCreateManyIssuedByInputEnvelope
+  delete: [EventWhereUniqueInput]
+  deleteMany: [EventScalarWhereInput]
+  disconnect: [EventWhereUniqueInput]
+  set: [EventWhereUniqueInput]
+  update: [EventUpdateWithWhereUniqueWithoutIssuedByInput]
+  updateMany: [EventUpdateManyWithWhereWithoutIssuedByInput]
+  upsert: [EventUpsertWithWhereUniqueWithoutIssuedByInput]
+}
+
+input EventUpdateManyWithoutParticipantsNestedInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutParticipantsInput]
+  create: [EventCreateWithoutParticipantsInput]
+  delete: [EventWhereUniqueInput]
+  deleteMany: [EventScalarWhereInput]
+  disconnect: [EventWhereUniqueInput]
+  set: [EventWhereUniqueInput]
+  update: [EventUpdateWithWhereUniqueWithoutParticipantsInput]
+  updateMany: [EventUpdateManyWithWhereWithoutParticipantsInput]
+  upsert: [EventUpsertWithWhereUniqueWithoutParticipantsInput]
+}
+
+input EventUpdateManyWithoutResponsiblesNestedInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutResponsiblesInput]
+  create: [EventCreateWithoutResponsiblesInput]
+  delete: [EventWhereUniqueInput]
+  deleteMany: [EventScalarWhereInput]
+  disconnect: [EventWhereUniqueInput]
+  set: [EventWhereUniqueInput]
+  update: [EventUpdateWithWhereUniqueWithoutResponsiblesInput]
+  updateMany: [EventUpdateManyWithWhereWithoutResponsiblesInput]
+  upsert: [EventUpsertWithWhereUniqueWithoutResponsiblesInput]
+}
+
+input EventUpdateManyWithoutRoomNestedInput {
+  connect: [EventWhereUniqueInput]
+  connectOrCreate: [EventCreateOrConnectWithoutRoomInput]
+  create: [EventCreateWithoutRoomInput]
+  createMany: EventCreateManyRoomInputEnvelope
+  delete: [EventWhereUniqueInput]
+  deleteMany: [EventScalarWhereInput]
+  disconnect: [EventWhereUniqueInput]
+  set: [EventWhereUniqueInput]
+  update: [EventUpdateWithWhereUniqueWithoutRoomInput]
+  updateMany: [EventUpdateManyWithWhereWithoutRoomInput]
+  upsert: [EventUpsertWithWhereUniqueWithoutRoomInput]
+}
+
+input EventUpdateOneRequiredWithoutChatNestedInput {
+  connect: EventWhereUniqueInput
+  connectOrCreate: EventCreateOrConnectWithoutChatInput
+  create: EventUncheckedCreateWithoutChatInput
+  update: EventUncheckedUpdateWithoutChatInput
+  upsert: EventUpsertWithoutChatInput
+}
+
+input EventUpdateWithWhereUniqueWithoutCategoriesInput {
+  data: EventUncheckedUpdateWithoutCategoriesInput!
+  where: EventWhereUniqueInput!
+}
+
+input EventUpdateWithWhereUniqueWithoutIssuedByInput {
+  data: EventUncheckedUpdateWithoutIssuedByInput!
+  where: EventWhereUniqueInput!
+}
+
+input EventUpdateWithWhereUniqueWithoutParticipantsInput {
+  data: EventUncheckedUpdateWithoutParticipantsInput!
+  where: EventWhereUniqueInput!
+}
+
+input EventUpdateWithWhereUniqueWithoutResponsiblesInput {
+  data: EventUncheckedUpdateWithoutResponsiblesInput!
+  where: EventWhereUniqueInput!
+}
+
+input EventUpdateWithWhereUniqueWithoutRoomInput {
+  data: EventUncheckedUpdateWithoutRoomInput!
+  where: EventWhereUniqueInput!
+}
+
+input EventUpdateWithoutCategoriesInput {
+  approved: BoolFieldUpdateOperationsInput
+  chat: ChatUpdateOneWithoutEventNestedInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  issuedBy: UserUpdateOneWithoutEventsIssuedNestedInput
+  participants: UserUpdateManyWithoutEventsParticipatingNestedInput
+  responsibles: UserUpdateManyWithoutEventsResponsibleNestedInput
+  room: RoomUpdateOneRequiredWithoutEventsNestedInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input EventUpdateWithoutChatInput {
+  approved: BoolFieldUpdateOperationsInput
+  categories: CategoryUpdateManyWithoutEventsNestedInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  issuedBy: UserUpdateOneWithoutEventsIssuedNestedInput
+  participants: UserUpdateManyWithoutEventsParticipatingNestedInput
+  responsibles: UserUpdateManyWithoutEventsResponsibleNestedInput
+  room: RoomUpdateOneRequiredWithoutEventsNestedInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input EventUpdateWithoutIssuedByInput {
+  approved: BoolFieldUpdateOperationsInput
+  categories: CategoryUpdateManyWithoutEventsNestedInput
+  chat: ChatUpdateOneWithoutEventNestedInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  participants: UserUpdateManyWithoutEventsParticipatingNestedInput
+  responsibles: UserUpdateManyWithoutEventsResponsibleNestedInput
+  room: RoomUpdateOneRequiredWithoutEventsNestedInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input EventUpdateWithoutParticipantsInput {
+  approved: BoolFieldUpdateOperationsInput
+  categories: CategoryUpdateManyWithoutEventsNestedInput
+  chat: ChatUpdateOneWithoutEventNestedInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  issuedBy: UserUpdateOneWithoutEventsIssuedNestedInput
+  responsibles: UserUpdateManyWithoutEventsResponsibleNestedInput
+  room: RoomUpdateOneRequiredWithoutEventsNestedInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input EventUpdateWithoutResponsiblesInput {
+  approved: BoolFieldUpdateOperationsInput
+  categories: CategoryUpdateManyWithoutEventsNestedInput
+  chat: ChatUpdateOneWithoutEventNestedInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  issuedBy: UserUpdateOneWithoutEventsIssuedNestedInput
+  participants: UserUpdateManyWithoutEventsParticipatingNestedInput
+  room: RoomUpdateOneRequiredWithoutEventsNestedInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input EventUpdateWithoutRoomInput {
+  approved: BoolFieldUpdateOperationsInput
+  categories: CategoryUpdateManyWithoutEventsNestedInput
+  chat: ChatUpdateOneWithoutEventNestedInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  issuedBy: UserUpdateOneWithoutEventsIssuedNestedInput
+  participants: UserUpdateManyWithoutEventsParticipatingNestedInput
+  responsibles: UserUpdateManyWithoutEventsResponsibleNestedInput
+  shortDescription: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input EventUpsertWithWhereUniqueWithoutCategoriesInput {
+  create: EventUncheckedCreateWithoutCategoriesInput!
+  update: EventUncheckedUpdateWithoutCategoriesInput!
+  where: EventWhereUniqueInput!
+}
+
+input EventUpsertWithWhereUniqueWithoutIssuedByInput {
+  create: EventUncheckedCreateWithoutIssuedByInput!
+  update: EventUncheckedUpdateWithoutIssuedByInput!
+  where: EventWhereUniqueInput!
+}
+
+input EventUpsertWithWhereUniqueWithoutParticipantsInput {
+  create: EventUncheckedCreateWithoutParticipantsInput!
+  update: EventUncheckedUpdateWithoutParticipantsInput!
+  where: EventWhereUniqueInput!
+}
+
+input EventUpsertWithWhereUniqueWithoutResponsiblesInput {
+  create: EventUncheckedCreateWithoutResponsiblesInput!
+  update: EventUncheckedUpdateWithoutResponsiblesInput!
+  where: EventWhereUniqueInput!
+}
+
+input EventUpsertWithWhereUniqueWithoutRoomInput {
+  create: EventUncheckedCreateWithoutRoomInput!
+  update: EventUncheckedUpdateWithoutRoomInput!
+  where: EventWhereUniqueInput!
+}
+
+input EventUpsertWithoutChatInput {
+  create: EventUncheckedCreateWithoutChatInput!
+  update: EventUncheckedUpdateWithoutChatInput!
+}
+
+input EventWhereInput {
+  AND: [EventWhereInput]
+  NOT: [EventWhereInput]
+  OR: [EventWhereInput]
+  approved: BoolFilter
+  categories: CategoryListRelationFilter
+  chat: ChatWhereInput
+  date: DateTimeFilter
+  description: StringFilter
+  id: StringFilter
+  image: StringNullableFilter
+  issuedBy: UserWhereInput
+  participants: UserListRelationFilter
+  responsibles: UserListRelationFilter
+  room: RoomWhereInput
+  roomId: StringFilter
+  shortDescription: StringFilter
+  title: StringFilter
+  userId: StringNullableFilter
+}
+
+input EventWhereUniqueInput {
+  id: String
+}
+
+input IntFieldUpdateOperationsInput {
+  decrement: Int
+  divide: Int
+  increment: Int
+  multiply: Int
+  set: Int
+}
+
+input IntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int]
+  lt: Int
+  lte: Int
+  not: NestedIntFilter
+  notIn: [Int]
+}
+
+input IntWithAggregatesFilter {
+  _avg: NestedFloatFilter
+  _count: NestedIntFilter
+  _max: NestedIntFilter
+  _min: NestedIntFilter
+  _sum: NestedIntFilter
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int]
+  lt: Int
+  lte: Int
+  not: NestedIntWithAggregatesFilter
+  notIn: [Int]
+}
+
+input IssueEventInput {
+  approved: Boolean
+  categories: CategoryCreateNestedManyWithoutEventsInput
+  chat: ChatCreateNestedOneWithoutEventInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  participants: UserCreateNestedManyWithoutEventsParticipatingInput
+  responsibles: UserCreateNestedManyWithoutEventsResponsibleInput
+  room: RoomCreateNestedOneWithoutEventsInput!
+  shortDescription: String!
+  title: String!
+}
 
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
@@ -774,33 +2297,67 @@ input MessageWhereUniqueInput {
 }
 
 type Mutation {
+  approveEvent(eventId: String!): Event!
+  createOneCategory(data: CategoryCreateInput!): Category!
   createOneChat(data: ChatCreateInput!): Chat!
+  createOneEvent(data: EventCreateInput!): Event!
   createOneMessage(data: MessageCreateInput!): Message!
   createOneProfile(data: ProfileCreateInput!): Profile!
+  createOneRoom(data: RoomCreateInput!): Room!
   createOneUser(data: UserCreateInput!): User!
+  deleteManyCategory(where: CategoryWhereInput): BatchPayload!
   deleteManyChat(where: ChatWhereInput): BatchPayload!
+  deleteManyEvent(where: EventWhereInput): BatchPayload!
   deleteManyMessage(where: MessageWhereInput): BatchPayload!
   deleteManyProfile(where: ProfileWhereInput): BatchPayload!
+  deleteManyRoom(where: RoomWhereInput): BatchPayload!
   deleteManyUser(where: UserWhereInput): BatchPayload!
+  deleteOneCategory(where: CategoryWhereUniqueInput!): Category
   deleteOneChat(where: ChatWhereUniqueInput!): Chat
+  deleteOneEvent(where: EventWhereUniqueInput!): Event
   deleteOneMessage(where: MessageWhereUniqueInput!): Message
   deleteOneProfile(where: ProfileWhereUniqueInput!): Profile
+  deleteOneRoom(where: RoomWhereUniqueInput!): Room
   deleteOneUser(where: UserWhereUniqueInput!): User
+  issueEvent(data: IssueEventInput!): Event!
   login(data: SignInInput!): Token!
+  registerForEvent(eventId: String!): Event!
   sendMessage(data: SendMessageInput!): Message!
   signup(data: SignUpInput!): Token!
+  updateManyCategory(data: CategoryUpdateManyMutationInput!, where: CategoryWhereInput): BatchPayload!
   updateManyChat(data: ChatUpdateManyMutationInput!, where: ChatWhereInput): BatchPayload!
+  updateManyEvent(data: EventUpdateManyMutationInput!, where: EventWhereInput): BatchPayload!
   updateManyMessage(data: MessageUpdateManyMutationInput!, where: MessageWhereInput): BatchPayload!
   updateManyProfile(data: ProfileUpdateManyMutationInput!, where: ProfileWhereInput): BatchPayload!
+  updateManyRoom(data: RoomUpdateManyMutationInput!, where: RoomWhereInput): BatchPayload!
   updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updateOneCategory(data: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category!
   updateOneChat(data: ChatUpdateInput!, where: ChatWhereUniqueInput!): Chat!
+  updateOneEvent(data: EventUpdateInput!, where: EventWhereUniqueInput!): Event!
   updateOneMessage(data: MessageUpdateInput!, where: MessageWhereUniqueInput!): Message!
   updateOneProfile(data: ProfileUpdateInput!, where: ProfileWhereUniqueInput!): Profile!
+  updateOneRoom(data: RoomUpdateInput!, where: RoomWhereUniqueInput!): Room!
   updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+  upsertOneCategory(create: CategoryCreateInput!, update: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category!
   upsertOneChat(create: ChatCreateInput!, update: ChatUpdateInput!, where: ChatWhereUniqueInput!): Chat!
+  upsertOneEvent(create: EventCreateInput!, update: EventUpdateInput!, where: EventWhereUniqueInput!): Event!
   upsertOneMessage(create: MessageCreateInput!, update: MessageUpdateInput!, where: MessageWhereUniqueInput!): Message!
   upsertOneProfile(create: ProfileCreateInput!, update: ProfileUpdateInput!, where: ProfileWhereUniqueInput!): Profile!
+  upsertOneRoom(create: RoomCreateInput!, update: RoomUpdateInput!, where: RoomWhereUniqueInput!): Room!
   upsertOneUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+}
+
+input NestedBoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input NestedBoolWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedBoolFilter
+  _min: NestedBoolFilter
+  equals: Boolean
+  not: NestedBoolWithAggregatesFilter
 }
 
 input NestedDateTimeFilter {
@@ -828,6 +2385,34 @@ input NestedDateTimeWithAggregatesFilter {
   notIn: [DateTime]
 }
 
+input NestedEnumUserRoleFilter {
+  equals: UserRole
+  in: [UserRole]
+  not: NestedEnumUserRoleFilter
+  notIn: [UserRole]
+}
+
+input NestedEnumUserRoleWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedEnumUserRoleFilter
+  _min: NestedEnumUserRoleFilter
+  equals: UserRole
+  in: [UserRole]
+  not: NestedEnumUserRoleWithAggregatesFilter
+  notIn: [UserRole]
+}
+
+input NestedFloatFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float]
+  lt: Float
+  lte: Float
+  not: NestedFloatFilter
+  notIn: [Float]
+}
+
 input NestedIntFilter {
   equals: Int
   gt: Int
@@ -847,6 +2432,22 @@ input NestedIntNullableFilter {
   lt: Int
   lte: Int
   not: NestedIntNullableFilter
+  notIn: [Int]
+}
+
+input NestedIntWithAggregatesFilter {
+  _avg: NestedFloatFilter
+  _count: NestedIntFilter
+  _max: NestedIntFilter
+  _min: NestedIntFilter
+  _sum: NestedIntFilter
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int]
+  lt: Int
+  lte: Int
+  not: NestedIntWithAggregatesFilter
   notIn: [Int]
 }
 
@@ -920,7 +2521,9 @@ type Profile {
   avatar: String
   bio: String
   id: String!
+  jobTitle: String
   name: String
+  surname: String
   updatedAt: DateTime!
   user: User!
   userId: String!
@@ -931,7 +2534,9 @@ type ProfileCountAggregateOutputType {
   avatar: Int!
   bio: Int!
   id: Int!
+  jobTitle: Int!
   name: Int!
+  surname: Int!
   updatedAt: Int!
   userId: Int!
 }
@@ -940,7 +2545,9 @@ input ProfileCountOrderByAggregateInput {
   avatar: SortOrder
   bio: SortOrder
   id: SortOrder
+  jobTitle: SortOrder
   name: SortOrder
+  surname: SortOrder
   updatedAt: SortOrder
   userId: SortOrder
 }
@@ -949,7 +2556,9 @@ input ProfileCreateInput {
   avatar: String
   bio: String
   id: String
+  jobTitle: String
   name: String
+  surname: String
   updatedAt: DateTime
   user: UserCreateNestedOneWithoutProfileInput!
 }
@@ -958,7 +2567,9 @@ input ProfileCreateManyInput {
   avatar: String
   bio: String
   id: String
+  jobTitle: String
   name: String
+  surname: String
   updatedAt: DateTime
   userId: String!
 }
@@ -978,7 +2589,9 @@ input ProfileCreateWithoutUserInput {
   avatar: String
   bio: String
   id: String
+  jobTitle: String
   name: String
+  surname: String
   updatedAt: DateTime
 }
 
@@ -986,7 +2599,9 @@ type ProfileMaxAggregateOutputType {
   avatar: String
   bio: String
   id: String
+  jobTitle: String
   name: String
+  surname: String
   updatedAt: DateTime
   userId: String
 }
@@ -995,7 +2610,9 @@ input ProfileMaxOrderByAggregateInput {
   avatar: SortOrder
   bio: SortOrder
   id: SortOrder
+  jobTitle: SortOrder
   name: SortOrder
+  surname: SortOrder
   updatedAt: SortOrder
   userId: SortOrder
 }
@@ -1004,7 +2621,9 @@ type ProfileMinAggregateOutputType {
   avatar: String
   bio: String
   id: String
+  jobTitle: String
   name: String
+  surname: String
   updatedAt: DateTime
   userId: String
 }
@@ -1013,7 +2632,9 @@ input ProfileMinOrderByAggregateInput {
   avatar: SortOrder
   bio: SortOrder
   id: SortOrder
+  jobTitle: SortOrder
   name: SortOrder
+  surname: SortOrder
   updatedAt: SortOrder
   userId: SortOrder
 }
@@ -1025,7 +2646,9 @@ input ProfileOrderByWithAggregationInput {
   avatar: SortOrder
   bio: SortOrder
   id: SortOrder
+  jobTitle: SortOrder
   name: SortOrder
+  surname: SortOrder
   updatedAt: SortOrder
   userId: SortOrder
 }
@@ -1034,7 +2657,9 @@ input ProfileOrderByWithRelationInput {
   avatar: SortOrder
   bio: SortOrder
   id: SortOrder
+  jobTitle: SortOrder
   name: SortOrder
+  surname: SortOrder
   updatedAt: SortOrder
   user: UserOrderByWithRelationInput
   userId: SortOrder
@@ -1049,7 +2674,9 @@ enum ProfileScalarFieldEnum {
   avatar
   bio
   id
+  jobTitle
   name
+  surname
   updatedAt
   userId
 }
@@ -1061,7 +2688,9 @@ input ProfileScalarWhereWithAggregatesInput {
   avatar: StringNullableWithAggregatesFilter
   bio: StringNullableWithAggregatesFilter
   id: StringWithAggregatesFilter
+  jobTitle: StringNullableWithAggregatesFilter
   name: StringNullableWithAggregatesFilter
+  surname: StringNullableWithAggregatesFilter
   updatedAt: DateTimeWithAggregatesFilter
   userId: StringWithAggregatesFilter
 }
@@ -1070,7 +2699,9 @@ input ProfileUncheckedCreateInput {
   avatar: String
   bio: String
   id: String
+  jobTitle: String
   name: String
+  surname: String
   updatedAt: DateTime
   userId: String!
 }
@@ -1085,7 +2716,9 @@ input ProfileUncheckedCreateWithoutUserInput {
   avatar: String
   bio: String
   id: String
+  jobTitle: String
   name: String
+  surname: String
   updatedAt: DateTime
 }
 
@@ -1093,7 +2726,9 @@ input ProfileUncheckedUpdateInput {
   avatar: NullableStringFieldUpdateOperationsInput
   bio: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+  jobTitle: NullableStringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
+  surname: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   userId: StringFieldUpdateOperationsInput
 }
@@ -1102,7 +2737,9 @@ input ProfileUncheckedUpdateManyInput {
   avatar: NullableStringFieldUpdateOperationsInput
   bio: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+  jobTitle: NullableStringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
+  surname: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   userId: StringFieldUpdateOperationsInput
 }
@@ -1121,7 +2758,9 @@ input ProfileUncheckedUpdateWithoutUserInput {
   avatar: NullableStringFieldUpdateOperationsInput
   bio: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+  jobTitle: NullableStringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
+  surname: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
@@ -1129,7 +2768,9 @@ input ProfileUpdateInput {
   avatar: NullableStringFieldUpdateOperationsInput
   bio: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+  jobTitle: NullableStringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
+  surname: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   user: UserUpdateOneRequiredWithoutProfileNestedInput
 }
@@ -1138,7 +2779,9 @@ input ProfileUpdateManyMutationInput {
   avatar: NullableStringFieldUpdateOperationsInput
   bio: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+  jobTitle: NullableStringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
+  surname: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
@@ -1156,7 +2799,9 @@ input ProfileUpdateWithoutUserInput {
   avatar: NullableStringFieldUpdateOperationsInput
   bio: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+  jobTitle: NullableStringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
+  surname: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
@@ -1172,7 +2817,9 @@ input ProfileWhereInput {
   avatar: StringNullableFilter
   bio: StringNullableFilter
   id: StringFilter
+  jobTitle: StringNullableFilter
   name: StringNullableFilter
+  surname: StringNullableFilter
   updatedAt: DateTimeFilter
   user: UserWhereInput
   userId: StringFilter
@@ -1184,25 +2831,40 @@ input ProfileWhereUniqueInput {
 }
 
 type Query {
+  aggregateCategory(cursor: CategoryWhereUniqueInput, orderBy: [CategoryOrderByWithRelationInput], skip: Int, take: Int, where: CategoryWhereInput): AggregateCategory
   aggregateChat(cursor: ChatWhereUniqueInput, orderBy: [ChatOrderByWithRelationInput], skip: Int, take: Int, where: ChatWhereInput): AggregateChat
+  aggregateEvent(cursor: EventWhereUniqueInput, orderBy: [EventOrderByWithRelationInput], skip: Int, take: Int, where: EventWhereInput): AggregateEvent
   aggregateMessage(cursor: MessageWhereUniqueInput, orderBy: [MessageOrderByWithRelationInput], skip: Int, take: Int, where: MessageWhereInput): AggregateMessage
   aggregateProfile(cursor: ProfileWhereUniqueInput, orderBy: [ProfileOrderByWithRelationInput], skip: Int, take: Int, where: ProfileWhereInput): AggregateProfile
+  aggregateRoom(cursor: RoomWhereUniqueInput, orderBy: [RoomOrderByWithRelationInput], skip: Int, take: Int, where: RoomWhereInput): AggregateRoom
   aggregateUser(cursor: UserWhereUniqueInput, orderBy: [UserOrderByWithRelationInput], skip: Int, take: Int, where: UserWhereInput): AggregateUser
+  findFirstCategory(cursor: CategoryWhereUniqueInput, distinct: [CategoryScalarFieldEnum], orderBy: [CategoryOrderByWithRelationInput], skip: Int, take: Int, where: CategoryWhereInput): Category
   findFirstChat(cursor: ChatWhereUniqueInput, distinct: [ChatScalarFieldEnum], orderBy: [ChatOrderByWithRelationInput], skip: Int, take: Int, where: ChatWhereInput): Chat
+  findFirstEvent(cursor: EventWhereUniqueInput, distinct: [EventScalarFieldEnum], orderBy: [EventOrderByWithRelationInput], skip: Int, take: Int, where: EventWhereInput): Event
   findFirstMessage(cursor: MessageWhereUniqueInput, distinct: [MessageScalarFieldEnum], orderBy: [MessageOrderByWithRelationInput], skip: Int, take: Int, where: MessageWhereInput): Message
   findFirstProfile(cursor: ProfileWhereUniqueInput, distinct: [ProfileScalarFieldEnum], orderBy: [ProfileOrderByWithRelationInput], skip: Int, take: Int, where: ProfileWhereInput): Profile
+  findFirstRoom(cursor: RoomWhereUniqueInput, distinct: [RoomScalarFieldEnum], orderBy: [RoomOrderByWithRelationInput], skip: Int, take: Int, where: RoomWhereInput): Room
   findFirstUser(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum], orderBy: [UserOrderByWithRelationInput], skip: Int, take: Int, where: UserWhereInput): User
+  findManyCategory(cursor: CategoryWhereUniqueInput, distinct: [CategoryScalarFieldEnum], orderBy: [CategoryOrderByWithRelationInput], skip: Int, take: Int, where: CategoryWhereInput): [Category!]!
+  findManyCategoryCount(cursor: CategoryWhereUniqueInput, distinct: [CategoryScalarFieldEnum], orderBy: [CategoryOrderByWithRelationInput], skip: Int, take: Int, where: CategoryWhereInput): Int!
   findManyChat(cursor: ChatWhereUniqueInput, distinct: [ChatScalarFieldEnum], orderBy: [ChatOrderByWithRelationInput], skip: Int, take: Int, where: ChatWhereInput): [Chat!]!
   findManyChatCount(cursor: ChatWhereUniqueInput, distinct: [ChatScalarFieldEnum], orderBy: [ChatOrderByWithRelationInput], skip: Int, take: Int, where: ChatWhereInput): Int!
+  findManyEvent(cursor: EventWhereUniqueInput, distinct: [EventScalarFieldEnum], orderBy: [EventOrderByWithRelationInput], skip: Int, take: Int, where: EventWhereInput): [Event!]!
+  findManyEventCount(cursor: EventWhereUniqueInput, distinct: [EventScalarFieldEnum], orderBy: [EventOrderByWithRelationInput], skip: Int, take: Int, where: EventWhereInput): Int!
   findManyMessage(cursor: MessageWhereUniqueInput, distinct: [MessageScalarFieldEnum], orderBy: [MessageOrderByWithRelationInput], skip: Int, take: Int, where: MessageWhereInput): [Message!]!
   findManyMessageCount(cursor: MessageWhereUniqueInput, distinct: [MessageScalarFieldEnum], orderBy: [MessageOrderByWithRelationInput], skip: Int, take: Int, where: MessageWhereInput): Int!
   findManyProfile(cursor: ProfileWhereUniqueInput, distinct: [ProfileScalarFieldEnum], orderBy: [ProfileOrderByWithRelationInput], skip: Int, take: Int, where: ProfileWhereInput): [Profile!]!
   findManyProfileCount(cursor: ProfileWhereUniqueInput, distinct: [ProfileScalarFieldEnum], orderBy: [ProfileOrderByWithRelationInput], skip: Int, take: Int, where: ProfileWhereInput): Int!
+  findManyRoom(cursor: RoomWhereUniqueInput, distinct: [RoomScalarFieldEnum], orderBy: [RoomOrderByWithRelationInput], skip: Int, take: Int, where: RoomWhereInput): [Room!]!
+  findManyRoomCount(cursor: RoomWhereUniqueInput, distinct: [RoomScalarFieldEnum], orderBy: [RoomOrderByWithRelationInput], skip: Int, take: Int, where: RoomWhereInput): Int!
   findManyUser(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum], orderBy: [UserOrderByWithRelationInput], skip: Int, take: Int, where: UserWhereInput): [User!]!
   findManyUserCount(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum], orderBy: [UserOrderByWithRelationInput], skip: Int, take: Int, where: UserWhereInput): Int!
+  findUniqueCategory(where: CategoryWhereUniqueInput!): Category
   findUniqueChat(where: ChatWhereUniqueInput!): Chat
+  findUniqueEvent(where: EventWhereUniqueInput!): Event
   findUniqueMessage(where: MessageWhereUniqueInput!): Message
   findUniqueProfile(where: ProfileWhereUniqueInput!): Profile
+  findUniqueRoom(where: RoomWhereUniqueInput!): Room
   findUniqueUser(where: UserWhereUniqueInput!): User
   me: User!
 }
@@ -1210,6 +2872,153 @@ type Query {
 enum QueryMode {
   default
   insensitive
+}
+
+type Room {
+  _count: RoomCountOutputType!
+  events(cursor: EventWhereUniqueInput, distinct: EventScalarFieldEnum, orderBy: EventOrderByWithRelationInput, skip: Int, take: Int, where: EventWhereInput): [Event!]!
+  id: String!
+}
+
+type RoomCountAggregateOutputType {
+  _all: Int!
+  id: Int!
+}
+
+input RoomCountOrderByAggregateInput {
+  id: SortOrder
+}
+
+type RoomCountOutputType {
+  events: Int!
+}
+
+input RoomCreateInput {
+  events: EventCreateNestedManyWithoutRoomInput
+  id: String!
+}
+
+input RoomCreateManyInput {
+  id: String!
+}
+
+input RoomCreateNestedOneWithoutEventsInput {
+  connect: RoomWhereUniqueInput
+  connectOrCreate: RoomCreateOrConnectWithoutEventsInput
+  create: RoomUncheckedCreateWithoutEventsInput
+}
+
+input RoomCreateOrConnectWithoutEventsInput {
+  create: RoomUncheckedCreateWithoutEventsInput!
+  where: RoomWhereUniqueInput!
+}
+
+input RoomCreateWithoutEventsInput {
+  id: String!
+}
+
+type RoomMaxAggregateOutputType {
+  id: String
+}
+
+input RoomMaxOrderByAggregateInput {
+  id: SortOrder
+}
+
+type RoomMinAggregateOutputType {
+  id: String
+}
+
+input RoomMinOrderByAggregateInput {
+  id: SortOrder
+}
+
+input RoomOrderByWithAggregationInput {
+  _count: RoomCountOrderByAggregateInput
+  _max: RoomMaxOrderByAggregateInput
+  _min: RoomMinOrderByAggregateInput
+  id: SortOrder
+}
+
+input RoomOrderByWithRelationInput {
+  events: EventOrderByRelationAggregateInput
+  id: SortOrder
+}
+
+input RoomRelationFilter {
+  is: RoomWhereInput
+  isNot: RoomWhereInput
+}
+
+enum RoomScalarFieldEnum {
+  id
+}
+
+input RoomScalarWhereWithAggregatesInput {
+  AND: [RoomScalarWhereWithAggregatesInput]
+  NOT: [RoomScalarWhereWithAggregatesInput]
+  OR: [RoomScalarWhereWithAggregatesInput]
+  id: StringWithAggregatesFilter
+}
+
+input RoomUncheckedCreateInput {
+  events: EventUncheckedCreateNestedManyWithoutRoomInput
+  id: String!
+}
+
+input RoomUncheckedCreateWithoutEventsInput {
+  id: String!
+}
+
+input RoomUncheckedUpdateInput {
+  events: EventUncheckedUpdateManyWithoutRoomNestedInput
+  id: StringFieldUpdateOperationsInput
+}
+
+input RoomUncheckedUpdateManyInput {
+  id: StringFieldUpdateOperationsInput
+}
+
+input RoomUncheckedUpdateWithoutEventsInput {
+  id: StringFieldUpdateOperationsInput
+}
+
+input RoomUpdateInput {
+  events: EventUpdateManyWithoutRoomNestedInput
+  id: StringFieldUpdateOperationsInput
+}
+
+input RoomUpdateManyMutationInput {
+  id: StringFieldUpdateOperationsInput
+}
+
+input RoomUpdateOneRequiredWithoutEventsNestedInput {
+  connect: RoomWhereUniqueInput
+  connectOrCreate: RoomCreateOrConnectWithoutEventsInput
+  create: RoomUncheckedCreateWithoutEventsInput
+  update: RoomUncheckedUpdateWithoutEventsInput
+  upsert: RoomUpsertWithoutEventsInput
+}
+
+input RoomUpdateWithoutEventsInput {
+  id: StringFieldUpdateOperationsInput
+}
+
+input RoomUpsertWithoutEventsInput {
+  create: RoomUncheckedCreateWithoutEventsInput!
+  update: RoomUncheckedUpdateWithoutEventsInput!
+}
+
+input RoomWhereInput {
+  AND: [RoomWhereInput]
+  NOT: [RoomWhereInput]
+  OR: [RoomWhereInput]
+  events: EventListRelationFilter
+  id: StringFilter
+}
+
+input RoomWhereUniqueInput {
+  id: String
 }
 
 input SendMessageInput {
@@ -1320,11 +3129,18 @@ enum TransactionIsolationLevel {
 type User {
   _count: UserCountOutputType!
   chats(cursor: ChatWhereUniqueInput, distinct: ChatScalarFieldEnum, orderBy: ChatOrderByWithRelationInput, skip: Int, take: Int, where: ChatWhereInput): [Chat!]!
+  child: User
   createdAt: DateTime!
+  eventsIssued(cursor: EventWhereUniqueInput, distinct: EventScalarFieldEnum, orderBy: EventOrderByWithRelationInput, skip: Int, take: Int, where: EventWhereInput): [Event!]!
+  eventsParticipating(cursor: EventWhereUniqueInput, distinct: EventScalarFieldEnum, orderBy: EventOrderByWithRelationInput, skip: Int, take: Int, where: EventWhereInput): [Event!]!
+  eventsResponsible(cursor: EventWhereUniqueInput, distinct: EventScalarFieldEnum, orderBy: EventOrderByWithRelationInput, skip: Int, take: Int, where: EventWhereInput): [Event!]!
   id: String!
   messages(cursor: MessageWhereUniqueInput, distinct: MessageScalarFieldEnum, orderBy: MessageOrderByWithRelationInput, skip: Int, take: Int, where: MessageWhereInput): [Message!]!
+  parent: User
+  parentId: String
   password: String!
   profile: Profile
+  role: UserRole!
   username: String!
 }
 
@@ -1332,36 +3148,51 @@ type UserCountAggregateOutputType {
   _all: Int!
   createdAt: Int!
   id: Int!
+  parentId: Int!
   password: Int!
+  role: Int!
   username: Int!
 }
 
 input UserCountOrderByAggregateInput {
   createdAt: SortOrder
   id: SortOrder
+  parentId: SortOrder
   password: SortOrder
+  role: SortOrder
   username: SortOrder
 }
 
 type UserCountOutputType {
   chats: Int!
+  eventsIssued: Int!
+  eventsParticipating: Int!
+  eventsResponsible: Int!
   messages: Int!
 }
 
 input UserCreateInput {
   chats: ChatCreateNestedManyWithoutMembersInput
+  child: UserCreateNestedOneWithoutParentInput
   createdAt: DateTime
+  eventsIssued: EventCreateNestedManyWithoutIssuedByInput
+  eventsParticipating: EventCreateNestedManyWithoutParticipantsInput
+  eventsResponsible: EventCreateNestedManyWithoutResponsiblesInput
   id: String
   messages: MessageCreateNestedManyWithoutSenderInput
+  parent: UserCreateNestedOneWithoutChildInput
   password: String!
   profile: ProfileCreateNestedOneWithoutUserInput
+  role: UserRole!
   username: String!
 }
 
 input UserCreateManyInput {
   createdAt: DateTime
   id: String
+  parentId: String
   password: String!
+  role: UserRole!
   username: String!
 }
 
@@ -1371,10 +3202,40 @@ input UserCreateNestedManyWithoutChatsInput {
   create: [UserCreateWithoutChatsInput]
 }
 
+input UserCreateNestedManyWithoutEventsParticipatingInput {
+  connect: [UserWhereUniqueInput]
+  connectOrCreate: [UserCreateOrConnectWithoutEventsParticipatingInput]
+  create: [UserCreateWithoutEventsParticipatingInput]
+}
+
+input UserCreateNestedManyWithoutEventsResponsibleInput {
+  connect: [UserWhereUniqueInput]
+  connectOrCreate: [UserCreateOrConnectWithoutEventsResponsibleInput]
+  create: [UserCreateWithoutEventsResponsibleInput]
+}
+
+input UserCreateNestedOneWithoutChildInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutChildInput
+  create: UserUncheckedCreateWithoutChildInput
+}
+
+input UserCreateNestedOneWithoutEventsIssuedInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutEventsIssuedInput
+  create: UserUncheckedCreateWithoutEventsIssuedInput
+}
+
 input UserCreateNestedOneWithoutMessagesInput {
   connect: UserWhereUniqueInput
   connectOrCreate: UserCreateOrConnectWithoutMessagesInput
   create: UserUncheckedCreateWithoutMessagesInput
+}
+
+input UserCreateNestedOneWithoutParentInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutParentInput
+  create: UserUncheckedCreateWithoutParentInput
 }
 
 input UserCreateNestedOneWithoutProfileInput {
@@ -1388,8 +3249,33 @@ input UserCreateOrConnectWithoutChatsInput {
   where: UserWhereUniqueInput!
 }
 
+input UserCreateOrConnectWithoutChildInput {
+  create: UserUncheckedCreateWithoutChildInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateOrConnectWithoutEventsIssuedInput {
+  create: UserUncheckedCreateWithoutEventsIssuedInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateOrConnectWithoutEventsParticipatingInput {
+  create: UserUncheckedCreateWithoutEventsParticipatingInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateOrConnectWithoutEventsResponsibleInput {
+  create: UserUncheckedCreateWithoutEventsResponsibleInput!
+  where: UserWhereUniqueInput!
+}
+
 input UserCreateOrConnectWithoutMessagesInput {
   create: UserUncheckedCreateWithoutMessagesInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateOrConnectWithoutParentInput {
+  create: UserUncheckedCreateWithoutParentInput!
   where: UserWhereUniqueInput!
 }
 
@@ -1399,29 +3285,122 @@ input UserCreateOrConnectWithoutProfileInput {
 }
 
 input UserCreateWithoutChatsInput {
+  child: UserCreateNestedOneWithoutParentInput
   createdAt: DateTime
+  eventsIssued: EventCreateNestedManyWithoutIssuedByInput
+  eventsParticipating: EventCreateNestedManyWithoutParticipantsInput
+  eventsResponsible: EventCreateNestedManyWithoutResponsiblesInput
   id: String
   messages: MessageCreateNestedManyWithoutSenderInput
+  parent: UserCreateNestedOneWithoutChildInput
   password: String!
   profile: ProfileCreateNestedOneWithoutUserInput
+  role: UserRole!
+  username: String!
+}
+
+input UserCreateWithoutChildInput {
+  chats: ChatCreateNestedManyWithoutMembersInput
+  createdAt: DateTime
+  eventsIssued: EventCreateNestedManyWithoutIssuedByInput
+  eventsParticipating: EventCreateNestedManyWithoutParticipantsInput
+  eventsResponsible: EventCreateNestedManyWithoutResponsiblesInput
+  id: String
+  messages: MessageCreateNestedManyWithoutSenderInput
+  parent: UserCreateNestedOneWithoutChildInput
+  password: String!
+  profile: ProfileCreateNestedOneWithoutUserInput
+  role: UserRole!
+  username: String!
+}
+
+input UserCreateWithoutEventsIssuedInput {
+  chats: ChatCreateNestedManyWithoutMembersInput
+  child: UserCreateNestedOneWithoutParentInput
+  createdAt: DateTime
+  eventsParticipating: EventCreateNestedManyWithoutParticipantsInput
+  eventsResponsible: EventCreateNestedManyWithoutResponsiblesInput
+  id: String
+  messages: MessageCreateNestedManyWithoutSenderInput
+  parent: UserCreateNestedOneWithoutChildInput
+  password: String!
+  profile: ProfileCreateNestedOneWithoutUserInput
+  role: UserRole!
+  username: String!
+}
+
+input UserCreateWithoutEventsParticipatingInput {
+  chats: ChatCreateNestedManyWithoutMembersInput
+  child: UserCreateNestedOneWithoutParentInput
+  createdAt: DateTime
+  eventsIssued: EventCreateNestedManyWithoutIssuedByInput
+  eventsResponsible: EventCreateNestedManyWithoutResponsiblesInput
+  id: String
+  messages: MessageCreateNestedManyWithoutSenderInput
+  parent: UserCreateNestedOneWithoutChildInput
+  password: String!
+  profile: ProfileCreateNestedOneWithoutUserInput
+  role: UserRole!
+  username: String!
+}
+
+input UserCreateWithoutEventsResponsibleInput {
+  chats: ChatCreateNestedManyWithoutMembersInput
+  child: UserCreateNestedOneWithoutParentInput
+  createdAt: DateTime
+  eventsIssued: EventCreateNestedManyWithoutIssuedByInput
+  eventsParticipating: EventCreateNestedManyWithoutParticipantsInput
+  id: String
+  messages: MessageCreateNestedManyWithoutSenderInput
+  parent: UserCreateNestedOneWithoutChildInput
+  password: String!
+  profile: ProfileCreateNestedOneWithoutUserInput
+  role: UserRole!
   username: String!
 }
 
 input UserCreateWithoutMessagesInput {
   chats: ChatCreateNestedManyWithoutMembersInput
+  child: UserCreateNestedOneWithoutParentInput
   createdAt: DateTime
+  eventsIssued: EventCreateNestedManyWithoutIssuedByInput
+  eventsParticipating: EventCreateNestedManyWithoutParticipantsInput
+  eventsResponsible: EventCreateNestedManyWithoutResponsiblesInput
   id: String
+  parent: UserCreateNestedOneWithoutChildInput
   password: String!
   profile: ProfileCreateNestedOneWithoutUserInput
+  role: UserRole!
+  username: String!
+}
+
+input UserCreateWithoutParentInput {
+  chats: ChatCreateNestedManyWithoutMembersInput
+  child: UserCreateNestedOneWithoutParentInput
+  createdAt: DateTime
+  eventsIssued: EventCreateNestedManyWithoutIssuedByInput
+  eventsParticipating: EventCreateNestedManyWithoutParticipantsInput
+  eventsResponsible: EventCreateNestedManyWithoutResponsiblesInput
+  id: String
+  messages: MessageCreateNestedManyWithoutSenderInput
+  password: String!
+  profile: ProfileCreateNestedOneWithoutUserInput
+  role: UserRole!
   username: String!
 }
 
 input UserCreateWithoutProfileInput {
   chats: ChatCreateNestedManyWithoutMembersInput
+  child: UserCreateNestedOneWithoutParentInput
   createdAt: DateTime
+  eventsIssued: EventCreateNestedManyWithoutIssuedByInput
+  eventsParticipating: EventCreateNestedManyWithoutParticipantsInput
+  eventsResponsible: EventCreateNestedManyWithoutResponsiblesInput
   id: String
   messages: MessageCreateNestedManyWithoutSenderInput
+  parent: UserCreateNestedOneWithoutChildInput
   password: String!
+  role: UserRole!
   username: String!
 }
 
@@ -1434,28 +3413,36 @@ input UserListRelationFilter {
 type UserMaxAggregateOutputType {
   createdAt: DateTime
   id: String
+  parentId: String
   password: String
+  role: UserRole
   username: String
 }
 
 input UserMaxOrderByAggregateInput {
   createdAt: SortOrder
   id: SortOrder
+  parentId: SortOrder
   password: SortOrder
+  role: SortOrder
   username: SortOrder
 }
 
 type UserMinAggregateOutputType {
   createdAt: DateTime
   id: String
+  parentId: String
   password: String
+  role: UserRole
   username: String
 }
 
 input UserMinOrderByAggregateInput {
   createdAt: SortOrder
   id: SortOrder
+  parentId: SortOrder
   password: SortOrder
+  role: SortOrder
   username: SortOrder
 }
 
@@ -1469,17 +3456,26 @@ input UserOrderByWithAggregationInput {
   _min: UserMinOrderByAggregateInput
   createdAt: SortOrder
   id: SortOrder
+  parentId: SortOrder
   password: SortOrder
+  role: SortOrder
   username: SortOrder
 }
 
 input UserOrderByWithRelationInput {
   chats: ChatOrderByRelationAggregateInput
+  child: UserOrderByWithRelationInput
   createdAt: SortOrder
+  eventsIssued: EventOrderByRelationAggregateInput
+  eventsParticipating: EventOrderByRelationAggregateInput
+  eventsResponsible: EventOrderByRelationAggregateInput
   id: SortOrder
   messages: MessageOrderByRelationAggregateInput
+  parent: UserOrderByWithRelationInput
+  parentId: SortOrder
   password: SortOrder
   profile: ProfileOrderByWithRelationInput
+  role: SortOrder
   username: SortOrder
 }
 
@@ -1488,10 +3484,19 @@ input UserRelationFilter {
   isNot: UserWhereInput
 }
 
+enum UserRole {
+  Dean
+  Parent
+  Staff
+  Student
+}
+
 enum UserScalarFieldEnum {
   createdAt
   id
+  parentId
   password
+  role
   username
 }
 
@@ -1501,7 +3506,9 @@ input UserScalarWhereInput {
   OR: [UserScalarWhereInput]
   createdAt: DateTimeFilter
   id: StringFilter
+  parentId: StringNullableFilter
   password: StringFilter
+  role: EnumUserRoleFilter
   username: StringFilter
 }
 
@@ -1511,17 +3518,25 @@ input UserScalarWhereWithAggregatesInput {
   OR: [UserScalarWhereWithAggregatesInput]
   createdAt: DateTimeWithAggregatesFilter
   id: StringWithAggregatesFilter
+  parentId: StringNullableWithAggregatesFilter
   password: StringWithAggregatesFilter
+  role: EnumUserRoleWithAggregatesFilter
   username: StringWithAggregatesFilter
 }
 
 input UserUncheckedCreateInput {
   chats: ChatUncheckedCreateNestedManyWithoutMembersInput
+  child: UserUncheckedCreateNestedOneWithoutParentInput
   createdAt: DateTime
+  eventsIssued: EventUncheckedCreateNestedManyWithoutIssuedByInput
+  eventsParticipating: EventUncheckedCreateNestedManyWithoutParticipantsInput
+  eventsResponsible: EventUncheckedCreateNestedManyWithoutResponsiblesInput
   id: String
   messages: MessageUncheckedCreateNestedManyWithoutSenderInput
+  parentId: String
   password: String!
   profile: ProfileUncheckedCreateNestedOneWithoutUserInput
+  role: UserRole!
   username: String!
 }
 
@@ -1531,47 +3546,166 @@ input UserUncheckedCreateNestedManyWithoutChatsInput {
   create: [UserCreateWithoutChatsInput]
 }
 
+input UserUncheckedCreateNestedManyWithoutEventsParticipatingInput {
+  connect: [UserWhereUniqueInput]
+  connectOrCreate: [UserCreateOrConnectWithoutEventsParticipatingInput]
+  create: [UserCreateWithoutEventsParticipatingInput]
+}
+
+input UserUncheckedCreateNestedManyWithoutEventsResponsibleInput {
+  connect: [UserWhereUniqueInput]
+  connectOrCreate: [UserCreateOrConnectWithoutEventsResponsibleInput]
+  create: [UserCreateWithoutEventsResponsibleInput]
+}
+
+input UserUncheckedCreateNestedOneWithoutParentInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutParentInput
+  create: UserUncheckedCreateWithoutParentInput
+}
+
 input UserUncheckedCreateWithoutChatsInput {
+  child: UserUncheckedCreateNestedOneWithoutParentInput
   createdAt: DateTime
+  eventsIssued: EventUncheckedCreateNestedManyWithoutIssuedByInput
+  eventsParticipating: EventUncheckedCreateNestedManyWithoutParticipantsInput
+  eventsResponsible: EventUncheckedCreateNestedManyWithoutResponsiblesInput
   id: String
   messages: MessageUncheckedCreateNestedManyWithoutSenderInput
+  parentId: String
   password: String!
   profile: ProfileUncheckedCreateNestedOneWithoutUserInput
+  role: UserRole!
+  username: String!
+}
+
+input UserUncheckedCreateWithoutChildInput {
+  chats: ChatUncheckedCreateNestedManyWithoutMembersInput
+  createdAt: DateTime
+  eventsIssued: EventUncheckedCreateNestedManyWithoutIssuedByInput
+  eventsParticipating: EventUncheckedCreateNestedManyWithoutParticipantsInput
+  eventsResponsible: EventUncheckedCreateNestedManyWithoutResponsiblesInput
+  id: String
+  messages: MessageUncheckedCreateNestedManyWithoutSenderInput
+  parentId: String
+  password: String!
+  profile: ProfileUncheckedCreateNestedOneWithoutUserInput
+  role: UserRole!
+  username: String!
+}
+
+input UserUncheckedCreateWithoutEventsIssuedInput {
+  chats: ChatUncheckedCreateNestedManyWithoutMembersInput
+  child: UserUncheckedCreateNestedOneWithoutParentInput
+  createdAt: DateTime
+  eventsParticipating: EventUncheckedCreateNestedManyWithoutParticipantsInput
+  eventsResponsible: EventUncheckedCreateNestedManyWithoutResponsiblesInput
+  id: String
+  messages: MessageUncheckedCreateNestedManyWithoutSenderInput
+  parentId: String
+  password: String!
+  profile: ProfileUncheckedCreateNestedOneWithoutUserInput
+  role: UserRole!
+  username: String!
+}
+
+input UserUncheckedCreateWithoutEventsParticipatingInput {
+  chats: ChatUncheckedCreateNestedManyWithoutMembersInput
+  child: UserUncheckedCreateNestedOneWithoutParentInput
+  createdAt: DateTime
+  eventsIssued: EventUncheckedCreateNestedManyWithoutIssuedByInput
+  eventsResponsible: EventUncheckedCreateNestedManyWithoutResponsiblesInput
+  id: String
+  messages: MessageUncheckedCreateNestedManyWithoutSenderInput
+  parentId: String
+  password: String!
+  profile: ProfileUncheckedCreateNestedOneWithoutUserInput
+  role: UserRole!
+  username: String!
+}
+
+input UserUncheckedCreateWithoutEventsResponsibleInput {
+  chats: ChatUncheckedCreateNestedManyWithoutMembersInput
+  child: UserUncheckedCreateNestedOneWithoutParentInput
+  createdAt: DateTime
+  eventsIssued: EventUncheckedCreateNestedManyWithoutIssuedByInput
+  eventsParticipating: EventUncheckedCreateNestedManyWithoutParticipantsInput
+  id: String
+  messages: MessageUncheckedCreateNestedManyWithoutSenderInput
+  parentId: String
+  password: String!
+  profile: ProfileUncheckedCreateNestedOneWithoutUserInput
+  role: UserRole!
   username: String!
 }
 
 input UserUncheckedCreateWithoutMessagesInput {
   chats: ChatUncheckedCreateNestedManyWithoutMembersInput
+  child: UserUncheckedCreateNestedOneWithoutParentInput
   createdAt: DateTime
+  eventsIssued: EventUncheckedCreateNestedManyWithoutIssuedByInput
+  eventsParticipating: EventUncheckedCreateNestedManyWithoutParticipantsInput
+  eventsResponsible: EventUncheckedCreateNestedManyWithoutResponsiblesInput
   id: String
+  parentId: String
   password: String!
   profile: ProfileUncheckedCreateNestedOneWithoutUserInput
+  role: UserRole!
+  username: String!
+}
+
+input UserUncheckedCreateWithoutParentInput {
+  chats: ChatUncheckedCreateNestedManyWithoutMembersInput
+  child: UserUncheckedCreateNestedOneWithoutParentInput
+  createdAt: DateTime
+  eventsIssued: EventUncheckedCreateNestedManyWithoutIssuedByInput
+  eventsParticipating: EventUncheckedCreateNestedManyWithoutParticipantsInput
+  eventsResponsible: EventUncheckedCreateNestedManyWithoutResponsiblesInput
+  id: String
+  messages: MessageUncheckedCreateNestedManyWithoutSenderInput
+  password: String!
+  profile: ProfileUncheckedCreateNestedOneWithoutUserInput
+  role: UserRole!
   username: String!
 }
 
 input UserUncheckedCreateWithoutProfileInput {
   chats: ChatUncheckedCreateNestedManyWithoutMembersInput
+  child: UserUncheckedCreateNestedOneWithoutParentInput
   createdAt: DateTime
+  eventsIssued: EventUncheckedCreateNestedManyWithoutIssuedByInput
+  eventsParticipating: EventUncheckedCreateNestedManyWithoutParticipantsInput
+  eventsResponsible: EventUncheckedCreateNestedManyWithoutResponsiblesInput
   id: String
   messages: MessageUncheckedCreateNestedManyWithoutSenderInput
+  parentId: String
   password: String!
+  role: UserRole!
   username: String!
 }
 
 input UserUncheckedUpdateInput {
   chats: ChatUncheckedUpdateManyWithoutMembersNestedInput
+  child: UserUncheckedUpdateOneWithoutParentNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUncheckedUpdateManyWithoutIssuedByNestedInput
+  eventsParticipating: EventUncheckedUpdateManyWithoutParticipantsNestedInput
+  eventsResponsible: EventUncheckedUpdateManyWithoutResponsiblesNestedInput
   id: StringFieldUpdateOperationsInput
   messages: MessageUncheckedUpdateManyWithoutSenderNestedInput
+  parentId: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
   profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
+  role: EnumUserRoleFieldUpdateOperationsInput
   username: StringFieldUpdateOperationsInput
 }
 
 input UserUncheckedUpdateManyInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+  parentId: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  role: EnumUserRoleFieldUpdateOperationsInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -1588,47 +3722,202 @@ input UserUncheckedUpdateManyWithoutChatsNestedInput {
   upsert: [UserUpsertWithWhereUniqueWithoutChatsInput]
 }
 
+input UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput {
+  connect: [UserWhereUniqueInput]
+  connectOrCreate: [UserCreateOrConnectWithoutEventsParticipatingInput]
+  create: [UserCreateWithoutEventsParticipatingInput]
+  delete: [UserWhereUniqueInput]
+  deleteMany: [UserScalarWhereInput]
+  disconnect: [UserWhereUniqueInput]
+  set: [UserWhereUniqueInput]
+  update: [UserUpdateWithWhereUniqueWithoutEventsParticipatingInput]
+  updateMany: [UserUpdateManyWithWhereWithoutEventsParticipatingInput]
+  upsert: [UserUpsertWithWhereUniqueWithoutEventsParticipatingInput]
+}
+
+input UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput {
+  connect: [UserWhereUniqueInput]
+  connectOrCreate: [UserCreateOrConnectWithoutEventsResponsibleInput]
+  create: [UserCreateWithoutEventsResponsibleInput]
+  delete: [UserWhereUniqueInput]
+  deleteMany: [UserScalarWhereInput]
+  disconnect: [UserWhereUniqueInput]
+  set: [UserWhereUniqueInput]
+  update: [UserUpdateWithWhereUniqueWithoutEventsResponsibleInput]
+  updateMany: [UserUpdateManyWithWhereWithoutEventsResponsibleInput]
+  upsert: [UserUpsertWithWhereUniqueWithoutEventsResponsibleInput]
+}
+
 input UserUncheckedUpdateManyWithoutMembersInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+  parentId: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  role: EnumUserRoleFieldUpdateOperationsInput
   username: StringFieldUpdateOperationsInput
 }
 
-input UserUncheckedUpdateWithoutChatsInput {
+input UserUncheckedUpdateManyWithoutParticipantsInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+  parentId: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: EnumUserRoleFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUncheckedUpdateManyWithoutResponsiblesInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  parentId: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  role: EnumUserRoleFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUncheckedUpdateOneWithoutParentNestedInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutParentInput
+  create: UserUncheckedCreateWithoutParentInput
+  delete: Boolean
+  disconnect: Boolean
+  update: UserUncheckedUpdateWithoutParentInput
+  upsert: UserUpsertWithoutParentInput
+}
+
+input UserUncheckedUpdateWithoutChatsInput {
+  child: UserUncheckedUpdateOneWithoutParentNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUncheckedUpdateManyWithoutIssuedByNestedInput
+  eventsParticipating: EventUncheckedUpdateManyWithoutParticipantsNestedInput
+  eventsResponsible: EventUncheckedUpdateManyWithoutResponsiblesNestedInput
+  id: StringFieldUpdateOperationsInput
   messages: MessageUncheckedUpdateManyWithoutSenderNestedInput
+  parentId: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
   profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
+  role: EnumUserRoleFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUncheckedUpdateWithoutChildInput {
+  chats: ChatUncheckedUpdateManyWithoutMembersNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUncheckedUpdateManyWithoutIssuedByNestedInput
+  eventsParticipating: EventUncheckedUpdateManyWithoutParticipantsNestedInput
+  eventsResponsible: EventUncheckedUpdateManyWithoutResponsiblesNestedInput
+  id: StringFieldUpdateOperationsInput
+  messages: MessageUncheckedUpdateManyWithoutSenderNestedInput
+  parentId: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
+  role: EnumUserRoleFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUncheckedUpdateWithoutEventsIssuedInput {
+  chats: ChatUncheckedUpdateManyWithoutMembersNestedInput
+  child: UserUncheckedUpdateOneWithoutParentNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  eventsParticipating: EventUncheckedUpdateManyWithoutParticipantsNestedInput
+  eventsResponsible: EventUncheckedUpdateManyWithoutResponsiblesNestedInput
+  id: StringFieldUpdateOperationsInput
+  messages: MessageUncheckedUpdateManyWithoutSenderNestedInput
+  parentId: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
+  role: EnumUserRoleFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUncheckedUpdateWithoutEventsParticipatingInput {
+  chats: ChatUncheckedUpdateManyWithoutMembersNestedInput
+  child: UserUncheckedUpdateOneWithoutParentNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUncheckedUpdateManyWithoutIssuedByNestedInput
+  eventsResponsible: EventUncheckedUpdateManyWithoutResponsiblesNestedInput
+  id: StringFieldUpdateOperationsInput
+  messages: MessageUncheckedUpdateManyWithoutSenderNestedInput
+  parentId: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
+  role: EnumUserRoleFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUncheckedUpdateWithoutEventsResponsibleInput {
+  chats: ChatUncheckedUpdateManyWithoutMembersNestedInput
+  child: UserUncheckedUpdateOneWithoutParentNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUncheckedUpdateManyWithoutIssuedByNestedInput
+  eventsParticipating: EventUncheckedUpdateManyWithoutParticipantsNestedInput
+  id: StringFieldUpdateOperationsInput
+  messages: MessageUncheckedUpdateManyWithoutSenderNestedInput
+  parentId: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
+  role: EnumUserRoleFieldUpdateOperationsInput
   username: StringFieldUpdateOperationsInput
 }
 
 input UserUncheckedUpdateWithoutMessagesInput {
   chats: ChatUncheckedUpdateManyWithoutMembersNestedInput
+  child: UserUncheckedUpdateOneWithoutParentNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUncheckedUpdateManyWithoutIssuedByNestedInput
+  eventsParticipating: EventUncheckedUpdateManyWithoutParticipantsNestedInput
+  eventsResponsible: EventUncheckedUpdateManyWithoutResponsiblesNestedInput
   id: StringFieldUpdateOperationsInput
+  parentId: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
   profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
+  role: EnumUserRoleFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUncheckedUpdateWithoutParentInput {
+  chats: ChatUncheckedUpdateManyWithoutMembersNestedInput
+  child: UserUncheckedUpdateOneWithoutParentNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUncheckedUpdateManyWithoutIssuedByNestedInput
+  eventsParticipating: EventUncheckedUpdateManyWithoutParticipantsNestedInput
+  eventsResponsible: EventUncheckedUpdateManyWithoutResponsiblesNestedInput
+  id: StringFieldUpdateOperationsInput
+  messages: MessageUncheckedUpdateManyWithoutSenderNestedInput
+  password: StringFieldUpdateOperationsInput
+  profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
+  role: EnumUserRoleFieldUpdateOperationsInput
   username: StringFieldUpdateOperationsInput
 }
 
 input UserUncheckedUpdateWithoutProfileInput {
   chats: ChatUncheckedUpdateManyWithoutMembersNestedInput
+  child: UserUncheckedUpdateOneWithoutParentNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUncheckedUpdateManyWithoutIssuedByNestedInput
+  eventsParticipating: EventUncheckedUpdateManyWithoutParticipantsNestedInput
+  eventsResponsible: EventUncheckedUpdateManyWithoutResponsiblesNestedInput
   id: StringFieldUpdateOperationsInput
   messages: MessageUncheckedUpdateManyWithoutSenderNestedInput
+  parentId: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  role: EnumUserRoleFieldUpdateOperationsInput
   username: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateInput {
   chats: ChatUpdateManyWithoutMembersNestedInput
+  child: UserUpdateOneWithoutParentNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUpdateManyWithoutIssuedByNestedInput
+  eventsParticipating: EventUpdateManyWithoutParticipantsNestedInput
+  eventsResponsible: EventUpdateManyWithoutResponsiblesNestedInput
   id: StringFieldUpdateOperationsInput
   messages: MessageUpdateManyWithoutSenderNestedInput
+  parent: UserUpdateOneWithoutChildNestedInput
   password: StringFieldUpdateOperationsInput
   profile: ProfileUpdateOneWithoutUserNestedInput
+  role: EnumUserRoleFieldUpdateOperationsInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -1636,11 +3925,22 @@ input UserUpdateManyMutationInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  role: EnumUserRoleFieldUpdateOperationsInput
   username: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateManyWithWhereWithoutChatsInput {
   data: UserUncheckedUpdateManyWithoutMembersInput!
+  where: UserScalarWhereInput!
+}
+
+input UserUpdateManyWithWhereWithoutEventsParticipatingInput {
+  data: UserUncheckedUpdateManyWithoutParticipantsInput!
+  where: UserScalarWhereInput!
+}
+
+input UserUpdateManyWithWhereWithoutEventsResponsibleInput {
+  data: UserUncheckedUpdateManyWithoutResponsiblesInput!
   where: UserScalarWhereInput!
 }
 
@@ -1655,6 +3955,32 @@ input UserUpdateManyWithoutChatsNestedInput {
   update: [UserUpdateWithWhereUniqueWithoutChatsInput]
   updateMany: [UserUpdateManyWithWhereWithoutChatsInput]
   upsert: [UserUpsertWithWhereUniqueWithoutChatsInput]
+}
+
+input UserUpdateManyWithoutEventsParticipatingNestedInput {
+  connect: [UserWhereUniqueInput]
+  connectOrCreate: [UserCreateOrConnectWithoutEventsParticipatingInput]
+  create: [UserCreateWithoutEventsParticipatingInput]
+  delete: [UserWhereUniqueInput]
+  deleteMany: [UserScalarWhereInput]
+  disconnect: [UserWhereUniqueInput]
+  set: [UserWhereUniqueInput]
+  update: [UserUpdateWithWhereUniqueWithoutEventsParticipatingInput]
+  updateMany: [UserUpdateManyWithWhereWithoutEventsParticipatingInput]
+  upsert: [UserUpsertWithWhereUniqueWithoutEventsParticipatingInput]
+}
+
+input UserUpdateManyWithoutEventsResponsibleNestedInput {
+  connect: [UserWhereUniqueInput]
+  connectOrCreate: [UserCreateOrConnectWithoutEventsResponsibleInput]
+  create: [UserCreateWithoutEventsResponsibleInput]
+  delete: [UserWhereUniqueInput]
+  deleteMany: [UserScalarWhereInput]
+  disconnect: [UserWhereUniqueInput]
+  set: [UserWhereUniqueInput]
+  update: [UserUpdateWithWhereUniqueWithoutEventsResponsibleInput]
+  updateMany: [UserUpdateManyWithWhereWithoutEventsResponsibleInput]
+  upsert: [UserUpsertWithWhereUniqueWithoutEventsResponsibleInput]
 }
 
 input UserUpdateOneRequiredWithoutMessagesNestedInput {
@@ -1673,35 +3999,168 @@ input UserUpdateOneRequiredWithoutProfileNestedInput {
   upsert: UserUpsertWithoutProfileInput
 }
 
+input UserUpdateOneWithoutChildNestedInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutChildInput
+  create: UserUncheckedCreateWithoutChildInput
+  delete: Boolean
+  disconnect: Boolean
+  update: UserUncheckedUpdateWithoutChildInput
+  upsert: UserUpsertWithoutChildInput
+}
+
+input UserUpdateOneWithoutEventsIssuedNestedInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutEventsIssuedInput
+  create: UserUncheckedCreateWithoutEventsIssuedInput
+  delete: Boolean
+  disconnect: Boolean
+  update: UserUncheckedUpdateWithoutEventsIssuedInput
+  upsert: UserUpsertWithoutEventsIssuedInput
+}
+
+input UserUpdateOneWithoutParentNestedInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutParentInput
+  create: UserUncheckedCreateWithoutParentInput
+  delete: Boolean
+  disconnect: Boolean
+  update: UserUncheckedUpdateWithoutParentInput
+  upsert: UserUpsertWithoutParentInput
+}
+
 input UserUpdateWithWhereUniqueWithoutChatsInput {
   data: UserUncheckedUpdateWithoutChatsInput!
   where: UserWhereUniqueInput!
 }
 
+input UserUpdateWithWhereUniqueWithoutEventsParticipatingInput {
+  data: UserUncheckedUpdateWithoutEventsParticipatingInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserUpdateWithWhereUniqueWithoutEventsResponsibleInput {
+  data: UserUncheckedUpdateWithoutEventsResponsibleInput!
+  where: UserWhereUniqueInput!
+}
+
 input UserUpdateWithoutChatsInput {
+  child: UserUpdateOneWithoutParentNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUpdateManyWithoutIssuedByNestedInput
+  eventsParticipating: EventUpdateManyWithoutParticipantsNestedInput
+  eventsResponsible: EventUpdateManyWithoutResponsiblesNestedInput
   id: StringFieldUpdateOperationsInput
   messages: MessageUpdateManyWithoutSenderNestedInput
+  parent: UserUpdateOneWithoutChildNestedInput
   password: StringFieldUpdateOperationsInput
   profile: ProfileUpdateOneWithoutUserNestedInput
+  role: EnumUserRoleFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUpdateWithoutChildInput {
+  chats: ChatUpdateManyWithoutMembersNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUpdateManyWithoutIssuedByNestedInput
+  eventsParticipating: EventUpdateManyWithoutParticipantsNestedInput
+  eventsResponsible: EventUpdateManyWithoutResponsiblesNestedInput
+  id: StringFieldUpdateOperationsInput
+  messages: MessageUpdateManyWithoutSenderNestedInput
+  parent: UserUpdateOneWithoutChildNestedInput
+  password: StringFieldUpdateOperationsInput
+  profile: ProfileUpdateOneWithoutUserNestedInput
+  role: EnumUserRoleFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUpdateWithoutEventsIssuedInput {
+  chats: ChatUpdateManyWithoutMembersNestedInput
+  child: UserUpdateOneWithoutParentNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  eventsParticipating: EventUpdateManyWithoutParticipantsNestedInput
+  eventsResponsible: EventUpdateManyWithoutResponsiblesNestedInput
+  id: StringFieldUpdateOperationsInput
+  messages: MessageUpdateManyWithoutSenderNestedInput
+  parent: UserUpdateOneWithoutChildNestedInput
+  password: StringFieldUpdateOperationsInput
+  profile: ProfileUpdateOneWithoutUserNestedInput
+  role: EnumUserRoleFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUpdateWithoutEventsParticipatingInput {
+  chats: ChatUpdateManyWithoutMembersNestedInput
+  child: UserUpdateOneWithoutParentNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUpdateManyWithoutIssuedByNestedInput
+  eventsResponsible: EventUpdateManyWithoutResponsiblesNestedInput
+  id: StringFieldUpdateOperationsInput
+  messages: MessageUpdateManyWithoutSenderNestedInput
+  parent: UserUpdateOneWithoutChildNestedInput
+  password: StringFieldUpdateOperationsInput
+  profile: ProfileUpdateOneWithoutUserNestedInput
+  role: EnumUserRoleFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUpdateWithoutEventsResponsibleInput {
+  chats: ChatUpdateManyWithoutMembersNestedInput
+  child: UserUpdateOneWithoutParentNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUpdateManyWithoutIssuedByNestedInput
+  eventsParticipating: EventUpdateManyWithoutParticipantsNestedInput
+  id: StringFieldUpdateOperationsInput
+  messages: MessageUpdateManyWithoutSenderNestedInput
+  parent: UserUpdateOneWithoutChildNestedInput
+  password: StringFieldUpdateOperationsInput
+  profile: ProfileUpdateOneWithoutUserNestedInput
+  role: EnumUserRoleFieldUpdateOperationsInput
   username: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateWithoutMessagesInput {
   chats: ChatUpdateManyWithoutMembersNestedInput
+  child: UserUpdateOneWithoutParentNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUpdateManyWithoutIssuedByNestedInput
+  eventsParticipating: EventUpdateManyWithoutParticipantsNestedInput
+  eventsResponsible: EventUpdateManyWithoutResponsiblesNestedInput
   id: StringFieldUpdateOperationsInput
+  parent: UserUpdateOneWithoutChildNestedInput
   password: StringFieldUpdateOperationsInput
   profile: ProfileUpdateOneWithoutUserNestedInput
+  role: EnumUserRoleFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUpdateWithoutParentInput {
+  chats: ChatUpdateManyWithoutMembersNestedInput
+  child: UserUpdateOneWithoutParentNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUpdateManyWithoutIssuedByNestedInput
+  eventsParticipating: EventUpdateManyWithoutParticipantsNestedInput
+  eventsResponsible: EventUpdateManyWithoutResponsiblesNestedInput
+  id: StringFieldUpdateOperationsInput
+  messages: MessageUpdateManyWithoutSenderNestedInput
+  password: StringFieldUpdateOperationsInput
+  profile: ProfileUpdateOneWithoutUserNestedInput
+  role: EnumUserRoleFieldUpdateOperationsInput
   username: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateWithoutProfileInput {
   chats: ChatUpdateManyWithoutMembersNestedInput
+  child: UserUpdateOneWithoutParentNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUpdateManyWithoutIssuedByNestedInput
+  eventsParticipating: EventUpdateManyWithoutParticipantsNestedInput
+  eventsResponsible: EventUpdateManyWithoutResponsiblesNestedInput
   id: StringFieldUpdateOperationsInput
   messages: MessageUpdateManyWithoutSenderNestedInput
+  parent: UserUpdateOneWithoutChildNestedInput
   password: StringFieldUpdateOperationsInput
+  role: EnumUserRoleFieldUpdateOperationsInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -1711,9 +4170,36 @@ input UserUpsertWithWhereUniqueWithoutChatsInput {
   where: UserWhereUniqueInput!
 }
 
+input UserUpsertWithWhereUniqueWithoutEventsParticipatingInput {
+  create: UserUncheckedCreateWithoutEventsParticipatingInput!
+  update: UserUncheckedUpdateWithoutEventsParticipatingInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserUpsertWithWhereUniqueWithoutEventsResponsibleInput {
+  create: UserUncheckedCreateWithoutEventsResponsibleInput!
+  update: UserUncheckedUpdateWithoutEventsResponsibleInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserUpsertWithoutChildInput {
+  create: UserUncheckedCreateWithoutChildInput!
+  update: UserUncheckedUpdateWithoutChildInput!
+}
+
+input UserUpsertWithoutEventsIssuedInput {
+  create: UserUncheckedCreateWithoutEventsIssuedInput!
+  update: UserUncheckedUpdateWithoutEventsIssuedInput!
+}
+
 input UserUpsertWithoutMessagesInput {
   create: UserUncheckedCreateWithoutMessagesInput!
   update: UserUncheckedUpdateWithoutMessagesInput!
+}
+
+input UserUpsertWithoutParentInput {
+  create: UserUncheckedCreateWithoutParentInput!
+  update: UserUncheckedUpdateWithoutParentInput!
 }
 
 input UserUpsertWithoutProfileInput {
@@ -1726,15 +4212,23 @@ input UserWhereInput {
   NOT: [UserWhereInput]
   OR: [UserWhereInput]
   chats: ChatListRelationFilter
+  child: UserWhereInput
   createdAt: DateTimeFilter
+  eventsIssued: EventListRelationFilter
+  eventsParticipating: EventListRelationFilter
+  eventsResponsible: EventListRelationFilter
   id: StringFilter
   messages: MessageListRelationFilter
+  parent: UserWhereInput
+  parentId: StringNullableFilter
   password: StringFilter
   profile: ProfileWhereInput
+  role: EnumUserRoleFilter
   username: StringFilter
 }
 
 input UserWhereUniqueInput {
   id: String
+  parentId: String
   username: String
 }

@@ -63,18 +63,198 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  BoolFieldUpdateOperationsInput: { // input type
+    set?: boolean | null; // Boolean
+  }
+  BoolFilter: { // input type
+    equals?: boolean | null; // Boolean
+    not?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+  }
+  BoolWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+    _min?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+    equals?: boolean | null; // Boolean
+    not?: NexusGenInputs['NestedBoolWithAggregatesFilter'] | null; // NestedBoolWithAggregatesFilter
+  }
+  CategoryAvgOrderByAggregateInput: { // input type
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  CategoryCountOrderByAggregateInput: { // input type
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  CategoryCreateInput: { // input type
+    events?: NexusGenInputs['EventCreateNestedManyWithoutCategoriesInput'] | null; // EventCreateNestedManyWithoutCategoriesInput
+    title: string; // String!
+  }
+  CategoryCreateManyInput: { // input type
+    id?: number | null; // Int
+    title: string; // String!
+  }
+  CategoryCreateNestedManyWithoutEventsInput: { // input type
+    connect?: Array<NexusGenInputs['CategoryWhereUniqueInput'] | null> | null; // [CategoryWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['CategoryCreateOrConnectWithoutEventsInput'] | null> | null; // [CategoryCreateOrConnectWithoutEventsInput]
+    create?: Array<NexusGenInputs['CategoryCreateWithoutEventsInput'] | null> | null; // [CategoryCreateWithoutEventsInput]
+  }
+  CategoryCreateOrConnectWithoutEventsInput: { // input type
+    create: NexusGenInputs['CategoryUncheckedCreateWithoutEventsInput']; // CategoryUncheckedCreateWithoutEventsInput!
+    where: NexusGenInputs['CategoryWhereUniqueInput']; // CategoryWhereUniqueInput!
+  }
+  CategoryCreateWithoutEventsInput: { // input type
+    title: string; // String!
+  }
+  CategoryListRelationFilter: { // input type
+    every?: NexusGenInputs['CategoryWhereInput'] | null; // CategoryWhereInput
+    none?: NexusGenInputs['CategoryWhereInput'] | null; // CategoryWhereInput
+    some?: NexusGenInputs['CategoryWhereInput'] | null; // CategoryWhereInput
+  }
+  CategoryMaxOrderByAggregateInput: { // input type
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  CategoryMinOrderByAggregateInput: { // input type
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  CategoryOrderByRelationAggregateInput: { // input type
+    _count?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  CategoryOrderByWithAggregationInput: { // input type
+    _avg?: NexusGenInputs['CategoryAvgOrderByAggregateInput'] | null; // CategoryAvgOrderByAggregateInput
+    _count?: NexusGenInputs['CategoryCountOrderByAggregateInput'] | null; // CategoryCountOrderByAggregateInput
+    _max?: NexusGenInputs['CategoryMaxOrderByAggregateInput'] | null; // CategoryMaxOrderByAggregateInput
+    _min?: NexusGenInputs['CategoryMinOrderByAggregateInput'] | null; // CategoryMinOrderByAggregateInput
+    _sum?: NexusGenInputs['CategorySumOrderByAggregateInput'] | null; // CategorySumOrderByAggregateInput
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  CategoryOrderByWithRelationInput: { // input type
+    events?: NexusGenInputs['EventOrderByRelationAggregateInput'] | null; // EventOrderByRelationAggregateInput
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  CategoryScalarWhereInput: { // input type
+    AND?: Array<NexusGenInputs['CategoryScalarWhereInput'] | null> | null; // [CategoryScalarWhereInput]
+    NOT?: Array<NexusGenInputs['CategoryScalarWhereInput'] | null> | null; // [CategoryScalarWhereInput]
+    OR?: Array<NexusGenInputs['CategoryScalarWhereInput'] | null> | null; // [CategoryScalarWhereInput]
+    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    title?: NexusGenInputs['StringFilter'] | null; // StringFilter
+  }
+  CategoryScalarWhereWithAggregatesInput: { // input type
+    AND?: Array<NexusGenInputs['CategoryScalarWhereWithAggregatesInput'] | null> | null; // [CategoryScalarWhereWithAggregatesInput]
+    NOT?: Array<NexusGenInputs['CategoryScalarWhereWithAggregatesInput'] | null> | null; // [CategoryScalarWhereWithAggregatesInput]
+    OR?: Array<NexusGenInputs['CategoryScalarWhereWithAggregatesInput'] | null> | null; // [CategoryScalarWhereWithAggregatesInput]
+    id?: NexusGenInputs['IntWithAggregatesFilter'] | null; // IntWithAggregatesFilter
+    title?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+  }
+  CategorySumOrderByAggregateInput: { // input type
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  CategoryUncheckedCreateInput: { // input type
+    events?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutCategoriesInput'] | null; // EventUncheckedCreateNestedManyWithoutCategoriesInput
+    id?: number | null; // Int
+    title: string; // String!
+  }
+  CategoryUncheckedCreateNestedManyWithoutEventsInput: { // input type
+    connect?: Array<NexusGenInputs['CategoryWhereUniqueInput'] | null> | null; // [CategoryWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['CategoryCreateOrConnectWithoutEventsInput'] | null> | null; // [CategoryCreateOrConnectWithoutEventsInput]
+    create?: Array<NexusGenInputs['CategoryCreateWithoutEventsInput'] | null> | null; // [CategoryCreateWithoutEventsInput]
+  }
+  CategoryUncheckedCreateWithoutEventsInput: { // input type
+    id?: number | null; // Int
+    title: string; // String!
+  }
+  CategoryUncheckedUpdateInput: { // input type
+    events?: NexusGenInputs['EventUncheckedUpdateManyWithoutCategoriesNestedInput'] | null; // EventUncheckedUpdateManyWithoutCategoriesNestedInput
+    id?: NexusGenInputs['IntFieldUpdateOperationsInput'] | null; // IntFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  CategoryUncheckedUpdateManyInput: { // input type
+    id?: NexusGenInputs['IntFieldUpdateOperationsInput'] | null; // IntFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  CategoryUncheckedUpdateManyWithoutCategoriesInput: { // input type
+    id?: NexusGenInputs['IntFieldUpdateOperationsInput'] | null; // IntFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  CategoryUncheckedUpdateManyWithoutEventsNestedInput: { // input type
+    connect?: Array<NexusGenInputs['CategoryWhereUniqueInput'] | null> | null; // [CategoryWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['CategoryCreateOrConnectWithoutEventsInput'] | null> | null; // [CategoryCreateOrConnectWithoutEventsInput]
+    create?: Array<NexusGenInputs['CategoryCreateWithoutEventsInput'] | null> | null; // [CategoryCreateWithoutEventsInput]
+    delete?: Array<NexusGenInputs['CategoryWhereUniqueInput'] | null> | null; // [CategoryWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['CategoryScalarWhereInput'] | null> | null; // [CategoryScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['CategoryWhereUniqueInput'] | null> | null; // [CategoryWhereUniqueInput]
+    set?: Array<NexusGenInputs['CategoryWhereUniqueInput'] | null> | null; // [CategoryWhereUniqueInput]
+    update?: Array<NexusGenInputs['CategoryUpdateWithWhereUniqueWithoutEventsInput'] | null> | null; // [CategoryUpdateWithWhereUniqueWithoutEventsInput]
+    updateMany?: Array<NexusGenInputs['CategoryUpdateManyWithWhereWithoutEventsInput'] | null> | null; // [CategoryUpdateManyWithWhereWithoutEventsInput]
+    upsert?: Array<NexusGenInputs['CategoryUpsertWithWhereUniqueWithoutEventsInput'] | null> | null; // [CategoryUpsertWithWhereUniqueWithoutEventsInput]
+  }
+  CategoryUncheckedUpdateWithoutEventsInput: { // input type
+    id?: NexusGenInputs['IntFieldUpdateOperationsInput'] | null; // IntFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  CategoryUpdateInput: { // input type
+    events?: NexusGenInputs['EventUpdateManyWithoutCategoriesNestedInput'] | null; // EventUpdateManyWithoutCategoriesNestedInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  CategoryUpdateManyMutationInput: { // input type
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  CategoryUpdateManyWithWhereWithoutEventsInput: { // input type
+    data: NexusGenInputs['CategoryUncheckedUpdateManyWithoutCategoriesInput']; // CategoryUncheckedUpdateManyWithoutCategoriesInput!
+    where: NexusGenInputs['CategoryScalarWhereInput']; // CategoryScalarWhereInput!
+  }
+  CategoryUpdateManyWithoutEventsNestedInput: { // input type
+    connect?: Array<NexusGenInputs['CategoryWhereUniqueInput'] | null> | null; // [CategoryWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['CategoryCreateOrConnectWithoutEventsInput'] | null> | null; // [CategoryCreateOrConnectWithoutEventsInput]
+    create?: Array<NexusGenInputs['CategoryCreateWithoutEventsInput'] | null> | null; // [CategoryCreateWithoutEventsInput]
+    delete?: Array<NexusGenInputs['CategoryWhereUniqueInput'] | null> | null; // [CategoryWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['CategoryScalarWhereInput'] | null> | null; // [CategoryScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['CategoryWhereUniqueInput'] | null> | null; // [CategoryWhereUniqueInput]
+    set?: Array<NexusGenInputs['CategoryWhereUniqueInput'] | null> | null; // [CategoryWhereUniqueInput]
+    update?: Array<NexusGenInputs['CategoryUpdateWithWhereUniqueWithoutEventsInput'] | null> | null; // [CategoryUpdateWithWhereUniqueWithoutEventsInput]
+    updateMany?: Array<NexusGenInputs['CategoryUpdateManyWithWhereWithoutEventsInput'] | null> | null; // [CategoryUpdateManyWithWhereWithoutEventsInput]
+    upsert?: Array<NexusGenInputs['CategoryUpsertWithWhereUniqueWithoutEventsInput'] | null> | null; // [CategoryUpsertWithWhereUniqueWithoutEventsInput]
+  }
+  CategoryUpdateWithWhereUniqueWithoutEventsInput: { // input type
+    data: NexusGenInputs['CategoryUncheckedUpdateWithoutEventsInput']; // CategoryUncheckedUpdateWithoutEventsInput!
+    where: NexusGenInputs['CategoryWhereUniqueInput']; // CategoryWhereUniqueInput!
+  }
+  CategoryUpdateWithoutEventsInput: { // input type
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  CategoryUpsertWithWhereUniqueWithoutEventsInput: { // input type
+    create: NexusGenInputs['CategoryUncheckedCreateWithoutEventsInput']; // CategoryUncheckedCreateWithoutEventsInput!
+    update: NexusGenInputs['CategoryUncheckedUpdateWithoutEventsInput']; // CategoryUncheckedUpdateWithoutEventsInput!
+    where: NexusGenInputs['CategoryWhereUniqueInput']; // CategoryWhereUniqueInput!
+  }
+  CategoryWhereInput: { // input type
+    AND?: Array<NexusGenInputs['CategoryWhereInput'] | null> | null; // [CategoryWhereInput]
+    NOT?: Array<NexusGenInputs['CategoryWhereInput'] | null> | null; // [CategoryWhereInput]
+    OR?: Array<NexusGenInputs['CategoryWhereInput'] | null> | null; // [CategoryWhereInput]
+    events?: NexusGenInputs['EventListRelationFilter'] | null; // EventListRelationFilter
+    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    title?: NexusGenInputs['StringFilter'] | null; // StringFilter
+  }
+  CategoryWhereUniqueInput: { // input type
+    id?: number | null; // Int
+  }
   ChatCountOrderByAggregateInput: { // input type
     createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    eventId?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   ChatCreateInput: { // input type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    event: NexusGenInputs['EventCreateNestedOneWithoutChatInput']; // EventCreateNestedOneWithoutChatInput!
     id?: string | null; // String
     members?: NexusGenInputs['UserCreateNestedManyWithoutChatsInput'] | null; // UserCreateNestedManyWithoutChatsInput
     messages?: NexusGenInputs['MessageCreateNestedManyWithoutChatInput'] | null; // MessageCreateNestedManyWithoutChatInput
   }
   ChatCreateManyInput: { // input type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventId: string; // String!
     id?: string | null; // String
   }
   ChatCreateNestedManyWithoutMembersInput: { // input type
@@ -82,10 +262,19 @@ export interface NexusGenInputs {
     connectOrCreate?: Array<NexusGenInputs['ChatCreateOrConnectWithoutMembersInput'] | null> | null; // [ChatCreateOrConnectWithoutMembersInput]
     create?: Array<NexusGenInputs['ChatCreateWithoutMembersInput'] | null> | null; // [ChatCreateWithoutMembersInput]
   }
+  ChatCreateNestedOneWithoutEventInput: { // input type
+    connect?: NexusGenInputs['ChatWhereUniqueInput'] | null; // ChatWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['ChatCreateOrConnectWithoutEventInput'] | null; // ChatCreateOrConnectWithoutEventInput
+    create?: NexusGenInputs['ChatUncheckedCreateWithoutEventInput'] | null; // ChatUncheckedCreateWithoutEventInput
+  }
   ChatCreateNestedOneWithoutMessagesInput: { // input type
     connect?: NexusGenInputs['ChatWhereUniqueInput'] | null; // ChatWhereUniqueInput
     connectOrCreate?: NexusGenInputs['ChatCreateOrConnectWithoutMessagesInput'] | null; // ChatCreateOrConnectWithoutMessagesInput
     create?: NexusGenInputs['ChatUncheckedCreateWithoutMessagesInput'] | null; // ChatUncheckedCreateWithoutMessagesInput
+  }
+  ChatCreateOrConnectWithoutEventInput: { // input type
+    create: NexusGenInputs['ChatUncheckedCreateWithoutEventInput']; // ChatUncheckedCreateWithoutEventInput!
+    where: NexusGenInputs['ChatWhereUniqueInput']; // ChatWhereUniqueInput!
   }
   ChatCreateOrConnectWithoutMembersInput: { // input type
     create: NexusGenInputs['ChatUncheckedCreateWithoutMembersInput']; // ChatUncheckedCreateWithoutMembersInput!
@@ -95,13 +284,21 @@ export interface NexusGenInputs {
     create: NexusGenInputs['ChatUncheckedCreateWithoutMessagesInput']; // ChatUncheckedCreateWithoutMessagesInput!
     where: NexusGenInputs['ChatWhereUniqueInput']; // ChatWhereUniqueInput!
   }
+  ChatCreateWithoutEventInput: { // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id?: string | null; // String
+    members?: NexusGenInputs['UserCreateNestedManyWithoutChatsInput'] | null; // UserCreateNestedManyWithoutChatsInput
+    messages?: NexusGenInputs['MessageCreateNestedManyWithoutChatInput'] | null; // MessageCreateNestedManyWithoutChatInput
+  }
   ChatCreateWithoutMembersInput: { // input type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    event: NexusGenInputs['EventCreateNestedOneWithoutChatInput']; // EventCreateNestedOneWithoutChatInput!
     id?: string | null; // String
     messages?: NexusGenInputs['MessageCreateNestedManyWithoutChatInput'] | null; // MessageCreateNestedManyWithoutChatInput
   }
   ChatCreateWithoutMessagesInput: { // input type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    event: NexusGenInputs['EventCreateNestedOneWithoutChatInput']; // EventCreateNestedOneWithoutChatInput!
     id?: string | null; // String
     members?: NexusGenInputs['UserCreateNestedManyWithoutChatsInput'] | null; // UserCreateNestedManyWithoutChatsInput
   }
@@ -112,10 +309,12 @@ export interface NexusGenInputs {
   }
   ChatMaxOrderByAggregateInput: { // input type
     createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    eventId?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   ChatMinOrderByAggregateInput: { // input type
     createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    eventId?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   ChatOrderByRelationAggregateInput: { // input type
@@ -126,10 +325,13 @@ export interface NexusGenInputs {
     _max?: NexusGenInputs['ChatMaxOrderByAggregateInput'] | null; // ChatMaxOrderByAggregateInput
     _min?: NexusGenInputs['ChatMinOrderByAggregateInput'] | null; // ChatMinOrderByAggregateInput
     createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    eventId?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   ChatOrderByWithRelationInput: { // input type
     createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    event?: NexusGenInputs['EventOrderByWithRelationInput'] | null; // EventOrderByWithRelationInput
+    eventId?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     members?: NexusGenInputs['UserOrderByRelationAggregateInput'] | null; // UserOrderByRelationAggregateInput
     messages?: NexusGenInputs['MessageOrderByRelationAggregateInput'] | null; // MessageOrderByRelationAggregateInput
@@ -143,6 +345,7 @@ export interface NexusGenInputs {
     NOT?: Array<NexusGenInputs['ChatScalarWhereInput'] | null> | null; // [ChatScalarWhereInput]
     OR?: Array<NexusGenInputs['ChatScalarWhereInput'] | null> | null; // [ChatScalarWhereInput]
     createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    eventId?: NexusGenInputs['StringFilter'] | null; // StringFilter
     id?: NexusGenInputs['StringFilter'] | null; // StringFilter
   }
   ChatScalarWhereWithAggregatesInput: { // input type
@@ -150,10 +353,12 @@ export interface NexusGenInputs {
     NOT?: Array<NexusGenInputs['ChatScalarWhereWithAggregatesInput'] | null> | null; // [ChatScalarWhereWithAggregatesInput]
     OR?: Array<NexusGenInputs['ChatScalarWhereWithAggregatesInput'] | null> | null; // [ChatScalarWhereWithAggregatesInput]
     createdAt?: NexusGenInputs['DateTimeWithAggregatesFilter'] | null; // DateTimeWithAggregatesFilter
+    eventId?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
     id?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
   }
   ChatUncheckedCreateInput: { // input type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventId: string; // String!
     id?: string | null; // String
     members?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutChatsInput'] | null; // UserUncheckedCreateNestedManyWithoutChatsInput
     messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutChatInput'] | null; // MessageUncheckedCreateNestedManyWithoutChatInput
@@ -163,28 +368,44 @@ export interface NexusGenInputs {
     connectOrCreate?: Array<NexusGenInputs['ChatCreateOrConnectWithoutMembersInput'] | null> | null; // [ChatCreateOrConnectWithoutMembersInput]
     create?: Array<NexusGenInputs['ChatCreateWithoutMembersInput'] | null> | null; // [ChatCreateWithoutMembersInput]
   }
+  ChatUncheckedCreateNestedOneWithoutEventInput: { // input type
+    connect?: NexusGenInputs['ChatWhereUniqueInput'] | null; // ChatWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['ChatCreateOrConnectWithoutEventInput'] | null; // ChatCreateOrConnectWithoutEventInput
+    create?: NexusGenInputs['ChatUncheckedCreateWithoutEventInput'] | null; // ChatUncheckedCreateWithoutEventInput
+  }
+  ChatUncheckedCreateWithoutEventInput: { // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id?: string | null; // String
+    members?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutChatsInput'] | null; // UserUncheckedCreateNestedManyWithoutChatsInput
+    messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutChatInput'] | null; // MessageUncheckedCreateNestedManyWithoutChatInput
+  }
   ChatUncheckedCreateWithoutMembersInput: { // input type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventId: string; // String!
     id?: string | null; // String
     messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutChatInput'] | null; // MessageUncheckedCreateNestedManyWithoutChatInput
   }
   ChatUncheckedCreateWithoutMessagesInput: { // input type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventId: string; // String!
     id?: string | null; // String
     members?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutChatsInput'] | null; // UserUncheckedCreateNestedManyWithoutChatsInput
   }
   ChatUncheckedUpdateInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     members?: NexusGenInputs['UserUncheckedUpdateManyWithoutChatsNestedInput'] | null; // UserUncheckedUpdateManyWithoutChatsNestedInput
     messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutChatNestedInput'] | null; // MessageUncheckedUpdateManyWithoutChatNestedInput
   }
   ChatUncheckedUpdateManyInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   ChatUncheckedUpdateManyWithoutChatsInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   ChatUncheckedUpdateManyWithoutMembersNestedInput: { // input type
@@ -199,18 +420,36 @@ export interface NexusGenInputs {
     updateMany?: Array<NexusGenInputs['ChatUpdateManyWithWhereWithoutMembersInput'] | null> | null; // [ChatUpdateManyWithWhereWithoutMembersInput]
     upsert?: Array<NexusGenInputs['ChatUpsertWithWhereUniqueWithoutMembersInput'] | null> | null; // [ChatUpsertWithWhereUniqueWithoutMembersInput]
   }
+  ChatUncheckedUpdateOneWithoutEventNestedInput: { // input type
+    connect?: NexusGenInputs['ChatWhereUniqueInput'] | null; // ChatWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['ChatCreateOrConnectWithoutEventInput'] | null; // ChatCreateOrConnectWithoutEventInput
+    create?: NexusGenInputs['ChatUncheckedCreateWithoutEventInput'] | null; // ChatUncheckedCreateWithoutEventInput
+    delete?: boolean | null; // Boolean
+    disconnect?: boolean | null; // Boolean
+    update?: NexusGenInputs['ChatUncheckedUpdateWithoutEventInput'] | null; // ChatUncheckedUpdateWithoutEventInput
+    upsert?: NexusGenInputs['ChatUpsertWithoutEventInput'] | null; // ChatUpsertWithoutEventInput
+  }
+  ChatUncheckedUpdateWithoutEventInput: { // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    members?: NexusGenInputs['UserUncheckedUpdateManyWithoutChatsNestedInput'] | null; // UserUncheckedUpdateManyWithoutChatsNestedInput
+    messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutChatNestedInput'] | null; // MessageUncheckedUpdateManyWithoutChatNestedInput
+  }
   ChatUncheckedUpdateWithoutMembersInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutChatNestedInput'] | null; // MessageUncheckedUpdateManyWithoutChatNestedInput
   }
   ChatUncheckedUpdateWithoutMessagesInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     members?: NexusGenInputs['UserUncheckedUpdateManyWithoutChatsNestedInput'] | null; // UserUncheckedUpdateManyWithoutChatsNestedInput
   }
   ChatUpdateInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    event?: NexusGenInputs['EventUpdateOneRequiredWithoutChatNestedInput'] | null; // EventUpdateOneRequiredWithoutChatNestedInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     members?: NexusGenInputs['UserUpdateManyWithoutChatsNestedInput'] | null; // UserUpdateManyWithoutChatsNestedInput
     messages?: NexusGenInputs['MessageUpdateManyWithoutChatNestedInput'] | null; // MessageUpdateManyWithoutChatNestedInput
@@ -242,17 +481,34 @@ export interface NexusGenInputs {
     update?: NexusGenInputs['ChatUncheckedUpdateWithoutMessagesInput'] | null; // ChatUncheckedUpdateWithoutMessagesInput
     upsert?: NexusGenInputs['ChatUpsertWithoutMessagesInput'] | null; // ChatUpsertWithoutMessagesInput
   }
+  ChatUpdateOneWithoutEventNestedInput: { // input type
+    connect?: NexusGenInputs['ChatWhereUniqueInput'] | null; // ChatWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['ChatCreateOrConnectWithoutEventInput'] | null; // ChatCreateOrConnectWithoutEventInput
+    create?: NexusGenInputs['ChatUncheckedCreateWithoutEventInput'] | null; // ChatUncheckedCreateWithoutEventInput
+    delete?: boolean | null; // Boolean
+    disconnect?: boolean | null; // Boolean
+    update?: NexusGenInputs['ChatUncheckedUpdateWithoutEventInput'] | null; // ChatUncheckedUpdateWithoutEventInput
+    upsert?: NexusGenInputs['ChatUpsertWithoutEventInput'] | null; // ChatUpsertWithoutEventInput
+  }
   ChatUpdateWithWhereUniqueWithoutMembersInput: { // input type
     data: NexusGenInputs['ChatUncheckedUpdateWithoutMembersInput']; // ChatUncheckedUpdateWithoutMembersInput!
     where: NexusGenInputs['ChatWhereUniqueInput']; // ChatWhereUniqueInput!
   }
+  ChatUpdateWithoutEventInput: { // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    members?: NexusGenInputs['UserUpdateManyWithoutChatsNestedInput'] | null; // UserUpdateManyWithoutChatsNestedInput
+    messages?: NexusGenInputs['MessageUpdateManyWithoutChatNestedInput'] | null; // MessageUpdateManyWithoutChatNestedInput
+  }
   ChatUpdateWithoutMembersInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    event?: NexusGenInputs['EventUpdateOneRequiredWithoutChatNestedInput'] | null; // EventUpdateOneRequiredWithoutChatNestedInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     messages?: NexusGenInputs['MessageUpdateManyWithoutChatNestedInput'] | null; // MessageUpdateManyWithoutChatNestedInput
   }
   ChatUpdateWithoutMessagesInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    event?: NexusGenInputs['EventUpdateOneRequiredWithoutChatNestedInput'] | null; // EventUpdateOneRequiredWithoutChatNestedInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     members?: NexusGenInputs['UserUpdateManyWithoutChatsNestedInput'] | null; // UserUpdateManyWithoutChatsNestedInput
   }
@@ -260,6 +516,10 @@ export interface NexusGenInputs {
     create: NexusGenInputs['ChatUncheckedCreateWithoutMembersInput']; // ChatUncheckedCreateWithoutMembersInput!
     update: NexusGenInputs['ChatUncheckedUpdateWithoutMembersInput']; // ChatUncheckedUpdateWithoutMembersInput!
     where: NexusGenInputs['ChatWhereUniqueInput']; // ChatWhereUniqueInput!
+  }
+  ChatUpsertWithoutEventInput: { // input type
+    create: NexusGenInputs['ChatUncheckedCreateWithoutEventInput']; // ChatUncheckedCreateWithoutEventInput!
+    update: NexusGenInputs['ChatUncheckedUpdateWithoutEventInput']; // ChatUncheckedUpdateWithoutEventInput!
   }
   ChatUpsertWithoutMessagesInput: { // input type
     create: NexusGenInputs['ChatUncheckedCreateWithoutMessagesInput']; // ChatUncheckedCreateWithoutMessagesInput!
@@ -270,11 +530,14 @@ export interface NexusGenInputs {
     NOT?: Array<NexusGenInputs['ChatWhereInput'] | null> | null; // [ChatWhereInput]
     OR?: Array<NexusGenInputs['ChatWhereInput'] | null> | null; // [ChatWhereInput]
     createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    event?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
+    eventId?: NexusGenInputs['StringFilter'] | null; // StringFilter
     id?: NexusGenInputs['StringFilter'] | null; // StringFilter
     members?: NexusGenInputs['UserListRelationFilter'] | null; // UserListRelationFilter
     messages?: NexusGenInputs['MessageListRelationFilter'] | null; // MessageListRelationFilter
   }
   ChatWhereUniqueInput: { // input type
+    eventId?: string | null; // String
     id?: string | null; // String
   }
   DateTimeFieldUpdateOperationsInput: { // input type
@@ -302,6 +565,978 @@ export interface NexusGenInputs {
     lte?: NexusGenScalars['DateTime'] | null; // DateTime
     not?: NexusGenInputs['NestedDateTimeWithAggregatesFilter'] | null; // NestedDateTimeWithAggregatesFilter
     notIn?: Array<NexusGenScalars['DateTime'] | null> | null; // [DateTime]
+  }
+  EnumUserRoleFieldUpdateOperationsInput: { // input type
+    set?: NexusGenEnums['UserRole'] | null; // UserRole
+  }
+  EnumUserRoleFilter: { // input type
+    equals?: NexusGenEnums['UserRole'] | null; // UserRole
+    in?: Array<NexusGenEnums['UserRole'] | null> | null; // [UserRole]
+    not?: NexusGenInputs['NestedEnumUserRoleFilter'] | null; // NestedEnumUserRoleFilter
+    notIn?: Array<NexusGenEnums['UserRole'] | null> | null; // [UserRole]
+  }
+  EnumUserRoleWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedEnumUserRoleFilter'] | null; // NestedEnumUserRoleFilter
+    _min?: NexusGenInputs['NestedEnumUserRoleFilter'] | null; // NestedEnumUserRoleFilter
+    equals?: NexusGenEnums['UserRole'] | null; // UserRole
+    in?: Array<NexusGenEnums['UserRole'] | null> | null; // [UserRole]
+    not?: NexusGenInputs['NestedEnumUserRoleWithAggregatesFilter'] | null; // NestedEnumUserRoleWithAggregatesFilter
+    notIn?: Array<NexusGenEnums['UserRole'] | null> | null; // [UserRole]
+  }
+  EventCountOrderByAggregateInput: { // input type
+    approved?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    date?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    description?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    image?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    roomId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    shortDescription?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  EventCreateInput: { // input type
+    approved?: boolean | null; // Boolean
+    categories?: NexusGenInputs['CategoryCreateNestedManyWithoutEventsInput'] | null; // CategoryCreateNestedManyWithoutEventsInput
+    chat?: NexusGenInputs['ChatCreateNestedOneWithoutEventInput'] | null; // ChatCreateNestedOneWithoutEventInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    issuedBy?: NexusGenInputs['UserCreateNestedOneWithoutEventsIssuedInput'] | null; // UserCreateNestedOneWithoutEventsIssuedInput
+    participants?: NexusGenInputs['UserCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserCreateNestedManyWithoutEventsParticipatingInput
+    responsibles?: NexusGenInputs['UserCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserCreateNestedManyWithoutEventsResponsibleInput
+    room: NexusGenInputs['RoomCreateNestedOneWithoutEventsInput']; // RoomCreateNestedOneWithoutEventsInput!
+    shortDescription: string; // String!
+    title: string; // String!
+  }
+  EventCreateManyInput: { // input type
+    approved?: boolean | null; // Boolean
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    roomId: string; // String!
+    shortDescription: string; // String!
+    title: string; // String!
+    userId?: string | null; // String
+  }
+  EventCreateManyIssuedByInput: { // input type
+    approved?: boolean | null; // Boolean
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    roomId: string; // String!
+    shortDescription: string; // String!
+    title: string; // String!
+  }
+  EventCreateManyIssuedByInputEnvelope: { // input type
+    data: NexusGenInputs['EventCreateManyIssuedByInput']; // EventCreateManyIssuedByInput!
+    skipDuplicates?: boolean | null; // Boolean
+  }
+  EventCreateManyRoomInput: { // input type
+    approved?: boolean | null; // Boolean
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    shortDescription: string; // String!
+    title: string; // String!
+    userId?: string | null; // String
+  }
+  EventCreateManyRoomInputEnvelope: { // input type
+    data: NexusGenInputs['EventCreateManyRoomInput']; // EventCreateManyRoomInput!
+    skipDuplicates?: boolean | null; // Boolean
+  }
+  EventCreateNestedManyWithoutCategoriesInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutCategoriesInput'] | null> | null; // [EventCreateOrConnectWithoutCategoriesInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutCategoriesInput'] | null> | null; // [EventCreateWithoutCategoriesInput]
+  }
+  EventCreateNestedManyWithoutIssuedByInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutIssuedByInput'] | null> | null; // [EventCreateOrConnectWithoutIssuedByInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutIssuedByInput'] | null> | null; // [EventCreateWithoutIssuedByInput]
+    createMany?: NexusGenInputs['EventCreateManyIssuedByInputEnvelope'] | null; // EventCreateManyIssuedByInputEnvelope
+  }
+  EventCreateNestedManyWithoutParticipantsInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutParticipantsInput'] | null> | null; // [EventCreateOrConnectWithoutParticipantsInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutParticipantsInput'] | null> | null; // [EventCreateWithoutParticipantsInput]
+  }
+  EventCreateNestedManyWithoutResponsiblesInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutResponsiblesInput'] | null> | null; // [EventCreateOrConnectWithoutResponsiblesInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutResponsiblesInput'] | null> | null; // [EventCreateWithoutResponsiblesInput]
+  }
+  EventCreateNestedManyWithoutRoomInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutRoomInput'] | null> | null; // [EventCreateOrConnectWithoutRoomInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutRoomInput'] | null> | null; // [EventCreateWithoutRoomInput]
+    createMany?: NexusGenInputs['EventCreateManyRoomInputEnvelope'] | null; // EventCreateManyRoomInputEnvelope
+  }
+  EventCreateNestedOneWithoutChatInput: { // input type
+    connect?: NexusGenInputs['EventWhereUniqueInput'] | null; // EventWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['EventCreateOrConnectWithoutChatInput'] | null; // EventCreateOrConnectWithoutChatInput
+    create?: NexusGenInputs['EventUncheckedCreateWithoutChatInput'] | null; // EventUncheckedCreateWithoutChatInput
+  }
+  EventCreateOrConnectWithoutCategoriesInput: { // input type
+    create: NexusGenInputs['EventUncheckedCreateWithoutCategoriesInput']; // EventUncheckedCreateWithoutCategoriesInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
+  EventCreateOrConnectWithoutChatInput: { // input type
+    create: NexusGenInputs['EventUncheckedCreateWithoutChatInput']; // EventUncheckedCreateWithoutChatInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
+  EventCreateOrConnectWithoutIssuedByInput: { // input type
+    create: NexusGenInputs['EventUncheckedCreateWithoutIssuedByInput']; // EventUncheckedCreateWithoutIssuedByInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
+  EventCreateOrConnectWithoutParticipantsInput: { // input type
+    create: NexusGenInputs['EventUncheckedCreateWithoutParticipantsInput']; // EventUncheckedCreateWithoutParticipantsInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
+  EventCreateOrConnectWithoutResponsiblesInput: { // input type
+    create: NexusGenInputs['EventUncheckedCreateWithoutResponsiblesInput']; // EventUncheckedCreateWithoutResponsiblesInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
+  EventCreateOrConnectWithoutRoomInput: { // input type
+    create: NexusGenInputs['EventUncheckedCreateWithoutRoomInput']; // EventUncheckedCreateWithoutRoomInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
+  EventCreateWithoutCategoriesInput: { // input type
+    approved?: boolean | null; // Boolean
+    chat?: NexusGenInputs['ChatCreateNestedOneWithoutEventInput'] | null; // ChatCreateNestedOneWithoutEventInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    issuedBy?: NexusGenInputs['UserCreateNestedOneWithoutEventsIssuedInput'] | null; // UserCreateNestedOneWithoutEventsIssuedInput
+    participants?: NexusGenInputs['UserCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserCreateNestedManyWithoutEventsParticipatingInput
+    responsibles?: NexusGenInputs['UserCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserCreateNestedManyWithoutEventsResponsibleInput
+    room: NexusGenInputs['RoomCreateNestedOneWithoutEventsInput']; // RoomCreateNestedOneWithoutEventsInput!
+    shortDescription: string; // String!
+    title: string; // String!
+  }
+  EventCreateWithoutChatInput: { // input type
+    approved?: boolean | null; // Boolean
+    categories?: NexusGenInputs['CategoryCreateNestedManyWithoutEventsInput'] | null; // CategoryCreateNestedManyWithoutEventsInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    issuedBy?: NexusGenInputs['UserCreateNestedOneWithoutEventsIssuedInput'] | null; // UserCreateNestedOneWithoutEventsIssuedInput
+    participants?: NexusGenInputs['UserCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserCreateNestedManyWithoutEventsParticipatingInput
+    responsibles?: NexusGenInputs['UserCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserCreateNestedManyWithoutEventsResponsibleInput
+    room: NexusGenInputs['RoomCreateNestedOneWithoutEventsInput']; // RoomCreateNestedOneWithoutEventsInput!
+    shortDescription: string; // String!
+    title: string; // String!
+  }
+  EventCreateWithoutIssuedByInput: { // input type
+    approved?: boolean | null; // Boolean
+    categories?: NexusGenInputs['CategoryCreateNestedManyWithoutEventsInput'] | null; // CategoryCreateNestedManyWithoutEventsInput
+    chat?: NexusGenInputs['ChatCreateNestedOneWithoutEventInput'] | null; // ChatCreateNestedOneWithoutEventInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    participants?: NexusGenInputs['UserCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserCreateNestedManyWithoutEventsParticipatingInput
+    responsibles?: NexusGenInputs['UserCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserCreateNestedManyWithoutEventsResponsibleInput
+    room: NexusGenInputs['RoomCreateNestedOneWithoutEventsInput']; // RoomCreateNestedOneWithoutEventsInput!
+    shortDescription: string; // String!
+    title: string; // String!
+  }
+  EventCreateWithoutParticipantsInput: { // input type
+    approved?: boolean | null; // Boolean
+    categories?: NexusGenInputs['CategoryCreateNestedManyWithoutEventsInput'] | null; // CategoryCreateNestedManyWithoutEventsInput
+    chat?: NexusGenInputs['ChatCreateNestedOneWithoutEventInput'] | null; // ChatCreateNestedOneWithoutEventInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    issuedBy?: NexusGenInputs['UserCreateNestedOneWithoutEventsIssuedInput'] | null; // UserCreateNestedOneWithoutEventsIssuedInput
+    responsibles?: NexusGenInputs['UserCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserCreateNestedManyWithoutEventsResponsibleInput
+    room: NexusGenInputs['RoomCreateNestedOneWithoutEventsInput']; // RoomCreateNestedOneWithoutEventsInput!
+    shortDescription: string; // String!
+    title: string; // String!
+  }
+  EventCreateWithoutResponsiblesInput: { // input type
+    approved?: boolean | null; // Boolean
+    categories?: NexusGenInputs['CategoryCreateNestedManyWithoutEventsInput'] | null; // CategoryCreateNestedManyWithoutEventsInput
+    chat?: NexusGenInputs['ChatCreateNestedOneWithoutEventInput'] | null; // ChatCreateNestedOneWithoutEventInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    issuedBy?: NexusGenInputs['UserCreateNestedOneWithoutEventsIssuedInput'] | null; // UserCreateNestedOneWithoutEventsIssuedInput
+    participants?: NexusGenInputs['UserCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserCreateNestedManyWithoutEventsParticipatingInput
+    room: NexusGenInputs['RoomCreateNestedOneWithoutEventsInput']; // RoomCreateNestedOneWithoutEventsInput!
+    shortDescription: string; // String!
+    title: string; // String!
+  }
+  EventCreateWithoutRoomInput: { // input type
+    approved?: boolean | null; // Boolean
+    categories?: NexusGenInputs['CategoryCreateNestedManyWithoutEventsInput'] | null; // CategoryCreateNestedManyWithoutEventsInput
+    chat?: NexusGenInputs['ChatCreateNestedOneWithoutEventInput'] | null; // ChatCreateNestedOneWithoutEventInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    issuedBy?: NexusGenInputs['UserCreateNestedOneWithoutEventsIssuedInput'] | null; // UserCreateNestedOneWithoutEventsIssuedInput
+    participants?: NexusGenInputs['UserCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserCreateNestedManyWithoutEventsParticipatingInput
+    responsibles?: NexusGenInputs['UserCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserCreateNestedManyWithoutEventsResponsibleInput
+    shortDescription: string; // String!
+    title: string; // String!
+  }
+  EventListRelationFilter: { // input type
+    every?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
+    none?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
+    some?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
+  }
+  EventMaxOrderByAggregateInput: { // input type
+    approved?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    date?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    description?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    image?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    roomId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    shortDescription?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  EventMinOrderByAggregateInput: { // input type
+    approved?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    date?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    description?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    image?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    roomId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    shortDescription?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  EventOrderByRelationAggregateInput: { // input type
+    _count?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  EventOrderByWithAggregationInput: { // input type
+    _count?: NexusGenInputs['EventCountOrderByAggregateInput'] | null; // EventCountOrderByAggregateInput
+    _max?: NexusGenInputs['EventMaxOrderByAggregateInput'] | null; // EventMaxOrderByAggregateInput
+    _min?: NexusGenInputs['EventMinOrderByAggregateInput'] | null; // EventMinOrderByAggregateInput
+    approved?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    date?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    description?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    image?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    roomId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    shortDescription?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  EventOrderByWithRelationInput: { // input type
+    approved?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    categories?: NexusGenInputs['CategoryOrderByRelationAggregateInput'] | null; // CategoryOrderByRelationAggregateInput
+    chat?: NexusGenInputs['ChatOrderByWithRelationInput'] | null; // ChatOrderByWithRelationInput
+    date?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    description?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    image?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    issuedBy?: NexusGenInputs['UserOrderByWithRelationInput'] | null; // UserOrderByWithRelationInput
+    participants?: NexusGenInputs['UserOrderByRelationAggregateInput'] | null; // UserOrderByRelationAggregateInput
+    responsibles?: NexusGenInputs['UserOrderByRelationAggregateInput'] | null; // UserOrderByRelationAggregateInput
+    room?: NexusGenInputs['RoomOrderByWithRelationInput'] | null; // RoomOrderByWithRelationInput
+    roomId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    shortDescription?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  EventRelationFilter: { // input type
+    is?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
+    isNot?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
+  }
+  EventScalarWhereInput: { // input type
+    AND?: Array<NexusGenInputs['EventScalarWhereInput'] | null> | null; // [EventScalarWhereInput]
+    NOT?: Array<NexusGenInputs['EventScalarWhereInput'] | null> | null; // [EventScalarWhereInput]
+    OR?: Array<NexusGenInputs['EventScalarWhereInput'] | null> | null; // [EventScalarWhereInput]
+    approved?: NexusGenInputs['BoolFilter'] | null; // BoolFilter
+    date?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    description?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    image?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
+    roomId?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    shortDescription?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    title?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    userId?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
+  }
+  EventScalarWhereWithAggregatesInput: { // input type
+    AND?: Array<NexusGenInputs['EventScalarWhereWithAggregatesInput'] | null> | null; // [EventScalarWhereWithAggregatesInput]
+    NOT?: Array<NexusGenInputs['EventScalarWhereWithAggregatesInput'] | null> | null; // [EventScalarWhereWithAggregatesInput]
+    OR?: Array<NexusGenInputs['EventScalarWhereWithAggregatesInput'] | null> | null; // [EventScalarWhereWithAggregatesInput]
+    approved?: NexusGenInputs['BoolWithAggregatesFilter'] | null; // BoolWithAggregatesFilter
+    date?: NexusGenInputs['DateTimeWithAggregatesFilter'] | null; // DateTimeWithAggregatesFilter
+    description?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+    id?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+    image?: NexusGenInputs['StringNullableWithAggregatesFilter'] | null; // StringNullableWithAggregatesFilter
+    roomId?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+    shortDescription?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+    title?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+    userId?: NexusGenInputs['StringNullableWithAggregatesFilter'] | null; // StringNullableWithAggregatesFilter
+  }
+  EventUncheckedCreateInput: { // input type
+    approved?: boolean | null; // Boolean
+    categories?: NexusGenInputs['CategoryUncheckedCreateNestedManyWithoutEventsInput'] | null; // CategoryUncheckedCreateNestedManyWithoutEventsInput
+    chat?: NexusGenInputs['ChatUncheckedCreateNestedOneWithoutEventInput'] | null; // ChatUncheckedCreateNestedOneWithoutEventInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    participants?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
+    responsibles?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
+    roomId: string; // String!
+    shortDescription: string; // String!
+    title: string; // String!
+    userId?: string | null; // String
+  }
+  EventUncheckedCreateNestedManyWithoutCategoriesInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutCategoriesInput'] | null> | null; // [EventCreateOrConnectWithoutCategoriesInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutCategoriesInput'] | null> | null; // [EventCreateWithoutCategoriesInput]
+  }
+  EventUncheckedCreateNestedManyWithoutIssuedByInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutIssuedByInput'] | null> | null; // [EventCreateOrConnectWithoutIssuedByInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutIssuedByInput'] | null> | null; // [EventCreateWithoutIssuedByInput]
+    createMany?: NexusGenInputs['EventCreateManyIssuedByInputEnvelope'] | null; // EventCreateManyIssuedByInputEnvelope
+  }
+  EventUncheckedCreateNestedManyWithoutParticipantsInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutParticipantsInput'] | null> | null; // [EventCreateOrConnectWithoutParticipantsInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutParticipantsInput'] | null> | null; // [EventCreateWithoutParticipantsInput]
+  }
+  EventUncheckedCreateNestedManyWithoutResponsiblesInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutResponsiblesInput'] | null> | null; // [EventCreateOrConnectWithoutResponsiblesInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutResponsiblesInput'] | null> | null; // [EventCreateWithoutResponsiblesInput]
+  }
+  EventUncheckedCreateNestedManyWithoutRoomInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutRoomInput'] | null> | null; // [EventCreateOrConnectWithoutRoomInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutRoomInput'] | null> | null; // [EventCreateWithoutRoomInput]
+    createMany?: NexusGenInputs['EventCreateManyRoomInputEnvelope'] | null; // EventCreateManyRoomInputEnvelope
+  }
+  EventUncheckedCreateWithoutCategoriesInput: { // input type
+    approved?: boolean | null; // Boolean
+    chat?: NexusGenInputs['ChatUncheckedCreateNestedOneWithoutEventInput'] | null; // ChatUncheckedCreateNestedOneWithoutEventInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    participants?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
+    responsibles?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
+    roomId: string; // String!
+    shortDescription: string; // String!
+    title: string; // String!
+    userId?: string | null; // String
+  }
+  EventUncheckedCreateWithoutChatInput: { // input type
+    approved?: boolean | null; // Boolean
+    categories?: NexusGenInputs['CategoryUncheckedCreateNestedManyWithoutEventsInput'] | null; // CategoryUncheckedCreateNestedManyWithoutEventsInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    participants?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
+    responsibles?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
+    roomId: string; // String!
+    shortDescription: string; // String!
+    title: string; // String!
+    userId?: string | null; // String
+  }
+  EventUncheckedCreateWithoutIssuedByInput: { // input type
+    approved?: boolean | null; // Boolean
+    categories?: NexusGenInputs['CategoryUncheckedCreateNestedManyWithoutEventsInput'] | null; // CategoryUncheckedCreateNestedManyWithoutEventsInput
+    chat?: NexusGenInputs['ChatUncheckedCreateNestedOneWithoutEventInput'] | null; // ChatUncheckedCreateNestedOneWithoutEventInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    participants?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
+    responsibles?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
+    roomId: string; // String!
+    shortDescription: string; // String!
+    title: string; // String!
+  }
+  EventUncheckedCreateWithoutParticipantsInput: { // input type
+    approved?: boolean | null; // Boolean
+    categories?: NexusGenInputs['CategoryUncheckedCreateNestedManyWithoutEventsInput'] | null; // CategoryUncheckedCreateNestedManyWithoutEventsInput
+    chat?: NexusGenInputs['ChatUncheckedCreateNestedOneWithoutEventInput'] | null; // ChatUncheckedCreateNestedOneWithoutEventInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    responsibles?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
+    roomId: string; // String!
+    shortDescription: string; // String!
+    title: string; // String!
+    userId?: string | null; // String
+  }
+  EventUncheckedCreateWithoutResponsiblesInput: { // input type
+    approved?: boolean | null; // Boolean
+    categories?: NexusGenInputs['CategoryUncheckedCreateNestedManyWithoutEventsInput'] | null; // CategoryUncheckedCreateNestedManyWithoutEventsInput
+    chat?: NexusGenInputs['ChatUncheckedCreateNestedOneWithoutEventInput'] | null; // ChatUncheckedCreateNestedOneWithoutEventInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    participants?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
+    roomId: string; // String!
+    shortDescription: string; // String!
+    title: string; // String!
+    userId?: string | null; // String
+  }
+  EventUncheckedCreateWithoutRoomInput: { // input type
+    approved?: boolean | null; // Boolean
+    categories?: NexusGenInputs['CategoryUncheckedCreateNestedManyWithoutEventsInput'] | null; // CategoryUncheckedCreateNestedManyWithoutEventsInput
+    chat?: NexusGenInputs['ChatUncheckedCreateNestedOneWithoutEventInput'] | null; // ChatUncheckedCreateNestedOneWithoutEventInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    participants?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
+    responsibles?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
+    shortDescription: string; // String!
+    title: string; // String!
+    userId?: string | null; // String
+  }
+  EventUncheckedUpdateInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    categories?: NexusGenInputs['CategoryUncheckedUpdateManyWithoutEventsNestedInput'] | null; // CategoryUncheckedUpdateManyWithoutEventsNestedInput
+    chat?: NexusGenInputs['ChatUncheckedUpdateOneWithoutEventNestedInput'] | null; // ChatUncheckedUpdateOneWithoutEventNestedInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    participants?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
+    responsibles?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
+    roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  EventUncheckedUpdateManyInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  EventUncheckedUpdateManyWithoutCategoriesNestedInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutCategoriesInput'] | null> | null; // [EventCreateOrConnectWithoutCategoriesInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutCategoriesInput'] | null> | null; // [EventCreateWithoutCategoriesInput]
+    delete?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['EventScalarWhereInput'] | null> | null; // [EventScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    set?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    update?: Array<NexusGenInputs['EventUpdateWithWhereUniqueWithoutCategoriesInput'] | null> | null; // [EventUpdateWithWhereUniqueWithoutCategoriesInput]
+    updateMany?: Array<NexusGenInputs['EventUpdateManyWithWhereWithoutCategoriesInput'] | null> | null; // [EventUpdateManyWithWhereWithoutCategoriesInput]
+    upsert?: Array<NexusGenInputs['EventUpsertWithWhereUniqueWithoutCategoriesInput'] | null> | null; // [EventUpsertWithWhereUniqueWithoutCategoriesInput]
+  }
+  EventUncheckedUpdateManyWithoutEventsInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  EventUncheckedUpdateManyWithoutEventsIssuedInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  EventUncheckedUpdateManyWithoutEventsParticipatingInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  EventUncheckedUpdateManyWithoutEventsResponsibleInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  EventUncheckedUpdateManyWithoutIssuedByNestedInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutIssuedByInput'] | null> | null; // [EventCreateOrConnectWithoutIssuedByInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutIssuedByInput'] | null> | null; // [EventCreateWithoutIssuedByInput]
+    createMany?: NexusGenInputs['EventCreateManyIssuedByInputEnvelope'] | null; // EventCreateManyIssuedByInputEnvelope
+    delete?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['EventScalarWhereInput'] | null> | null; // [EventScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    set?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    update?: Array<NexusGenInputs['EventUpdateWithWhereUniqueWithoutIssuedByInput'] | null> | null; // [EventUpdateWithWhereUniqueWithoutIssuedByInput]
+    updateMany?: Array<NexusGenInputs['EventUpdateManyWithWhereWithoutIssuedByInput'] | null> | null; // [EventUpdateManyWithWhereWithoutIssuedByInput]
+    upsert?: Array<NexusGenInputs['EventUpsertWithWhereUniqueWithoutIssuedByInput'] | null> | null; // [EventUpsertWithWhereUniqueWithoutIssuedByInput]
+  }
+  EventUncheckedUpdateManyWithoutParticipantsNestedInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutParticipantsInput'] | null> | null; // [EventCreateOrConnectWithoutParticipantsInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutParticipantsInput'] | null> | null; // [EventCreateWithoutParticipantsInput]
+    delete?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['EventScalarWhereInput'] | null> | null; // [EventScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    set?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    update?: Array<NexusGenInputs['EventUpdateWithWhereUniqueWithoutParticipantsInput'] | null> | null; // [EventUpdateWithWhereUniqueWithoutParticipantsInput]
+    updateMany?: Array<NexusGenInputs['EventUpdateManyWithWhereWithoutParticipantsInput'] | null> | null; // [EventUpdateManyWithWhereWithoutParticipantsInput]
+    upsert?: Array<NexusGenInputs['EventUpsertWithWhereUniqueWithoutParticipantsInput'] | null> | null; // [EventUpsertWithWhereUniqueWithoutParticipantsInput]
+  }
+  EventUncheckedUpdateManyWithoutResponsiblesNestedInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutResponsiblesInput'] | null> | null; // [EventCreateOrConnectWithoutResponsiblesInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutResponsiblesInput'] | null> | null; // [EventCreateWithoutResponsiblesInput]
+    delete?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['EventScalarWhereInput'] | null> | null; // [EventScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    set?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    update?: Array<NexusGenInputs['EventUpdateWithWhereUniqueWithoutResponsiblesInput'] | null> | null; // [EventUpdateWithWhereUniqueWithoutResponsiblesInput]
+    updateMany?: Array<NexusGenInputs['EventUpdateManyWithWhereWithoutResponsiblesInput'] | null> | null; // [EventUpdateManyWithWhereWithoutResponsiblesInput]
+    upsert?: Array<NexusGenInputs['EventUpsertWithWhereUniqueWithoutResponsiblesInput'] | null> | null; // [EventUpsertWithWhereUniqueWithoutResponsiblesInput]
+  }
+  EventUncheckedUpdateManyWithoutRoomNestedInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutRoomInput'] | null> | null; // [EventCreateOrConnectWithoutRoomInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutRoomInput'] | null> | null; // [EventCreateWithoutRoomInput]
+    createMany?: NexusGenInputs['EventCreateManyRoomInputEnvelope'] | null; // EventCreateManyRoomInputEnvelope
+    delete?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['EventScalarWhereInput'] | null> | null; // [EventScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    set?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    update?: Array<NexusGenInputs['EventUpdateWithWhereUniqueWithoutRoomInput'] | null> | null; // [EventUpdateWithWhereUniqueWithoutRoomInput]
+    updateMany?: Array<NexusGenInputs['EventUpdateManyWithWhereWithoutRoomInput'] | null> | null; // [EventUpdateManyWithWhereWithoutRoomInput]
+    upsert?: Array<NexusGenInputs['EventUpsertWithWhereUniqueWithoutRoomInput'] | null> | null; // [EventUpsertWithWhereUniqueWithoutRoomInput]
+  }
+  EventUncheckedUpdateWithoutCategoriesInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    chat?: NexusGenInputs['ChatUncheckedUpdateOneWithoutEventNestedInput'] | null; // ChatUncheckedUpdateOneWithoutEventNestedInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    participants?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
+    responsibles?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
+    roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  EventUncheckedUpdateWithoutChatInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    categories?: NexusGenInputs['CategoryUncheckedUpdateManyWithoutEventsNestedInput'] | null; // CategoryUncheckedUpdateManyWithoutEventsNestedInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    participants?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
+    responsibles?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
+    roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  EventUncheckedUpdateWithoutIssuedByInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    categories?: NexusGenInputs['CategoryUncheckedUpdateManyWithoutEventsNestedInput'] | null; // CategoryUncheckedUpdateManyWithoutEventsNestedInput
+    chat?: NexusGenInputs['ChatUncheckedUpdateOneWithoutEventNestedInput'] | null; // ChatUncheckedUpdateOneWithoutEventNestedInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    participants?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
+    responsibles?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
+    roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  EventUncheckedUpdateWithoutParticipantsInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    categories?: NexusGenInputs['CategoryUncheckedUpdateManyWithoutEventsNestedInput'] | null; // CategoryUncheckedUpdateManyWithoutEventsNestedInput
+    chat?: NexusGenInputs['ChatUncheckedUpdateOneWithoutEventNestedInput'] | null; // ChatUncheckedUpdateOneWithoutEventNestedInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    responsibles?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
+    roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  EventUncheckedUpdateWithoutResponsiblesInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    categories?: NexusGenInputs['CategoryUncheckedUpdateManyWithoutEventsNestedInput'] | null; // CategoryUncheckedUpdateManyWithoutEventsNestedInput
+    chat?: NexusGenInputs['ChatUncheckedUpdateOneWithoutEventNestedInput'] | null; // ChatUncheckedUpdateOneWithoutEventNestedInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    participants?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
+    roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  EventUncheckedUpdateWithoutRoomInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    categories?: NexusGenInputs['CategoryUncheckedUpdateManyWithoutEventsNestedInput'] | null; // CategoryUncheckedUpdateManyWithoutEventsNestedInput
+    chat?: NexusGenInputs['ChatUncheckedUpdateOneWithoutEventNestedInput'] | null; // ChatUncheckedUpdateOneWithoutEventNestedInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    participants?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
+    responsibles?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  EventUpdateInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    categories?: NexusGenInputs['CategoryUpdateManyWithoutEventsNestedInput'] | null; // CategoryUpdateManyWithoutEventsNestedInput
+    chat?: NexusGenInputs['ChatUpdateOneWithoutEventNestedInput'] | null; // ChatUpdateOneWithoutEventNestedInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    issuedBy?: NexusGenInputs['UserUpdateOneWithoutEventsIssuedNestedInput'] | null; // UserUpdateOneWithoutEventsIssuedNestedInput
+    participants?: NexusGenInputs['UserUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUpdateManyWithoutEventsParticipatingNestedInput
+    responsibles?: NexusGenInputs['UserUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUpdateManyWithoutEventsResponsibleNestedInput
+    room?: NexusGenInputs['RoomUpdateOneRequiredWithoutEventsNestedInput'] | null; // RoomUpdateOneRequiredWithoutEventsNestedInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  EventUpdateManyMutationInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  EventUpdateManyWithWhereWithoutCategoriesInput: { // input type
+    data: NexusGenInputs['EventUncheckedUpdateManyWithoutEventsInput']; // EventUncheckedUpdateManyWithoutEventsInput!
+    where: NexusGenInputs['EventScalarWhereInput']; // EventScalarWhereInput!
+  }
+  EventUpdateManyWithWhereWithoutIssuedByInput: { // input type
+    data: NexusGenInputs['EventUncheckedUpdateManyWithoutEventsIssuedInput']; // EventUncheckedUpdateManyWithoutEventsIssuedInput!
+    where: NexusGenInputs['EventScalarWhereInput']; // EventScalarWhereInput!
+  }
+  EventUpdateManyWithWhereWithoutParticipantsInput: { // input type
+    data: NexusGenInputs['EventUncheckedUpdateManyWithoutEventsParticipatingInput']; // EventUncheckedUpdateManyWithoutEventsParticipatingInput!
+    where: NexusGenInputs['EventScalarWhereInput']; // EventScalarWhereInput!
+  }
+  EventUpdateManyWithWhereWithoutResponsiblesInput: { // input type
+    data: NexusGenInputs['EventUncheckedUpdateManyWithoutEventsResponsibleInput']; // EventUncheckedUpdateManyWithoutEventsResponsibleInput!
+    where: NexusGenInputs['EventScalarWhereInput']; // EventScalarWhereInput!
+  }
+  EventUpdateManyWithWhereWithoutRoomInput: { // input type
+    data: NexusGenInputs['EventUncheckedUpdateManyWithoutEventsInput']; // EventUncheckedUpdateManyWithoutEventsInput!
+    where: NexusGenInputs['EventScalarWhereInput']; // EventScalarWhereInput!
+  }
+  EventUpdateManyWithoutCategoriesNestedInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutCategoriesInput'] | null> | null; // [EventCreateOrConnectWithoutCategoriesInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutCategoriesInput'] | null> | null; // [EventCreateWithoutCategoriesInput]
+    delete?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['EventScalarWhereInput'] | null> | null; // [EventScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    set?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    update?: Array<NexusGenInputs['EventUpdateWithWhereUniqueWithoutCategoriesInput'] | null> | null; // [EventUpdateWithWhereUniqueWithoutCategoriesInput]
+    updateMany?: Array<NexusGenInputs['EventUpdateManyWithWhereWithoutCategoriesInput'] | null> | null; // [EventUpdateManyWithWhereWithoutCategoriesInput]
+    upsert?: Array<NexusGenInputs['EventUpsertWithWhereUniqueWithoutCategoriesInput'] | null> | null; // [EventUpsertWithWhereUniqueWithoutCategoriesInput]
+  }
+  EventUpdateManyWithoutIssuedByNestedInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutIssuedByInput'] | null> | null; // [EventCreateOrConnectWithoutIssuedByInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutIssuedByInput'] | null> | null; // [EventCreateWithoutIssuedByInput]
+    createMany?: NexusGenInputs['EventCreateManyIssuedByInputEnvelope'] | null; // EventCreateManyIssuedByInputEnvelope
+    delete?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['EventScalarWhereInput'] | null> | null; // [EventScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    set?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    update?: Array<NexusGenInputs['EventUpdateWithWhereUniqueWithoutIssuedByInput'] | null> | null; // [EventUpdateWithWhereUniqueWithoutIssuedByInput]
+    updateMany?: Array<NexusGenInputs['EventUpdateManyWithWhereWithoutIssuedByInput'] | null> | null; // [EventUpdateManyWithWhereWithoutIssuedByInput]
+    upsert?: Array<NexusGenInputs['EventUpsertWithWhereUniqueWithoutIssuedByInput'] | null> | null; // [EventUpsertWithWhereUniqueWithoutIssuedByInput]
+  }
+  EventUpdateManyWithoutParticipantsNestedInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutParticipantsInput'] | null> | null; // [EventCreateOrConnectWithoutParticipantsInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutParticipantsInput'] | null> | null; // [EventCreateWithoutParticipantsInput]
+    delete?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['EventScalarWhereInput'] | null> | null; // [EventScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    set?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    update?: Array<NexusGenInputs['EventUpdateWithWhereUniqueWithoutParticipantsInput'] | null> | null; // [EventUpdateWithWhereUniqueWithoutParticipantsInput]
+    updateMany?: Array<NexusGenInputs['EventUpdateManyWithWhereWithoutParticipantsInput'] | null> | null; // [EventUpdateManyWithWhereWithoutParticipantsInput]
+    upsert?: Array<NexusGenInputs['EventUpsertWithWhereUniqueWithoutParticipantsInput'] | null> | null; // [EventUpsertWithWhereUniqueWithoutParticipantsInput]
+  }
+  EventUpdateManyWithoutResponsiblesNestedInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutResponsiblesInput'] | null> | null; // [EventCreateOrConnectWithoutResponsiblesInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutResponsiblesInput'] | null> | null; // [EventCreateWithoutResponsiblesInput]
+    delete?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['EventScalarWhereInput'] | null> | null; // [EventScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    set?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    update?: Array<NexusGenInputs['EventUpdateWithWhereUniqueWithoutResponsiblesInput'] | null> | null; // [EventUpdateWithWhereUniqueWithoutResponsiblesInput]
+    updateMany?: Array<NexusGenInputs['EventUpdateManyWithWhereWithoutResponsiblesInput'] | null> | null; // [EventUpdateManyWithWhereWithoutResponsiblesInput]
+    upsert?: Array<NexusGenInputs['EventUpsertWithWhereUniqueWithoutResponsiblesInput'] | null> | null; // [EventUpsertWithWhereUniqueWithoutResponsiblesInput]
+  }
+  EventUpdateManyWithoutRoomNestedInput: { // input type
+    connect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['EventCreateOrConnectWithoutRoomInput'] | null> | null; // [EventCreateOrConnectWithoutRoomInput]
+    create?: Array<NexusGenInputs['EventCreateWithoutRoomInput'] | null> | null; // [EventCreateWithoutRoomInput]
+    createMany?: NexusGenInputs['EventCreateManyRoomInputEnvelope'] | null; // EventCreateManyRoomInputEnvelope
+    delete?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['EventScalarWhereInput'] | null> | null; // [EventScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    set?: Array<NexusGenInputs['EventWhereUniqueInput'] | null> | null; // [EventWhereUniqueInput]
+    update?: Array<NexusGenInputs['EventUpdateWithWhereUniqueWithoutRoomInput'] | null> | null; // [EventUpdateWithWhereUniqueWithoutRoomInput]
+    updateMany?: Array<NexusGenInputs['EventUpdateManyWithWhereWithoutRoomInput'] | null> | null; // [EventUpdateManyWithWhereWithoutRoomInput]
+    upsert?: Array<NexusGenInputs['EventUpsertWithWhereUniqueWithoutRoomInput'] | null> | null; // [EventUpsertWithWhereUniqueWithoutRoomInput]
+  }
+  EventUpdateOneRequiredWithoutChatNestedInput: { // input type
+    connect?: NexusGenInputs['EventWhereUniqueInput'] | null; // EventWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['EventCreateOrConnectWithoutChatInput'] | null; // EventCreateOrConnectWithoutChatInput
+    create?: NexusGenInputs['EventUncheckedCreateWithoutChatInput'] | null; // EventUncheckedCreateWithoutChatInput
+    update?: NexusGenInputs['EventUncheckedUpdateWithoutChatInput'] | null; // EventUncheckedUpdateWithoutChatInput
+    upsert?: NexusGenInputs['EventUpsertWithoutChatInput'] | null; // EventUpsertWithoutChatInput
+  }
+  EventUpdateWithWhereUniqueWithoutCategoriesInput: { // input type
+    data: NexusGenInputs['EventUncheckedUpdateWithoutCategoriesInput']; // EventUncheckedUpdateWithoutCategoriesInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
+  EventUpdateWithWhereUniqueWithoutIssuedByInput: { // input type
+    data: NexusGenInputs['EventUncheckedUpdateWithoutIssuedByInput']; // EventUncheckedUpdateWithoutIssuedByInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
+  EventUpdateWithWhereUniqueWithoutParticipantsInput: { // input type
+    data: NexusGenInputs['EventUncheckedUpdateWithoutParticipantsInput']; // EventUncheckedUpdateWithoutParticipantsInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
+  EventUpdateWithWhereUniqueWithoutResponsiblesInput: { // input type
+    data: NexusGenInputs['EventUncheckedUpdateWithoutResponsiblesInput']; // EventUncheckedUpdateWithoutResponsiblesInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
+  EventUpdateWithWhereUniqueWithoutRoomInput: { // input type
+    data: NexusGenInputs['EventUncheckedUpdateWithoutRoomInput']; // EventUncheckedUpdateWithoutRoomInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
+  EventUpdateWithoutCategoriesInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    chat?: NexusGenInputs['ChatUpdateOneWithoutEventNestedInput'] | null; // ChatUpdateOneWithoutEventNestedInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    issuedBy?: NexusGenInputs['UserUpdateOneWithoutEventsIssuedNestedInput'] | null; // UserUpdateOneWithoutEventsIssuedNestedInput
+    participants?: NexusGenInputs['UserUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUpdateManyWithoutEventsParticipatingNestedInput
+    responsibles?: NexusGenInputs['UserUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUpdateManyWithoutEventsResponsibleNestedInput
+    room?: NexusGenInputs['RoomUpdateOneRequiredWithoutEventsNestedInput'] | null; // RoomUpdateOneRequiredWithoutEventsNestedInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  EventUpdateWithoutChatInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    categories?: NexusGenInputs['CategoryUpdateManyWithoutEventsNestedInput'] | null; // CategoryUpdateManyWithoutEventsNestedInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    issuedBy?: NexusGenInputs['UserUpdateOneWithoutEventsIssuedNestedInput'] | null; // UserUpdateOneWithoutEventsIssuedNestedInput
+    participants?: NexusGenInputs['UserUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUpdateManyWithoutEventsParticipatingNestedInput
+    responsibles?: NexusGenInputs['UserUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUpdateManyWithoutEventsResponsibleNestedInput
+    room?: NexusGenInputs['RoomUpdateOneRequiredWithoutEventsNestedInput'] | null; // RoomUpdateOneRequiredWithoutEventsNestedInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  EventUpdateWithoutIssuedByInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    categories?: NexusGenInputs['CategoryUpdateManyWithoutEventsNestedInput'] | null; // CategoryUpdateManyWithoutEventsNestedInput
+    chat?: NexusGenInputs['ChatUpdateOneWithoutEventNestedInput'] | null; // ChatUpdateOneWithoutEventNestedInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    participants?: NexusGenInputs['UserUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUpdateManyWithoutEventsParticipatingNestedInput
+    responsibles?: NexusGenInputs['UserUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUpdateManyWithoutEventsResponsibleNestedInput
+    room?: NexusGenInputs['RoomUpdateOneRequiredWithoutEventsNestedInput'] | null; // RoomUpdateOneRequiredWithoutEventsNestedInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  EventUpdateWithoutParticipantsInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    categories?: NexusGenInputs['CategoryUpdateManyWithoutEventsNestedInput'] | null; // CategoryUpdateManyWithoutEventsNestedInput
+    chat?: NexusGenInputs['ChatUpdateOneWithoutEventNestedInput'] | null; // ChatUpdateOneWithoutEventNestedInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    issuedBy?: NexusGenInputs['UserUpdateOneWithoutEventsIssuedNestedInput'] | null; // UserUpdateOneWithoutEventsIssuedNestedInput
+    responsibles?: NexusGenInputs['UserUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUpdateManyWithoutEventsResponsibleNestedInput
+    room?: NexusGenInputs['RoomUpdateOneRequiredWithoutEventsNestedInput'] | null; // RoomUpdateOneRequiredWithoutEventsNestedInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  EventUpdateWithoutResponsiblesInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    categories?: NexusGenInputs['CategoryUpdateManyWithoutEventsNestedInput'] | null; // CategoryUpdateManyWithoutEventsNestedInput
+    chat?: NexusGenInputs['ChatUpdateOneWithoutEventNestedInput'] | null; // ChatUpdateOneWithoutEventNestedInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    issuedBy?: NexusGenInputs['UserUpdateOneWithoutEventsIssuedNestedInput'] | null; // UserUpdateOneWithoutEventsIssuedNestedInput
+    participants?: NexusGenInputs['UserUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUpdateManyWithoutEventsParticipatingNestedInput
+    room?: NexusGenInputs['RoomUpdateOneRequiredWithoutEventsNestedInput'] | null; // RoomUpdateOneRequiredWithoutEventsNestedInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  EventUpdateWithoutRoomInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    categories?: NexusGenInputs['CategoryUpdateManyWithoutEventsNestedInput'] | null; // CategoryUpdateManyWithoutEventsNestedInput
+    chat?: NexusGenInputs['ChatUpdateOneWithoutEventNestedInput'] | null; // ChatUpdateOneWithoutEventNestedInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    issuedBy?: NexusGenInputs['UserUpdateOneWithoutEventsIssuedNestedInput'] | null; // UserUpdateOneWithoutEventsIssuedNestedInput
+    participants?: NexusGenInputs['UserUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUpdateManyWithoutEventsParticipatingNestedInput
+    responsibles?: NexusGenInputs['UserUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUpdateManyWithoutEventsResponsibleNestedInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  EventUpsertWithWhereUniqueWithoutCategoriesInput: { // input type
+    create: NexusGenInputs['EventUncheckedCreateWithoutCategoriesInput']; // EventUncheckedCreateWithoutCategoriesInput!
+    update: NexusGenInputs['EventUncheckedUpdateWithoutCategoriesInput']; // EventUncheckedUpdateWithoutCategoriesInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
+  EventUpsertWithWhereUniqueWithoutIssuedByInput: { // input type
+    create: NexusGenInputs['EventUncheckedCreateWithoutIssuedByInput']; // EventUncheckedCreateWithoutIssuedByInput!
+    update: NexusGenInputs['EventUncheckedUpdateWithoutIssuedByInput']; // EventUncheckedUpdateWithoutIssuedByInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
+  EventUpsertWithWhereUniqueWithoutParticipantsInput: { // input type
+    create: NexusGenInputs['EventUncheckedCreateWithoutParticipantsInput']; // EventUncheckedCreateWithoutParticipantsInput!
+    update: NexusGenInputs['EventUncheckedUpdateWithoutParticipantsInput']; // EventUncheckedUpdateWithoutParticipantsInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
+  EventUpsertWithWhereUniqueWithoutResponsiblesInput: { // input type
+    create: NexusGenInputs['EventUncheckedCreateWithoutResponsiblesInput']; // EventUncheckedCreateWithoutResponsiblesInput!
+    update: NexusGenInputs['EventUncheckedUpdateWithoutResponsiblesInput']; // EventUncheckedUpdateWithoutResponsiblesInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
+  EventUpsertWithWhereUniqueWithoutRoomInput: { // input type
+    create: NexusGenInputs['EventUncheckedCreateWithoutRoomInput']; // EventUncheckedCreateWithoutRoomInput!
+    update: NexusGenInputs['EventUncheckedUpdateWithoutRoomInput']; // EventUncheckedUpdateWithoutRoomInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
+  EventUpsertWithoutChatInput: { // input type
+    create: NexusGenInputs['EventUncheckedCreateWithoutChatInput']; // EventUncheckedCreateWithoutChatInput!
+    update: NexusGenInputs['EventUncheckedUpdateWithoutChatInput']; // EventUncheckedUpdateWithoutChatInput!
+  }
+  EventWhereInput: { // input type
+    AND?: Array<NexusGenInputs['EventWhereInput'] | null> | null; // [EventWhereInput]
+    NOT?: Array<NexusGenInputs['EventWhereInput'] | null> | null; // [EventWhereInput]
+    OR?: Array<NexusGenInputs['EventWhereInput'] | null> | null; // [EventWhereInput]
+    approved?: NexusGenInputs['BoolFilter'] | null; // BoolFilter
+    categories?: NexusGenInputs['CategoryListRelationFilter'] | null; // CategoryListRelationFilter
+    chat?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    date?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    description?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    image?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
+    issuedBy?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    participants?: NexusGenInputs['UserListRelationFilter'] | null; // UserListRelationFilter
+    responsibles?: NexusGenInputs['UserListRelationFilter'] | null; // UserListRelationFilter
+    room?: NexusGenInputs['RoomWhereInput'] | null; // RoomWhereInput
+    roomId?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    shortDescription?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    title?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    userId?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
+  }
+  EventWhereUniqueInput: { // input type
+    id?: string | null; // String
+  }
+  IntFieldUpdateOperationsInput: { // input type
+    decrement?: number | null; // Int
+    divide?: number | null; // Int
+    increment?: number | null; // Int
+    multiply?: number | null; // Int
+    set?: number | null; // Int
+  }
+  IntFilter: { // input type
+    equals?: number | null; // Int
+    gt?: number | null; // Int
+    gte?: number | null; // Int
+    in?: Array<number | null> | null; // [Int]
+    lt?: number | null; // Int
+    lte?: number | null; // Int
+    not?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    notIn?: Array<number | null> | null; // [Int]
+  }
+  IntWithAggregatesFilter: { // input type
+    _avg?: NexusGenInputs['NestedFloatFilter'] | null; // NestedFloatFilter
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _min?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _sum?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    equals?: number | null; // Int
+    gt?: number | null; // Int
+    gte?: number | null; // Int
+    in?: Array<number | null> | null; // [Int]
+    lt?: number | null; // Int
+    lte?: number | null; // Int
+    not?: NexusGenInputs['NestedIntWithAggregatesFilter'] | null; // NestedIntWithAggregatesFilter
+    notIn?: Array<number | null> | null; // [Int]
+  }
+  IssueEventInput: { // input type
+    approved?: boolean | null; // Boolean
+    categories?: NexusGenInputs['CategoryCreateNestedManyWithoutEventsInput'] | null; // CategoryCreateNestedManyWithoutEventsInput
+    chat?: NexusGenInputs['ChatCreateNestedOneWithoutEventInput'] | null; // ChatCreateNestedOneWithoutEventInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    participants?: NexusGenInputs['UserCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserCreateNestedManyWithoutEventsParticipatingInput
+    responsibles?: NexusGenInputs['UserCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserCreateNestedManyWithoutEventsResponsibleInput
+    room: NexusGenInputs['RoomCreateNestedOneWithoutEventsInput']; // RoomCreateNestedOneWithoutEventsInput!
+    shortDescription: string; // String!
+    title: string; // String!
   }
   MessageCountOrderByAggregateInput: { // input type
     chatId?: NexusGenEnums['SortOrder'] | null; // SortOrder
@@ -617,6 +1852,17 @@ export interface NexusGenInputs {
   MessageWhereUniqueInput: { // input type
     id?: string | null; // String
   }
+  NestedBoolFilter: { // input type
+    equals?: boolean | null; // Boolean
+    not?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+  }
+  NestedBoolWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+    _min?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+    equals?: boolean | null; // Boolean
+    not?: NexusGenInputs['NestedBoolWithAggregatesFilter'] | null; // NestedBoolWithAggregatesFilter
+  }
   NestedDateTimeFilter: { // input type
     equals?: NexusGenScalars['DateTime'] | null; // DateTime
     gt?: NexusGenScalars['DateTime'] | null; // DateTime
@@ -640,6 +1886,31 @@ export interface NexusGenInputs {
     not?: NexusGenInputs['NestedDateTimeWithAggregatesFilter'] | null; // NestedDateTimeWithAggregatesFilter
     notIn?: Array<NexusGenScalars['DateTime'] | null> | null; // [DateTime]
   }
+  NestedEnumUserRoleFilter: { // input type
+    equals?: NexusGenEnums['UserRole'] | null; // UserRole
+    in?: Array<NexusGenEnums['UserRole'] | null> | null; // [UserRole]
+    not?: NexusGenInputs['NestedEnumUserRoleFilter'] | null; // NestedEnumUserRoleFilter
+    notIn?: Array<NexusGenEnums['UserRole'] | null> | null; // [UserRole]
+  }
+  NestedEnumUserRoleWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedEnumUserRoleFilter'] | null; // NestedEnumUserRoleFilter
+    _min?: NexusGenInputs['NestedEnumUserRoleFilter'] | null; // NestedEnumUserRoleFilter
+    equals?: NexusGenEnums['UserRole'] | null; // UserRole
+    in?: Array<NexusGenEnums['UserRole'] | null> | null; // [UserRole]
+    not?: NexusGenInputs['NestedEnumUserRoleWithAggregatesFilter'] | null; // NestedEnumUserRoleWithAggregatesFilter
+    notIn?: Array<NexusGenEnums['UserRole'] | null> | null; // [UserRole]
+  }
+  NestedFloatFilter: { // input type
+    equals?: number | null; // Float
+    gt?: number | null; // Float
+    gte?: number | null; // Float
+    in?: Array<number | null> | null; // [Float]
+    lt?: number | null; // Float
+    lte?: number | null; // Float
+    not?: NexusGenInputs['NestedFloatFilter'] | null; // NestedFloatFilter
+    notIn?: Array<number | null> | null; // [Float]
+  }
   NestedIntFilter: { // input type
     equals?: number | null; // Int
     gt?: number | null; // Int
@@ -658,6 +1929,21 @@ export interface NexusGenInputs {
     lt?: number | null; // Int
     lte?: number | null; // Int
     not?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
+    notIn?: Array<number | null> | null; // [Int]
+  }
+  NestedIntWithAggregatesFilter: { // input type
+    _avg?: NexusGenInputs['NestedFloatFilter'] | null; // NestedFloatFilter
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _min?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _sum?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    equals?: number | null; // Int
+    gt?: number | null; // Int
+    gte?: number | null; // Int
+    in?: Array<number | null> | null; // [Int]
+    lt?: number | null; // Int
+    lte?: number | null; // Int
+    not?: NexusGenInputs['NestedIntWithAggregatesFilter'] | null; // NestedIntWithAggregatesFilter
     notIn?: Array<number | null> | null; // [Int]
   }
   NestedStringFilter: { // input type
@@ -725,7 +2011,9 @@ export interface NexusGenInputs {
     avatar?: NexusGenEnums['SortOrder'] | null; // SortOrder
     bio?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    jobTitle?: NexusGenEnums['SortOrder'] | null; // SortOrder
     name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    surname?: NexusGenEnums['SortOrder'] | null; // SortOrder
     updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
     userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
@@ -733,7 +2021,9 @@ export interface NexusGenInputs {
     avatar?: string | null; // String
     bio?: string | null; // String
     id?: string | null; // String
+    jobTitle?: string | null; // String
     name?: string | null; // String
+    surname?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
     user: NexusGenInputs['UserCreateNestedOneWithoutProfileInput']; // UserCreateNestedOneWithoutProfileInput!
   }
@@ -741,7 +2031,9 @@ export interface NexusGenInputs {
     avatar?: string | null; // String
     bio?: string | null; // String
     id?: string | null; // String
+    jobTitle?: string | null; // String
     name?: string | null; // String
+    surname?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
     userId: string; // String!
   }
@@ -758,14 +2050,18 @@ export interface NexusGenInputs {
     avatar?: string | null; // String
     bio?: string | null; // String
     id?: string | null; // String
+    jobTitle?: string | null; // String
     name?: string | null; // String
+    surname?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   ProfileMaxOrderByAggregateInput: { // input type
     avatar?: NexusGenEnums['SortOrder'] | null; // SortOrder
     bio?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    jobTitle?: NexusGenEnums['SortOrder'] | null; // SortOrder
     name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    surname?: NexusGenEnums['SortOrder'] | null; // SortOrder
     updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
     userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
@@ -773,7 +2069,9 @@ export interface NexusGenInputs {
     avatar?: NexusGenEnums['SortOrder'] | null; // SortOrder
     bio?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    jobTitle?: NexusGenEnums['SortOrder'] | null; // SortOrder
     name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    surname?: NexusGenEnums['SortOrder'] | null; // SortOrder
     updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
     userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
@@ -784,7 +2082,9 @@ export interface NexusGenInputs {
     avatar?: NexusGenEnums['SortOrder'] | null; // SortOrder
     bio?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    jobTitle?: NexusGenEnums['SortOrder'] | null; // SortOrder
     name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    surname?: NexusGenEnums['SortOrder'] | null; // SortOrder
     updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
     userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
@@ -792,7 +2092,9 @@ export interface NexusGenInputs {
     avatar?: NexusGenEnums['SortOrder'] | null; // SortOrder
     bio?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    jobTitle?: NexusGenEnums['SortOrder'] | null; // SortOrder
     name?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    surname?: NexusGenEnums['SortOrder'] | null; // SortOrder
     updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
     user?: NexusGenInputs['UserOrderByWithRelationInput'] | null; // UserOrderByWithRelationInput
     userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
@@ -808,7 +2110,9 @@ export interface NexusGenInputs {
     avatar?: NexusGenInputs['StringNullableWithAggregatesFilter'] | null; // StringNullableWithAggregatesFilter
     bio?: NexusGenInputs['StringNullableWithAggregatesFilter'] | null; // StringNullableWithAggregatesFilter
     id?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+    jobTitle?: NexusGenInputs['StringNullableWithAggregatesFilter'] | null; // StringNullableWithAggregatesFilter
     name?: NexusGenInputs['StringNullableWithAggregatesFilter'] | null; // StringNullableWithAggregatesFilter
+    surname?: NexusGenInputs['StringNullableWithAggregatesFilter'] | null; // StringNullableWithAggregatesFilter
     updatedAt?: NexusGenInputs['DateTimeWithAggregatesFilter'] | null; // DateTimeWithAggregatesFilter
     userId?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
   }
@@ -816,7 +2120,9 @@ export interface NexusGenInputs {
     avatar?: string | null; // String
     bio?: string | null; // String
     id?: string | null; // String
+    jobTitle?: string | null; // String
     name?: string | null; // String
+    surname?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
     userId: string; // String!
   }
@@ -829,14 +2135,18 @@ export interface NexusGenInputs {
     avatar?: string | null; // String
     bio?: string | null; // String
     id?: string | null; // String
+    jobTitle?: string | null; // String
     name?: string | null; // String
+    surname?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   ProfileUncheckedUpdateInput: { // input type
     avatar?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     bio?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    jobTitle?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    surname?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     userId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
@@ -844,7 +2154,9 @@ export interface NexusGenInputs {
     avatar?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     bio?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    jobTitle?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    surname?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     userId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
@@ -861,14 +2173,18 @@ export interface NexusGenInputs {
     avatar?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     bio?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    jobTitle?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    surname?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
   }
   ProfileUpdateInput: { // input type
     avatar?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     bio?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    jobTitle?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    surname?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     user?: NexusGenInputs['UserUpdateOneRequiredWithoutProfileNestedInput'] | null; // UserUpdateOneRequiredWithoutProfileNestedInput
   }
@@ -876,7 +2192,9 @@ export interface NexusGenInputs {
     avatar?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     bio?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    jobTitle?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    surname?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
   }
   ProfileUpdateOneWithoutUserNestedInput: { // input type
@@ -892,7 +2210,9 @@ export interface NexusGenInputs {
     avatar?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     bio?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    jobTitle?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    surname?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
   }
   ProfileUpsertWithoutUserInput: { // input type
@@ -906,7 +2226,9 @@ export interface NexusGenInputs {
     avatar?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     bio?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    jobTitle?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     name?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
+    surname?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
     user?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     userId?: NexusGenInputs['StringFilter'] | null; // StringFilter
@@ -914,6 +2236,102 @@ export interface NexusGenInputs {
   ProfileWhereUniqueInput: { // input type
     id?: string | null; // String
     userId?: string | null; // String
+  }
+  RoomCountOrderByAggregateInput: { // input type
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  RoomCreateInput: { // input type
+    events?: NexusGenInputs['EventCreateNestedManyWithoutRoomInput'] | null; // EventCreateNestedManyWithoutRoomInput
+    id: string; // String!
+  }
+  RoomCreateManyInput: { // input type
+    id: string; // String!
+  }
+  RoomCreateNestedOneWithoutEventsInput: { // input type
+    connect?: NexusGenInputs['RoomWhereUniqueInput'] | null; // RoomWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['RoomCreateOrConnectWithoutEventsInput'] | null; // RoomCreateOrConnectWithoutEventsInput
+    create?: NexusGenInputs['RoomUncheckedCreateWithoutEventsInput'] | null; // RoomUncheckedCreateWithoutEventsInput
+  }
+  RoomCreateOrConnectWithoutEventsInput: { // input type
+    create: NexusGenInputs['RoomUncheckedCreateWithoutEventsInput']; // RoomUncheckedCreateWithoutEventsInput!
+    where: NexusGenInputs['RoomWhereUniqueInput']; // RoomWhereUniqueInput!
+  }
+  RoomCreateWithoutEventsInput: { // input type
+    id: string; // String!
+  }
+  RoomMaxOrderByAggregateInput: { // input type
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  RoomMinOrderByAggregateInput: { // input type
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  RoomOrderByWithAggregationInput: { // input type
+    _count?: NexusGenInputs['RoomCountOrderByAggregateInput'] | null; // RoomCountOrderByAggregateInput
+    _max?: NexusGenInputs['RoomMaxOrderByAggregateInput'] | null; // RoomMaxOrderByAggregateInput
+    _min?: NexusGenInputs['RoomMinOrderByAggregateInput'] | null; // RoomMinOrderByAggregateInput
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  RoomOrderByWithRelationInput: { // input type
+    events?: NexusGenInputs['EventOrderByRelationAggregateInput'] | null; // EventOrderByRelationAggregateInput
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  RoomRelationFilter: { // input type
+    is?: NexusGenInputs['RoomWhereInput'] | null; // RoomWhereInput
+    isNot?: NexusGenInputs['RoomWhereInput'] | null; // RoomWhereInput
+  }
+  RoomScalarWhereWithAggregatesInput: { // input type
+    AND?: Array<NexusGenInputs['RoomScalarWhereWithAggregatesInput'] | null> | null; // [RoomScalarWhereWithAggregatesInput]
+    NOT?: Array<NexusGenInputs['RoomScalarWhereWithAggregatesInput'] | null> | null; // [RoomScalarWhereWithAggregatesInput]
+    OR?: Array<NexusGenInputs['RoomScalarWhereWithAggregatesInput'] | null> | null; // [RoomScalarWhereWithAggregatesInput]
+    id?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+  }
+  RoomUncheckedCreateInput: { // input type
+    events?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutRoomInput'] | null; // EventUncheckedCreateNestedManyWithoutRoomInput
+    id: string; // String!
+  }
+  RoomUncheckedCreateWithoutEventsInput: { // input type
+    id: string; // String!
+  }
+  RoomUncheckedUpdateInput: { // input type
+    events?: NexusGenInputs['EventUncheckedUpdateManyWithoutRoomNestedInput'] | null; // EventUncheckedUpdateManyWithoutRoomNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  RoomUncheckedUpdateManyInput: { // input type
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  RoomUncheckedUpdateWithoutEventsInput: { // input type
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  RoomUpdateInput: { // input type
+    events?: NexusGenInputs['EventUpdateManyWithoutRoomNestedInput'] | null; // EventUpdateManyWithoutRoomNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  RoomUpdateManyMutationInput: { // input type
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  RoomUpdateOneRequiredWithoutEventsNestedInput: { // input type
+    connect?: NexusGenInputs['RoomWhereUniqueInput'] | null; // RoomWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['RoomCreateOrConnectWithoutEventsInput'] | null; // RoomCreateOrConnectWithoutEventsInput
+    create?: NexusGenInputs['RoomUncheckedCreateWithoutEventsInput'] | null; // RoomUncheckedCreateWithoutEventsInput
+    update?: NexusGenInputs['RoomUncheckedUpdateWithoutEventsInput'] | null; // RoomUncheckedUpdateWithoutEventsInput
+    upsert?: NexusGenInputs['RoomUpsertWithoutEventsInput'] | null; // RoomUpsertWithoutEventsInput
+  }
+  RoomUpdateWithoutEventsInput: { // input type
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  RoomUpsertWithoutEventsInput: { // input type
+    create: NexusGenInputs['RoomUncheckedCreateWithoutEventsInput']; // RoomUncheckedCreateWithoutEventsInput!
+    update: NexusGenInputs['RoomUncheckedUpdateWithoutEventsInput']; // RoomUncheckedUpdateWithoutEventsInput!
+  }
+  RoomWhereInput: { // input type
+    AND?: Array<NexusGenInputs['RoomWhereInput'] | null> | null; // [RoomWhereInput]
+    NOT?: Array<NexusGenInputs['RoomWhereInput'] | null> | null; // [RoomWhereInput]
+    OR?: Array<NexusGenInputs['RoomWhereInput'] | null> | null; // [RoomWhereInput]
+    events?: NexusGenInputs['EventListRelationFilter'] | null; // EventListRelationFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+  }
+  RoomWhereUniqueInput: { // input type
+    id?: string | null; // String
   }
   SendMessageInput: { // input type
     chatId: string; // String!
@@ -995,22 +2413,32 @@ export interface NexusGenInputs {
   UserCountOrderByAggregateInput: { // input type
     createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    parentId?: NexusGenEnums['SortOrder'] | null; // SortOrder
     password?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    role?: NexusGenEnums['SortOrder'] | null; // SortOrder
     username?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   UserCreateInput: { // input type
     chats?: NexusGenInputs['ChatCreateNestedManyWithoutMembersInput'] | null; // ChatCreateNestedManyWithoutMembersInput
+    child?: NexusGenInputs['UserCreateNestedOneWithoutParentInput'] | null; // UserCreateNestedOneWithoutParentInput
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventCreateNestedManyWithoutIssuedByInput'] | null; // EventCreateNestedManyWithoutIssuedByInput
+    eventsParticipating?: NexusGenInputs['EventCreateNestedManyWithoutParticipantsInput'] | null; // EventCreateNestedManyWithoutParticipantsInput
+    eventsResponsible?: NexusGenInputs['EventCreateNestedManyWithoutResponsiblesInput'] | null; // EventCreateNestedManyWithoutResponsiblesInput
     id?: string | null; // String
     messages?: NexusGenInputs['MessageCreateNestedManyWithoutSenderInput'] | null; // MessageCreateNestedManyWithoutSenderInput
+    parent?: NexusGenInputs['UserCreateNestedOneWithoutChildInput'] | null; // UserCreateNestedOneWithoutChildInput
     password: string; // String!
     profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
+    role: NexusGenEnums['UserRole']; // UserRole!
     username: string; // String!
   }
   UserCreateManyInput: { // input type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     id?: string | null; // String
+    parentId?: string | null; // String
     password: string; // String!
+    role: NexusGenEnums['UserRole']; // UserRole!
     username: string; // String!
   }
   UserCreateNestedManyWithoutChatsInput: { // input type
@@ -1018,10 +2446,35 @@ export interface NexusGenInputs {
     connectOrCreate?: Array<NexusGenInputs['UserCreateOrConnectWithoutChatsInput'] | null> | null; // [UserCreateOrConnectWithoutChatsInput]
     create?: Array<NexusGenInputs['UserCreateWithoutChatsInput'] | null> | null; // [UserCreateWithoutChatsInput]
   }
+  UserCreateNestedManyWithoutEventsParticipatingInput: { // input type
+    connect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['UserCreateOrConnectWithoutEventsParticipatingInput'] | null> | null; // [UserCreateOrConnectWithoutEventsParticipatingInput]
+    create?: Array<NexusGenInputs['UserCreateWithoutEventsParticipatingInput'] | null> | null; // [UserCreateWithoutEventsParticipatingInput]
+  }
+  UserCreateNestedManyWithoutEventsResponsibleInput: { // input type
+    connect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['UserCreateOrConnectWithoutEventsResponsibleInput'] | null> | null; // [UserCreateOrConnectWithoutEventsResponsibleInput]
+    create?: Array<NexusGenInputs['UserCreateWithoutEventsResponsibleInput'] | null> | null; // [UserCreateWithoutEventsResponsibleInput]
+  }
+  UserCreateNestedOneWithoutChildInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutChildInput'] | null; // UserCreateOrConnectWithoutChildInput
+    create?: NexusGenInputs['UserUncheckedCreateWithoutChildInput'] | null; // UserUncheckedCreateWithoutChildInput
+  }
+  UserCreateNestedOneWithoutEventsIssuedInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutEventsIssuedInput'] | null; // UserCreateOrConnectWithoutEventsIssuedInput
+    create?: NexusGenInputs['UserUncheckedCreateWithoutEventsIssuedInput'] | null; // UserUncheckedCreateWithoutEventsIssuedInput
+  }
   UserCreateNestedOneWithoutMessagesInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
     connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutMessagesInput'] | null; // UserCreateOrConnectWithoutMessagesInput
     create?: NexusGenInputs['UserUncheckedCreateWithoutMessagesInput'] | null; // UserUncheckedCreateWithoutMessagesInput
+  }
+  UserCreateNestedOneWithoutParentInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutParentInput'] | null; // UserCreateOrConnectWithoutParentInput
+    create?: NexusGenInputs['UserUncheckedCreateWithoutParentInput'] | null; // UserUncheckedCreateWithoutParentInput
   }
   UserCreateNestedOneWithoutProfileInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
@@ -1032,8 +2485,28 @@ export interface NexusGenInputs {
     create: NexusGenInputs['UserUncheckedCreateWithoutChatsInput']; // UserUncheckedCreateWithoutChatsInput!
     where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
   }
+  UserCreateOrConnectWithoutChildInput: { // input type
+    create: NexusGenInputs['UserUncheckedCreateWithoutChildInput']; // UserUncheckedCreateWithoutChildInput!
+    where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+  }
+  UserCreateOrConnectWithoutEventsIssuedInput: { // input type
+    create: NexusGenInputs['UserUncheckedCreateWithoutEventsIssuedInput']; // UserUncheckedCreateWithoutEventsIssuedInput!
+    where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+  }
+  UserCreateOrConnectWithoutEventsParticipatingInput: { // input type
+    create: NexusGenInputs['UserUncheckedCreateWithoutEventsParticipatingInput']; // UserUncheckedCreateWithoutEventsParticipatingInput!
+    where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+  }
+  UserCreateOrConnectWithoutEventsResponsibleInput: { // input type
+    create: NexusGenInputs['UserUncheckedCreateWithoutEventsResponsibleInput']; // UserUncheckedCreateWithoutEventsResponsibleInput!
+    where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+  }
   UserCreateOrConnectWithoutMessagesInput: { // input type
     create: NexusGenInputs['UserUncheckedCreateWithoutMessagesInput']; // UserUncheckedCreateWithoutMessagesInput!
+    where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+  }
+  UserCreateOrConnectWithoutParentInput: { // input type
+    create: NexusGenInputs['UserUncheckedCreateWithoutParentInput']; // UserUncheckedCreateWithoutParentInput!
     where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
   }
   UserCreateOrConnectWithoutProfileInput: { // input type
@@ -1041,27 +2514,115 @@ export interface NexusGenInputs {
     where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
   }
   UserCreateWithoutChatsInput: { // input type
+    child?: NexusGenInputs['UserCreateNestedOneWithoutParentInput'] | null; // UserCreateNestedOneWithoutParentInput
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventCreateNestedManyWithoutIssuedByInput'] | null; // EventCreateNestedManyWithoutIssuedByInput
+    eventsParticipating?: NexusGenInputs['EventCreateNestedManyWithoutParticipantsInput'] | null; // EventCreateNestedManyWithoutParticipantsInput
+    eventsResponsible?: NexusGenInputs['EventCreateNestedManyWithoutResponsiblesInput'] | null; // EventCreateNestedManyWithoutResponsiblesInput
     id?: string | null; // String
     messages?: NexusGenInputs['MessageCreateNestedManyWithoutSenderInput'] | null; // MessageCreateNestedManyWithoutSenderInput
+    parent?: NexusGenInputs['UserCreateNestedOneWithoutChildInput'] | null; // UserCreateNestedOneWithoutChildInput
     password: string; // String!
     profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
+    role: NexusGenEnums['UserRole']; // UserRole!
+    username: string; // String!
+  }
+  UserCreateWithoutChildInput: { // input type
+    chats?: NexusGenInputs['ChatCreateNestedManyWithoutMembersInput'] | null; // ChatCreateNestedManyWithoutMembersInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventCreateNestedManyWithoutIssuedByInput'] | null; // EventCreateNestedManyWithoutIssuedByInput
+    eventsParticipating?: NexusGenInputs['EventCreateNestedManyWithoutParticipantsInput'] | null; // EventCreateNestedManyWithoutParticipantsInput
+    eventsResponsible?: NexusGenInputs['EventCreateNestedManyWithoutResponsiblesInput'] | null; // EventCreateNestedManyWithoutResponsiblesInput
+    id?: string | null; // String
+    messages?: NexusGenInputs['MessageCreateNestedManyWithoutSenderInput'] | null; // MessageCreateNestedManyWithoutSenderInput
+    parent?: NexusGenInputs['UserCreateNestedOneWithoutChildInput'] | null; // UserCreateNestedOneWithoutChildInput
+    password: string; // String!
+    profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
+    role: NexusGenEnums['UserRole']; // UserRole!
+    username: string; // String!
+  }
+  UserCreateWithoutEventsIssuedInput: { // input type
+    chats?: NexusGenInputs['ChatCreateNestedManyWithoutMembersInput'] | null; // ChatCreateNestedManyWithoutMembersInput
+    child?: NexusGenInputs['UserCreateNestedOneWithoutParentInput'] | null; // UserCreateNestedOneWithoutParentInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsParticipating?: NexusGenInputs['EventCreateNestedManyWithoutParticipantsInput'] | null; // EventCreateNestedManyWithoutParticipantsInput
+    eventsResponsible?: NexusGenInputs['EventCreateNestedManyWithoutResponsiblesInput'] | null; // EventCreateNestedManyWithoutResponsiblesInput
+    id?: string | null; // String
+    messages?: NexusGenInputs['MessageCreateNestedManyWithoutSenderInput'] | null; // MessageCreateNestedManyWithoutSenderInput
+    parent?: NexusGenInputs['UserCreateNestedOneWithoutChildInput'] | null; // UserCreateNestedOneWithoutChildInput
+    password: string; // String!
+    profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
+    role: NexusGenEnums['UserRole']; // UserRole!
+    username: string; // String!
+  }
+  UserCreateWithoutEventsParticipatingInput: { // input type
+    chats?: NexusGenInputs['ChatCreateNestedManyWithoutMembersInput'] | null; // ChatCreateNestedManyWithoutMembersInput
+    child?: NexusGenInputs['UserCreateNestedOneWithoutParentInput'] | null; // UserCreateNestedOneWithoutParentInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventCreateNestedManyWithoutIssuedByInput'] | null; // EventCreateNestedManyWithoutIssuedByInput
+    eventsResponsible?: NexusGenInputs['EventCreateNestedManyWithoutResponsiblesInput'] | null; // EventCreateNestedManyWithoutResponsiblesInput
+    id?: string | null; // String
+    messages?: NexusGenInputs['MessageCreateNestedManyWithoutSenderInput'] | null; // MessageCreateNestedManyWithoutSenderInput
+    parent?: NexusGenInputs['UserCreateNestedOneWithoutChildInput'] | null; // UserCreateNestedOneWithoutChildInput
+    password: string; // String!
+    profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
+    role: NexusGenEnums['UserRole']; // UserRole!
+    username: string; // String!
+  }
+  UserCreateWithoutEventsResponsibleInput: { // input type
+    chats?: NexusGenInputs['ChatCreateNestedManyWithoutMembersInput'] | null; // ChatCreateNestedManyWithoutMembersInput
+    child?: NexusGenInputs['UserCreateNestedOneWithoutParentInput'] | null; // UserCreateNestedOneWithoutParentInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventCreateNestedManyWithoutIssuedByInput'] | null; // EventCreateNestedManyWithoutIssuedByInput
+    eventsParticipating?: NexusGenInputs['EventCreateNestedManyWithoutParticipantsInput'] | null; // EventCreateNestedManyWithoutParticipantsInput
+    id?: string | null; // String
+    messages?: NexusGenInputs['MessageCreateNestedManyWithoutSenderInput'] | null; // MessageCreateNestedManyWithoutSenderInput
+    parent?: NexusGenInputs['UserCreateNestedOneWithoutChildInput'] | null; // UserCreateNestedOneWithoutChildInput
+    password: string; // String!
+    profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
+    role: NexusGenEnums['UserRole']; // UserRole!
     username: string; // String!
   }
   UserCreateWithoutMessagesInput: { // input type
     chats?: NexusGenInputs['ChatCreateNestedManyWithoutMembersInput'] | null; // ChatCreateNestedManyWithoutMembersInput
+    child?: NexusGenInputs['UserCreateNestedOneWithoutParentInput'] | null; // UserCreateNestedOneWithoutParentInput
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventCreateNestedManyWithoutIssuedByInput'] | null; // EventCreateNestedManyWithoutIssuedByInput
+    eventsParticipating?: NexusGenInputs['EventCreateNestedManyWithoutParticipantsInput'] | null; // EventCreateNestedManyWithoutParticipantsInput
+    eventsResponsible?: NexusGenInputs['EventCreateNestedManyWithoutResponsiblesInput'] | null; // EventCreateNestedManyWithoutResponsiblesInput
     id?: string | null; // String
+    parent?: NexusGenInputs['UserCreateNestedOneWithoutChildInput'] | null; // UserCreateNestedOneWithoutChildInput
     password: string; // String!
     profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
+    role: NexusGenEnums['UserRole']; // UserRole!
+    username: string; // String!
+  }
+  UserCreateWithoutParentInput: { // input type
+    chats?: NexusGenInputs['ChatCreateNestedManyWithoutMembersInput'] | null; // ChatCreateNestedManyWithoutMembersInput
+    child?: NexusGenInputs['UserCreateNestedOneWithoutParentInput'] | null; // UserCreateNestedOneWithoutParentInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventCreateNestedManyWithoutIssuedByInput'] | null; // EventCreateNestedManyWithoutIssuedByInput
+    eventsParticipating?: NexusGenInputs['EventCreateNestedManyWithoutParticipantsInput'] | null; // EventCreateNestedManyWithoutParticipantsInput
+    eventsResponsible?: NexusGenInputs['EventCreateNestedManyWithoutResponsiblesInput'] | null; // EventCreateNestedManyWithoutResponsiblesInput
+    id?: string | null; // String
+    messages?: NexusGenInputs['MessageCreateNestedManyWithoutSenderInput'] | null; // MessageCreateNestedManyWithoutSenderInput
+    password: string; // String!
+    profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
+    role: NexusGenEnums['UserRole']; // UserRole!
     username: string; // String!
   }
   UserCreateWithoutProfileInput: { // input type
     chats?: NexusGenInputs['ChatCreateNestedManyWithoutMembersInput'] | null; // ChatCreateNestedManyWithoutMembersInput
+    child?: NexusGenInputs['UserCreateNestedOneWithoutParentInput'] | null; // UserCreateNestedOneWithoutParentInput
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventCreateNestedManyWithoutIssuedByInput'] | null; // EventCreateNestedManyWithoutIssuedByInput
+    eventsParticipating?: NexusGenInputs['EventCreateNestedManyWithoutParticipantsInput'] | null; // EventCreateNestedManyWithoutParticipantsInput
+    eventsResponsible?: NexusGenInputs['EventCreateNestedManyWithoutResponsiblesInput'] | null; // EventCreateNestedManyWithoutResponsiblesInput
     id?: string | null; // String
     messages?: NexusGenInputs['MessageCreateNestedManyWithoutSenderInput'] | null; // MessageCreateNestedManyWithoutSenderInput
+    parent?: NexusGenInputs['UserCreateNestedOneWithoutChildInput'] | null; // UserCreateNestedOneWithoutChildInput
     password: string; // String!
+    role: NexusGenEnums['UserRole']; // UserRole!
     username: string; // String!
   }
   UserListRelationFilter: { // input type
@@ -1072,13 +2633,17 @@ export interface NexusGenInputs {
   UserMaxOrderByAggregateInput: { // input type
     createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    parentId?: NexusGenEnums['SortOrder'] | null; // SortOrder
     password?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    role?: NexusGenEnums['SortOrder'] | null; // SortOrder
     username?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   UserMinOrderByAggregateInput: { // input type
     createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    parentId?: NexusGenEnums['SortOrder'] | null; // SortOrder
     password?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    role?: NexusGenEnums['SortOrder'] | null; // SortOrder
     username?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   UserOrderByRelationAggregateInput: { // input type
@@ -1090,16 +2655,25 @@ export interface NexusGenInputs {
     _min?: NexusGenInputs['UserMinOrderByAggregateInput'] | null; // UserMinOrderByAggregateInput
     createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    parentId?: NexusGenEnums['SortOrder'] | null; // SortOrder
     password?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    role?: NexusGenEnums['SortOrder'] | null; // SortOrder
     username?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   UserOrderByWithRelationInput: { // input type
     chats?: NexusGenInputs['ChatOrderByRelationAggregateInput'] | null; // ChatOrderByRelationAggregateInput
+    child?: NexusGenInputs['UserOrderByWithRelationInput'] | null; // UserOrderByWithRelationInput
     createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    eventsIssued?: NexusGenInputs['EventOrderByRelationAggregateInput'] | null; // EventOrderByRelationAggregateInput
+    eventsParticipating?: NexusGenInputs['EventOrderByRelationAggregateInput'] | null; // EventOrderByRelationAggregateInput
+    eventsResponsible?: NexusGenInputs['EventOrderByRelationAggregateInput'] | null; // EventOrderByRelationAggregateInput
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     messages?: NexusGenInputs['MessageOrderByRelationAggregateInput'] | null; // MessageOrderByRelationAggregateInput
+    parent?: NexusGenInputs['UserOrderByWithRelationInput'] | null; // UserOrderByWithRelationInput
+    parentId?: NexusGenEnums['SortOrder'] | null; // SortOrder
     password?: NexusGenEnums['SortOrder'] | null; // SortOrder
     profile?: NexusGenInputs['ProfileOrderByWithRelationInput'] | null; // ProfileOrderByWithRelationInput
+    role?: NexusGenEnums['SortOrder'] | null; // SortOrder
     username?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   UserRelationFilter: { // input type
@@ -1112,7 +2686,9 @@ export interface NexusGenInputs {
     OR?: Array<NexusGenInputs['UserScalarWhereInput'] | null> | null; // [UserScalarWhereInput]
     createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
     id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    parentId?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     password?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    role?: NexusGenInputs['EnumUserRoleFilter'] | null; // EnumUserRoleFilter
     username?: NexusGenInputs['StringFilter'] | null; // StringFilter
   }
   UserScalarWhereWithAggregatesInput: { // input type
@@ -1121,16 +2697,24 @@ export interface NexusGenInputs {
     OR?: Array<NexusGenInputs['UserScalarWhereWithAggregatesInput'] | null> | null; // [UserScalarWhereWithAggregatesInput]
     createdAt?: NexusGenInputs['DateTimeWithAggregatesFilter'] | null; // DateTimeWithAggregatesFilter
     id?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+    parentId?: NexusGenInputs['StringNullableWithAggregatesFilter'] | null; // StringNullableWithAggregatesFilter
     password?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+    role?: NexusGenInputs['EnumUserRoleWithAggregatesFilter'] | null; // EnumUserRoleWithAggregatesFilter
     username?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
   }
   UserUncheckedCreateInput: { // input type
     chats?: NexusGenInputs['ChatUncheckedCreateNestedManyWithoutMembersInput'] | null; // ChatUncheckedCreateNestedManyWithoutMembersInput
+    child?: NexusGenInputs['UserUncheckedCreateNestedOneWithoutParentInput'] | null; // UserUncheckedCreateNestedOneWithoutParentInput
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutIssuedByInput'] | null; // EventUncheckedCreateNestedManyWithoutIssuedByInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutParticipantsInput'] | null; // EventUncheckedCreateNestedManyWithoutParticipantsInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutResponsiblesInput'] | null; // EventUncheckedCreateNestedManyWithoutResponsiblesInput
     id?: string | null; // String
     messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutSenderInput'] | null; // MessageUncheckedCreateNestedManyWithoutSenderInput
+    parentId?: string | null; // String
     password: string; // String!
     profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
+    role: NexusGenEnums['UserRole']; // UserRole!
     username: string; // String!
   }
   UserUncheckedCreateNestedManyWithoutChatsInput: { // input type
@@ -1138,43 +2722,154 @@ export interface NexusGenInputs {
     connectOrCreate?: Array<NexusGenInputs['UserCreateOrConnectWithoutChatsInput'] | null> | null; // [UserCreateOrConnectWithoutChatsInput]
     create?: Array<NexusGenInputs['UserCreateWithoutChatsInput'] | null> | null; // [UserCreateWithoutChatsInput]
   }
+  UserUncheckedCreateNestedManyWithoutEventsParticipatingInput: { // input type
+    connect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['UserCreateOrConnectWithoutEventsParticipatingInput'] | null> | null; // [UserCreateOrConnectWithoutEventsParticipatingInput]
+    create?: Array<NexusGenInputs['UserCreateWithoutEventsParticipatingInput'] | null> | null; // [UserCreateWithoutEventsParticipatingInput]
+  }
+  UserUncheckedCreateNestedManyWithoutEventsResponsibleInput: { // input type
+    connect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['UserCreateOrConnectWithoutEventsResponsibleInput'] | null> | null; // [UserCreateOrConnectWithoutEventsResponsibleInput]
+    create?: Array<NexusGenInputs['UserCreateWithoutEventsResponsibleInput'] | null> | null; // [UserCreateWithoutEventsResponsibleInput]
+  }
+  UserUncheckedCreateNestedOneWithoutParentInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutParentInput'] | null; // UserCreateOrConnectWithoutParentInput
+    create?: NexusGenInputs['UserUncheckedCreateWithoutParentInput'] | null; // UserUncheckedCreateWithoutParentInput
+  }
   UserUncheckedCreateWithoutChatsInput: { // input type
+    child?: NexusGenInputs['UserUncheckedCreateNestedOneWithoutParentInput'] | null; // UserUncheckedCreateNestedOneWithoutParentInput
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutIssuedByInput'] | null; // EventUncheckedCreateNestedManyWithoutIssuedByInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutParticipantsInput'] | null; // EventUncheckedCreateNestedManyWithoutParticipantsInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutResponsiblesInput'] | null; // EventUncheckedCreateNestedManyWithoutResponsiblesInput
     id?: string | null; // String
     messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutSenderInput'] | null; // MessageUncheckedCreateNestedManyWithoutSenderInput
+    parentId?: string | null; // String
     password: string; // String!
     profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
+    role: NexusGenEnums['UserRole']; // UserRole!
+    username: string; // String!
+  }
+  UserUncheckedCreateWithoutChildInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedCreateNestedManyWithoutMembersInput'] | null; // ChatUncheckedCreateNestedManyWithoutMembersInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutIssuedByInput'] | null; // EventUncheckedCreateNestedManyWithoutIssuedByInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutParticipantsInput'] | null; // EventUncheckedCreateNestedManyWithoutParticipantsInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutResponsiblesInput'] | null; // EventUncheckedCreateNestedManyWithoutResponsiblesInput
+    id?: string | null; // String
+    messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutSenderInput'] | null; // MessageUncheckedCreateNestedManyWithoutSenderInput
+    parentId?: string | null; // String
+    password: string; // String!
+    profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
+    role: NexusGenEnums['UserRole']; // UserRole!
+    username: string; // String!
+  }
+  UserUncheckedCreateWithoutEventsIssuedInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedCreateNestedManyWithoutMembersInput'] | null; // ChatUncheckedCreateNestedManyWithoutMembersInput
+    child?: NexusGenInputs['UserUncheckedCreateNestedOneWithoutParentInput'] | null; // UserUncheckedCreateNestedOneWithoutParentInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsParticipating?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutParticipantsInput'] | null; // EventUncheckedCreateNestedManyWithoutParticipantsInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutResponsiblesInput'] | null; // EventUncheckedCreateNestedManyWithoutResponsiblesInput
+    id?: string | null; // String
+    messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutSenderInput'] | null; // MessageUncheckedCreateNestedManyWithoutSenderInput
+    parentId?: string | null; // String
+    password: string; // String!
+    profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
+    role: NexusGenEnums['UserRole']; // UserRole!
+    username: string; // String!
+  }
+  UserUncheckedCreateWithoutEventsParticipatingInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedCreateNestedManyWithoutMembersInput'] | null; // ChatUncheckedCreateNestedManyWithoutMembersInput
+    child?: NexusGenInputs['UserUncheckedCreateNestedOneWithoutParentInput'] | null; // UserUncheckedCreateNestedOneWithoutParentInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutIssuedByInput'] | null; // EventUncheckedCreateNestedManyWithoutIssuedByInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutResponsiblesInput'] | null; // EventUncheckedCreateNestedManyWithoutResponsiblesInput
+    id?: string | null; // String
+    messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutSenderInput'] | null; // MessageUncheckedCreateNestedManyWithoutSenderInput
+    parentId?: string | null; // String
+    password: string; // String!
+    profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
+    role: NexusGenEnums['UserRole']; // UserRole!
+    username: string; // String!
+  }
+  UserUncheckedCreateWithoutEventsResponsibleInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedCreateNestedManyWithoutMembersInput'] | null; // ChatUncheckedCreateNestedManyWithoutMembersInput
+    child?: NexusGenInputs['UserUncheckedCreateNestedOneWithoutParentInput'] | null; // UserUncheckedCreateNestedOneWithoutParentInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutIssuedByInput'] | null; // EventUncheckedCreateNestedManyWithoutIssuedByInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutParticipantsInput'] | null; // EventUncheckedCreateNestedManyWithoutParticipantsInput
+    id?: string | null; // String
+    messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutSenderInput'] | null; // MessageUncheckedCreateNestedManyWithoutSenderInput
+    parentId?: string | null; // String
+    password: string; // String!
+    profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
+    role: NexusGenEnums['UserRole']; // UserRole!
     username: string; // String!
   }
   UserUncheckedCreateWithoutMessagesInput: { // input type
     chats?: NexusGenInputs['ChatUncheckedCreateNestedManyWithoutMembersInput'] | null; // ChatUncheckedCreateNestedManyWithoutMembersInput
+    child?: NexusGenInputs['UserUncheckedCreateNestedOneWithoutParentInput'] | null; // UserUncheckedCreateNestedOneWithoutParentInput
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutIssuedByInput'] | null; // EventUncheckedCreateNestedManyWithoutIssuedByInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutParticipantsInput'] | null; // EventUncheckedCreateNestedManyWithoutParticipantsInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutResponsiblesInput'] | null; // EventUncheckedCreateNestedManyWithoutResponsiblesInput
     id?: string | null; // String
+    parentId?: string | null; // String
     password: string; // String!
     profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
+    role: NexusGenEnums['UserRole']; // UserRole!
+    username: string; // String!
+  }
+  UserUncheckedCreateWithoutParentInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedCreateNestedManyWithoutMembersInput'] | null; // ChatUncheckedCreateNestedManyWithoutMembersInput
+    child?: NexusGenInputs['UserUncheckedCreateNestedOneWithoutParentInput'] | null; // UserUncheckedCreateNestedOneWithoutParentInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutIssuedByInput'] | null; // EventUncheckedCreateNestedManyWithoutIssuedByInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutParticipantsInput'] | null; // EventUncheckedCreateNestedManyWithoutParticipantsInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutResponsiblesInput'] | null; // EventUncheckedCreateNestedManyWithoutResponsiblesInput
+    id?: string | null; // String
+    messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutSenderInput'] | null; // MessageUncheckedCreateNestedManyWithoutSenderInput
+    password: string; // String!
+    profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
+    role: NexusGenEnums['UserRole']; // UserRole!
     username: string; // String!
   }
   UserUncheckedCreateWithoutProfileInput: { // input type
     chats?: NexusGenInputs['ChatUncheckedCreateNestedManyWithoutMembersInput'] | null; // ChatUncheckedCreateNestedManyWithoutMembersInput
+    child?: NexusGenInputs['UserUncheckedCreateNestedOneWithoutParentInput'] | null; // UserUncheckedCreateNestedOneWithoutParentInput
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutIssuedByInput'] | null; // EventUncheckedCreateNestedManyWithoutIssuedByInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutParticipantsInput'] | null; // EventUncheckedCreateNestedManyWithoutParticipantsInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutResponsiblesInput'] | null; // EventUncheckedCreateNestedManyWithoutResponsiblesInput
     id?: string | null; // String
     messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutSenderInput'] | null; // MessageUncheckedCreateNestedManyWithoutSenderInput
+    parentId?: string | null; // String
     password: string; // String!
+    role: NexusGenEnums['UserRole']; // UserRole!
     username: string; // String!
   }
   UserUncheckedUpdateInput: { // input type
     chats?: NexusGenInputs['ChatUncheckedUpdateManyWithoutMembersNestedInput'] | null; // ChatUncheckedUpdateManyWithoutMembersNestedInput
+    child?: NexusGenInputs['UserUncheckedUpdateOneWithoutParentNestedInput'] | null; // UserUncheckedUpdateOneWithoutParentNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUncheckedUpdateManyWithoutIssuedByNestedInput'] | null; // EventUncheckedUpdateManyWithoutIssuedByNestedInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedUpdateManyWithoutParticipantsNestedInput'] | null; // EventUncheckedUpdateManyWithoutParticipantsNestedInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUncheckedUpdateManyWithoutResponsiblesNestedInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutSenderNestedInput'] | null; // MessageUncheckedUpdateManyWithoutSenderNestedInput
+    parentId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUncheckedUpdateManyInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    parentId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUncheckedUpdateManyWithoutChatsNestedInput: { // input type
@@ -1189,53 +2884,207 @@ export interface NexusGenInputs {
     updateMany?: Array<NexusGenInputs['UserUpdateManyWithWhereWithoutChatsInput'] | null> | null; // [UserUpdateManyWithWhereWithoutChatsInput]
     upsert?: Array<NexusGenInputs['UserUpsertWithWhereUniqueWithoutChatsInput'] | null> | null; // [UserUpsertWithWhereUniqueWithoutChatsInput]
   }
+  UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput: { // input type
+    connect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['UserCreateOrConnectWithoutEventsParticipatingInput'] | null> | null; // [UserCreateOrConnectWithoutEventsParticipatingInput]
+    create?: Array<NexusGenInputs['UserCreateWithoutEventsParticipatingInput'] | null> | null; // [UserCreateWithoutEventsParticipatingInput]
+    delete?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['UserScalarWhereInput'] | null> | null; // [UserScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    set?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    update?: Array<NexusGenInputs['UserUpdateWithWhereUniqueWithoutEventsParticipatingInput'] | null> | null; // [UserUpdateWithWhereUniqueWithoutEventsParticipatingInput]
+    updateMany?: Array<NexusGenInputs['UserUpdateManyWithWhereWithoutEventsParticipatingInput'] | null> | null; // [UserUpdateManyWithWhereWithoutEventsParticipatingInput]
+    upsert?: Array<NexusGenInputs['UserUpsertWithWhereUniqueWithoutEventsParticipatingInput'] | null> | null; // [UserUpsertWithWhereUniqueWithoutEventsParticipatingInput]
+  }
+  UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput: { // input type
+    connect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['UserCreateOrConnectWithoutEventsResponsibleInput'] | null> | null; // [UserCreateOrConnectWithoutEventsResponsibleInput]
+    create?: Array<NexusGenInputs['UserCreateWithoutEventsResponsibleInput'] | null> | null; // [UserCreateWithoutEventsResponsibleInput]
+    delete?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['UserScalarWhereInput'] | null> | null; // [UserScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    set?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    update?: Array<NexusGenInputs['UserUpdateWithWhereUniqueWithoutEventsResponsibleInput'] | null> | null; // [UserUpdateWithWhereUniqueWithoutEventsResponsibleInput]
+    updateMany?: Array<NexusGenInputs['UserUpdateManyWithWhereWithoutEventsResponsibleInput'] | null> | null; // [UserUpdateManyWithWhereWithoutEventsResponsibleInput]
+    upsert?: Array<NexusGenInputs['UserUpsertWithWhereUniqueWithoutEventsResponsibleInput'] | null> | null; // [UserUpsertWithWhereUniqueWithoutEventsResponsibleInput]
+  }
   UserUncheckedUpdateManyWithoutMembersInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    parentId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
-  UserUncheckedUpdateWithoutChatsInput: { // input type
+  UserUncheckedUpdateManyWithoutParticipantsInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    parentId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUncheckedUpdateManyWithoutResponsiblesInput: { // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    parentId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUncheckedUpdateOneWithoutParentNestedInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutParentInput'] | null; // UserCreateOrConnectWithoutParentInput
+    create?: NexusGenInputs['UserUncheckedCreateWithoutParentInput'] | null; // UserUncheckedCreateWithoutParentInput
+    delete?: boolean | null; // Boolean
+    disconnect?: boolean | null; // Boolean
+    update?: NexusGenInputs['UserUncheckedUpdateWithoutParentInput'] | null; // UserUncheckedUpdateWithoutParentInput
+    upsert?: NexusGenInputs['UserUpsertWithoutParentInput'] | null; // UserUpsertWithoutParentInput
+  }
+  UserUncheckedUpdateWithoutChatsInput: { // input type
+    child?: NexusGenInputs['UserUncheckedUpdateOneWithoutParentNestedInput'] | null; // UserUncheckedUpdateOneWithoutParentNestedInput
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUncheckedUpdateManyWithoutIssuedByNestedInput'] | null; // EventUncheckedUpdateManyWithoutIssuedByNestedInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedUpdateManyWithoutParticipantsNestedInput'] | null; // EventUncheckedUpdateManyWithoutParticipantsNestedInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUncheckedUpdateManyWithoutResponsiblesNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutSenderNestedInput'] | null; // MessageUncheckedUpdateManyWithoutSenderNestedInput
+    parentId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUncheckedUpdateWithoutChildInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedUpdateManyWithoutMembersNestedInput'] | null; // ChatUncheckedUpdateManyWithoutMembersNestedInput
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUncheckedUpdateManyWithoutIssuedByNestedInput'] | null; // EventUncheckedUpdateManyWithoutIssuedByNestedInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedUpdateManyWithoutParticipantsNestedInput'] | null; // EventUncheckedUpdateManyWithoutParticipantsNestedInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUncheckedUpdateManyWithoutResponsiblesNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutSenderNestedInput'] | null; // MessageUncheckedUpdateManyWithoutSenderNestedInput
+    parentId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUncheckedUpdateWithoutEventsIssuedInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedUpdateManyWithoutMembersNestedInput'] | null; // ChatUncheckedUpdateManyWithoutMembersNestedInput
+    child?: NexusGenInputs['UserUncheckedUpdateOneWithoutParentNestedInput'] | null; // UserUncheckedUpdateOneWithoutParentNestedInput
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedUpdateManyWithoutParticipantsNestedInput'] | null; // EventUncheckedUpdateManyWithoutParticipantsNestedInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUncheckedUpdateManyWithoutResponsiblesNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutSenderNestedInput'] | null; // MessageUncheckedUpdateManyWithoutSenderNestedInput
+    parentId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUncheckedUpdateWithoutEventsParticipatingInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedUpdateManyWithoutMembersNestedInput'] | null; // ChatUncheckedUpdateManyWithoutMembersNestedInput
+    child?: NexusGenInputs['UserUncheckedUpdateOneWithoutParentNestedInput'] | null; // UserUncheckedUpdateOneWithoutParentNestedInput
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUncheckedUpdateManyWithoutIssuedByNestedInput'] | null; // EventUncheckedUpdateManyWithoutIssuedByNestedInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUncheckedUpdateManyWithoutResponsiblesNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutSenderNestedInput'] | null; // MessageUncheckedUpdateManyWithoutSenderNestedInput
+    parentId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUncheckedUpdateWithoutEventsResponsibleInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedUpdateManyWithoutMembersNestedInput'] | null; // ChatUncheckedUpdateManyWithoutMembersNestedInput
+    child?: NexusGenInputs['UserUncheckedUpdateOneWithoutParentNestedInput'] | null; // UserUncheckedUpdateOneWithoutParentNestedInput
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUncheckedUpdateManyWithoutIssuedByNestedInput'] | null; // EventUncheckedUpdateManyWithoutIssuedByNestedInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedUpdateManyWithoutParticipantsNestedInput'] | null; // EventUncheckedUpdateManyWithoutParticipantsNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutSenderNestedInput'] | null; // MessageUncheckedUpdateManyWithoutSenderNestedInput
+    parentId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUncheckedUpdateWithoutMessagesInput: { // input type
     chats?: NexusGenInputs['ChatUncheckedUpdateManyWithoutMembersNestedInput'] | null; // ChatUncheckedUpdateManyWithoutMembersNestedInput
+    child?: NexusGenInputs['UserUncheckedUpdateOneWithoutParentNestedInput'] | null; // UserUncheckedUpdateOneWithoutParentNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUncheckedUpdateManyWithoutIssuedByNestedInput'] | null; // EventUncheckedUpdateManyWithoutIssuedByNestedInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedUpdateManyWithoutParticipantsNestedInput'] | null; // EventUncheckedUpdateManyWithoutParticipantsNestedInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUncheckedUpdateManyWithoutResponsiblesNestedInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    parentId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUncheckedUpdateWithoutParentInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedUpdateManyWithoutMembersNestedInput'] | null; // ChatUncheckedUpdateManyWithoutMembersNestedInput
+    child?: NexusGenInputs['UserUncheckedUpdateOneWithoutParentNestedInput'] | null; // UserUncheckedUpdateOneWithoutParentNestedInput
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUncheckedUpdateManyWithoutIssuedByNestedInput'] | null; // EventUncheckedUpdateManyWithoutIssuedByNestedInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedUpdateManyWithoutParticipantsNestedInput'] | null; // EventUncheckedUpdateManyWithoutParticipantsNestedInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUncheckedUpdateManyWithoutResponsiblesNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutSenderNestedInput'] | null; // MessageUncheckedUpdateManyWithoutSenderNestedInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUncheckedUpdateWithoutProfileInput: { // input type
     chats?: NexusGenInputs['ChatUncheckedUpdateManyWithoutMembersNestedInput'] | null; // ChatUncheckedUpdateManyWithoutMembersNestedInput
+    child?: NexusGenInputs['UserUncheckedUpdateOneWithoutParentNestedInput'] | null; // UserUncheckedUpdateOneWithoutParentNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUncheckedUpdateManyWithoutIssuedByNestedInput'] | null; // EventUncheckedUpdateManyWithoutIssuedByNestedInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedUpdateManyWithoutParticipantsNestedInput'] | null; // EventUncheckedUpdateManyWithoutParticipantsNestedInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUncheckedUpdateManyWithoutResponsiblesNestedInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutSenderNestedInput'] | null; // MessageUncheckedUpdateManyWithoutSenderNestedInput
+    parentId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateInput: { // input type
     chats?: NexusGenInputs['ChatUpdateManyWithoutMembersNestedInput'] | null; // ChatUpdateManyWithoutMembersNestedInput
+    child?: NexusGenInputs['UserUpdateOneWithoutParentNestedInput'] | null; // UserUpdateOneWithoutParentNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUpdateManyWithoutIssuedByNestedInput'] | null; // EventUpdateManyWithoutIssuedByNestedInput
+    eventsParticipating?: NexusGenInputs['EventUpdateManyWithoutParticipantsNestedInput'] | null; // EventUpdateManyWithoutParticipantsNestedInput
+    eventsResponsible?: NexusGenInputs['EventUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUpdateManyWithoutResponsiblesNestedInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     messages?: NexusGenInputs['MessageUpdateManyWithoutSenderNestedInput'] | null; // MessageUpdateManyWithoutSenderNestedInput
+    parent?: NexusGenInputs['UserUpdateOneWithoutChildNestedInput'] | null; // UserUpdateOneWithoutChildNestedInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateManyMutationInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateManyWithWhereWithoutChatsInput: { // input type
     data: NexusGenInputs['UserUncheckedUpdateManyWithoutMembersInput']; // UserUncheckedUpdateManyWithoutMembersInput!
+    where: NexusGenInputs['UserScalarWhereInput']; // UserScalarWhereInput!
+  }
+  UserUpdateManyWithWhereWithoutEventsParticipatingInput: { // input type
+    data: NexusGenInputs['UserUncheckedUpdateManyWithoutParticipantsInput']; // UserUncheckedUpdateManyWithoutParticipantsInput!
+    where: NexusGenInputs['UserScalarWhereInput']; // UserScalarWhereInput!
+  }
+  UserUpdateManyWithWhereWithoutEventsResponsibleInput: { // input type
+    data: NexusGenInputs['UserUncheckedUpdateManyWithoutResponsiblesInput']; // UserUncheckedUpdateManyWithoutResponsiblesInput!
     where: NexusGenInputs['UserScalarWhereInput']; // UserScalarWhereInput!
   }
   UserUpdateManyWithoutChatsNestedInput: { // input type
@@ -1249,6 +3098,30 @@ export interface NexusGenInputs {
     update?: Array<NexusGenInputs['UserUpdateWithWhereUniqueWithoutChatsInput'] | null> | null; // [UserUpdateWithWhereUniqueWithoutChatsInput]
     updateMany?: Array<NexusGenInputs['UserUpdateManyWithWhereWithoutChatsInput'] | null> | null; // [UserUpdateManyWithWhereWithoutChatsInput]
     upsert?: Array<NexusGenInputs['UserUpsertWithWhereUniqueWithoutChatsInput'] | null> | null; // [UserUpsertWithWhereUniqueWithoutChatsInput]
+  }
+  UserUpdateManyWithoutEventsParticipatingNestedInput: { // input type
+    connect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['UserCreateOrConnectWithoutEventsParticipatingInput'] | null> | null; // [UserCreateOrConnectWithoutEventsParticipatingInput]
+    create?: Array<NexusGenInputs['UserCreateWithoutEventsParticipatingInput'] | null> | null; // [UserCreateWithoutEventsParticipatingInput]
+    delete?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['UserScalarWhereInput'] | null> | null; // [UserScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    set?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    update?: Array<NexusGenInputs['UserUpdateWithWhereUniqueWithoutEventsParticipatingInput'] | null> | null; // [UserUpdateWithWhereUniqueWithoutEventsParticipatingInput]
+    updateMany?: Array<NexusGenInputs['UserUpdateManyWithWhereWithoutEventsParticipatingInput'] | null> | null; // [UserUpdateManyWithWhereWithoutEventsParticipatingInput]
+    upsert?: Array<NexusGenInputs['UserUpsertWithWhereUniqueWithoutEventsParticipatingInput'] | null> | null; // [UserUpsertWithWhereUniqueWithoutEventsParticipatingInput]
+  }
+  UserUpdateManyWithoutEventsResponsibleNestedInput: { // input type
+    connect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['UserCreateOrConnectWithoutEventsResponsibleInput'] | null> | null; // [UserCreateOrConnectWithoutEventsResponsibleInput]
+    create?: Array<NexusGenInputs['UserCreateWithoutEventsResponsibleInput'] | null> | null; // [UserCreateWithoutEventsResponsibleInput]
+    delete?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['UserScalarWhereInput'] | null> | null; // [UserScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    set?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    update?: Array<NexusGenInputs['UserUpdateWithWhereUniqueWithoutEventsResponsibleInput'] | null> | null; // [UserUpdateWithWhereUniqueWithoutEventsResponsibleInput]
+    updateMany?: Array<NexusGenInputs['UserUpdateManyWithWhereWithoutEventsResponsibleInput'] | null> | null; // [UserUpdateManyWithWhereWithoutEventsResponsibleInput]
+    upsert?: Array<NexusGenInputs['UserUpsertWithWhereUniqueWithoutEventsResponsibleInput'] | null> | null; // [UserUpsertWithWhereUniqueWithoutEventsResponsibleInput]
   }
   UserUpdateOneRequiredWithoutMessagesNestedInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
@@ -1264,32 +3137,155 @@ export interface NexusGenInputs {
     update?: NexusGenInputs['UserUncheckedUpdateWithoutProfileInput'] | null; // UserUncheckedUpdateWithoutProfileInput
     upsert?: NexusGenInputs['UserUpsertWithoutProfileInput'] | null; // UserUpsertWithoutProfileInput
   }
+  UserUpdateOneWithoutChildNestedInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutChildInput'] | null; // UserCreateOrConnectWithoutChildInput
+    create?: NexusGenInputs['UserUncheckedCreateWithoutChildInput'] | null; // UserUncheckedCreateWithoutChildInput
+    delete?: boolean | null; // Boolean
+    disconnect?: boolean | null; // Boolean
+    update?: NexusGenInputs['UserUncheckedUpdateWithoutChildInput'] | null; // UserUncheckedUpdateWithoutChildInput
+    upsert?: NexusGenInputs['UserUpsertWithoutChildInput'] | null; // UserUpsertWithoutChildInput
+  }
+  UserUpdateOneWithoutEventsIssuedNestedInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutEventsIssuedInput'] | null; // UserCreateOrConnectWithoutEventsIssuedInput
+    create?: NexusGenInputs['UserUncheckedCreateWithoutEventsIssuedInput'] | null; // UserUncheckedCreateWithoutEventsIssuedInput
+    delete?: boolean | null; // Boolean
+    disconnect?: boolean | null; // Boolean
+    update?: NexusGenInputs['UserUncheckedUpdateWithoutEventsIssuedInput'] | null; // UserUncheckedUpdateWithoutEventsIssuedInput
+    upsert?: NexusGenInputs['UserUpsertWithoutEventsIssuedInput'] | null; // UserUpsertWithoutEventsIssuedInput
+  }
+  UserUpdateOneWithoutParentNestedInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutParentInput'] | null; // UserCreateOrConnectWithoutParentInput
+    create?: NexusGenInputs['UserUncheckedCreateWithoutParentInput'] | null; // UserUncheckedCreateWithoutParentInput
+    delete?: boolean | null; // Boolean
+    disconnect?: boolean | null; // Boolean
+    update?: NexusGenInputs['UserUncheckedUpdateWithoutParentInput'] | null; // UserUncheckedUpdateWithoutParentInput
+    upsert?: NexusGenInputs['UserUpsertWithoutParentInput'] | null; // UserUpsertWithoutParentInput
+  }
   UserUpdateWithWhereUniqueWithoutChatsInput: { // input type
     data: NexusGenInputs['UserUncheckedUpdateWithoutChatsInput']; // UserUncheckedUpdateWithoutChatsInput!
     where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
   }
+  UserUpdateWithWhereUniqueWithoutEventsParticipatingInput: { // input type
+    data: NexusGenInputs['UserUncheckedUpdateWithoutEventsParticipatingInput']; // UserUncheckedUpdateWithoutEventsParticipatingInput!
+    where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+  }
+  UserUpdateWithWhereUniqueWithoutEventsResponsibleInput: { // input type
+    data: NexusGenInputs['UserUncheckedUpdateWithoutEventsResponsibleInput']; // UserUncheckedUpdateWithoutEventsResponsibleInput!
+    where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+  }
   UserUpdateWithoutChatsInput: { // input type
+    child?: NexusGenInputs['UserUpdateOneWithoutParentNestedInput'] | null; // UserUpdateOneWithoutParentNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUpdateManyWithoutIssuedByNestedInput'] | null; // EventUpdateManyWithoutIssuedByNestedInput
+    eventsParticipating?: NexusGenInputs['EventUpdateManyWithoutParticipantsNestedInput'] | null; // EventUpdateManyWithoutParticipantsNestedInput
+    eventsResponsible?: NexusGenInputs['EventUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUpdateManyWithoutResponsiblesNestedInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     messages?: NexusGenInputs['MessageUpdateManyWithoutSenderNestedInput'] | null; // MessageUpdateManyWithoutSenderNestedInput
+    parent?: NexusGenInputs['UserUpdateOneWithoutChildNestedInput'] | null; // UserUpdateOneWithoutChildNestedInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUpdateWithoutChildInput: { // input type
+    chats?: NexusGenInputs['ChatUpdateManyWithoutMembersNestedInput'] | null; // ChatUpdateManyWithoutMembersNestedInput
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUpdateManyWithoutIssuedByNestedInput'] | null; // EventUpdateManyWithoutIssuedByNestedInput
+    eventsParticipating?: NexusGenInputs['EventUpdateManyWithoutParticipantsNestedInput'] | null; // EventUpdateManyWithoutParticipantsNestedInput
+    eventsResponsible?: NexusGenInputs['EventUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUpdateManyWithoutResponsiblesNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUpdateManyWithoutSenderNestedInput'] | null; // MessageUpdateManyWithoutSenderNestedInput
+    parent?: NexusGenInputs['UserUpdateOneWithoutChildNestedInput'] | null; // UserUpdateOneWithoutChildNestedInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUpdateWithoutEventsIssuedInput: { // input type
+    chats?: NexusGenInputs['ChatUpdateManyWithoutMembersNestedInput'] | null; // ChatUpdateManyWithoutMembersNestedInput
+    child?: NexusGenInputs['UserUpdateOneWithoutParentNestedInput'] | null; // UserUpdateOneWithoutParentNestedInput
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsParticipating?: NexusGenInputs['EventUpdateManyWithoutParticipantsNestedInput'] | null; // EventUpdateManyWithoutParticipantsNestedInput
+    eventsResponsible?: NexusGenInputs['EventUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUpdateManyWithoutResponsiblesNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUpdateManyWithoutSenderNestedInput'] | null; // MessageUpdateManyWithoutSenderNestedInput
+    parent?: NexusGenInputs['UserUpdateOneWithoutChildNestedInput'] | null; // UserUpdateOneWithoutChildNestedInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUpdateWithoutEventsParticipatingInput: { // input type
+    chats?: NexusGenInputs['ChatUpdateManyWithoutMembersNestedInput'] | null; // ChatUpdateManyWithoutMembersNestedInput
+    child?: NexusGenInputs['UserUpdateOneWithoutParentNestedInput'] | null; // UserUpdateOneWithoutParentNestedInput
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUpdateManyWithoutIssuedByNestedInput'] | null; // EventUpdateManyWithoutIssuedByNestedInput
+    eventsResponsible?: NexusGenInputs['EventUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUpdateManyWithoutResponsiblesNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUpdateManyWithoutSenderNestedInput'] | null; // MessageUpdateManyWithoutSenderNestedInput
+    parent?: NexusGenInputs['UserUpdateOneWithoutChildNestedInput'] | null; // UserUpdateOneWithoutChildNestedInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUpdateWithoutEventsResponsibleInput: { // input type
+    chats?: NexusGenInputs['ChatUpdateManyWithoutMembersNestedInput'] | null; // ChatUpdateManyWithoutMembersNestedInput
+    child?: NexusGenInputs['UserUpdateOneWithoutParentNestedInput'] | null; // UserUpdateOneWithoutParentNestedInput
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUpdateManyWithoutIssuedByNestedInput'] | null; // EventUpdateManyWithoutIssuedByNestedInput
+    eventsParticipating?: NexusGenInputs['EventUpdateManyWithoutParticipantsNestedInput'] | null; // EventUpdateManyWithoutParticipantsNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUpdateManyWithoutSenderNestedInput'] | null; // MessageUpdateManyWithoutSenderNestedInput
+    parent?: NexusGenInputs['UserUpdateOneWithoutChildNestedInput'] | null; // UserUpdateOneWithoutChildNestedInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateWithoutMessagesInput: { // input type
     chats?: NexusGenInputs['ChatUpdateManyWithoutMembersNestedInput'] | null; // ChatUpdateManyWithoutMembersNestedInput
+    child?: NexusGenInputs['UserUpdateOneWithoutParentNestedInput'] | null; // UserUpdateOneWithoutParentNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUpdateManyWithoutIssuedByNestedInput'] | null; // EventUpdateManyWithoutIssuedByNestedInput
+    eventsParticipating?: NexusGenInputs['EventUpdateManyWithoutParticipantsNestedInput'] | null; // EventUpdateManyWithoutParticipantsNestedInput
+    eventsResponsible?: NexusGenInputs['EventUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUpdateManyWithoutResponsiblesNestedInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    parent?: NexusGenInputs['UserUpdateOneWithoutChildNestedInput'] | null; // UserUpdateOneWithoutChildNestedInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUpdateWithoutParentInput: { // input type
+    chats?: NexusGenInputs['ChatUpdateManyWithoutMembersNestedInput'] | null; // ChatUpdateManyWithoutMembersNestedInput
+    child?: NexusGenInputs['UserUpdateOneWithoutParentNestedInput'] | null; // UserUpdateOneWithoutParentNestedInput
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUpdateManyWithoutIssuedByNestedInput'] | null; // EventUpdateManyWithoutIssuedByNestedInput
+    eventsParticipating?: NexusGenInputs['EventUpdateManyWithoutParticipantsNestedInput'] | null; // EventUpdateManyWithoutParticipantsNestedInput
+    eventsResponsible?: NexusGenInputs['EventUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUpdateManyWithoutResponsiblesNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUpdateManyWithoutSenderNestedInput'] | null; // MessageUpdateManyWithoutSenderNestedInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateWithoutProfileInput: { // input type
     chats?: NexusGenInputs['ChatUpdateManyWithoutMembersNestedInput'] | null; // ChatUpdateManyWithoutMembersNestedInput
+    child?: NexusGenInputs['UserUpdateOneWithoutParentNestedInput'] | null; // UserUpdateOneWithoutParentNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUpdateManyWithoutIssuedByNestedInput'] | null; // EventUpdateManyWithoutIssuedByNestedInput
+    eventsParticipating?: NexusGenInputs['EventUpdateManyWithoutParticipantsNestedInput'] | null; // EventUpdateManyWithoutParticipantsNestedInput
+    eventsResponsible?: NexusGenInputs['EventUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUpdateManyWithoutResponsiblesNestedInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     messages?: NexusGenInputs['MessageUpdateManyWithoutSenderNestedInput'] | null; // MessageUpdateManyWithoutSenderNestedInput
+    parent?: NexusGenInputs['UserUpdateOneWithoutChildNestedInput'] | null; // UserUpdateOneWithoutChildNestedInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpsertWithWhereUniqueWithoutChatsInput: { // input type
@@ -1297,9 +3293,31 @@ export interface NexusGenInputs {
     update: NexusGenInputs['UserUncheckedUpdateWithoutChatsInput']; // UserUncheckedUpdateWithoutChatsInput!
     where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
   }
+  UserUpsertWithWhereUniqueWithoutEventsParticipatingInput: { // input type
+    create: NexusGenInputs['UserUncheckedCreateWithoutEventsParticipatingInput']; // UserUncheckedCreateWithoutEventsParticipatingInput!
+    update: NexusGenInputs['UserUncheckedUpdateWithoutEventsParticipatingInput']; // UserUncheckedUpdateWithoutEventsParticipatingInput!
+    where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+  }
+  UserUpsertWithWhereUniqueWithoutEventsResponsibleInput: { // input type
+    create: NexusGenInputs['UserUncheckedCreateWithoutEventsResponsibleInput']; // UserUncheckedCreateWithoutEventsResponsibleInput!
+    update: NexusGenInputs['UserUncheckedUpdateWithoutEventsResponsibleInput']; // UserUncheckedUpdateWithoutEventsResponsibleInput!
+    where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+  }
+  UserUpsertWithoutChildInput: { // input type
+    create: NexusGenInputs['UserUncheckedCreateWithoutChildInput']; // UserUncheckedCreateWithoutChildInput!
+    update: NexusGenInputs['UserUncheckedUpdateWithoutChildInput']; // UserUncheckedUpdateWithoutChildInput!
+  }
+  UserUpsertWithoutEventsIssuedInput: { // input type
+    create: NexusGenInputs['UserUncheckedCreateWithoutEventsIssuedInput']; // UserUncheckedCreateWithoutEventsIssuedInput!
+    update: NexusGenInputs['UserUncheckedUpdateWithoutEventsIssuedInput']; // UserUncheckedUpdateWithoutEventsIssuedInput!
+  }
   UserUpsertWithoutMessagesInput: { // input type
     create: NexusGenInputs['UserUncheckedCreateWithoutMessagesInput']; // UserUncheckedCreateWithoutMessagesInput!
     update: NexusGenInputs['UserUncheckedUpdateWithoutMessagesInput']; // UserUncheckedUpdateWithoutMessagesInput!
+  }
+  UserUpsertWithoutParentInput: { // input type
+    create: NexusGenInputs['UserUncheckedCreateWithoutParentInput']; // UserUncheckedCreateWithoutParentInput!
+    update: NexusGenInputs['UserUncheckedUpdateWithoutParentInput']; // UserUncheckedUpdateWithoutParentInput!
   }
   UserUpsertWithoutProfileInput: { // input type
     create: NexusGenInputs['UserUncheckedCreateWithoutProfileInput']; // UserUncheckedCreateWithoutProfileInput!
@@ -1310,27 +3328,39 @@ export interface NexusGenInputs {
     NOT?: Array<NexusGenInputs['UserWhereInput'] | null> | null; // [UserWhereInput]
     OR?: Array<NexusGenInputs['UserWhereInput'] | null> | null; // [UserWhereInput]
     chats?: NexusGenInputs['ChatListRelationFilter'] | null; // ChatListRelationFilter
+    child?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    eventsIssued?: NexusGenInputs['EventListRelationFilter'] | null; // EventListRelationFilter
+    eventsParticipating?: NexusGenInputs['EventListRelationFilter'] | null; // EventListRelationFilter
+    eventsResponsible?: NexusGenInputs['EventListRelationFilter'] | null; // EventListRelationFilter
     id?: NexusGenInputs['StringFilter'] | null; // StringFilter
     messages?: NexusGenInputs['MessageListRelationFilter'] | null; // MessageListRelationFilter
+    parent?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    parentId?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     password?: NexusGenInputs['StringFilter'] | null; // StringFilter
     profile?: NexusGenInputs['ProfileWhereInput'] | null; // ProfileWhereInput
+    role?: NexusGenInputs['EnumUserRoleFilter'] | null; // EnumUserRoleFilter
     username?: NexusGenInputs['StringFilter'] | null; // StringFilter
   }
   UserWhereUniqueInput: { // input type
     id?: string | null; // String
+    parentId?: string | null; // String
     username?: string | null; // String
   }
 }
 
 export interface NexusGenEnums {
-  ChatScalarFieldEnum: "createdAt" | "id"
+  CategoryScalarFieldEnum: "id" | "title"
+  ChatScalarFieldEnum: "createdAt" | "eventId" | "id"
+  EventScalarFieldEnum: "approved" | "date" | "description" | "id" | "image" | "roomId" | "shortDescription" | "title" | "userId"
   MessageScalarFieldEnum: "chatId" | "id" | "message" | "sentDate" | "userId"
-  ProfileScalarFieldEnum: "avatar" | "bio" | "id" | "name" | "updatedAt" | "userId"
+  ProfileScalarFieldEnum: "avatar" | "bio" | "id" | "jobTitle" | "name" | "surname" | "updatedAt" | "userId"
   QueryMode: "default" | "insensitive"
+  RoomScalarFieldEnum: "id"
   SortOrder: "asc" | "desc"
   TransactionIsolationLevel: "ReadCommitted" | "ReadUncommitted" | "RepeatableRead" | "Serializable"
-  UserScalarFieldEnum: "createdAt" | "id" | "password" | "username"
+  UserRole: "Dean" | "Parent" | "Staff" | "Student"
+  UserScalarFieldEnum: "createdAt" | "id" | "parentId" | "password" | "role" | "username"
 }
 
 export interface NexusGenScalars {
@@ -1347,10 +3377,22 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  AggregateCategory: { // root type
+    _avg?: NexusGenRootTypes['CategoryAvgAggregateOutputType'] | null; // CategoryAvgAggregateOutputType
+    _count?: NexusGenRootTypes['CategoryCountAggregateOutputType'] | null; // CategoryCountAggregateOutputType
+    _max?: NexusGenRootTypes['CategoryMaxAggregateOutputType'] | null; // CategoryMaxAggregateOutputType
+    _min?: NexusGenRootTypes['CategoryMinAggregateOutputType'] | null; // CategoryMinAggregateOutputType
+    _sum?: NexusGenRootTypes['CategorySumAggregateOutputType'] | null; // CategorySumAggregateOutputType
+  }
   AggregateChat: { // root type
     _count?: NexusGenRootTypes['ChatCountAggregateOutputType'] | null; // ChatCountAggregateOutputType
     _max?: NexusGenRootTypes['ChatMaxAggregateOutputType'] | null; // ChatMaxAggregateOutputType
     _min?: NexusGenRootTypes['ChatMinAggregateOutputType'] | null; // ChatMinAggregateOutputType
+  }
+  AggregateEvent: { // root type
+    _count?: NexusGenRootTypes['EventCountAggregateOutputType'] | null; // EventCountAggregateOutputType
+    _max?: NexusGenRootTypes['EventMaxAggregateOutputType'] | null; // EventMaxAggregateOutputType
+    _min?: NexusGenRootTypes['EventMinAggregateOutputType'] | null; // EventMinAggregateOutputType
   }
   AggregateMessage: { // root type
     _count?: NexusGenRootTypes['MessageCountAggregateOutputType'] | null; // MessageCountAggregateOutputType
@@ -1362,6 +3404,11 @@ export interface NexusGenObjects {
     _max?: NexusGenRootTypes['ProfileMaxAggregateOutputType'] | null; // ProfileMaxAggregateOutputType
     _min?: NexusGenRootTypes['ProfileMinAggregateOutputType'] | null; // ProfileMinAggregateOutputType
   }
+  AggregateRoom: { // root type
+    _count?: NexusGenRootTypes['RoomCountAggregateOutputType'] | null; // RoomCountAggregateOutputType
+    _max?: NexusGenRootTypes['RoomMaxAggregateOutputType'] | null; // RoomMaxAggregateOutputType
+    _min?: NexusGenRootTypes['RoomMinAggregateOutputType'] | null; // RoomMinAggregateOutputType
+  }
   AggregateUser: { // root type
     _count?: NexusGenRootTypes['UserCountAggregateOutputType'] | null; // UserCountAggregateOutputType
     _max?: NexusGenRootTypes['UserMaxAggregateOutputType'] | null; // UserMaxAggregateOutputType
@@ -1370,13 +3417,41 @@ export interface NexusGenObjects {
   BatchPayload: { // root type
     count: number; // Int!
   }
+  Category: { // root type
+    id: number; // Int!
+    title: string; // String!
+  }
+  CategoryAvgAggregateOutputType: { // root type
+    id?: number | null; // Float
+  }
+  CategoryCountAggregateOutputType: { // root type
+    _all: number; // Int!
+    id: number; // Int!
+    title: number; // Int!
+  }
+  CategoryCountOutputType: { // root type
+    events: number; // Int!
+  }
+  CategoryMaxAggregateOutputType: { // root type
+    id?: number | null; // Int
+    title?: string | null; // String
+  }
+  CategoryMinAggregateOutputType: { // root type
+    id?: number | null; // Int
+    title?: string | null; // String
+  }
+  CategorySumAggregateOutputType: { // root type
+    id?: number | null; // Int
+  }
   Chat: { // root type
     createdAt: NexusGenScalars['DateTime']; // DateTime!
+    eventId: string; // String!
     id: string; // String!
   }
   ChatCountAggregateOutputType: { // root type
     _all: number; // Int!
     createdAt: number; // Int!
+    eventId: number; // Int!
     id: number; // Int!
   }
   ChatCountOutputType: { // root type
@@ -1385,11 +3460,63 @@ export interface NexusGenObjects {
   }
   ChatMaxAggregateOutputType: { // root type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventId?: string | null; // String
     id?: string | null; // String
   }
   ChatMinAggregateOutputType: { // root type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventId?: string | null; // String
     id?: string | null; // String
+  }
+  Event: { // root type
+    approved: boolean; // Boolean!
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    roomId: string; // String!
+    shortDescription: string; // String!
+    title: string; // String!
+    userId?: string | null; // String
+  }
+  EventCountAggregateOutputType: { // root type
+    _all: number; // Int!
+    approved: number; // Int!
+    date: number; // Int!
+    description: number; // Int!
+    id: number; // Int!
+    image: number; // Int!
+    roomId: number; // Int!
+    shortDescription: number; // Int!
+    title: number; // Int!
+    userId: number; // Int!
+  }
+  EventCountOutputType: { // root type
+    categories: number; // Int!
+    participants: number; // Int!
+    responsibles: number; // Int!
+  }
+  EventMaxAggregateOutputType: { // root type
+    approved?: boolean | null; // Boolean
+    date?: NexusGenScalars['DateTime'] | null; // DateTime
+    description?: string | null; // String
+    id?: string | null; // String
+    image?: string | null; // String
+    roomId?: string | null; // String
+    shortDescription?: string | null; // String
+    title?: string | null; // String
+    userId?: string | null; // String
+  }
+  EventMinAggregateOutputType: { // root type
+    approved?: boolean | null; // Boolean
+    date?: NexusGenScalars['DateTime'] | null; // DateTime
+    description?: string | null; // String
+    id?: string | null; // String
+    image?: string | null; // String
+    roomId?: string | null; // String
+    shortDescription?: string | null; // String
+    title?: string | null; // String
+    userId?: string | null; // String
   }
   Message: { // root type
     chatId: string; // String!
@@ -1425,7 +3552,9 @@ export interface NexusGenObjects {
     avatar?: string | null; // String
     bio?: string | null; // String
     id: string; // String!
+    jobTitle?: string | null; // String
     name?: string | null; // String
+    surname?: string | null; // String
     updatedAt: NexusGenScalars['DateTime']; // DateTime!
     userId: string; // String!
   }
@@ -1434,7 +3563,9 @@ export interface NexusGenObjects {
     avatar: number; // Int!
     bio: number; // Int!
     id: number; // Int!
+    jobTitle: number; // Int!
     name: number; // Int!
+    surname: number; // Int!
     updatedAt: number; // Int!
     userId: number; // Int!
   }
@@ -1442,7 +3573,9 @@ export interface NexusGenObjects {
     avatar?: string | null; // String
     bio?: string | null; // String
     id?: string | null; // String
+    jobTitle?: string | null; // String
     name?: string | null; // String
+    surname?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
     userId?: string | null; // String
   }
@@ -1450,11 +3583,29 @@ export interface NexusGenObjects {
     avatar?: string | null; // String
     bio?: string | null; // String
     id?: string | null; // String
+    jobTitle?: string | null; // String
     name?: string | null; // String
+    surname?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
     userId?: string | null; // String
   }
   Query: {};
+  Room: { // root type
+    id: string; // String!
+  }
+  RoomCountAggregateOutputType: { // root type
+    _all: number; // Int!
+    id: number; // Int!
+  }
+  RoomCountOutputType: { // root type
+    events: number; // Int!
+  }
+  RoomMaxAggregateOutputType: { // root type
+    id?: string | null; // String
+  }
+  RoomMinAggregateOutputType: { // root type
+    id?: string | null; // String
+  }
   Subscription: {};
   Token: { // root type
     token?: string | null; // String
@@ -1462,30 +3613,41 @@ export interface NexusGenObjects {
   User: { // root type
     createdAt: NexusGenScalars['DateTime']; // DateTime!
     id: string; // String!
+    parentId?: string | null; // String
     password: string; // String!
+    role: NexusGenEnums['UserRole']; // UserRole!
     username: string; // String!
   }
   UserCountAggregateOutputType: { // root type
     _all: number; // Int!
     createdAt: number; // Int!
     id: number; // Int!
+    parentId: number; // Int!
     password: number; // Int!
+    role: number; // Int!
     username: number; // Int!
   }
   UserCountOutputType: { // root type
     chats: number; // Int!
+    eventsIssued: number; // Int!
+    eventsParticipating: number; // Int!
+    eventsResponsible: number; // Int!
     messages: number; // Int!
   }
   UserMaxAggregateOutputType: { // root type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     id?: string | null; // String
+    parentId?: string | null; // String
     password?: string | null; // String
+    role?: NexusGenEnums['UserRole'] | null; // UserRole
     username?: string | null; // String
   }
   UserMinAggregateOutputType: { // root type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     id?: string | null; // String
+    parentId?: string | null; // String
     password?: string | null; // String
+    role?: NexusGenEnums['UserRole'] | null; // UserRole
     username?: string | null; // String
   }
 }
@@ -1501,10 +3663,22 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnums
 
 export interface NexusGenFieldTypes {
+  AggregateCategory: { // field return type
+    _avg: NexusGenRootTypes['CategoryAvgAggregateOutputType'] | null; // CategoryAvgAggregateOutputType
+    _count: NexusGenRootTypes['CategoryCountAggregateOutputType'] | null; // CategoryCountAggregateOutputType
+    _max: NexusGenRootTypes['CategoryMaxAggregateOutputType'] | null; // CategoryMaxAggregateOutputType
+    _min: NexusGenRootTypes['CategoryMinAggregateOutputType'] | null; // CategoryMinAggregateOutputType
+    _sum: NexusGenRootTypes['CategorySumAggregateOutputType'] | null; // CategorySumAggregateOutputType
+  }
   AggregateChat: { // field return type
     _count: NexusGenRootTypes['ChatCountAggregateOutputType'] | null; // ChatCountAggregateOutputType
     _max: NexusGenRootTypes['ChatMaxAggregateOutputType'] | null; // ChatMaxAggregateOutputType
     _min: NexusGenRootTypes['ChatMinAggregateOutputType'] | null; // ChatMinAggregateOutputType
+  }
+  AggregateEvent: { // field return type
+    _count: NexusGenRootTypes['EventCountAggregateOutputType'] | null; // EventCountAggregateOutputType
+    _max: NexusGenRootTypes['EventMaxAggregateOutputType'] | null; // EventMaxAggregateOutputType
+    _min: NexusGenRootTypes['EventMinAggregateOutputType'] | null; // EventMinAggregateOutputType
   }
   AggregateMessage: { // field return type
     _count: NexusGenRootTypes['MessageCountAggregateOutputType'] | null; // MessageCountAggregateOutputType
@@ -1516,6 +3690,11 @@ export interface NexusGenFieldTypes {
     _max: NexusGenRootTypes['ProfileMaxAggregateOutputType'] | null; // ProfileMaxAggregateOutputType
     _min: NexusGenRootTypes['ProfileMinAggregateOutputType'] | null; // ProfileMinAggregateOutputType
   }
+  AggregateRoom: { // field return type
+    _count: NexusGenRootTypes['RoomCountAggregateOutputType'] | null; // RoomCountAggregateOutputType
+    _max: NexusGenRootTypes['RoomMaxAggregateOutputType'] | null; // RoomMaxAggregateOutputType
+    _min: NexusGenRootTypes['RoomMinAggregateOutputType'] | null; // RoomMinAggregateOutputType
+  }
   AggregateUser: { // field return type
     _count: NexusGenRootTypes['UserCountAggregateOutputType'] | null; // UserCountAggregateOutputType
     _max: NexusGenRootTypes['UserMaxAggregateOutputType'] | null; // UserMaxAggregateOutputType
@@ -1524,9 +3703,39 @@ export interface NexusGenFieldTypes {
   BatchPayload: { // field return type
     count: number; // Int!
   }
+  Category: { // field return type
+    _count: NexusGenRootTypes['CategoryCountOutputType']; // CategoryCountOutputType!
+    events: NexusGenRootTypes['Event'][]; // [Event!]!
+    id: number; // Int!
+    title: string; // String!
+  }
+  CategoryAvgAggregateOutputType: { // field return type
+    id: number | null; // Float
+  }
+  CategoryCountAggregateOutputType: { // field return type
+    _all: number; // Int!
+    id: number; // Int!
+    title: number; // Int!
+  }
+  CategoryCountOutputType: { // field return type
+    events: number; // Int!
+  }
+  CategoryMaxAggregateOutputType: { // field return type
+    id: number | null; // Int
+    title: string | null; // String
+  }
+  CategoryMinAggregateOutputType: { // field return type
+    id: number | null; // Int
+    title: string | null; // String
+  }
+  CategorySumAggregateOutputType: { // field return type
+    id: number | null; // Int
+  }
   Chat: { // field return type
     _count: NexusGenRootTypes['ChatCountOutputType']; // ChatCountOutputType!
     createdAt: NexusGenScalars['DateTime']; // DateTime!
+    event: NexusGenRootTypes['Event']; // Event!
+    eventId: string; // String!
     id: string; // String!
     members: NexusGenRootTypes['User'][]; // [User!]!
     messages: NexusGenRootTypes['Message'][]; // [Message!]!
@@ -1534,6 +3743,7 @@ export interface NexusGenFieldTypes {
   ChatCountAggregateOutputType: { // field return type
     _all: number; // Int!
     createdAt: number; // Int!
+    eventId: number; // Int!
     id: number; // Int!
   }
   ChatCountOutputType: { // field return type
@@ -1542,11 +3752,70 @@ export interface NexusGenFieldTypes {
   }
   ChatMaxAggregateOutputType: { // field return type
     createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    eventId: string | null; // String
     id: string | null; // String
   }
   ChatMinAggregateOutputType: { // field return type
     createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    eventId: string | null; // String
     id: string | null; // String
+  }
+  Event: { // field return type
+    _count: NexusGenRootTypes['EventCountOutputType']; // EventCountOutputType!
+    approved: boolean; // Boolean!
+    categories: NexusGenRootTypes['Category'][]; // [Category!]!
+    chat: NexusGenRootTypes['Chat'] | null; // Chat
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image: string | null; // String
+    issuedBy: NexusGenRootTypes['User'] | null; // User
+    participants: NexusGenRootTypes['User'][]; // [User!]!
+    responsibles: NexusGenRootTypes['User'][]; // [User!]!
+    room: NexusGenRootTypes['Room']; // Room!
+    roomId: string; // String!
+    shortDescription: string; // String!
+    title: string; // String!
+    userId: string | null; // String
+  }
+  EventCountAggregateOutputType: { // field return type
+    _all: number; // Int!
+    approved: number; // Int!
+    date: number; // Int!
+    description: number; // Int!
+    id: number; // Int!
+    image: number; // Int!
+    roomId: number; // Int!
+    shortDescription: number; // Int!
+    title: number; // Int!
+    userId: number; // Int!
+  }
+  EventCountOutputType: { // field return type
+    categories: number; // Int!
+    participants: number; // Int!
+    responsibles: number; // Int!
+  }
+  EventMaxAggregateOutputType: { // field return type
+    approved: boolean | null; // Boolean
+    date: NexusGenScalars['DateTime'] | null; // DateTime
+    description: string | null; // String
+    id: string | null; // String
+    image: string | null; // String
+    roomId: string | null; // String
+    shortDescription: string | null; // String
+    title: string | null; // String
+    userId: string | null; // String
+  }
+  EventMinAggregateOutputType: { // field return type
+    approved: boolean | null; // Boolean
+    date: NexusGenScalars['DateTime'] | null; // DateTime
+    description: string | null; // String
+    id: string | null; // String
+    image: string | null; // String
+    roomId: string | null; // String
+    shortDescription: string | null; // String
+    title: string | null; // String
+    userId: string | null; // String
   }
   Message: { // field return type
     chat: NexusGenRootTypes['Chat']; // Chat!
@@ -1580,39 +3849,62 @@ export interface NexusGenFieldTypes {
     userId: string | null; // String
   }
   Mutation: { // field return type
+    approveEvent: NexusGenRootTypes['Event']; // Event!
+    createOneCategory: NexusGenRootTypes['Category']; // Category!
     createOneChat: NexusGenRootTypes['Chat']; // Chat!
+    createOneEvent: NexusGenRootTypes['Event']; // Event!
     createOneMessage: NexusGenRootTypes['Message']; // Message!
     createOneProfile: NexusGenRootTypes['Profile']; // Profile!
+    createOneRoom: NexusGenRootTypes['Room']; // Room!
     createOneUser: NexusGenRootTypes['User']; // User!
+    deleteManyCategory: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManyChat: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyEvent: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManyMessage: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManyProfile: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyRoom: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManyUser: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteOneCategory: NexusGenRootTypes['Category'] | null; // Category
     deleteOneChat: NexusGenRootTypes['Chat'] | null; // Chat
+    deleteOneEvent: NexusGenRootTypes['Event'] | null; // Event
     deleteOneMessage: NexusGenRootTypes['Message'] | null; // Message
     deleteOneProfile: NexusGenRootTypes['Profile'] | null; // Profile
+    deleteOneRoom: NexusGenRootTypes['Room'] | null; // Room
     deleteOneUser: NexusGenRootTypes['User'] | null; // User
+    issueEvent: NexusGenRootTypes['Event']; // Event!
     login: NexusGenRootTypes['Token']; // Token!
+    registerForEvent: NexusGenRootTypes['Event']; // Event!
     sendMessage: NexusGenRootTypes['Message']; // Message!
     signup: NexusGenRootTypes['Token']; // Token!
+    updateManyCategory: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManyChat: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyEvent: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManyMessage: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManyProfile: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyRoom: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManyUser: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateOneCategory: NexusGenRootTypes['Category']; // Category!
     updateOneChat: NexusGenRootTypes['Chat']; // Chat!
+    updateOneEvent: NexusGenRootTypes['Event']; // Event!
     updateOneMessage: NexusGenRootTypes['Message']; // Message!
     updateOneProfile: NexusGenRootTypes['Profile']; // Profile!
+    updateOneRoom: NexusGenRootTypes['Room']; // Room!
     updateOneUser: NexusGenRootTypes['User']; // User!
+    upsertOneCategory: NexusGenRootTypes['Category']; // Category!
     upsertOneChat: NexusGenRootTypes['Chat']; // Chat!
+    upsertOneEvent: NexusGenRootTypes['Event']; // Event!
     upsertOneMessage: NexusGenRootTypes['Message']; // Message!
     upsertOneProfile: NexusGenRootTypes['Profile']; // Profile!
+    upsertOneRoom: NexusGenRootTypes['Room']; // Room!
     upsertOneUser: NexusGenRootTypes['User']; // User!
   }
   Profile: { // field return type
     avatar: string | null; // String
     bio: string | null; // String
     id: string; // String!
+    jobTitle: string | null; // String
     name: string | null; // String
+    surname: string | null; // String
     updatedAt: NexusGenScalars['DateTime']; // DateTime!
     user: NexusGenRootTypes['User']; // User!
     userId: string; // String!
@@ -1622,7 +3914,9 @@ export interface NexusGenFieldTypes {
     avatar: number; // Int!
     bio: number; // Int!
     id: number; // Int!
+    jobTitle: number; // Int!
     name: number; // Int!
+    surname: number; // Int!
     updatedAt: number; // Int!
     userId: number; // Int!
   }
@@ -1630,7 +3924,9 @@ export interface NexusGenFieldTypes {
     avatar: string | null; // String
     bio: string | null; // String
     id: string | null; // String
+    jobTitle: string | null; // String
     name: string | null; // String
+    surname: string | null; // String
     updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
     userId: string | null; // String
   }
@@ -1638,32 +3934,67 @@ export interface NexusGenFieldTypes {
     avatar: string | null; // String
     bio: string | null; // String
     id: string | null; // String
+    jobTitle: string | null; // String
     name: string | null; // String
+    surname: string | null; // String
     updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
     userId: string | null; // String
   }
   Query: { // field return type
+    aggregateCategory: NexusGenRootTypes['AggregateCategory'] | null; // AggregateCategory
     aggregateChat: NexusGenRootTypes['AggregateChat'] | null; // AggregateChat
+    aggregateEvent: NexusGenRootTypes['AggregateEvent'] | null; // AggregateEvent
     aggregateMessage: NexusGenRootTypes['AggregateMessage'] | null; // AggregateMessage
     aggregateProfile: NexusGenRootTypes['AggregateProfile'] | null; // AggregateProfile
+    aggregateRoom: NexusGenRootTypes['AggregateRoom'] | null; // AggregateRoom
     aggregateUser: NexusGenRootTypes['AggregateUser'] | null; // AggregateUser
+    findFirstCategory: NexusGenRootTypes['Category'] | null; // Category
     findFirstChat: NexusGenRootTypes['Chat'] | null; // Chat
+    findFirstEvent: NexusGenRootTypes['Event'] | null; // Event
     findFirstMessage: NexusGenRootTypes['Message'] | null; // Message
     findFirstProfile: NexusGenRootTypes['Profile'] | null; // Profile
+    findFirstRoom: NexusGenRootTypes['Room'] | null; // Room
     findFirstUser: NexusGenRootTypes['User'] | null; // User
+    findManyCategory: NexusGenRootTypes['Category'][]; // [Category!]!
+    findManyCategoryCount: number; // Int!
     findManyChat: NexusGenRootTypes['Chat'][]; // [Chat!]!
     findManyChatCount: number; // Int!
+    findManyEvent: NexusGenRootTypes['Event'][]; // [Event!]!
+    findManyEventCount: number; // Int!
     findManyMessage: NexusGenRootTypes['Message'][]; // [Message!]!
     findManyMessageCount: number; // Int!
     findManyProfile: NexusGenRootTypes['Profile'][]; // [Profile!]!
     findManyProfileCount: number; // Int!
+    findManyRoom: NexusGenRootTypes['Room'][]; // [Room!]!
+    findManyRoomCount: number; // Int!
     findManyUser: NexusGenRootTypes['User'][]; // [User!]!
     findManyUserCount: number; // Int!
+    findUniqueCategory: NexusGenRootTypes['Category'] | null; // Category
     findUniqueChat: NexusGenRootTypes['Chat'] | null; // Chat
+    findUniqueEvent: NexusGenRootTypes['Event'] | null; // Event
     findUniqueMessage: NexusGenRootTypes['Message'] | null; // Message
     findUniqueProfile: NexusGenRootTypes['Profile'] | null; // Profile
+    findUniqueRoom: NexusGenRootTypes['Room'] | null; // Room
     findUniqueUser: NexusGenRootTypes['User'] | null; // User
     me: NexusGenRootTypes['User']; // User!
+  }
+  Room: { // field return type
+    _count: NexusGenRootTypes['RoomCountOutputType']; // RoomCountOutputType!
+    events: NexusGenRootTypes['Event'][]; // [Event!]!
+    id: string; // String!
+  }
+  RoomCountAggregateOutputType: { // field return type
+    _all: number; // Int!
+    id: number; // Int!
+  }
+  RoomCountOutputType: { // field return type
+    events: number; // Int!
+  }
+  RoomMaxAggregateOutputType: { // field return type
+    id: string | null; // String
+  }
+  RoomMinAggregateOutputType: { // field return type
+    id: string | null; // String
   }
   Subscription: { // field return type
     chat: NexusGenRootTypes['Message'] | null; // Message
@@ -1674,43 +4005,71 @@ export interface NexusGenFieldTypes {
   User: { // field return type
     _count: NexusGenRootTypes['UserCountOutputType']; // UserCountOutputType!
     chats: NexusGenRootTypes['Chat'][]; // [Chat!]!
+    child: NexusGenRootTypes['User'] | null; // User
     createdAt: NexusGenScalars['DateTime']; // DateTime!
+    eventsIssued: NexusGenRootTypes['Event'][]; // [Event!]!
+    eventsParticipating: NexusGenRootTypes['Event'][]; // [Event!]!
+    eventsResponsible: NexusGenRootTypes['Event'][]; // [Event!]!
     id: string; // String!
     messages: NexusGenRootTypes['Message'][]; // [Message!]!
+    parent: NexusGenRootTypes['User'] | null; // User
+    parentId: string | null; // String
     password: string; // String!
     profile: NexusGenRootTypes['Profile'] | null; // Profile
+    role: NexusGenEnums['UserRole']; // UserRole!
     username: string; // String!
   }
   UserCountAggregateOutputType: { // field return type
     _all: number; // Int!
     createdAt: number; // Int!
     id: number; // Int!
+    parentId: number; // Int!
     password: number; // Int!
+    role: number; // Int!
     username: number; // Int!
   }
   UserCountOutputType: { // field return type
     chats: number; // Int!
+    eventsIssued: number; // Int!
+    eventsParticipating: number; // Int!
+    eventsResponsible: number; // Int!
     messages: number; // Int!
   }
   UserMaxAggregateOutputType: { // field return type
     createdAt: NexusGenScalars['DateTime'] | null; // DateTime
     id: string | null; // String
+    parentId: string | null; // String
     password: string | null; // String
+    role: NexusGenEnums['UserRole'] | null; // UserRole
     username: string | null; // String
   }
   UserMinAggregateOutputType: { // field return type
     createdAt: NexusGenScalars['DateTime'] | null; // DateTime
     id: string | null; // String
+    parentId: string | null; // String
     password: string | null; // String
+    role: NexusGenEnums['UserRole'] | null; // UserRole
     username: string | null; // String
   }
 }
 
 export interface NexusGenFieldTypeNames {
+  AggregateCategory: { // field return type name
+    _avg: 'CategoryAvgAggregateOutputType'
+    _count: 'CategoryCountAggregateOutputType'
+    _max: 'CategoryMaxAggregateOutputType'
+    _min: 'CategoryMinAggregateOutputType'
+    _sum: 'CategorySumAggregateOutputType'
+  }
   AggregateChat: { // field return type name
     _count: 'ChatCountAggregateOutputType'
     _max: 'ChatMaxAggregateOutputType'
     _min: 'ChatMinAggregateOutputType'
+  }
+  AggregateEvent: { // field return type name
+    _count: 'EventCountAggregateOutputType'
+    _max: 'EventMaxAggregateOutputType'
+    _min: 'EventMinAggregateOutputType'
   }
   AggregateMessage: { // field return type name
     _count: 'MessageCountAggregateOutputType'
@@ -1722,6 +4081,11 @@ export interface NexusGenFieldTypeNames {
     _max: 'ProfileMaxAggregateOutputType'
     _min: 'ProfileMinAggregateOutputType'
   }
+  AggregateRoom: { // field return type name
+    _count: 'RoomCountAggregateOutputType'
+    _max: 'RoomMaxAggregateOutputType'
+    _min: 'RoomMinAggregateOutputType'
+  }
   AggregateUser: { // field return type name
     _count: 'UserCountAggregateOutputType'
     _max: 'UserMaxAggregateOutputType'
@@ -1730,9 +4094,39 @@ export interface NexusGenFieldTypeNames {
   BatchPayload: { // field return type name
     count: 'Int'
   }
+  Category: { // field return type name
+    _count: 'CategoryCountOutputType'
+    events: 'Event'
+    id: 'Int'
+    title: 'String'
+  }
+  CategoryAvgAggregateOutputType: { // field return type name
+    id: 'Float'
+  }
+  CategoryCountAggregateOutputType: { // field return type name
+    _all: 'Int'
+    id: 'Int'
+    title: 'Int'
+  }
+  CategoryCountOutputType: { // field return type name
+    events: 'Int'
+  }
+  CategoryMaxAggregateOutputType: { // field return type name
+    id: 'Int'
+    title: 'String'
+  }
+  CategoryMinAggregateOutputType: { // field return type name
+    id: 'Int'
+    title: 'String'
+  }
+  CategorySumAggregateOutputType: { // field return type name
+    id: 'Int'
+  }
   Chat: { // field return type name
     _count: 'ChatCountOutputType'
     createdAt: 'DateTime'
+    event: 'Event'
+    eventId: 'String'
     id: 'String'
     members: 'User'
     messages: 'Message'
@@ -1740,6 +4134,7 @@ export interface NexusGenFieldTypeNames {
   ChatCountAggregateOutputType: { // field return type name
     _all: 'Int'
     createdAt: 'Int'
+    eventId: 'Int'
     id: 'Int'
   }
   ChatCountOutputType: { // field return type name
@@ -1748,11 +4143,70 @@ export interface NexusGenFieldTypeNames {
   }
   ChatMaxAggregateOutputType: { // field return type name
     createdAt: 'DateTime'
+    eventId: 'String'
     id: 'String'
   }
   ChatMinAggregateOutputType: { // field return type name
     createdAt: 'DateTime'
+    eventId: 'String'
     id: 'String'
+  }
+  Event: { // field return type name
+    _count: 'EventCountOutputType'
+    approved: 'Boolean'
+    categories: 'Category'
+    chat: 'Chat'
+    date: 'DateTime'
+    description: 'String'
+    id: 'String'
+    image: 'String'
+    issuedBy: 'User'
+    participants: 'User'
+    responsibles: 'User'
+    room: 'Room'
+    roomId: 'String'
+    shortDescription: 'String'
+    title: 'String'
+    userId: 'String'
+  }
+  EventCountAggregateOutputType: { // field return type name
+    _all: 'Int'
+    approved: 'Int'
+    date: 'Int'
+    description: 'Int'
+    id: 'Int'
+    image: 'Int'
+    roomId: 'Int'
+    shortDescription: 'Int'
+    title: 'Int'
+    userId: 'Int'
+  }
+  EventCountOutputType: { // field return type name
+    categories: 'Int'
+    participants: 'Int'
+    responsibles: 'Int'
+  }
+  EventMaxAggregateOutputType: { // field return type name
+    approved: 'Boolean'
+    date: 'DateTime'
+    description: 'String'
+    id: 'String'
+    image: 'String'
+    roomId: 'String'
+    shortDescription: 'String'
+    title: 'String'
+    userId: 'String'
+  }
+  EventMinAggregateOutputType: { // field return type name
+    approved: 'Boolean'
+    date: 'DateTime'
+    description: 'String'
+    id: 'String'
+    image: 'String'
+    roomId: 'String'
+    shortDescription: 'String'
+    title: 'String'
+    userId: 'String'
   }
   Message: { // field return type name
     chat: 'Chat'
@@ -1786,39 +4240,62 @@ export interface NexusGenFieldTypeNames {
     userId: 'String'
   }
   Mutation: { // field return type name
+    approveEvent: 'Event'
+    createOneCategory: 'Category'
     createOneChat: 'Chat'
+    createOneEvent: 'Event'
     createOneMessage: 'Message'
     createOneProfile: 'Profile'
+    createOneRoom: 'Room'
     createOneUser: 'User'
+    deleteManyCategory: 'BatchPayload'
     deleteManyChat: 'BatchPayload'
+    deleteManyEvent: 'BatchPayload'
     deleteManyMessage: 'BatchPayload'
     deleteManyProfile: 'BatchPayload'
+    deleteManyRoom: 'BatchPayload'
     deleteManyUser: 'BatchPayload'
+    deleteOneCategory: 'Category'
     deleteOneChat: 'Chat'
+    deleteOneEvent: 'Event'
     deleteOneMessage: 'Message'
     deleteOneProfile: 'Profile'
+    deleteOneRoom: 'Room'
     deleteOneUser: 'User'
+    issueEvent: 'Event'
     login: 'Token'
+    registerForEvent: 'Event'
     sendMessage: 'Message'
     signup: 'Token'
+    updateManyCategory: 'BatchPayload'
     updateManyChat: 'BatchPayload'
+    updateManyEvent: 'BatchPayload'
     updateManyMessage: 'BatchPayload'
     updateManyProfile: 'BatchPayload'
+    updateManyRoom: 'BatchPayload'
     updateManyUser: 'BatchPayload'
+    updateOneCategory: 'Category'
     updateOneChat: 'Chat'
+    updateOneEvent: 'Event'
     updateOneMessage: 'Message'
     updateOneProfile: 'Profile'
+    updateOneRoom: 'Room'
     updateOneUser: 'User'
+    upsertOneCategory: 'Category'
     upsertOneChat: 'Chat'
+    upsertOneEvent: 'Event'
     upsertOneMessage: 'Message'
     upsertOneProfile: 'Profile'
+    upsertOneRoom: 'Room'
     upsertOneUser: 'User'
   }
   Profile: { // field return type name
     avatar: 'String'
     bio: 'String'
     id: 'String'
+    jobTitle: 'String'
     name: 'String'
+    surname: 'String'
     updatedAt: 'DateTime'
     user: 'User'
     userId: 'String'
@@ -1828,7 +4305,9 @@ export interface NexusGenFieldTypeNames {
     avatar: 'Int'
     bio: 'Int'
     id: 'Int'
+    jobTitle: 'Int'
     name: 'Int'
+    surname: 'Int'
     updatedAt: 'Int'
     userId: 'Int'
   }
@@ -1836,7 +4315,9 @@ export interface NexusGenFieldTypeNames {
     avatar: 'String'
     bio: 'String'
     id: 'String'
+    jobTitle: 'String'
     name: 'String'
+    surname: 'String'
     updatedAt: 'DateTime'
     userId: 'String'
   }
@@ -1844,32 +4325,67 @@ export interface NexusGenFieldTypeNames {
     avatar: 'String'
     bio: 'String'
     id: 'String'
+    jobTitle: 'String'
     name: 'String'
+    surname: 'String'
     updatedAt: 'DateTime'
     userId: 'String'
   }
   Query: { // field return type name
+    aggregateCategory: 'AggregateCategory'
     aggregateChat: 'AggregateChat'
+    aggregateEvent: 'AggregateEvent'
     aggregateMessage: 'AggregateMessage'
     aggregateProfile: 'AggregateProfile'
+    aggregateRoom: 'AggregateRoom'
     aggregateUser: 'AggregateUser'
+    findFirstCategory: 'Category'
     findFirstChat: 'Chat'
+    findFirstEvent: 'Event'
     findFirstMessage: 'Message'
     findFirstProfile: 'Profile'
+    findFirstRoom: 'Room'
     findFirstUser: 'User'
+    findManyCategory: 'Category'
+    findManyCategoryCount: 'Int'
     findManyChat: 'Chat'
     findManyChatCount: 'Int'
+    findManyEvent: 'Event'
+    findManyEventCount: 'Int'
     findManyMessage: 'Message'
     findManyMessageCount: 'Int'
     findManyProfile: 'Profile'
     findManyProfileCount: 'Int'
+    findManyRoom: 'Room'
+    findManyRoomCount: 'Int'
     findManyUser: 'User'
     findManyUserCount: 'Int'
+    findUniqueCategory: 'Category'
     findUniqueChat: 'Chat'
+    findUniqueEvent: 'Event'
     findUniqueMessage: 'Message'
     findUniqueProfile: 'Profile'
+    findUniqueRoom: 'Room'
     findUniqueUser: 'User'
     me: 'User'
+  }
+  Room: { // field return type name
+    _count: 'RoomCountOutputType'
+    events: 'Event'
+    id: 'String'
+  }
+  RoomCountAggregateOutputType: { // field return type name
+    _all: 'Int'
+    id: 'Int'
+  }
+  RoomCountOutputType: { // field return type name
+    events: 'Int'
+  }
+  RoomMaxAggregateOutputType: { // field return type name
+    id: 'String'
+  }
+  RoomMinAggregateOutputType: { // field return type name
+    id: 'String'
   }
   Subscription: { // field return type name
     chat: 'Message'
@@ -1880,39 +4396,65 @@ export interface NexusGenFieldTypeNames {
   User: { // field return type name
     _count: 'UserCountOutputType'
     chats: 'Chat'
+    child: 'User'
     createdAt: 'DateTime'
+    eventsIssued: 'Event'
+    eventsParticipating: 'Event'
+    eventsResponsible: 'Event'
     id: 'String'
     messages: 'Message'
+    parent: 'User'
+    parentId: 'String'
     password: 'String'
     profile: 'Profile'
+    role: 'UserRole'
     username: 'String'
   }
   UserCountAggregateOutputType: { // field return type name
     _all: 'Int'
     createdAt: 'Int'
     id: 'Int'
+    parentId: 'Int'
     password: 'Int'
+    role: 'Int'
     username: 'Int'
   }
   UserCountOutputType: { // field return type name
     chats: 'Int'
+    eventsIssued: 'Int'
+    eventsParticipating: 'Int'
+    eventsResponsible: 'Int'
     messages: 'Int'
   }
   UserMaxAggregateOutputType: { // field return type name
     createdAt: 'DateTime'
     id: 'String'
+    parentId: 'String'
     password: 'String'
+    role: 'UserRole'
     username: 'String'
   }
   UserMinAggregateOutputType: { // field return type name
     createdAt: 'DateTime'
     id: 'String'
+    parentId: 'String'
     password: 'String'
+    role: 'UserRole'
     username: 'String'
   }
 }
 
 export interface NexusGenArgTypes {
+  Category: {
+    events: { // args
+      cursor?: NexusGenInputs['EventWhereUniqueInput'] | null; // EventWhereUniqueInput
+      distinct?: NexusGenEnums['EventScalarFieldEnum'] | null; // EventScalarFieldEnum
+      orderBy?: NexusGenInputs['EventOrderByWithRelationInput'] | null; // EventOrderByWithRelationInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
+    }
+  }
   Chat: {
     members: { // args
       cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
@@ -1931,9 +4473,44 @@ export interface NexusGenArgTypes {
       where?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
     }
   }
+  Event: {
+    categories: { // args
+      cursor?: NexusGenInputs['CategoryWhereUniqueInput'] | null; // CategoryWhereUniqueInput
+      distinct?: NexusGenEnums['CategoryScalarFieldEnum'] | null; // CategoryScalarFieldEnum
+      orderBy?: NexusGenInputs['CategoryOrderByWithRelationInput'] | null; // CategoryOrderByWithRelationInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['CategoryWhereInput'] | null; // CategoryWhereInput
+    }
+    participants: { // args
+      cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+      distinct?: NexusGenEnums['UserScalarFieldEnum'] | null; // UserScalarFieldEnum
+      orderBy?: NexusGenInputs['UserOrderByWithRelationInput'] | null; // UserOrderByWithRelationInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    }
+    responsibles: { // args
+      cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+      distinct?: NexusGenEnums['UserScalarFieldEnum'] | null; // UserScalarFieldEnum
+      orderBy?: NexusGenInputs['UserOrderByWithRelationInput'] | null; // UserOrderByWithRelationInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    }
+  }
   Mutation: {
+    approveEvent: { // args
+      eventId: string; // String!
+    }
+    createOneCategory: { // args
+      data: NexusGenInputs['CategoryCreateInput']; // CategoryCreateInput!
+    }
     createOneChat: { // args
       data: NexusGenInputs['ChatCreateInput']; // ChatCreateInput!
+    }
+    createOneEvent: { // args
+      data: NexusGenInputs['EventCreateInput']; // EventCreateInput!
     }
     createOneMessage: { // args
       data: NexusGenInputs['MessageCreateInput']; // MessageCreateInput!
@@ -1941,11 +4518,20 @@ export interface NexusGenArgTypes {
     createOneProfile: { // args
       data: NexusGenInputs['ProfileCreateInput']; // ProfileCreateInput!
     }
+    createOneRoom: { // args
+      data: NexusGenInputs['RoomCreateInput']; // RoomCreateInput!
+    }
     createOneUser: { // args
       data: NexusGenInputs['UserCreateInput']; // UserCreateInput!
     }
+    deleteManyCategory: { // args
+      where?: NexusGenInputs['CategoryWhereInput'] | null; // CategoryWhereInput
+    }
     deleteManyChat: { // args
       where?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    }
+    deleteManyEvent: { // args
+      where?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
     }
     deleteManyMessage: { // args
       where?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
@@ -1953,11 +4539,20 @@ export interface NexusGenArgTypes {
     deleteManyProfile: { // args
       where?: NexusGenInputs['ProfileWhereInput'] | null; // ProfileWhereInput
     }
+    deleteManyRoom: { // args
+      where?: NexusGenInputs['RoomWhereInput'] | null; // RoomWhereInput
+    }
     deleteManyUser: { // args
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
+    deleteOneCategory: { // args
+      where: NexusGenInputs['CategoryWhereUniqueInput']; // CategoryWhereUniqueInput!
+    }
     deleteOneChat: { // args
       where: NexusGenInputs['ChatWhereUniqueInput']; // ChatWhereUniqueInput!
+    }
+    deleteOneEvent: { // args
+      where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
     }
     deleteOneMessage: { // args
       where: NexusGenInputs['MessageWhereUniqueInput']; // MessageWhereUniqueInput!
@@ -1965,11 +4560,20 @@ export interface NexusGenArgTypes {
     deleteOneProfile: { // args
       where: NexusGenInputs['ProfileWhereUniqueInput']; // ProfileWhereUniqueInput!
     }
+    deleteOneRoom: { // args
+      where: NexusGenInputs['RoomWhereUniqueInput']; // RoomWhereUniqueInput!
+    }
     deleteOneUser: { // args
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
     }
+    issueEvent: { // args
+      data: NexusGenInputs['IssueEventInput']; // IssueEventInput!
+    }
     login: { // args
       data: NexusGenInputs['SignInInput']; // SignInInput!
+    }
+    registerForEvent: { // args
+      eventId: string; // String!
     }
     sendMessage: { // args
       data: NexusGenInputs['SendMessageInput']; // SendMessageInput!
@@ -1977,9 +4581,17 @@ export interface NexusGenArgTypes {
     signup: { // args
       data: NexusGenInputs['SignUpInput']; // SignUpInput!
     }
+    updateManyCategory: { // args
+      data: NexusGenInputs['CategoryUpdateManyMutationInput']; // CategoryUpdateManyMutationInput!
+      where?: NexusGenInputs['CategoryWhereInput'] | null; // CategoryWhereInput
+    }
     updateManyChat: { // args
       data: NexusGenInputs['ChatUpdateManyMutationInput']; // ChatUpdateManyMutationInput!
       where?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    }
+    updateManyEvent: { // args
+      data: NexusGenInputs['EventUpdateManyMutationInput']; // EventUpdateManyMutationInput!
+      where?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
     }
     updateManyMessage: { // args
       data: NexusGenInputs['MessageUpdateManyMutationInput']; // MessageUpdateManyMutationInput!
@@ -1989,13 +4601,25 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['ProfileUpdateManyMutationInput']; // ProfileUpdateManyMutationInput!
       where?: NexusGenInputs['ProfileWhereInput'] | null; // ProfileWhereInput
     }
+    updateManyRoom: { // args
+      data: NexusGenInputs['RoomUpdateManyMutationInput']; // RoomUpdateManyMutationInput!
+      where?: NexusGenInputs['RoomWhereInput'] | null; // RoomWhereInput
+    }
     updateManyUser: { // args
       data: NexusGenInputs['UserUpdateManyMutationInput']; // UserUpdateManyMutationInput!
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
+    updateOneCategory: { // args
+      data: NexusGenInputs['CategoryUpdateInput']; // CategoryUpdateInput!
+      where: NexusGenInputs['CategoryWhereUniqueInput']; // CategoryWhereUniqueInput!
+    }
     updateOneChat: { // args
       data: NexusGenInputs['ChatUpdateInput']; // ChatUpdateInput!
       where: NexusGenInputs['ChatWhereUniqueInput']; // ChatWhereUniqueInput!
+    }
+    updateOneEvent: { // args
+      data: NexusGenInputs['EventUpdateInput']; // EventUpdateInput!
+      where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
     }
     updateOneMessage: { // args
       data: NexusGenInputs['MessageUpdateInput']; // MessageUpdateInput!
@@ -2005,14 +4629,28 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['ProfileUpdateInput']; // ProfileUpdateInput!
       where: NexusGenInputs['ProfileWhereUniqueInput']; // ProfileWhereUniqueInput!
     }
+    updateOneRoom: { // args
+      data: NexusGenInputs['RoomUpdateInput']; // RoomUpdateInput!
+      where: NexusGenInputs['RoomWhereUniqueInput']; // RoomWhereUniqueInput!
+    }
     updateOneUser: { // args
       data: NexusGenInputs['UserUpdateInput']; // UserUpdateInput!
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+    }
+    upsertOneCategory: { // args
+      create: NexusGenInputs['CategoryCreateInput']; // CategoryCreateInput!
+      update: NexusGenInputs['CategoryUpdateInput']; // CategoryUpdateInput!
+      where: NexusGenInputs['CategoryWhereUniqueInput']; // CategoryWhereUniqueInput!
     }
     upsertOneChat: { // args
       create: NexusGenInputs['ChatCreateInput']; // ChatCreateInput!
       update: NexusGenInputs['ChatUpdateInput']; // ChatUpdateInput!
       where: NexusGenInputs['ChatWhereUniqueInput']; // ChatWhereUniqueInput!
+    }
+    upsertOneEvent: { // args
+      create: NexusGenInputs['EventCreateInput']; // EventCreateInput!
+      update: NexusGenInputs['EventUpdateInput']; // EventUpdateInput!
+      where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
     }
     upsertOneMessage: { // args
       create: NexusGenInputs['MessageCreateInput']; // MessageCreateInput!
@@ -2024,6 +4662,11 @@ export interface NexusGenArgTypes {
       update: NexusGenInputs['ProfileUpdateInput']; // ProfileUpdateInput!
       where: NexusGenInputs['ProfileWhereUniqueInput']; // ProfileWhereUniqueInput!
     }
+    upsertOneRoom: { // args
+      create: NexusGenInputs['RoomCreateInput']; // RoomCreateInput!
+      update: NexusGenInputs['RoomUpdateInput']; // RoomUpdateInput!
+      where: NexusGenInputs['RoomWhereUniqueInput']; // RoomWhereUniqueInput!
+    }
     upsertOneUser: { // args
       create: NexusGenInputs['UserCreateInput']; // UserCreateInput!
       update: NexusGenInputs['UserUpdateInput']; // UserUpdateInput!
@@ -2031,12 +4674,26 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
+    aggregateCategory: { // args
+      cursor?: NexusGenInputs['CategoryWhereUniqueInput'] | null; // CategoryWhereUniqueInput
+      orderBy?: Array<NexusGenInputs['CategoryOrderByWithRelationInput'] | null> | null; // [CategoryOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['CategoryWhereInput'] | null; // CategoryWhereInput
+    }
     aggregateChat: { // args
       cursor?: NexusGenInputs['ChatWhereUniqueInput'] | null; // ChatWhereUniqueInput
       orderBy?: Array<NexusGenInputs['ChatOrderByWithRelationInput'] | null> | null; // [ChatOrderByWithRelationInput]
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    }
+    aggregateEvent: { // args
+      cursor?: NexusGenInputs['EventWhereUniqueInput'] | null; // EventWhereUniqueInput
+      orderBy?: Array<NexusGenInputs['EventOrderByWithRelationInput'] | null> | null; // [EventOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
     }
     aggregateMessage: { // args
       cursor?: NexusGenInputs['MessageWhereUniqueInput'] | null; // MessageWhereUniqueInput
@@ -2052,12 +4709,27 @@ export interface NexusGenArgTypes {
       take?: number | null; // Int
       where?: NexusGenInputs['ProfileWhereInput'] | null; // ProfileWhereInput
     }
+    aggregateRoom: { // args
+      cursor?: NexusGenInputs['RoomWhereUniqueInput'] | null; // RoomWhereUniqueInput
+      orderBy?: Array<NexusGenInputs['RoomOrderByWithRelationInput'] | null> | null; // [RoomOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['RoomWhereInput'] | null; // RoomWhereInput
+    }
     aggregateUser: { // args
       cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
       orderBy?: Array<NexusGenInputs['UserOrderByWithRelationInput'] | null> | null; // [UserOrderByWithRelationInput]
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    }
+    findFirstCategory: { // args
+      cursor?: NexusGenInputs['CategoryWhereUniqueInput'] | null; // CategoryWhereUniqueInput
+      distinct?: Array<NexusGenEnums['CategoryScalarFieldEnum'] | null> | null; // [CategoryScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['CategoryOrderByWithRelationInput'] | null> | null; // [CategoryOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['CategoryWhereInput'] | null; // CategoryWhereInput
     }
     findFirstChat: { // args
       cursor?: NexusGenInputs['ChatWhereUniqueInput'] | null; // ChatWhereUniqueInput
@@ -2066,6 +4738,14 @@ export interface NexusGenArgTypes {
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    }
+    findFirstEvent: { // args
+      cursor?: NexusGenInputs['EventWhereUniqueInput'] | null; // EventWhereUniqueInput
+      distinct?: Array<NexusGenEnums['EventScalarFieldEnum'] | null> | null; // [EventScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['EventOrderByWithRelationInput'] | null> | null; // [EventOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
     }
     findFirstMessage: { // args
       cursor?: NexusGenInputs['MessageWhereUniqueInput'] | null; // MessageWhereUniqueInput
@@ -2083,6 +4763,14 @@ export interface NexusGenArgTypes {
       take?: number | null; // Int
       where?: NexusGenInputs['ProfileWhereInput'] | null; // ProfileWhereInput
     }
+    findFirstRoom: { // args
+      cursor?: NexusGenInputs['RoomWhereUniqueInput'] | null; // RoomWhereUniqueInput
+      distinct?: Array<NexusGenEnums['RoomScalarFieldEnum'] | null> | null; // [RoomScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['RoomOrderByWithRelationInput'] | null> | null; // [RoomOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['RoomWhereInput'] | null; // RoomWhereInput
+    }
     findFirstUser: { // args
       cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
       distinct?: Array<NexusGenEnums['UserScalarFieldEnum'] | null> | null; // [UserScalarFieldEnum]
@@ -2090,6 +4778,22 @@ export interface NexusGenArgTypes {
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    }
+    findManyCategory: { // args
+      cursor?: NexusGenInputs['CategoryWhereUniqueInput'] | null; // CategoryWhereUniqueInput
+      distinct?: Array<NexusGenEnums['CategoryScalarFieldEnum'] | null> | null; // [CategoryScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['CategoryOrderByWithRelationInput'] | null> | null; // [CategoryOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['CategoryWhereInput'] | null; // CategoryWhereInput
+    }
+    findManyCategoryCount: { // args
+      cursor?: NexusGenInputs['CategoryWhereUniqueInput'] | null; // CategoryWhereUniqueInput
+      distinct?: Array<NexusGenEnums['CategoryScalarFieldEnum'] | null> | null; // [CategoryScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['CategoryOrderByWithRelationInput'] | null> | null; // [CategoryOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['CategoryWhereInput'] | null; // CategoryWhereInput
     }
     findManyChat: { // args
       cursor?: NexusGenInputs['ChatWhereUniqueInput'] | null; // ChatWhereUniqueInput
@@ -2106,6 +4810,22 @@ export interface NexusGenArgTypes {
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    }
+    findManyEvent: { // args
+      cursor?: NexusGenInputs['EventWhereUniqueInput'] | null; // EventWhereUniqueInput
+      distinct?: Array<NexusGenEnums['EventScalarFieldEnum'] | null> | null; // [EventScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['EventOrderByWithRelationInput'] | null> | null; // [EventOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
+    }
+    findManyEventCount: { // args
+      cursor?: NexusGenInputs['EventWhereUniqueInput'] | null; // EventWhereUniqueInput
+      distinct?: Array<NexusGenEnums['EventScalarFieldEnum'] | null> | null; // [EventScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['EventOrderByWithRelationInput'] | null> | null; // [EventOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
     }
     findManyMessage: { // args
       cursor?: NexusGenInputs['MessageWhereUniqueInput'] | null; // MessageWhereUniqueInput
@@ -2139,6 +4859,22 @@ export interface NexusGenArgTypes {
       take?: number | null; // Int
       where?: NexusGenInputs['ProfileWhereInput'] | null; // ProfileWhereInput
     }
+    findManyRoom: { // args
+      cursor?: NexusGenInputs['RoomWhereUniqueInput'] | null; // RoomWhereUniqueInput
+      distinct?: Array<NexusGenEnums['RoomScalarFieldEnum'] | null> | null; // [RoomScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['RoomOrderByWithRelationInput'] | null> | null; // [RoomOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['RoomWhereInput'] | null; // RoomWhereInput
+    }
+    findManyRoomCount: { // args
+      cursor?: NexusGenInputs['RoomWhereUniqueInput'] | null; // RoomWhereUniqueInput
+      distinct?: Array<NexusGenEnums['RoomScalarFieldEnum'] | null> | null; // [RoomScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['RoomOrderByWithRelationInput'] | null> | null; // [RoomOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['RoomWhereInput'] | null; // RoomWhereInput
+    }
     findManyUser: { // args
       cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
       distinct?: Array<NexusGenEnums['UserScalarFieldEnum'] | null> | null; // [UserScalarFieldEnum]
@@ -2155,8 +4891,14 @@ export interface NexusGenArgTypes {
       take?: number | null; // Int
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
+    findUniqueCategory: { // args
+      where: NexusGenInputs['CategoryWhereUniqueInput']; // CategoryWhereUniqueInput!
+    }
     findUniqueChat: { // args
       where: NexusGenInputs['ChatWhereUniqueInput']; // ChatWhereUniqueInput!
+    }
+    findUniqueEvent: { // args
+      where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
     }
     findUniqueMessage: { // args
       where: NexusGenInputs['MessageWhereUniqueInput']; // MessageWhereUniqueInput!
@@ -2164,8 +4906,21 @@ export interface NexusGenArgTypes {
     findUniqueProfile: { // args
       where: NexusGenInputs['ProfileWhereUniqueInput']; // ProfileWhereUniqueInput!
     }
+    findUniqueRoom: { // args
+      where: NexusGenInputs['RoomWhereUniqueInput']; // RoomWhereUniqueInput!
+    }
     findUniqueUser: { // args
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+    }
+  }
+  Room: {
+    events: { // args
+      cursor?: NexusGenInputs['EventWhereUniqueInput'] | null; // EventWhereUniqueInput
+      distinct?: NexusGenEnums['EventScalarFieldEnum'] | null; // EventScalarFieldEnum
+      orderBy?: NexusGenInputs['EventOrderByWithRelationInput'] | null; // EventOrderByWithRelationInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
     }
   }
   Subscription: {
@@ -2181,6 +4936,30 @@ export interface NexusGenArgTypes {
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    }
+    eventsIssued: { // args
+      cursor?: NexusGenInputs['EventWhereUniqueInput'] | null; // EventWhereUniqueInput
+      distinct?: NexusGenEnums['EventScalarFieldEnum'] | null; // EventScalarFieldEnum
+      orderBy?: NexusGenInputs['EventOrderByWithRelationInput'] | null; // EventOrderByWithRelationInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
+    }
+    eventsParticipating: { // args
+      cursor?: NexusGenInputs['EventWhereUniqueInput'] | null; // EventWhereUniqueInput
+      distinct?: NexusGenEnums['EventScalarFieldEnum'] | null; // EventScalarFieldEnum
+      orderBy?: NexusGenInputs['EventOrderByWithRelationInput'] | null; // EventOrderByWithRelationInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
+    }
+    eventsResponsible: { // args
+      cursor?: NexusGenInputs['EventWhereUniqueInput'] | null; // EventWhereUniqueInput
+      distinct?: NexusGenEnums['EventScalarFieldEnum'] | null; // EventScalarFieldEnum
+      orderBy?: NexusGenInputs['EventOrderByWithRelationInput'] | null; // EventOrderByWithRelationInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
     }
     messages: { // args
       cursor?: NexusGenInputs['MessageWhereUniqueInput'] | null; // MessageWhereUniqueInput

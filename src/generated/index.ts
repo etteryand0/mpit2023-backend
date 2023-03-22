@@ -1,3 +1,6 @@
+export * from './Event'
+export * from './Room'
+export * from './Category'
 export * from './InputTypes'
 export * from './User'
 export * from './Profile'

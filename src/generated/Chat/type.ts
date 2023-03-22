@@ -9,6 +9,7 @@ export const Chat = objectType({
   definition(t) {
     t.string('id')
     t.field('createdAt', { type: 'DateTime' })
+    t.string('eventId')
     t.list.field('members', {
       type: 'User',
       args: {
@@ -35,6 +36,12 @@ export const Chat = objectType({
       },
       resolve(root: any) {
         return root.messages
+      },
+    })
+    t.field('event', {
+      type: 'Event',
+      resolve(root: any) {
+        return root.event
       },
     })
     t.field('_count', {

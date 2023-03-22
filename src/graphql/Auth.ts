@@ -3,6 +3,7 @@ import { compare, hash } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
 import { ApolloServerErrorCode } from '@apollo/server/errors'
 import { GraphQLError } from 'graphql'
+import { UserRole } from '@prisma/client'
 
 const JWT_SECRET = process.env.JWT_SECRET
 
@@ -64,7 +65,10 @@ export const SignUpMutation = mutationField('signup', {
     data.password = await hash(data.password, 10)
 
     const userId = (await prisma.user.create({
-      data,
+      data: {
+        role: UserRole.Student,
+        ...data,
+      },
       select: { id: true },
     })).id
 

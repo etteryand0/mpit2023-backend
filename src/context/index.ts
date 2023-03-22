@@ -1,11 +1,12 @@
 import { IncomingMessage, ServerResponse } from 'http'
 import getUser from '../utils/getUser'
 import prisma from './prisma'
+import { UserRole } from '@prisma/client'
 import { pubsub } from './pubsub'
 
 export interface Context extends Api {
   prisma: typeof prisma
-  user: { id: string } | null
+  user: { id: string, role: UserRole } | null
   select: any
   pubsub: typeof pubsub
 }

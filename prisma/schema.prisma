@@ -10,6 +10,43 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserRole {
+  Student
+  Parent
+  Staff
+  Dean
+}
+
+model Category {
+  id     Int     @id @default(autoincrement())
+  title  String
+  events Event[]
+}
+
+model Room {
+  id     String  @id
+  events Event[]
+}
+
+model Event {
+  id               String     @id
+  participants     User[]
+  approved         Boolean    @default(false)
+  chat             Chat?
+  issuedBy         User?      @relation(name: "eventIssued", fields: [userId], references: [id])
+  // Required input
+  title            String
+  shortDescription String
+  description      String // rich text html
+  room             Room       @relation(fields: [roomId], references: [id])
+  roomId           String
+  date             DateTime
+  image            String?
+  responsibles     User[]     @relation(name: "eventsResponsible")
+  categories       Category[]
+  userId           String?
+}
+
 model Message {
   id       String   @id @default(cuid())
   message  String
@@ -25,25 +62,38 @@ model Chat {
   members   User[]
   messages  Message[]
   createdAt DateTime  @default(now())
+  event     Event     @relation(fields: [eventId], references: [id])
+  eventId   String    @unique
 }
 
 model Profile {
   id        String   @id @default(uuid())
   user      User     @relation(fields: [userId], references: [id])
   userId    String   @unique
+  jobTitle  String?
   bio       String?
   avatar    String?
   name      String?
+  surname   String?
   updatedAt DateTime @updatedAt
 }
 
 model User {
   id        String   @id @default(cuid())
   username  String   @unique
-  password  String
   createdAt DateTime @default(now())
 
+  password String
+  role     UserRole
   profile  Profile?
+
   messages Message[]
   chats    Chat[]
+  parent   User?     @relation(name: "family", fields: [parentId], references: [id])
+  parentId String?   @unique
+  child    User?     @relation(name: "family")
+
+  eventsResponsible   Event[] @relation(name: "eventsResponsible")
+  eventsIssued        Event[] @relation(name: "eventIssued")
+  eventsParticipating Event[]
 }

@@ -9,9 +9,11 @@ export const Profile = objectType({
   definition(t) {
     t.string('id')
     t.string('userId')
+    t.nullable.string('jobTitle')
     t.nullable.string('bio')
     t.nullable.string('avatar')
     t.nullable.string('name')
+    t.nullable.string('surname')
     t.field('updatedAt', { type: 'DateTime' })
     t.field('user', {
       type: 'User',

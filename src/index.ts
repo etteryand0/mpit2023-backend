@@ -13,6 +13,8 @@ import { WebSocketServer } from 'ws';
 import { useServer } from 'graphql-ws/lib/use/ws';
 import { createServer } from "http";
 import { pubsub } from "./context/pubsub";
+import { applyMiddleware } from 'graphql-middleware'
+import { permissions } from "./shield";
 
 const app = express()
 
@@ -27,7 +29,7 @@ const serverCleanup = useServer({ schema, context: async (ctx, msg, args) => {
 } }, wsServer);
 
 const server = new ApolloServer({
-  schema: schema,
+  schema: applyMiddleware(schema, permissions),
   introspection: true,
   plugins: [
     ApolloServerPluginDrainHttpServer({ httpServer }),
