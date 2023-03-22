@@ -63,6 +63,220 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  ChatCountOrderByAggregateInput: { // input type
+    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  ChatCreateInput: { // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id?: string | null; // String
+    members?: NexusGenInputs['UserCreateNestedManyWithoutChatsInput'] | null; // UserCreateNestedManyWithoutChatsInput
+    messages?: NexusGenInputs['MessageCreateNestedManyWithoutChatInput'] | null; // MessageCreateNestedManyWithoutChatInput
+  }
+  ChatCreateManyInput: { // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id?: string | null; // String
+  }
+  ChatCreateNestedManyWithoutMembersInput: { // input type
+    connect?: Array<NexusGenInputs['ChatWhereUniqueInput'] | null> | null; // [ChatWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['ChatCreateOrConnectWithoutMembersInput'] | null> | null; // [ChatCreateOrConnectWithoutMembersInput]
+    create?: Array<NexusGenInputs['ChatCreateWithoutMembersInput'] | null> | null; // [ChatCreateWithoutMembersInput]
+  }
+  ChatCreateNestedOneWithoutMessagesInput: { // input type
+    connect?: NexusGenInputs['ChatWhereUniqueInput'] | null; // ChatWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['ChatCreateOrConnectWithoutMessagesInput'] | null; // ChatCreateOrConnectWithoutMessagesInput
+    create?: NexusGenInputs['ChatUncheckedCreateWithoutMessagesInput'] | null; // ChatUncheckedCreateWithoutMessagesInput
+  }
+  ChatCreateOrConnectWithoutMembersInput: { // input type
+    create: NexusGenInputs['ChatUncheckedCreateWithoutMembersInput']; // ChatUncheckedCreateWithoutMembersInput!
+    where: NexusGenInputs['ChatWhereUniqueInput']; // ChatWhereUniqueInput!
+  }
+  ChatCreateOrConnectWithoutMessagesInput: { // input type
+    create: NexusGenInputs['ChatUncheckedCreateWithoutMessagesInput']; // ChatUncheckedCreateWithoutMessagesInput!
+    where: NexusGenInputs['ChatWhereUniqueInput']; // ChatWhereUniqueInput!
+  }
+  ChatCreateWithoutMembersInput: { // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id?: string | null; // String
+    messages?: NexusGenInputs['MessageCreateNestedManyWithoutChatInput'] | null; // MessageCreateNestedManyWithoutChatInput
+  }
+  ChatCreateWithoutMessagesInput: { // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id?: string | null; // String
+    members?: NexusGenInputs['UserCreateNestedManyWithoutChatsInput'] | null; // UserCreateNestedManyWithoutChatsInput
+  }
+  ChatListRelationFilter: { // input type
+    every?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    none?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    some?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+  }
+  ChatMaxOrderByAggregateInput: { // input type
+    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  ChatMinOrderByAggregateInput: { // input type
+    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  ChatOrderByRelationAggregateInput: { // input type
+    _count?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  ChatOrderByWithAggregationInput: { // input type
+    _count?: NexusGenInputs['ChatCountOrderByAggregateInput'] | null; // ChatCountOrderByAggregateInput
+    _max?: NexusGenInputs['ChatMaxOrderByAggregateInput'] | null; // ChatMaxOrderByAggregateInput
+    _min?: NexusGenInputs['ChatMinOrderByAggregateInput'] | null; // ChatMinOrderByAggregateInput
+    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  ChatOrderByWithRelationInput: { // input type
+    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    members?: NexusGenInputs['UserOrderByRelationAggregateInput'] | null; // UserOrderByRelationAggregateInput
+    messages?: NexusGenInputs['MessageOrderByRelationAggregateInput'] | null; // MessageOrderByRelationAggregateInput
+  }
+  ChatRelationFilter: { // input type
+    is?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    isNot?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+  }
+  ChatScalarWhereInput: { // input type
+    AND?: Array<NexusGenInputs['ChatScalarWhereInput'] | null> | null; // [ChatScalarWhereInput]
+    NOT?: Array<NexusGenInputs['ChatScalarWhereInput'] | null> | null; // [ChatScalarWhereInput]
+    OR?: Array<NexusGenInputs['ChatScalarWhereInput'] | null> | null; // [ChatScalarWhereInput]
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+  }
+  ChatScalarWhereWithAggregatesInput: { // input type
+    AND?: Array<NexusGenInputs['ChatScalarWhereWithAggregatesInput'] | null> | null; // [ChatScalarWhereWithAggregatesInput]
+    NOT?: Array<NexusGenInputs['ChatScalarWhereWithAggregatesInput'] | null> | null; // [ChatScalarWhereWithAggregatesInput]
+    OR?: Array<NexusGenInputs['ChatScalarWhereWithAggregatesInput'] | null> | null; // [ChatScalarWhereWithAggregatesInput]
+    createdAt?: NexusGenInputs['DateTimeWithAggregatesFilter'] | null; // DateTimeWithAggregatesFilter
+    id?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+  }
+  ChatUncheckedCreateInput: { // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id?: string | null; // String
+    members?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutChatsInput'] | null; // UserUncheckedCreateNestedManyWithoutChatsInput
+    messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutChatInput'] | null; // MessageUncheckedCreateNestedManyWithoutChatInput
+  }
+  ChatUncheckedCreateNestedManyWithoutMembersInput: { // input type
+    connect?: Array<NexusGenInputs['ChatWhereUniqueInput'] | null> | null; // [ChatWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['ChatCreateOrConnectWithoutMembersInput'] | null> | null; // [ChatCreateOrConnectWithoutMembersInput]
+    create?: Array<NexusGenInputs['ChatCreateWithoutMembersInput'] | null> | null; // [ChatCreateWithoutMembersInput]
+  }
+  ChatUncheckedCreateWithoutMembersInput: { // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id?: string | null; // String
+    messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutChatInput'] | null; // MessageUncheckedCreateNestedManyWithoutChatInput
+  }
+  ChatUncheckedCreateWithoutMessagesInput: { // input type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id?: string | null; // String
+    members?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutChatsInput'] | null; // UserUncheckedCreateNestedManyWithoutChatsInput
+  }
+  ChatUncheckedUpdateInput: { // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    members?: NexusGenInputs['UserUncheckedUpdateManyWithoutChatsNestedInput'] | null; // UserUncheckedUpdateManyWithoutChatsNestedInput
+    messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutChatNestedInput'] | null; // MessageUncheckedUpdateManyWithoutChatNestedInput
+  }
+  ChatUncheckedUpdateManyInput: { // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  ChatUncheckedUpdateManyWithoutChatsInput: { // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  ChatUncheckedUpdateManyWithoutMembersNestedInput: { // input type
+    connect?: Array<NexusGenInputs['ChatWhereUniqueInput'] | null> | null; // [ChatWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['ChatCreateOrConnectWithoutMembersInput'] | null> | null; // [ChatCreateOrConnectWithoutMembersInput]
+    create?: Array<NexusGenInputs['ChatCreateWithoutMembersInput'] | null> | null; // [ChatCreateWithoutMembersInput]
+    delete?: Array<NexusGenInputs['ChatWhereUniqueInput'] | null> | null; // [ChatWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['ChatScalarWhereInput'] | null> | null; // [ChatScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['ChatWhereUniqueInput'] | null> | null; // [ChatWhereUniqueInput]
+    set?: Array<NexusGenInputs['ChatWhereUniqueInput'] | null> | null; // [ChatWhereUniqueInput]
+    update?: Array<NexusGenInputs['ChatUpdateWithWhereUniqueWithoutMembersInput'] | null> | null; // [ChatUpdateWithWhereUniqueWithoutMembersInput]
+    updateMany?: Array<NexusGenInputs['ChatUpdateManyWithWhereWithoutMembersInput'] | null> | null; // [ChatUpdateManyWithWhereWithoutMembersInput]
+    upsert?: Array<NexusGenInputs['ChatUpsertWithWhereUniqueWithoutMembersInput'] | null> | null; // [ChatUpsertWithWhereUniqueWithoutMembersInput]
+  }
+  ChatUncheckedUpdateWithoutMembersInput: { // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutChatNestedInput'] | null; // MessageUncheckedUpdateManyWithoutChatNestedInput
+  }
+  ChatUncheckedUpdateWithoutMessagesInput: { // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    members?: NexusGenInputs['UserUncheckedUpdateManyWithoutChatsNestedInput'] | null; // UserUncheckedUpdateManyWithoutChatsNestedInput
+  }
+  ChatUpdateInput: { // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    members?: NexusGenInputs['UserUpdateManyWithoutChatsNestedInput'] | null; // UserUpdateManyWithoutChatsNestedInput
+    messages?: NexusGenInputs['MessageUpdateManyWithoutChatNestedInput'] | null; // MessageUpdateManyWithoutChatNestedInput
+  }
+  ChatUpdateManyMutationInput: { // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  ChatUpdateManyWithWhereWithoutMembersInput: { // input type
+    data: NexusGenInputs['ChatUncheckedUpdateManyWithoutChatsInput']; // ChatUncheckedUpdateManyWithoutChatsInput!
+    where: NexusGenInputs['ChatScalarWhereInput']; // ChatScalarWhereInput!
+  }
+  ChatUpdateManyWithoutMembersNestedInput: { // input type
+    connect?: Array<NexusGenInputs['ChatWhereUniqueInput'] | null> | null; // [ChatWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['ChatCreateOrConnectWithoutMembersInput'] | null> | null; // [ChatCreateOrConnectWithoutMembersInput]
+    create?: Array<NexusGenInputs['ChatCreateWithoutMembersInput'] | null> | null; // [ChatCreateWithoutMembersInput]
+    delete?: Array<NexusGenInputs['ChatWhereUniqueInput'] | null> | null; // [ChatWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['ChatScalarWhereInput'] | null> | null; // [ChatScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['ChatWhereUniqueInput'] | null> | null; // [ChatWhereUniqueInput]
+    set?: Array<NexusGenInputs['ChatWhereUniqueInput'] | null> | null; // [ChatWhereUniqueInput]
+    update?: Array<NexusGenInputs['ChatUpdateWithWhereUniqueWithoutMembersInput'] | null> | null; // [ChatUpdateWithWhereUniqueWithoutMembersInput]
+    updateMany?: Array<NexusGenInputs['ChatUpdateManyWithWhereWithoutMembersInput'] | null> | null; // [ChatUpdateManyWithWhereWithoutMembersInput]
+    upsert?: Array<NexusGenInputs['ChatUpsertWithWhereUniqueWithoutMembersInput'] | null> | null; // [ChatUpsertWithWhereUniqueWithoutMembersInput]
+  }
+  ChatUpdateOneRequiredWithoutMessagesNestedInput: { // input type
+    connect?: NexusGenInputs['ChatWhereUniqueInput'] | null; // ChatWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['ChatCreateOrConnectWithoutMessagesInput'] | null; // ChatCreateOrConnectWithoutMessagesInput
+    create?: NexusGenInputs['ChatUncheckedCreateWithoutMessagesInput'] | null; // ChatUncheckedCreateWithoutMessagesInput
+    update?: NexusGenInputs['ChatUncheckedUpdateWithoutMessagesInput'] | null; // ChatUncheckedUpdateWithoutMessagesInput
+    upsert?: NexusGenInputs['ChatUpsertWithoutMessagesInput'] | null; // ChatUpsertWithoutMessagesInput
+  }
+  ChatUpdateWithWhereUniqueWithoutMembersInput: { // input type
+    data: NexusGenInputs['ChatUncheckedUpdateWithoutMembersInput']; // ChatUncheckedUpdateWithoutMembersInput!
+    where: NexusGenInputs['ChatWhereUniqueInput']; // ChatWhereUniqueInput!
+  }
+  ChatUpdateWithoutMembersInput: { // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUpdateManyWithoutChatNestedInput'] | null; // MessageUpdateManyWithoutChatNestedInput
+  }
+  ChatUpdateWithoutMessagesInput: { // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    members?: NexusGenInputs['UserUpdateManyWithoutChatsNestedInput'] | null; // UserUpdateManyWithoutChatsNestedInput
+  }
+  ChatUpsertWithWhereUniqueWithoutMembersInput: { // input type
+    create: NexusGenInputs['ChatUncheckedCreateWithoutMembersInput']; // ChatUncheckedCreateWithoutMembersInput!
+    update: NexusGenInputs['ChatUncheckedUpdateWithoutMembersInput']; // ChatUncheckedUpdateWithoutMembersInput!
+    where: NexusGenInputs['ChatWhereUniqueInput']; // ChatWhereUniqueInput!
+  }
+  ChatUpsertWithoutMessagesInput: { // input type
+    create: NexusGenInputs['ChatUncheckedCreateWithoutMessagesInput']; // ChatUncheckedCreateWithoutMessagesInput!
+    update: NexusGenInputs['ChatUncheckedUpdateWithoutMessagesInput']; // ChatUncheckedUpdateWithoutMessagesInput!
+  }
+  ChatWhereInput: { // input type
+    AND?: Array<NexusGenInputs['ChatWhereInput'] | null> | null; // [ChatWhereInput]
+    NOT?: Array<NexusGenInputs['ChatWhereInput'] | null> | null; // [ChatWhereInput]
+    OR?: Array<NexusGenInputs['ChatWhereInput'] | null> | null; // [ChatWhereInput]
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    members?: NexusGenInputs['UserListRelationFilter'] | null; // UserListRelationFilter
+    messages?: NexusGenInputs['MessageListRelationFilter'] | null; // MessageListRelationFilter
+  }
+  ChatWhereUniqueInput: { // input type
+    id?: string | null; // String
+  }
   DateTimeFieldUpdateOperationsInput: { // input type
     set?: NexusGenScalars['DateTime'] | null; // DateTime
   }
@@ -88,6 +302,320 @@ export interface NexusGenInputs {
     lte?: NexusGenScalars['DateTime'] | null; // DateTime
     not?: NexusGenInputs['NestedDateTimeWithAggregatesFilter'] | null; // NestedDateTimeWithAggregatesFilter
     notIn?: Array<NexusGenScalars['DateTime'] | null> | null; // [DateTime]
+  }
+  MessageCountOrderByAggregateInput: { // input type
+    chatId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    message?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    sentDate?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  MessageCreateInput: { // input type
+    chat: NexusGenInputs['ChatCreateNestedOneWithoutMessagesInput']; // ChatCreateNestedOneWithoutMessagesInput!
+    id?: string | null; // String
+    message: string; // String!
+    sender: NexusGenInputs['UserCreateNestedOneWithoutMessagesInput']; // UserCreateNestedOneWithoutMessagesInput!
+    sentDate?: NexusGenScalars['DateTime'] | null; // DateTime
+  }
+  MessageCreateManyChatInput: { // input type
+    id?: string | null; // String
+    message: string; // String!
+    sentDate?: NexusGenScalars['DateTime'] | null; // DateTime
+    userId: string; // String!
+  }
+  MessageCreateManyChatInputEnvelope: { // input type
+    data: NexusGenInputs['MessageCreateManyChatInput']; // MessageCreateManyChatInput!
+    skipDuplicates?: boolean | null; // Boolean
+  }
+  MessageCreateManyInput: { // input type
+    chatId: string; // String!
+    id?: string | null; // String
+    message: string; // String!
+    sentDate?: NexusGenScalars['DateTime'] | null; // DateTime
+    userId: string; // String!
+  }
+  MessageCreateManySenderInput: { // input type
+    chatId: string; // String!
+    id?: string | null; // String
+    message: string; // String!
+    sentDate?: NexusGenScalars['DateTime'] | null; // DateTime
+  }
+  MessageCreateManySenderInputEnvelope: { // input type
+    data: NexusGenInputs['MessageCreateManySenderInput']; // MessageCreateManySenderInput!
+    skipDuplicates?: boolean | null; // Boolean
+  }
+  MessageCreateNestedManyWithoutChatInput: { // input type
+    connect?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['MessageCreateOrConnectWithoutChatInput'] | null> | null; // [MessageCreateOrConnectWithoutChatInput]
+    create?: Array<NexusGenInputs['MessageCreateWithoutChatInput'] | null> | null; // [MessageCreateWithoutChatInput]
+    createMany?: NexusGenInputs['MessageCreateManyChatInputEnvelope'] | null; // MessageCreateManyChatInputEnvelope
+  }
+  MessageCreateNestedManyWithoutSenderInput: { // input type
+    connect?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['MessageCreateOrConnectWithoutSenderInput'] | null> | null; // [MessageCreateOrConnectWithoutSenderInput]
+    create?: Array<NexusGenInputs['MessageCreateWithoutSenderInput'] | null> | null; // [MessageCreateWithoutSenderInput]
+    createMany?: NexusGenInputs['MessageCreateManySenderInputEnvelope'] | null; // MessageCreateManySenderInputEnvelope
+  }
+  MessageCreateOrConnectWithoutChatInput: { // input type
+    create: NexusGenInputs['MessageUncheckedCreateWithoutChatInput']; // MessageUncheckedCreateWithoutChatInput!
+    where: NexusGenInputs['MessageWhereUniqueInput']; // MessageWhereUniqueInput!
+  }
+  MessageCreateOrConnectWithoutSenderInput: { // input type
+    create: NexusGenInputs['MessageUncheckedCreateWithoutSenderInput']; // MessageUncheckedCreateWithoutSenderInput!
+    where: NexusGenInputs['MessageWhereUniqueInput']; // MessageWhereUniqueInput!
+  }
+  MessageCreateWithoutChatInput: { // input type
+    id?: string | null; // String
+    message: string; // String!
+    sender: NexusGenInputs['UserCreateNestedOneWithoutMessagesInput']; // UserCreateNestedOneWithoutMessagesInput!
+    sentDate?: NexusGenScalars['DateTime'] | null; // DateTime
+  }
+  MessageCreateWithoutSenderInput: { // input type
+    chat: NexusGenInputs['ChatCreateNestedOneWithoutMessagesInput']; // ChatCreateNestedOneWithoutMessagesInput!
+    id?: string | null; // String
+    message: string; // String!
+    sentDate?: NexusGenScalars['DateTime'] | null; // DateTime
+  }
+  MessageListRelationFilter: { // input type
+    every?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
+    none?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
+    some?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
+  }
+  MessageMaxOrderByAggregateInput: { // input type
+    chatId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    message?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    sentDate?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  MessageMinOrderByAggregateInput: { // input type
+    chatId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    message?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    sentDate?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  MessageOrderByRelationAggregateInput: { // input type
+    _count?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  MessageOrderByWithAggregationInput: { // input type
+    _count?: NexusGenInputs['MessageCountOrderByAggregateInput'] | null; // MessageCountOrderByAggregateInput
+    _max?: NexusGenInputs['MessageMaxOrderByAggregateInput'] | null; // MessageMaxOrderByAggregateInput
+    _min?: NexusGenInputs['MessageMinOrderByAggregateInput'] | null; // MessageMinOrderByAggregateInput
+    chatId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    message?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    sentDate?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  MessageOrderByWithRelationInput: { // input type
+    chat?: NexusGenInputs['ChatOrderByWithRelationInput'] | null; // ChatOrderByWithRelationInput
+    chatId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    message?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    sender?: NexusGenInputs['UserOrderByWithRelationInput'] | null; // UserOrderByWithRelationInput
+    sentDate?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  MessageScalarWhereInput: { // input type
+    AND?: Array<NexusGenInputs['MessageScalarWhereInput'] | null> | null; // [MessageScalarWhereInput]
+    NOT?: Array<NexusGenInputs['MessageScalarWhereInput'] | null> | null; // [MessageScalarWhereInput]
+    OR?: Array<NexusGenInputs['MessageScalarWhereInput'] | null> | null; // [MessageScalarWhereInput]
+    chatId?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    message?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    sentDate?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    userId?: NexusGenInputs['StringFilter'] | null; // StringFilter
+  }
+  MessageScalarWhereWithAggregatesInput: { // input type
+    AND?: Array<NexusGenInputs['MessageScalarWhereWithAggregatesInput'] | null> | null; // [MessageScalarWhereWithAggregatesInput]
+    NOT?: Array<NexusGenInputs['MessageScalarWhereWithAggregatesInput'] | null> | null; // [MessageScalarWhereWithAggregatesInput]
+    OR?: Array<NexusGenInputs['MessageScalarWhereWithAggregatesInput'] | null> | null; // [MessageScalarWhereWithAggregatesInput]
+    chatId?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+    id?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+    message?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+    sentDate?: NexusGenInputs['DateTimeWithAggregatesFilter'] | null; // DateTimeWithAggregatesFilter
+    userId?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+  }
+  MessageUncheckedCreateInput: { // input type
+    chatId: string; // String!
+    id?: string | null; // String
+    message: string; // String!
+    sentDate?: NexusGenScalars['DateTime'] | null; // DateTime
+    userId: string; // String!
+  }
+  MessageUncheckedCreateNestedManyWithoutChatInput: { // input type
+    connect?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['MessageCreateOrConnectWithoutChatInput'] | null> | null; // [MessageCreateOrConnectWithoutChatInput]
+    create?: Array<NexusGenInputs['MessageCreateWithoutChatInput'] | null> | null; // [MessageCreateWithoutChatInput]
+    createMany?: NexusGenInputs['MessageCreateManyChatInputEnvelope'] | null; // MessageCreateManyChatInputEnvelope
+  }
+  MessageUncheckedCreateNestedManyWithoutSenderInput: { // input type
+    connect?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['MessageCreateOrConnectWithoutSenderInput'] | null> | null; // [MessageCreateOrConnectWithoutSenderInput]
+    create?: Array<NexusGenInputs['MessageCreateWithoutSenderInput'] | null> | null; // [MessageCreateWithoutSenderInput]
+    createMany?: NexusGenInputs['MessageCreateManySenderInputEnvelope'] | null; // MessageCreateManySenderInputEnvelope
+  }
+  MessageUncheckedCreateWithoutChatInput: { // input type
+    id?: string | null; // String
+    message: string; // String!
+    sentDate?: NexusGenScalars['DateTime'] | null; // DateTime
+    userId: string; // String!
+  }
+  MessageUncheckedCreateWithoutSenderInput: { // input type
+    chatId: string; // String!
+    id?: string | null; // String
+    message: string; // String!
+    sentDate?: NexusGenScalars['DateTime'] | null; // DateTime
+  }
+  MessageUncheckedUpdateInput: { // input type
+    chatId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    message?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    sentDate?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    userId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  MessageUncheckedUpdateManyInput: { // input type
+    chatId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    message?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    sentDate?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    userId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  MessageUncheckedUpdateManyWithoutChatNestedInput: { // input type
+    connect?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['MessageCreateOrConnectWithoutChatInput'] | null> | null; // [MessageCreateOrConnectWithoutChatInput]
+    create?: Array<NexusGenInputs['MessageCreateWithoutChatInput'] | null> | null; // [MessageCreateWithoutChatInput]
+    createMany?: NexusGenInputs['MessageCreateManyChatInputEnvelope'] | null; // MessageCreateManyChatInputEnvelope
+    delete?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['MessageScalarWhereInput'] | null> | null; // [MessageScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    set?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    update?: Array<NexusGenInputs['MessageUpdateWithWhereUniqueWithoutChatInput'] | null> | null; // [MessageUpdateWithWhereUniqueWithoutChatInput]
+    updateMany?: Array<NexusGenInputs['MessageUpdateManyWithWhereWithoutChatInput'] | null> | null; // [MessageUpdateManyWithWhereWithoutChatInput]
+    upsert?: Array<NexusGenInputs['MessageUpsertWithWhereUniqueWithoutChatInput'] | null> | null; // [MessageUpsertWithWhereUniqueWithoutChatInput]
+  }
+  MessageUncheckedUpdateManyWithoutMessagesInput: { // input type
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    message?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    sentDate?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    userId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  MessageUncheckedUpdateManyWithoutSenderNestedInput: { // input type
+    connect?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['MessageCreateOrConnectWithoutSenderInput'] | null> | null; // [MessageCreateOrConnectWithoutSenderInput]
+    create?: Array<NexusGenInputs['MessageCreateWithoutSenderInput'] | null> | null; // [MessageCreateWithoutSenderInput]
+    createMany?: NexusGenInputs['MessageCreateManySenderInputEnvelope'] | null; // MessageCreateManySenderInputEnvelope
+    delete?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['MessageScalarWhereInput'] | null> | null; // [MessageScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    set?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    update?: Array<NexusGenInputs['MessageUpdateWithWhereUniqueWithoutSenderInput'] | null> | null; // [MessageUpdateWithWhereUniqueWithoutSenderInput]
+    updateMany?: Array<NexusGenInputs['MessageUpdateManyWithWhereWithoutSenderInput'] | null> | null; // [MessageUpdateManyWithWhereWithoutSenderInput]
+    upsert?: Array<NexusGenInputs['MessageUpsertWithWhereUniqueWithoutSenderInput'] | null> | null; // [MessageUpsertWithWhereUniqueWithoutSenderInput]
+  }
+  MessageUncheckedUpdateWithoutChatInput: { // input type
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    message?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    sentDate?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    userId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  MessageUncheckedUpdateWithoutSenderInput: { // input type
+    chatId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    message?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    sentDate?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+  }
+  MessageUpdateInput: { // input type
+    chat?: NexusGenInputs['ChatUpdateOneRequiredWithoutMessagesNestedInput'] | null; // ChatUpdateOneRequiredWithoutMessagesNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    message?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    sender?: NexusGenInputs['UserUpdateOneRequiredWithoutMessagesNestedInput'] | null; // UserUpdateOneRequiredWithoutMessagesNestedInput
+    sentDate?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+  }
+  MessageUpdateManyMutationInput: { // input type
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    message?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    sentDate?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+  }
+  MessageUpdateManyWithWhereWithoutChatInput: { // input type
+    data: NexusGenInputs['MessageUncheckedUpdateManyWithoutMessagesInput']; // MessageUncheckedUpdateManyWithoutMessagesInput!
+    where: NexusGenInputs['MessageScalarWhereInput']; // MessageScalarWhereInput!
+  }
+  MessageUpdateManyWithWhereWithoutSenderInput: { // input type
+    data: NexusGenInputs['MessageUncheckedUpdateManyWithoutMessagesInput']; // MessageUncheckedUpdateManyWithoutMessagesInput!
+    where: NexusGenInputs['MessageScalarWhereInput']; // MessageScalarWhereInput!
+  }
+  MessageUpdateManyWithoutChatNestedInput: { // input type
+    connect?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['MessageCreateOrConnectWithoutChatInput'] | null> | null; // [MessageCreateOrConnectWithoutChatInput]
+    create?: Array<NexusGenInputs['MessageCreateWithoutChatInput'] | null> | null; // [MessageCreateWithoutChatInput]
+    createMany?: NexusGenInputs['MessageCreateManyChatInputEnvelope'] | null; // MessageCreateManyChatInputEnvelope
+    delete?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['MessageScalarWhereInput'] | null> | null; // [MessageScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    set?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    update?: Array<NexusGenInputs['MessageUpdateWithWhereUniqueWithoutChatInput'] | null> | null; // [MessageUpdateWithWhereUniqueWithoutChatInput]
+    updateMany?: Array<NexusGenInputs['MessageUpdateManyWithWhereWithoutChatInput'] | null> | null; // [MessageUpdateManyWithWhereWithoutChatInput]
+    upsert?: Array<NexusGenInputs['MessageUpsertWithWhereUniqueWithoutChatInput'] | null> | null; // [MessageUpsertWithWhereUniqueWithoutChatInput]
+  }
+  MessageUpdateManyWithoutSenderNestedInput: { // input type
+    connect?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['MessageCreateOrConnectWithoutSenderInput'] | null> | null; // [MessageCreateOrConnectWithoutSenderInput]
+    create?: Array<NexusGenInputs['MessageCreateWithoutSenderInput'] | null> | null; // [MessageCreateWithoutSenderInput]
+    createMany?: NexusGenInputs['MessageCreateManySenderInputEnvelope'] | null; // MessageCreateManySenderInputEnvelope
+    delete?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['MessageScalarWhereInput'] | null> | null; // [MessageScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    set?: Array<NexusGenInputs['MessageWhereUniqueInput'] | null> | null; // [MessageWhereUniqueInput]
+    update?: Array<NexusGenInputs['MessageUpdateWithWhereUniqueWithoutSenderInput'] | null> | null; // [MessageUpdateWithWhereUniqueWithoutSenderInput]
+    updateMany?: Array<NexusGenInputs['MessageUpdateManyWithWhereWithoutSenderInput'] | null> | null; // [MessageUpdateManyWithWhereWithoutSenderInput]
+    upsert?: Array<NexusGenInputs['MessageUpsertWithWhereUniqueWithoutSenderInput'] | null> | null; // [MessageUpsertWithWhereUniqueWithoutSenderInput]
+  }
+  MessageUpdateWithWhereUniqueWithoutChatInput: { // input type
+    data: NexusGenInputs['MessageUncheckedUpdateWithoutChatInput']; // MessageUncheckedUpdateWithoutChatInput!
+    where: NexusGenInputs['MessageWhereUniqueInput']; // MessageWhereUniqueInput!
+  }
+  MessageUpdateWithWhereUniqueWithoutSenderInput: { // input type
+    data: NexusGenInputs['MessageUncheckedUpdateWithoutSenderInput']; // MessageUncheckedUpdateWithoutSenderInput!
+    where: NexusGenInputs['MessageWhereUniqueInput']; // MessageWhereUniqueInput!
+  }
+  MessageUpdateWithoutChatInput: { // input type
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    message?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    sender?: NexusGenInputs['UserUpdateOneRequiredWithoutMessagesNestedInput'] | null; // UserUpdateOneRequiredWithoutMessagesNestedInput
+    sentDate?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+  }
+  MessageUpdateWithoutSenderInput: { // input type
+    chat?: NexusGenInputs['ChatUpdateOneRequiredWithoutMessagesNestedInput'] | null; // ChatUpdateOneRequiredWithoutMessagesNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    message?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    sentDate?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+  }
+  MessageUpsertWithWhereUniqueWithoutChatInput: { // input type
+    create: NexusGenInputs['MessageUncheckedCreateWithoutChatInput']; // MessageUncheckedCreateWithoutChatInput!
+    update: NexusGenInputs['MessageUncheckedUpdateWithoutChatInput']; // MessageUncheckedUpdateWithoutChatInput!
+    where: NexusGenInputs['MessageWhereUniqueInput']; // MessageWhereUniqueInput!
+  }
+  MessageUpsertWithWhereUniqueWithoutSenderInput: { // input type
+    create: NexusGenInputs['MessageUncheckedCreateWithoutSenderInput']; // MessageUncheckedCreateWithoutSenderInput!
+    update: NexusGenInputs['MessageUncheckedUpdateWithoutSenderInput']; // MessageUncheckedUpdateWithoutSenderInput!
+    where: NexusGenInputs['MessageWhereUniqueInput']; // MessageWhereUniqueInput!
+  }
+  MessageWhereInput: { // input type
+    AND?: Array<NexusGenInputs['MessageWhereInput'] | null> | null; // [MessageWhereInput]
+    NOT?: Array<NexusGenInputs['MessageWhereInput'] | null> | null; // [MessageWhereInput]
+    OR?: Array<NexusGenInputs['MessageWhereInput'] | null> | null; // [MessageWhereInput]
+    chat?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    chatId?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    message?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    sender?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    sentDate?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    userId?: NexusGenInputs['StringFilter'] | null; // StringFilter
+  }
+  MessageWhereUniqueInput: { // input type
+    id?: string | null; // String
   }
   NestedDateTimeFilter: { // input type
     equals?: NexusGenScalars['DateTime'] | null; // DateTime
@@ -193,238 +721,13 @@ export interface NexusGenInputs {
   NullableStringFieldUpdateOperationsInput: { // input type
     set?: string | null; // String
   }
-  PostCountOrderByAggregateInput: { // input type
-    body?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
-  }
-  PostCreateInput: { // input type
-    author: NexusGenInputs['UserCreateNestedOneWithoutPostsInput']; // UserCreateNestedOneWithoutPostsInput!
-    body: string; // String!
-    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    id?: string | null; // String
-    title: string; // String!
-  }
-  PostCreateManyAuthorInput: { // input type
-    body: string; // String!
-    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    id?: string | null; // String
-    title: string; // String!
-  }
-  PostCreateManyAuthorInputEnvelope: { // input type
-    data: NexusGenInputs['PostCreateManyAuthorInput']; // PostCreateManyAuthorInput!
-    skipDuplicates?: boolean | null; // Boolean
-  }
-  PostCreateManyInput: { // input type
-    body: string; // String!
-    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    id?: string | null; // String
-    title: string; // String!
-    userId: string; // String!
-  }
-  PostCreateNestedManyWithoutAuthorInput: { // input type
-    connect?: Array<NexusGenInputs['PostWhereUniqueInput'] | null> | null; // [PostWhereUniqueInput]
-    connectOrCreate?: Array<NexusGenInputs['PostCreateOrConnectWithoutAuthorInput'] | null> | null; // [PostCreateOrConnectWithoutAuthorInput]
-    create?: Array<NexusGenInputs['PostCreateWithoutAuthorInput'] | null> | null; // [PostCreateWithoutAuthorInput]
-    createMany?: NexusGenInputs['PostCreateManyAuthorInputEnvelope'] | null; // PostCreateManyAuthorInputEnvelope
-  }
-  PostCreateOrConnectWithoutAuthorInput: { // input type
-    create: NexusGenInputs['PostUncheckedCreateWithoutAuthorInput']; // PostUncheckedCreateWithoutAuthorInput!
-    where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
-  }
-  PostCreateWithoutAuthorInput: { // input type
-    body: string; // String!
-    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    id?: string | null; // String
-    title: string; // String!
-  }
-  PostListRelationFilter: { // input type
-    every?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
-    none?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
-    some?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
-  }
-  PostMaxOrderByAggregateInput: { // input type
-    body?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
-  }
-  PostMinOrderByAggregateInput: { // input type
-    body?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
-  }
-  PostOrderByRelationAggregateInput: { // input type
-    _count?: NexusGenEnums['SortOrder'] | null; // SortOrder
-  }
-  PostOrderByWithAggregationInput: { // input type
-    _count?: NexusGenInputs['PostCountOrderByAggregateInput'] | null; // PostCountOrderByAggregateInput
-    _max?: NexusGenInputs['PostMaxOrderByAggregateInput'] | null; // PostMaxOrderByAggregateInput
-    _min?: NexusGenInputs['PostMinOrderByAggregateInput'] | null; // PostMinOrderByAggregateInput
-    body?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
-  }
-  PostOrderByWithRelationInput: { // input type
-    author?: NexusGenInputs['UserOrderByWithRelationInput'] | null; // UserOrderByWithRelationInput
-    body?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    id?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
-  }
-  PostScalarWhereInput: { // input type
-    AND?: Array<NexusGenInputs['PostScalarWhereInput'] | null> | null; // [PostScalarWhereInput]
-    NOT?: Array<NexusGenInputs['PostScalarWhereInput'] | null> | null; // [PostScalarWhereInput]
-    OR?: Array<NexusGenInputs['PostScalarWhereInput'] | null> | null; // [PostScalarWhereInput]
-    body?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    title?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    userId?: NexusGenInputs['StringFilter'] | null; // StringFilter
-  }
-  PostScalarWhereWithAggregatesInput: { // input type
-    AND?: Array<NexusGenInputs['PostScalarWhereWithAggregatesInput'] | null> | null; // [PostScalarWhereWithAggregatesInput]
-    NOT?: Array<NexusGenInputs['PostScalarWhereWithAggregatesInput'] | null> | null; // [PostScalarWhereWithAggregatesInput]
-    OR?: Array<NexusGenInputs['PostScalarWhereWithAggregatesInput'] | null> | null; // [PostScalarWhereWithAggregatesInput]
-    body?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
-    createdAt?: NexusGenInputs['DateTimeWithAggregatesFilter'] | null; // DateTimeWithAggregatesFilter
-    id?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
-    title?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
-    userId?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
-  }
-  PostUncheckedCreateInput: { // input type
-    body: string; // String!
-    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    id?: string | null; // String
-    title: string; // String!
-    userId: string; // String!
-  }
-  PostUncheckedCreateNestedManyWithoutAuthorInput: { // input type
-    connect?: Array<NexusGenInputs['PostWhereUniqueInput'] | null> | null; // [PostWhereUniqueInput]
-    connectOrCreate?: Array<NexusGenInputs['PostCreateOrConnectWithoutAuthorInput'] | null> | null; // [PostCreateOrConnectWithoutAuthorInput]
-    create?: Array<NexusGenInputs['PostCreateWithoutAuthorInput'] | null> | null; // [PostCreateWithoutAuthorInput]
-    createMany?: NexusGenInputs['PostCreateManyAuthorInputEnvelope'] | null; // PostCreateManyAuthorInputEnvelope
-  }
-  PostUncheckedCreateWithoutAuthorInput: { // input type
-    body: string; // String!
-    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    id?: string | null; // String
-    title: string; // String!
-  }
-  PostUncheckedUpdateInput: { // input type
-    body?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    userId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-  }
-  PostUncheckedUpdateManyInput: { // input type
-    body?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    userId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-  }
-  PostUncheckedUpdateManyWithoutAuthorNestedInput: { // input type
-    connect?: Array<NexusGenInputs['PostWhereUniqueInput'] | null> | null; // [PostWhereUniqueInput]
-    connectOrCreate?: Array<NexusGenInputs['PostCreateOrConnectWithoutAuthorInput'] | null> | null; // [PostCreateOrConnectWithoutAuthorInput]
-    create?: Array<NexusGenInputs['PostCreateWithoutAuthorInput'] | null> | null; // [PostCreateWithoutAuthorInput]
-    createMany?: NexusGenInputs['PostCreateManyAuthorInputEnvelope'] | null; // PostCreateManyAuthorInputEnvelope
-    delete?: Array<NexusGenInputs['PostWhereUniqueInput'] | null> | null; // [PostWhereUniqueInput]
-    deleteMany?: Array<NexusGenInputs['PostScalarWhereInput'] | null> | null; // [PostScalarWhereInput]
-    disconnect?: Array<NexusGenInputs['PostWhereUniqueInput'] | null> | null; // [PostWhereUniqueInput]
-    set?: Array<NexusGenInputs['PostWhereUniqueInput'] | null> | null; // [PostWhereUniqueInput]
-    update?: Array<NexusGenInputs['PostUpdateWithWhereUniqueWithoutAuthorInput'] | null> | null; // [PostUpdateWithWhereUniqueWithoutAuthorInput]
-    updateMany?: Array<NexusGenInputs['PostUpdateManyWithWhereWithoutAuthorInput'] | null> | null; // [PostUpdateManyWithWhereWithoutAuthorInput]
-    upsert?: Array<NexusGenInputs['PostUpsertWithWhereUniqueWithoutAuthorInput'] | null> | null; // [PostUpsertWithWhereUniqueWithoutAuthorInput]
-  }
-  PostUncheckedUpdateManyWithoutPostsInput: { // input type
-    body?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-  }
-  PostUncheckedUpdateWithoutAuthorInput: { // input type
-    body?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-  }
-  PostUpdateInput: { // input type
-    author?: NexusGenInputs['UserUpdateOneRequiredWithoutPostsNestedInput'] | null; // UserUpdateOneRequiredWithoutPostsNestedInput
-    body?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-  }
-  PostUpdateManyMutationInput: { // input type
-    body?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-  }
-  PostUpdateManyWithWhereWithoutAuthorInput: { // input type
-    data: NexusGenInputs['PostUncheckedUpdateManyWithoutPostsInput']; // PostUncheckedUpdateManyWithoutPostsInput!
-    where: NexusGenInputs['PostScalarWhereInput']; // PostScalarWhereInput!
-  }
-  PostUpdateManyWithoutAuthorNestedInput: { // input type
-    connect?: Array<NexusGenInputs['PostWhereUniqueInput'] | null> | null; // [PostWhereUniqueInput]
-    connectOrCreate?: Array<NexusGenInputs['PostCreateOrConnectWithoutAuthorInput'] | null> | null; // [PostCreateOrConnectWithoutAuthorInput]
-    create?: Array<NexusGenInputs['PostCreateWithoutAuthorInput'] | null> | null; // [PostCreateWithoutAuthorInput]
-    createMany?: NexusGenInputs['PostCreateManyAuthorInputEnvelope'] | null; // PostCreateManyAuthorInputEnvelope
-    delete?: Array<NexusGenInputs['PostWhereUniqueInput'] | null> | null; // [PostWhereUniqueInput]
-    deleteMany?: Array<NexusGenInputs['PostScalarWhereInput'] | null> | null; // [PostScalarWhereInput]
-    disconnect?: Array<NexusGenInputs['PostWhereUniqueInput'] | null> | null; // [PostWhereUniqueInput]
-    set?: Array<NexusGenInputs['PostWhereUniqueInput'] | null> | null; // [PostWhereUniqueInput]
-    update?: Array<NexusGenInputs['PostUpdateWithWhereUniqueWithoutAuthorInput'] | null> | null; // [PostUpdateWithWhereUniqueWithoutAuthorInput]
-    updateMany?: Array<NexusGenInputs['PostUpdateManyWithWhereWithoutAuthorInput'] | null> | null; // [PostUpdateManyWithWhereWithoutAuthorInput]
-    upsert?: Array<NexusGenInputs['PostUpsertWithWhereUniqueWithoutAuthorInput'] | null> | null; // [PostUpsertWithWhereUniqueWithoutAuthorInput]
-  }
-  PostUpdateWithWhereUniqueWithoutAuthorInput: { // input type
-    data: NexusGenInputs['PostUncheckedUpdateWithoutAuthorInput']; // PostUncheckedUpdateWithoutAuthorInput!
-    where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
-  }
-  PostUpdateWithoutAuthorInput: { // input type
-    body?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-  }
-  PostUpsertWithWhereUniqueWithoutAuthorInput: { // input type
-    create: NexusGenInputs['PostUncheckedCreateWithoutAuthorInput']; // PostUncheckedCreateWithoutAuthorInput!
-    update: NexusGenInputs['PostUncheckedUpdateWithoutAuthorInput']; // PostUncheckedUpdateWithoutAuthorInput!
-    where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
-  }
-  PostWhereInput: { // input type
-    AND?: Array<NexusGenInputs['PostWhereInput'] | null> | null; // [PostWhereInput]
-    NOT?: Array<NexusGenInputs['PostWhereInput'] | null> | null; // [PostWhereInput]
-    OR?: Array<NexusGenInputs['PostWhereInput'] | null> | null; // [PostWhereInput]
-    author?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-    body?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    title?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    userId?: NexusGenInputs['StringFilter'] | null; // StringFilter
-  }
-  PostWhereUniqueInput: { // input type
-    id?: string | null; // String
-  }
   ProfileCountOrderByAggregateInput: { // input type
     avatar?: NexusGenEnums['SortOrder'] | null; // SortOrder
     bio?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     name?: NexusGenEnums['SortOrder'] | null; // SortOrder
     updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    userEmail?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    username?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   ProfileCreateInput: { // input type
     avatar?: string | null; // String
@@ -433,7 +736,6 @@ export interface NexusGenInputs {
     name?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
     user: NexusGenInputs['UserCreateNestedOneWithoutProfileInput']; // UserCreateNestedOneWithoutProfileInput!
-    username?: string | null; // String
   }
   ProfileCreateManyInput: { // input type
     avatar?: string | null; // String
@@ -441,8 +743,7 @@ export interface NexusGenInputs {
     id?: string | null; // String
     name?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    userEmail: string; // String!
-    username?: string | null; // String
+    userId: string; // String!
   }
   ProfileCreateNestedOneWithoutUserInput: { // input type
     connect?: NexusGenInputs['ProfileWhereUniqueInput'] | null; // ProfileWhereUniqueInput
@@ -459,7 +760,6 @@ export interface NexusGenInputs {
     id?: string | null; // String
     name?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    username?: string | null; // String
   }
   ProfileMaxOrderByAggregateInput: { // input type
     avatar?: NexusGenEnums['SortOrder'] | null; // SortOrder
@@ -467,8 +767,7 @@ export interface NexusGenInputs {
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     name?: NexusGenEnums['SortOrder'] | null; // SortOrder
     updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    userEmail?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    username?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   ProfileMinOrderByAggregateInput: { // input type
     avatar?: NexusGenEnums['SortOrder'] | null; // SortOrder
@@ -476,8 +775,7 @@ export interface NexusGenInputs {
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     name?: NexusGenEnums['SortOrder'] | null; // SortOrder
     updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    userEmail?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    username?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   ProfileOrderByWithAggregationInput: { // input type
     _count?: NexusGenInputs['ProfileCountOrderByAggregateInput'] | null; // ProfileCountOrderByAggregateInput
@@ -488,8 +786,7 @@ export interface NexusGenInputs {
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     name?: NexusGenEnums['SortOrder'] | null; // SortOrder
     updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    userEmail?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    username?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   ProfileOrderByWithRelationInput: { // input type
     avatar?: NexusGenEnums['SortOrder'] | null; // SortOrder
@@ -498,8 +795,7 @@ export interface NexusGenInputs {
     name?: NexusGenEnums['SortOrder'] | null; // SortOrder
     updatedAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
     user?: NexusGenInputs['UserOrderByWithRelationInput'] | null; // UserOrderByWithRelationInput
-    userEmail?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    username?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   ProfileRelationFilter: { // input type
     is?: NexusGenInputs['ProfileWhereInput'] | null; // ProfileWhereInput
@@ -514,8 +810,7 @@ export interface NexusGenInputs {
     id?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
     name?: NexusGenInputs['StringNullableWithAggregatesFilter'] | null; // StringNullableWithAggregatesFilter
     updatedAt?: NexusGenInputs['DateTimeWithAggregatesFilter'] | null; // DateTimeWithAggregatesFilter
-    userEmail?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
-    username?: NexusGenInputs['StringNullableWithAggregatesFilter'] | null; // StringNullableWithAggregatesFilter
+    userId?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
   }
   ProfileUncheckedCreateInput: { // input type
     avatar?: string | null; // String
@@ -523,8 +818,7 @@ export interface NexusGenInputs {
     id?: string | null; // String
     name?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    userEmail: string; // String!
-    username?: string | null; // String
+    userId: string; // String!
   }
   ProfileUncheckedCreateNestedOneWithoutUserInput: { // input type
     connect?: NexusGenInputs['ProfileWhereUniqueInput'] | null; // ProfileWhereUniqueInput
@@ -537,7 +831,6 @@ export interface NexusGenInputs {
     id?: string | null; // String
     name?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    username?: string | null; // String
   }
   ProfileUncheckedUpdateInput: { // input type
     avatar?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
@@ -545,8 +838,7 @@ export interface NexusGenInputs {
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    userEmail?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    username?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   ProfileUncheckedUpdateManyInput: { // input type
     avatar?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
@@ -554,8 +846,7 @@ export interface NexusGenInputs {
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    userEmail?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    username?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   ProfileUncheckedUpdateOneWithoutUserNestedInput: { // input type
     connect?: NexusGenInputs['ProfileWhereUniqueInput'] | null; // ProfileWhereUniqueInput
@@ -572,7 +863,6 @@ export interface NexusGenInputs {
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    username?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
   ProfileUpdateInput: { // input type
     avatar?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
@@ -581,7 +871,6 @@ export interface NexusGenInputs {
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     user?: NexusGenInputs['UserUpdateOneRequiredWithoutProfileNestedInput'] | null; // UserUpdateOneRequiredWithoutProfileNestedInput
-    username?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
   ProfileUpdateManyMutationInput: { // input type
     avatar?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
@@ -589,7 +878,6 @@ export interface NexusGenInputs {
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    username?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
   ProfileUpdateOneWithoutUserNestedInput: { // input type
     connect?: NexusGenInputs['ProfileWhereUniqueInput'] | null; // ProfileWhereUniqueInput
@@ -606,7 +894,6 @@ export interface NexusGenInputs {
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    username?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
   ProfileUpsertWithoutUserInput: { // input type
     create: NexusGenInputs['ProfileUncheckedCreateWithoutUserInput']; // ProfileUncheckedCreateWithoutUserInput!
@@ -622,22 +909,23 @@ export interface NexusGenInputs {
     name?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
     user?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-    userEmail?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    username?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
+    userId?: NexusGenInputs['StringFilter'] | null; // StringFilter
   }
   ProfileWhereUniqueInput: { // input type
     id?: string | null; // String
-    userEmail?: string | null; // String
-    username?: string | null; // String
+    userId?: string | null; // String
+  }
+  SendMessageInput: { // input type
+    chatId: string; // String!
+    message: string; // String!
   }
   SignInInput: { // input type
-    email: string; // String!
     password: string; // String!
+    username: string; // String!
   }
   SignUpInput: { // input type
-    email: string; // String!
-    name: string; // String!
     password: string; // String!
+    username: string; // String!
   }
   StringFieldUpdateOperationsInput: { // input type
     set?: string | null; // String
@@ -706,168 +994,268 @@ export interface NexusGenInputs {
   }
   UserCountOrderByAggregateInput: { // input type
     createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    email?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     password?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    username?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   UserCreateInput: { // input type
+    chats?: NexusGenInputs['ChatCreateNestedManyWithoutMembersInput'] | null; // ChatCreateNestedManyWithoutMembersInput
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    email: string; // String!
     id?: string | null; // String
+    messages?: NexusGenInputs['MessageCreateNestedManyWithoutSenderInput'] | null; // MessageCreateNestedManyWithoutSenderInput
     password: string; // String!
-    posts?: NexusGenInputs['PostCreateNestedManyWithoutAuthorInput'] | null; // PostCreateNestedManyWithoutAuthorInput
     profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
+    username: string; // String!
   }
   UserCreateManyInput: { // input type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    email: string; // String!
     id?: string | null; // String
     password: string; // String!
+    username: string; // String!
   }
-  UserCreateNestedOneWithoutPostsInput: { // input type
+  UserCreateNestedManyWithoutChatsInput: { // input type
+    connect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['UserCreateOrConnectWithoutChatsInput'] | null> | null; // [UserCreateOrConnectWithoutChatsInput]
+    create?: Array<NexusGenInputs['UserCreateWithoutChatsInput'] | null> | null; // [UserCreateWithoutChatsInput]
+  }
+  UserCreateNestedOneWithoutMessagesInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-    connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutPostsInput'] | null; // UserCreateOrConnectWithoutPostsInput
-    create?: NexusGenInputs['UserUncheckedCreateWithoutPostsInput'] | null; // UserUncheckedCreateWithoutPostsInput
+    connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutMessagesInput'] | null; // UserCreateOrConnectWithoutMessagesInput
+    create?: NexusGenInputs['UserUncheckedCreateWithoutMessagesInput'] | null; // UserUncheckedCreateWithoutMessagesInput
   }
   UserCreateNestedOneWithoutProfileInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
     connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutProfileInput'] | null; // UserCreateOrConnectWithoutProfileInput
     create?: NexusGenInputs['UserUncheckedCreateWithoutProfileInput'] | null; // UserUncheckedCreateWithoutProfileInput
   }
-  UserCreateOrConnectWithoutPostsInput: { // input type
-    create: NexusGenInputs['UserUncheckedCreateWithoutPostsInput']; // UserUncheckedCreateWithoutPostsInput!
+  UserCreateOrConnectWithoutChatsInput: { // input type
+    create: NexusGenInputs['UserUncheckedCreateWithoutChatsInput']; // UserUncheckedCreateWithoutChatsInput!
+    where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+  }
+  UserCreateOrConnectWithoutMessagesInput: { // input type
+    create: NexusGenInputs['UserUncheckedCreateWithoutMessagesInput']; // UserUncheckedCreateWithoutMessagesInput!
     where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
   }
   UserCreateOrConnectWithoutProfileInput: { // input type
     create: NexusGenInputs['UserUncheckedCreateWithoutProfileInput']; // UserUncheckedCreateWithoutProfileInput!
     where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
   }
-  UserCreateWithoutPostsInput: { // input type
+  UserCreateWithoutChatsInput: { // input type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    email: string; // String!
+    id?: string | null; // String
+    messages?: NexusGenInputs['MessageCreateNestedManyWithoutSenderInput'] | null; // MessageCreateNestedManyWithoutSenderInput
+    password: string; // String!
+    profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
+    username: string; // String!
+  }
+  UserCreateWithoutMessagesInput: { // input type
+    chats?: NexusGenInputs['ChatCreateNestedManyWithoutMembersInput'] | null; // ChatCreateNestedManyWithoutMembersInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     id?: string | null; // String
     password: string; // String!
     profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
+    username: string; // String!
   }
   UserCreateWithoutProfileInput: { // input type
+    chats?: NexusGenInputs['ChatCreateNestedManyWithoutMembersInput'] | null; // ChatCreateNestedManyWithoutMembersInput
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    email: string; // String!
     id?: string | null; // String
+    messages?: NexusGenInputs['MessageCreateNestedManyWithoutSenderInput'] | null; // MessageCreateNestedManyWithoutSenderInput
     password: string; // String!
-    posts?: NexusGenInputs['PostCreateNestedManyWithoutAuthorInput'] | null; // PostCreateNestedManyWithoutAuthorInput
+    username: string; // String!
+  }
+  UserListRelationFilter: { // input type
+    every?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    none?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    some?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
   }
   UserMaxOrderByAggregateInput: { // input type
     createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    email?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     password?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    username?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   UserMinOrderByAggregateInput: { // input type
     createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    email?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     password?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    username?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  UserOrderByRelationAggregateInput: { // input type
+    _count?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   UserOrderByWithAggregationInput: { // input type
     _count?: NexusGenInputs['UserCountOrderByAggregateInput'] | null; // UserCountOrderByAggregateInput
     _max?: NexusGenInputs['UserMaxOrderByAggregateInput'] | null; // UserMaxOrderByAggregateInput
     _min?: NexusGenInputs['UserMinOrderByAggregateInput'] | null; // UserMinOrderByAggregateInput
     createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    email?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     password?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    username?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   UserOrderByWithRelationInput: { // input type
+    chats?: NexusGenInputs['ChatOrderByRelationAggregateInput'] | null; // ChatOrderByRelationAggregateInput
     createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    email?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    messages?: NexusGenInputs['MessageOrderByRelationAggregateInput'] | null; // MessageOrderByRelationAggregateInput
     password?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    posts?: NexusGenInputs['PostOrderByRelationAggregateInput'] | null; // PostOrderByRelationAggregateInput
     profile?: NexusGenInputs['ProfileOrderByWithRelationInput'] | null; // ProfileOrderByWithRelationInput
+    username?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   UserRelationFilter: { // input type
     is?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     isNot?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+  }
+  UserScalarWhereInput: { // input type
+    AND?: Array<NexusGenInputs['UserScalarWhereInput'] | null> | null; // [UserScalarWhereInput]
+    NOT?: Array<NexusGenInputs['UserScalarWhereInput'] | null> | null; // [UserScalarWhereInput]
+    OR?: Array<NexusGenInputs['UserScalarWhereInput'] | null> | null; // [UserScalarWhereInput]
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    password?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    username?: NexusGenInputs['StringFilter'] | null; // StringFilter
   }
   UserScalarWhereWithAggregatesInput: { // input type
     AND?: Array<NexusGenInputs['UserScalarWhereWithAggregatesInput'] | null> | null; // [UserScalarWhereWithAggregatesInput]
     NOT?: Array<NexusGenInputs['UserScalarWhereWithAggregatesInput'] | null> | null; // [UserScalarWhereWithAggregatesInput]
     OR?: Array<NexusGenInputs['UserScalarWhereWithAggregatesInput'] | null> | null; // [UserScalarWhereWithAggregatesInput]
     createdAt?: NexusGenInputs['DateTimeWithAggregatesFilter'] | null; // DateTimeWithAggregatesFilter
-    email?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
     id?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
     password?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+    username?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
   }
   UserUncheckedCreateInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedCreateNestedManyWithoutMembersInput'] | null; // ChatUncheckedCreateNestedManyWithoutMembersInput
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    email: string; // String!
     id?: string | null; // String
+    messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutSenderInput'] | null; // MessageUncheckedCreateNestedManyWithoutSenderInput
     password: string; // String!
-    posts?: NexusGenInputs['PostUncheckedCreateNestedManyWithoutAuthorInput'] | null; // PostUncheckedCreateNestedManyWithoutAuthorInput
     profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
+    username: string; // String!
   }
-  UserUncheckedCreateWithoutPostsInput: { // input type
+  UserUncheckedCreateNestedManyWithoutChatsInput: { // input type
+    connect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['UserCreateOrConnectWithoutChatsInput'] | null> | null; // [UserCreateOrConnectWithoutChatsInput]
+    create?: Array<NexusGenInputs['UserCreateWithoutChatsInput'] | null> | null; // [UserCreateWithoutChatsInput]
+  }
+  UserUncheckedCreateWithoutChatsInput: { // input type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    email: string; // String!
+    id?: string | null; // String
+    messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutSenderInput'] | null; // MessageUncheckedCreateNestedManyWithoutSenderInput
+    password: string; // String!
+    profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
+    username: string; // String!
+  }
+  UserUncheckedCreateWithoutMessagesInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedCreateNestedManyWithoutMembersInput'] | null; // ChatUncheckedCreateNestedManyWithoutMembersInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     id?: string | null; // String
     password: string; // String!
     profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
+    username: string; // String!
   }
   UserUncheckedCreateWithoutProfileInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedCreateNestedManyWithoutMembersInput'] | null; // ChatUncheckedCreateNestedManyWithoutMembersInput
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    email: string; // String!
     id?: string | null; // String
+    messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutSenderInput'] | null; // MessageUncheckedCreateNestedManyWithoutSenderInput
     password: string; // String!
-    posts?: NexusGenInputs['PostUncheckedCreateNestedManyWithoutAuthorInput'] | null; // PostUncheckedCreateNestedManyWithoutAuthorInput
+    username: string; // String!
   }
   UserUncheckedUpdateInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedUpdateManyWithoutMembersNestedInput'] | null; // ChatUncheckedUpdateManyWithoutMembersNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    email?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutSenderNestedInput'] | null; // MessageUncheckedUpdateManyWithoutSenderNestedInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    posts?: NexusGenInputs['PostUncheckedUpdateManyWithoutAuthorNestedInput'] | null; // PostUncheckedUpdateManyWithoutAuthorNestedInput
     profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUncheckedUpdateManyInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    email?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
-  UserUncheckedUpdateWithoutPostsInput: { // input type
+  UserUncheckedUpdateManyWithoutChatsNestedInput: { // input type
+    connect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['UserCreateOrConnectWithoutChatsInput'] | null> | null; // [UserCreateOrConnectWithoutChatsInput]
+    create?: Array<NexusGenInputs['UserCreateWithoutChatsInput'] | null> | null; // [UserCreateWithoutChatsInput]
+    delete?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['UserScalarWhereInput'] | null> | null; // [UserScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    set?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    update?: Array<NexusGenInputs['UserUpdateWithWhereUniqueWithoutChatsInput'] | null> | null; // [UserUpdateWithWhereUniqueWithoutChatsInput]
+    updateMany?: Array<NexusGenInputs['UserUpdateManyWithWhereWithoutChatsInput'] | null> | null; // [UserUpdateManyWithWhereWithoutChatsInput]
+    upsert?: Array<NexusGenInputs['UserUpsertWithWhereUniqueWithoutChatsInput'] | null> | null; // [UserUpsertWithWhereUniqueWithoutChatsInput]
+  }
+  UserUncheckedUpdateManyWithoutMembersInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    email?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUncheckedUpdateWithoutChatsInput: { // input type
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutSenderNestedInput'] | null; // MessageUncheckedUpdateManyWithoutSenderNestedInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUncheckedUpdateWithoutMessagesInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedUpdateManyWithoutMembersNestedInput'] | null; // ChatUncheckedUpdateManyWithoutMembersNestedInput
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUncheckedUpdateWithoutProfileInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedUpdateManyWithoutMembersNestedInput'] | null; // ChatUncheckedUpdateManyWithoutMembersNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    email?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutSenderNestedInput'] | null; // MessageUncheckedUpdateManyWithoutSenderNestedInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    posts?: NexusGenInputs['PostUncheckedUpdateManyWithoutAuthorNestedInput'] | null; // PostUncheckedUpdateManyWithoutAuthorNestedInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateInput: { // input type
+    chats?: NexusGenInputs['ChatUpdateManyWithoutMembersNestedInput'] | null; // ChatUpdateManyWithoutMembersNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    email?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUpdateManyWithoutSenderNestedInput'] | null; // MessageUpdateManyWithoutSenderNestedInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    posts?: NexusGenInputs['PostUpdateManyWithoutAuthorNestedInput'] | null; // PostUpdateManyWithoutAuthorNestedInput
     profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateManyMutationInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    email?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
-  UserUpdateOneRequiredWithoutPostsNestedInput: { // input type
+  UserUpdateManyWithWhereWithoutChatsInput: { // input type
+    data: NexusGenInputs['UserUncheckedUpdateManyWithoutMembersInput']; // UserUncheckedUpdateManyWithoutMembersInput!
+    where: NexusGenInputs['UserScalarWhereInput']; // UserScalarWhereInput!
+  }
+  UserUpdateManyWithoutChatsNestedInput: { // input type
+    connect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['UserCreateOrConnectWithoutChatsInput'] | null> | null; // [UserCreateOrConnectWithoutChatsInput]
+    create?: Array<NexusGenInputs['UserCreateWithoutChatsInput'] | null> | null; // [UserCreateWithoutChatsInput]
+    delete?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['UserScalarWhereInput'] | null> | null; // [UserScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    set?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
+    update?: Array<NexusGenInputs['UserUpdateWithWhereUniqueWithoutChatsInput'] | null> | null; // [UserUpdateWithWhereUniqueWithoutChatsInput]
+    updateMany?: Array<NexusGenInputs['UserUpdateManyWithWhereWithoutChatsInput'] | null> | null; // [UserUpdateManyWithWhereWithoutChatsInput]
+    upsert?: Array<NexusGenInputs['UserUpsertWithWhereUniqueWithoutChatsInput'] | null> | null; // [UserUpsertWithWhereUniqueWithoutChatsInput]
+  }
+  UserUpdateOneRequiredWithoutMessagesNestedInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-    connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutPostsInput'] | null; // UserCreateOrConnectWithoutPostsInput
-    create?: NexusGenInputs['UserUncheckedCreateWithoutPostsInput'] | null; // UserUncheckedCreateWithoutPostsInput
-    update?: NexusGenInputs['UserUncheckedUpdateWithoutPostsInput'] | null; // UserUncheckedUpdateWithoutPostsInput
-    upsert?: NexusGenInputs['UserUpsertWithoutPostsInput'] | null; // UserUpsertWithoutPostsInput
+    connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutMessagesInput'] | null; // UserCreateOrConnectWithoutMessagesInput
+    create?: NexusGenInputs['UserUncheckedCreateWithoutMessagesInput'] | null; // UserUncheckedCreateWithoutMessagesInput
+    update?: NexusGenInputs['UserUncheckedUpdateWithoutMessagesInput'] | null; // UserUncheckedUpdateWithoutMessagesInput
+    upsert?: NexusGenInputs['UserUpsertWithoutMessagesInput'] | null; // UserUpsertWithoutMessagesInput
   }
   UserUpdateOneRequiredWithoutProfileNestedInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
@@ -876,23 +1264,42 @@ export interface NexusGenInputs {
     update?: NexusGenInputs['UserUncheckedUpdateWithoutProfileInput'] | null; // UserUncheckedUpdateWithoutProfileInput
     upsert?: NexusGenInputs['UserUpsertWithoutProfileInput'] | null; // UserUpsertWithoutProfileInput
   }
-  UserUpdateWithoutPostsInput: { // input type
+  UserUpdateWithWhereUniqueWithoutChatsInput: { // input type
+    data: NexusGenInputs['UserUncheckedUpdateWithoutChatsInput']; // UserUncheckedUpdateWithoutChatsInput!
+    where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+  }
+  UserUpdateWithoutChatsInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    email?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUpdateManyWithoutSenderNestedInput'] | null; // MessageUpdateManyWithoutSenderNestedInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUpdateWithoutMessagesInput: { // input type
+    chats?: NexusGenInputs['ChatUpdateManyWithoutMembersNestedInput'] | null; // ChatUpdateManyWithoutMembersNestedInput
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateWithoutProfileInput: { // input type
+    chats?: NexusGenInputs['ChatUpdateManyWithoutMembersNestedInput'] | null; // ChatUpdateManyWithoutMembersNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    email?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUpdateManyWithoutSenderNestedInput'] | null; // MessageUpdateManyWithoutSenderNestedInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    posts?: NexusGenInputs['PostUpdateManyWithoutAuthorNestedInput'] | null; // PostUpdateManyWithoutAuthorNestedInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
-  UserUpsertWithoutPostsInput: { // input type
-    create: NexusGenInputs['UserUncheckedCreateWithoutPostsInput']; // UserUncheckedCreateWithoutPostsInput!
-    update: NexusGenInputs['UserUncheckedUpdateWithoutPostsInput']; // UserUncheckedUpdateWithoutPostsInput!
+  UserUpsertWithWhereUniqueWithoutChatsInput: { // input type
+    create: NexusGenInputs['UserUncheckedCreateWithoutChatsInput']; // UserUncheckedCreateWithoutChatsInput!
+    update: NexusGenInputs['UserUncheckedUpdateWithoutChatsInput']; // UserUncheckedUpdateWithoutChatsInput!
+    where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+  }
+  UserUpsertWithoutMessagesInput: { // input type
+    create: NexusGenInputs['UserUncheckedCreateWithoutMessagesInput']; // UserUncheckedCreateWithoutMessagesInput!
+    update: NexusGenInputs['UserUncheckedUpdateWithoutMessagesInput']; // UserUncheckedUpdateWithoutMessagesInput!
   }
   UserUpsertWithoutProfileInput: { // input type
     create: NexusGenInputs['UserUncheckedCreateWithoutProfileInput']; // UserUncheckedCreateWithoutProfileInput!
@@ -902,26 +1309,28 @@ export interface NexusGenInputs {
     AND?: Array<NexusGenInputs['UserWhereInput'] | null> | null; // [UserWhereInput]
     NOT?: Array<NexusGenInputs['UserWhereInput'] | null> | null; // [UserWhereInput]
     OR?: Array<NexusGenInputs['UserWhereInput'] | null> | null; // [UserWhereInput]
+    chats?: NexusGenInputs['ChatListRelationFilter'] | null; // ChatListRelationFilter
     createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    email?: NexusGenInputs['StringFilter'] | null; // StringFilter
     id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    messages?: NexusGenInputs['MessageListRelationFilter'] | null; // MessageListRelationFilter
     password?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    posts?: NexusGenInputs['PostListRelationFilter'] | null; // PostListRelationFilter
     profile?: NexusGenInputs['ProfileWhereInput'] | null; // ProfileWhereInput
+    username?: NexusGenInputs['StringFilter'] | null; // StringFilter
   }
   UserWhereUniqueInput: { // input type
-    email?: string | null; // String
     id?: string | null; // String
+    username?: string | null; // String
   }
 }
 
 export interface NexusGenEnums {
-  PostScalarFieldEnum: "body" | "createdAt" | "id" | "title" | "userId"
-  ProfileScalarFieldEnum: "avatar" | "bio" | "id" | "name" | "updatedAt" | "userEmail" | "username"
+  ChatScalarFieldEnum: "createdAt" | "id"
+  MessageScalarFieldEnum: "chatId" | "id" | "message" | "sentDate" | "userId"
+  ProfileScalarFieldEnum: "avatar" | "bio" | "id" | "name" | "updatedAt" | "userId"
   QueryMode: "default" | "insensitive"
   SortOrder: "asc" | "desc"
   TransactionIsolationLevel: "ReadCommitted" | "ReadUncommitted" | "RepeatableRead" | "Serializable"
-  UserScalarFieldEnum: "createdAt" | "email" | "id" | "password"
+  UserScalarFieldEnum: "createdAt" | "id" | "password" | "username"
 }
 
 export interface NexusGenScalars {
@@ -938,10 +1347,15 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
-  AggregatePost: { // root type
-    _count?: NexusGenRootTypes['PostCountAggregateOutputType'] | null; // PostCountAggregateOutputType
-    _max?: NexusGenRootTypes['PostMaxAggregateOutputType'] | null; // PostMaxAggregateOutputType
-    _min?: NexusGenRootTypes['PostMinAggregateOutputType'] | null; // PostMinAggregateOutputType
+  AggregateChat: { // root type
+    _count?: NexusGenRootTypes['ChatCountAggregateOutputType'] | null; // ChatCountAggregateOutputType
+    _max?: NexusGenRootTypes['ChatMaxAggregateOutputType'] | null; // ChatMaxAggregateOutputType
+    _min?: NexusGenRootTypes['ChatMinAggregateOutputType'] | null; // ChatMinAggregateOutputType
+  }
+  AggregateMessage: { // root type
+    _count?: NexusGenRootTypes['MessageCountAggregateOutputType'] | null; // MessageCountAggregateOutputType
+    _max?: NexusGenRootTypes['MessageMaxAggregateOutputType'] | null; // MessageMaxAggregateOutputType
+    _min?: NexusGenRootTypes['MessageMinAggregateOutputType'] | null; // MessageMinAggregateOutputType
   }
   AggregateProfile: { // root type
     _count?: NexusGenRootTypes['ProfileCountAggregateOutputType'] | null; // ProfileCountAggregateOutputType
@@ -956,44 +1370,64 @@ export interface NexusGenObjects {
   BatchPayload: { // root type
     count: number; // Int!
   }
-  Mutation: {};
-  Post: { // root type
-    body: string; // String!
+  Chat: { // root type
     createdAt: NexusGenScalars['DateTime']; // DateTime!
     id: string; // String!
-    title: string; // String!
-    userId: string; // String!
   }
-  PostCountAggregateOutputType: { // root type
+  ChatCountAggregateOutputType: { // root type
     _all: number; // Int!
-    body: number; // Int!
     createdAt: number; // Int!
     id: number; // Int!
-    title: number; // Int!
+  }
+  ChatCountOutputType: { // root type
+    members: number; // Int!
+    messages: number; // Int!
+  }
+  ChatMaxAggregateOutputType: { // root type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id?: string | null; // String
+  }
+  ChatMinAggregateOutputType: { // root type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id?: string | null; // String
+  }
+  Message: { // root type
+    chatId: string; // String!
+    id: string; // String!
+    message: string; // String!
+    sentDate: NexusGenScalars['DateTime']; // DateTime!
+    userId: string; // String!
+  }
+  MessageCountAggregateOutputType: { // root type
+    _all: number; // Int!
+    chatId: number; // Int!
+    id: number; // Int!
+    message: number; // Int!
+    sentDate: number; // Int!
     userId: number; // Int!
   }
-  PostMaxAggregateOutputType: { // root type
-    body?: string | null; // String
-    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+  MessageMaxAggregateOutputType: { // root type
+    chatId?: string | null; // String
     id?: string | null; // String
-    title?: string | null; // String
+    message?: string | null; // String
+    sentDate?: NexusGenScalars['DateTime'] | null; // DateTime
     userId?: string | null; // String
   }
-  PostMinAggregateOutputType: { // root type
-    body?: string | null; // String
-    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+  MessageMinAggregateOutputType: { // root type
+    chatId?: string | null; // String
     id?: string | null; // String
-    title?: string | null; // String
+    message?: string | null; // String
+    sentDate?: NexusGenScalars['DateTime'] | null; // DateTime
     userId?: string | null; // String
   }
+  Mutation: {};
   Profile: { // root type
     avatar?: string | null; // String
     bio?: string | null; // String
     id: string; // String!
     name?: string | null; // String
     updatedAt: NexusGenScalars['DateTime']; // DateTime!
-    userEmail: string; // String!
-    username?: string | null; // String
+    userId: string; // String!
   }
   ProfileCountAggregateOutputType: { // root type
     _all: number; // Int!
@@ -1002,8 +1436,7 @@ export interface NexusGenObjects {
     id: number; // Int!
     name: number; // Int!
     updatedAt: number; // Int!
-    userEmail: number; // Int!
-    username: number; // Int!
+    userId: number; // Int!
   }
   ProfileMaxAggregateOutputType: { // root type
     avatar?: string | null; // String
@@ -1011,8 +1444,7 @@ export interface NexusGenObjects {
     id?: string | null; // String
     name?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    userEmail?: string | null; // String
-    username?: string | null; // String
+    userId?: string | null; // String
   }
   ProfileMinAggregateOutputType: { // root type
     avatar?: string | null; // String
@@ -1020,40 +1452,41 @@ export interface NexusGenObjects {
     id?: string | null; // String
     name?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    userEmail?: string | null; // String
-    username?: string | null; // String
+    userId?: string | null; // String
   }
   Query: {};
+  Subscription: {};
   Token: { // root type
     token?: string | null; // String
   }
   User: { // root type
     createdAt: NexusGenScalars['DateTime']; // DateTime!
-    email: string; // String!
     id: string; // String!
     password: string; // String!
+    username: string; // String!
   }
   UserCountAggregateOutputType: { // root type
     _all: number; // Int!
     createdAt: number; // Int!
-    email: number; // Int!
     id: number; // Int!
     password: number; // Int!
+    username: number; // Int!
   }
   UserCountOutputType: { // root type
-    posts: number; // Int!
+    chats: number; // Int!
+    messages: number; // Int!
   }
   UserMaxAggregateOutputType: { // root type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    email?: string | null; // String
     id?: string | null; // String
     password?: string | null; // String
+    username?: string | null; // String
   }
   UserMinAggregateOutputType: { // root type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    email?: string | null; // String
     id?: string | null; // String
     password?: string | null; // String
+    username?: string | null; // String
   }
 }
 
@@ -1068,10 +1501,15 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnums
 
 export interface NexusGenFieldTypes {
-  AggregatePost: { // field return type
-    _count: NexusGenRootTypes['PostCountAggregateOutputType'] | null; // PostCountAggregateOutputType
-    _max: NexusGenRootTypes['PostMaxAggregateOutputType'] | null; // PostMaxAggregateOutputType
-    _min: NexusGenRootTypes['PostMinAggregateOutputType'] | null; // PostMinAggregateOutputType
+  AggregateChat: { // field return type
+    _count: NexusGenRootTypes['ChatCountAggregateOutputType'] | null; // ChatCountAggregateOutputType
+    _max: NexusGenRootTypes['ChatMaxAggregateOutputType'] | null; // ChatMaxAggregateOutputType
+    _min: NexusGenRootTypes['ChatMinAggregateOutputType'] | null; // ChatMinAggregateOutputType
+  }
+  AggregateMessage: { // field return type
+    _count: NexusGenRootTypes['MessageCountAggregateOutputType'] | null; // MessageCountAggregateOutputType
+    _max: NexusGenRootTypes['MessageMaxAggregateOutputType'] | null; // MessageMaxAggregateOutputType
+    _min: NexusGenRootTypes['MessageMinAggregateOutputType'] | null; // MessageMinAggregateOutputType
   }
   AggregateProfile: { // field return type
     _count: NexusGenRootTypes['ProfileCountAggregateOutputType'] | null; // ProfileCountAggregateOutputType
@@ -1086,57 +1524,89 @@ export interface NexusGenFieldTypes {
   BatchPayload: { // field return type
     count: number; // Int!
   }
-  Mutation: { // field return type
-    createOnePost: NexusGenRootTypes['Post']; // Post!
-    createOneProfile: NexusGenRootTypes['Profile']; // Profile!
-    createOneUser: NexusGenRootTypes['User']; // User!
-    deleteManyPost: NexusGenRootTypes['BatchPayload']; // BatchPayload!
-    deleteManyProfile: NexusGenRootTypes['BatchPayload']; // BatchPayload!
-    deleteManyUser: NexusGenRootTypes['BatchPayload']; // BatchPayload!
-    deleteOnePost: NexusGenRootTypes['Post'] | null; // Post
-    deleteOneProfile: NexusGenRootTypes['Profile'] | null; // Profile
-    deleteOneUser: NexusGenRootTypes['User'] | null; // User
-    login: NexusGenRootTypes['Token'] | null; // Token
-    signup: NexusGenRootTypes['Token']; // Token!
-    updateManyPost: NexusGenRootTypes['BatchPayload']; // BatchPayload!
-    updateManyProfile: NexusGenRootTypes['BatchPayload']; // BatchPayload!
-    updateManyUser: NexusGenRootTypes['BatchPayload']; // BatchPayload!
-    updateOnePost: NexusGenRootTypes['Post']; // Post!
-    updateOneProfile: NexusGenRootTypes['Profile']; // Profile!
-    updateOneUser: NexusGenRootTypes['User']; // User!
-    upsertOnePost: NexusGenRootTypes['Post']; // Post!
-    upsertOneProfile: NexusGenRootTypes['Profile']; // Profile!
-    upsertOneUser: NexusGenRootTypes['User']; // User!
-  }
-  Post: { // field return type
-    author: NexusGenRootTypes['User']; // User!
-    body: string; // String!
+  Chat: { // field return type
+    _count: NexusGenRootTypes['ChatCountOutputType']; // ChatCountOutputType!
     createdAt: NexusGenScalars['DateTime']; // DateTime!
     id: string; // String!
-    title: string; // String!
-    userId: string; // String!
+    members: NexusGenRootTypes['User'][]; // [User!]!
+    messages: NexusGenRootTypes['Message'][]; // [Message!]!
   }
-  PostCountAggregateOutputType: { // field return type
+  ChatCountAggregateOutputType: { // field return type
     _all: number; // Int!
-    body: number; // Int!
     createdAt: number; // Int!
     id: number; // Int!
-    title: number; // Int!
+  }
+  ChatCountOutputType: { // field return type
+    members: number; // Int!
+    messages: number; // Int!
+  }
+  ChatMaxAggregateOutputType: { // field return type
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    id: string | null; // String
+  }
+  ChatMinAggregateOutputType: { // field return type
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    id: string | null; // String
+  }
+  Message: { // field return type
+    chat: NexusGenRootTypes['Chat']; // Chat!
+    chatId: string; // String!
+    id: string; // String!
+    message: string; // String!
+    sender: NexusGenRootTypes['User']; // User!
+    sentDate: NexusGenScalars['DateTime']; // DateTime!
+    userId: string; // String!
+  }
+  MessageCountAggregateOutputType: { // field return type
+    _all: number; // Int!
+    chatId: number; // Int!
+    id: number; // Int!
+    message: number; // Int!
+    sentDate: number; // Int!
     userId: number; // Int!
   }
-  PostMaxAggregateOutputType: { // field return type
-    body: string | null; // String
-    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+  MessageMaxAggregateOutputType: { // field return type
+    chatId: string | null; // String
     id: string | null; // String
-    title: string | null; // String
+    message: string | null; // String
+    sentDate: NexusGenScalars['DateTime'] | null; // DateTime
     userId: string | null; // String
   }
-  PostMinAggregateOutputType: { // field return type
-    body: string | null; // String
-    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+  MessageMinAggregateOutputType: { // field return type
+    chatId: string | null; // String
     id: string | null; // String
-    title: string | null; // String
+    message: string | null; // String
+    sentDate: NexusGenScalars['DateTime'] | null; // DateTime
     userId: string | null; // String
+  }
+  Mutation: { // field return type
+    createOneChat: NexusGenRootTypes['Chat']; // Chat!
+    createOneMessage: NexusGenRootTypes['Message']; // Message!
+    createOneProfile: NexusGenRootTypes['Profile']; // Profile!
+    createOneUser: NexusGenRootTypes['User']; // User!
+    deleteManyChat: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyMessage: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyProfile: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyUser: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteOneChat: NexusGenRootTypes['Chat'] | null; // Chat
+    deleteOneMessage: NexusGenRootTypes['Message'] | null; // Message
+    deleteOneProfile: NexusGenRootTypes['Profile'] | null; // Profile
+    deleteOneUser: NexusGenRootTypes['User'] | null; // User
+    login: NexusGenRootTypes['Token']; // Token!
+    sendMessage: NexusGenRootTypes['Message']; // Message!
+    signup: NexusGenRootTypes['Token']; // Token!
+    updateManyChat: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyMessage: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyProfile: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyUser: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateOneChat: NexusGenRootTypes['Chat']; // Chat!
+    updateOneMessage: NexusGenRootTypes['Message']; // Message!
+    updateOneProfile: NexusGenRootTypes['Profile']; // Profile!
+    updateOneUser: NexusGenRootTypes['User']; // User!
+    upsertOneChat: NexusGenRootTypes['Chat']; // Chat!
+    upsertOneMessage: NexusGenRootTypes['Message']; // Message!
+    upsertOneProfile: NexusGenRootTypes['Profile']; // Profile!
+    upsertOneUser: NexusGenRootTypes['User']; // User!
   }
   Profile: { // field return type
     avatar: string | null; // String
@@ -1145,8 +1615,7 @@ export interface NexusGenFieldTypes {
     name: string | null; // String
     updatedAt: NexusGenScalars['DateTime']; // DateTime!
     user: NexusGenRootTypes['User']; // User!
-    userEmail: string; // String!
-    username: string | null; // String
+    userId: string; // String!
   }
   ProfileCountAggregateOutputType: { // field return type
     _all: number; // Int!
@@ -1155,8 +1624,7 @@ export interface NexusGenFieldTypes {
     id: number; // Int!
     name: number; // Int!
     updatedAt: number; // Int!
-    userEmail: number; // Int!
-    username: number; // Int!
+    userId: number; // Int!
   }
   ProfileMaxAggregateOutputType: { // field return type
     avatar: string | null; // String
@@ -1164,8 +1632,7 @@ export interface NexusGenFieldTypes {
     id: string | null; // String
     name: string | null; // String
     updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
-    userEmail: string | null; // String
-    username: string | null; // String
+    userId: string | null; // String
   }
   ProfileMinAggregateOutputType: { // field return type
     avatar: string | null; // String
@@ -1173,68 +1640,82 @@ export interface NexusGenFieldTypes {
     id: string | null; // String
     name: string | null; // String
     updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
-    userEmail: string | null; // String
-    username: string | null; // String
+    userId: string | null; // String
   }
   Query: { // field return type
-    aggregatePost: NexusGenRootTypes['AggregatePost'] | null; // AggregatePost
+    aggregateChat: NexusGenRootTypes['AggregateChat'] | null; // AggregateChat
+    aggregateMessage: NexusGenRootTypes['AggregateMessage'] | null; // AggregateMessage
     aggregateProfile: NexusGenRootTypes['AggregateProfile'] | null; // AggregateProfile
     aggregateUser: NexusGenRootTypes['AggregateUser'] | null; // AggregateUser
-    findFirstPost: NexusGenRootTypes['Post'] | null; // Post
+    findFirstChat: NexusGenRootTypes['Chat'] | null; // Chat
+    findFirstMessage: NexusGenRootTypes['Message'] | null; // Message
     findFirstProfile: NexusGenRootTypes['Profile'] | null; // Profile
     findFirstUser: NexusGenRootTypes['User'] | null; // User
-    findManyPost: NexusGenRootTypes['Post'][]; // [Post!]!
-    findManyPostCount: number; // Int!
+    findManyChat: NexusGenRootTypes['Chat'][]; // [Chat!]!
+    findManyChatCount: number; // Int!
+    findManyMessage: NexusGenRootTypes['Message'][]; // [Message!]!
+    findManyMessageCount: number; // Int!
     findManyProfile: NexusGenRootTypes['Profile'][]; // [Profile!]!
     findManyProfileCount: number; // Int!
     findManyUser: NexusGenRootTypes['User'][]; // [User!]!
     findManyUserCount: number; // Int!
-    findUniquePost: NexusGenRootTypes['Post'] | null; // Post
+    findUniqueChat: NexusGenRootTypes['Chat'] | null; // Chat
+    findUniqueMessage: NexusGenRootTypes['Message'] | null; // Message
     findUniqueProfile: NexusGenRootTypes['Profile'] | null; // Profile
     findUniqueUser: NexusGenRootTypes['User'] | null; // User
     me: NexusGenRootTypes['User']; // User!
+  }
+  Subscription: { // field return type
+    chat: NexusGenRootTypes['Message'] | null; // Message
   }
   Token: { // field return type
     token: string | null; // String
   }
   User: { // field return type
     _count: NexusGenRootTypes['UserCountOutputType']; // UserCountOutputType!
+    chats: NexusGenRootTypes['Chat'][]; // [Chat!]!
     createdAt: NexusGenScalars['DateTime']; // DateTime!
-    email: string; // String!
     id: string; // String!
+    messages: NexusGenRootTypes['Message'][]; // [Message!]!
     password: string; // String!
-    posts: NexusGenRootTypes['Post'][]; // [Post!]!
     profile: NexusGenRootTypes['Profile'] | null; // Profile
+    username: string; // String!
   }
   UserCountAggregateOutputType: { // field return type
     _all: number; // Int!
     createdAt: number; // Int!
-    email: number; // Int!
     id: number; // Int!
     password: number; // Int!
+    username: number; // Int!
   }
   UserCountOutputType: { // field return type
-    posts: number; // Int!
+    chats: number; // Int!
+    messages: number; // Int!
   }
   UserMaxAggregateOutputType: { // field return type
     createdAt: NexusGenScalars['DateTime'] | null; // DateTime
-    email: string | null; // String
     id: string | null; // String
     password: string | null; // String
+    username: string | null; // String
   }
   UserMinAggregateOutputType: { // field return type
     createdAt: NexusGenScalars['DateTime'] | null; // DateTime
-    email: string | null; // String
     id: string | null; // String
     password: string | null; // String
+    username: string | null; // String
   }
 }
 
 export interface NexusGenFieldTypeNames {
-  AggregatePost: { // field return type name
-    _count: 'PostCountAggregateOutputType'
-    _max: 'PostMaxAggregateOutputType'
-    _min: 'PostMinAggregateOutputType'
+  AggregateChat: { // field return type name
+    _count: 'ChatCountAggregateOutputType'
+    _max: 'ChatMaxAggregateOutputType'
+    _min: 'ChatMinAggregateOutputType'
+  }
+  AggregateMessage: { // field return type name
+    _count: 'MessageCountAggregateOutputType'
+    _max: 'MessageMaxAggregateOutputType'
+    _min: 'MessageMinAggregateOutputType'
   }
   AggregateProfile: { // field return type name
     _count: 'ProfileCountAggregateOutputType'
@@ -1249,57 +1730,89 @@ export interface NexusGenFieldTypeNames {
   BatchPayload: { // field return type name
     count: 'Int'
   }
+  Chat: { // field return type name
+    _count: 'ChatCountOutputType'
+    createdAt: 'DateTime'
+    id: 'String'
+    members: 'User'
+    messages: 'Message'
+  }
+  ChatCountAggregateOutputType: { // field return type name
+    _all: 'Int'
+    createdAt: 'Int'
+    id: 'Int'
+  }
+  ChatCountOutputType: { // field return type name
+    members: 'Int'
+    messages: 'Int'
+  }
+  ChatMaxAggregateOutputType: { // field return type name
+    createdAt: 'DateTime'
+    id: 'String'
+  }
+  ChatMinAggregateOutputType: { // field return type name
+    createdAt: 'DateTime'
+    id: 'String'
+  }
+  Message: { // field return type name
+    chat: 'Chat'
+    chatId: 'String'
+    id: 'String'
+    message: 'String'
+    sender: 'User'
+    sentDate: 'DateTime'
+    userId: 'String'
+  }
+  MessageCountAggregateOutputType: { // field return type name
+    _all: 'Int'
+    chatId: 'Int'
+    id: 'Int'
+    message: 'Int'
+    sentDate: 'Int'
+    userId: 'Int'
+  }
+  MessageMaxAggregateOutputType: { // field return type name
+    chatId: 'String'
+    id: 'String'
+    message: 'String'
+    sentDate: 'DateTime'
+    userId: 'String'
+  }
+  MessageMinAggregateOutputType: { // field return type name
+    chatId: 'String'
+    id: 'String'
+    message: 'String'
+    sentDate: 'DateTime'
+    userId: 'String'
+  }
   Mutation: { // field return type name
-    createOnePost: 'Post'
+    createOneChat: 'Chat'
+    createOneMessage: 'Message'
     createOneProfile: 'Profile'
     createOneUser: 'User'
-    deleteManyPost: 'BatchPayload'
+    deleteManyChat: 'BatchPayload'
+    deleteManyMessage: 'BatchPayload'
     deleteManyProfile: 'BatchPayload'
     deleteManyUser: 'BatchPayload'
-    deleteOnePost: 'Post'
+    deleteOneChat: 'Chat'
+    deleteOneMessage: 'Message'
     deleteOneProfile: 'Profile'
     deleteOneUser: 'User'
     login: 'Token'
+    sendMessage: 'Message'
     signup: 'Token'
-    updateManyPost: 'BatchPayload'
+    updateManyChat: 'BatchPayload'
+    updateManyMessage: 'BatchPayload'
     updateManyProfile: 'BatchPayload'
     updateManyUser: 'BatchPayload'
-    updateOnePost: 'Post'
+    updateOneChat: 'Chat'
+    updateOneMessage: 'Message'
     updateOneProfile: 'Profile'
     updateOneUser: 'User'
-    upsertOnePost: 'Post'
+    upsertOneChat: 'Chat'
+    upsertOneMessage: 'Message'
     upsertOneProfile: 'Profile'
     upsertOneUser: 'User'
-  }
-  Post: { // field return type name
-    author: 'User'
-    body: 'String'
-    createdAt: 'DateTime'
-    id: 'String'
-    title: 'String'
-    userId: 'String'
-  }
-  PostCountAggregateOutputType: { // field return type name
-    _all: 'Int'
-    body: 'Int'
-    createdAt: 'Int'
-    id: 'Int'
-    title: 'Int'
-    userId: 'Int'
-  }
-  PostMaxAggregateOutputType: { // field return type name
-    body: 'String'
-    createdAt: 'DateTime'
-    id: 'String'
-    title: 'String'
-    userId: 'String'
-  }
-  PostMinAggregateOutputType: { // field return type name
-    body: 'String'
-    createdAt: 'DateTime'
-    id: 'String'
-    title: 'String'
-    userId: 'String'
   }
   Profile: { // field return type name
     avatar: 'String'
@@ -1308,8 +1821,7 @@ export interface NexusGenFieldTypeNames {
     name: 'String'
     updatedAt: 'DateTime'
     user: 'User'
-    userEmail: 'String'
-    username: 'String'
+    userId: 'String'
   }
   ProfileCountAggregateOutputType: { // field return type name
     _all: 'Int'
@@ -1318,8 +1830,7 @@ export interface NexusGenFieldTypeNames {
     id: 'Int'
     name: 'Int'
     updatedAt: 'Int'
-    userEmail: 'Int'
-    username: 'Int'
+    userId: 'Int'
   }
   ProfileMaxAggregateOutputType: { // field return type name
     avatar: 'String'
@@ -1327,8 +1838,7 @@ export interface NexusGenFieldTypeNames {
     id: 'String'
     name: 'String'
     updatedAt: 'DateTime'
-    userEmail: 'String'
-    username: 'String'
+    userId: 'String'
   }
   ProfileMinAggregateOutputType: { // field return type name
     avatar: 'String'
@@ -1336,67 +1846,97 @@ export interface NexusGenFieldTypeNames {
     id: 'String'
     name: 'String'
     updatedAt: 'DateTime'
-    userEmail: 'String'
-    username: 'String'
+    userId: 'String'
   }
   Query: { // field return type name
-    aggregatePost: 'AggregatePost'
+    aggregateChat: 'AggregateChat'
+    aggregateMessage: 'AggregateMessage'
     aggregateProfile: 'AggregateProfile'
     aggregateUser: 'AggregateUser'
-    findFirstPost: 'Post'
+    findFirstChat: 'Chat'
+    findFirstMessage: 'Message'
     findFirstProfile: 'Profile'
     findFirstUser: 'User'
-    findManyPost: 'Post'
-    findManyPostCount: 'Int'
+    findManyChat: 'Chat'
+    findManyChatCount: 'Int'
+    findManyMessage: 'Message'
+    findManyMessageCount: 'Int'
     findManyProfile: 'Profile'
     findManyProfileCount: 'Int'
     findManyUser: 'User'
     findManyUserCount: 'Int'
-    findUniquePost: 'Post'
+    findUniqueChat: 'Chat'
+    findUniqueMessage: 'Message'
     findUniqueProfile: 'Profile'
     findUniqueUser: 'User'
     me: 'User'
+  }
+  Subscription: { // field return type name
+    chat: 'Message'
   }
   Token: { // field return type name
     token: 'String'
   }
   User: { // field return type name
     _count: 'UserCountOutputType'
+    chats: 'Chat'
     createdAt: 'DateTime'
-    email: 'String'
     id: 'String'
+    messages: 'Message'
     password: 'String'
-    posts: 'Post'
     profile: 'Profile'
+    username: 'String'
   }
   UserCountAggregateOutputType: { // field return type name
     _all: 'Int'
     createdAt: 'Int'
-    email: 'Int'
     id: 'Int'
     password: 'Int'
+    username: 'Int'
   }
   UserCountOutputType: { // field return type name
-    posts: 'Int'
+    chats: 'Int'
+    messages: 'Int'
   }
   UserMaxAggregateOutputType: { // field return type name
     createdAt: 'DateTime'
-    email: 'String'
     id: 'String'
     password: 'String'
+    username: 'String'
   }
   UserMinAggregateOutputType: { // field return type name
     createdAt: 'DateTime'
-    email: 'String'
     id: 'String'
     password: 'String'
+    username: 'String'
   }
 }
 
 export interface NexusGenArgTypes {
+  Chat: {
+    members: { // args
+      cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+      distinct?: NexusGenEnums['UserScalarFieldEnum'] | null; // UserScalarFieldEnum
+      orderBy?: NexusGenInputs['UserOrderByWithRelationInput'] | null; // UserOrderByWithRelationInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    }
+    messages: { // args
+      cursor?: NexusGenInputs['MessageWhereUniqueInput'] | null; // MessageWhereUniqueInput
+      distinct?: NexusGenEnums['MessageScalarFieldEnum'] | null; // MessageScalarFieldEnum
+      orderBy?: NexusGenInputs['MessageOrderByWithRelationInput'] | null; // MessageOrderByWithRelationInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
+    }
+  }
   Mutation: {
-    createOnePost: { // args
-      data: NexusGenInputs['PostCreateInput']; // PostCreateInput!
+    createOneChat: { // args
+      data: NexusGenInputs['ChatCreateInput']; // ChatCreateInput!
+    }
+    createOneMessage: { // args
+      data: NexusGenInputs['MessageCreateInput']; // MessageCreateInput!
     }
     createOneProfile: { // args
       data: NexusGenInputs['ProfileCreateInput']; // ProfileCreateInput!
@@ -1404,8 +1944,11 @@ export interface NexusGenArgTypes {
     createOneUser: { // args
       data: NexusGenInputs['UserCreateInput']; // UserCreateInput!
     }
-    deleteManyPost: { // args
-      where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
+    deleteManyChat: { // args
+      where?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    }
+    deleteManyMessage: { // args
+      where?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
     }
     deleteManyProfile: { // args
       where?: NexusGenInputs['ProfileWhereInput'] | null; // ProfileWhereInput
@@ -1413,8 +1956,11 @@ export interface NexusGenArgTypes {
     deleteManyUser: { // args
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
-    deleteOnePost: { // args
-      where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
+    deleteOneChat: { // args
+      where: NexusGenInputs['ChatWhereUniqueInput']; // ChatWhereUniqueInput!
+    }
+    deleteOneMessage: { // args
+      where: NexusGenInputs['MessageWhereUniqueInput']; // MessageWhereUniqueInput!
     }
     deleteOneProfile: { // args
       where: NexusGenInputs['ProfileWhereUniqueInput']; // ProfileWhereUniqueInput!
@@ -1423,14 +1969,21 @@ export interface NexusGenArgTypes {
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
     }
     login: { // args
-      data?: NexusGenInputs['SignInInput'] | null; // SignInInput
+      data: NexusGenInputs['SignInInput']; // SignInInput!
+    }
+    sendMessage: { // args
+      data: NexusGenInputs['SendMessageInput']; // SendMessageInput!
     }
     signup: { // args
       data: NexusGenInputs['SignUpInput']; // SignUpInput!
     }
-    updateManyPost: { // args
-      data: NexusGenInputs['PostUpdateManyMutationInput']; // PostUpdateManyMutationInput!
-      where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
+    updateManyChat: { // args
+      data: NexusGenInputs['ChatUpdateManyMutationInput']; // ChatUpdateManyMutationInput!
+      where?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    }
+    updateManyMessage: { // args
+      data: NexusGenInputs['MessageUpdateManyMutationInput']; // MessageUpdateManyMutationInput!
+      where?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
     }
     updateManyProfile: { // args
       data: NexusGenInputs['ProfileUpdateManyMutationInput']; // ProfileUpdateManyMutationInput!
@@ -1440,9 +1993,13 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['UserUpdateManyMutationInput']; // UserUpdateManyMutationInput!
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
-    updateOnePost: { // args
-      data: NexusGenInputs['PostUpdateInput']; // PostUpdateInput!
-      where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
+    updateOneChat: { // args
+      data: NexusGenInputs['ChatUpdateInput']; // ChatUpdateInput!
+      where: NexusGenInputs['ChatWhereUniqueInput']; // ChatWhereUniqueInput!
+    }
+    updateOneMessage: { // args
+      data: NexusGenInputs['MessageUpdateInput']; // MessageUpdateInput!
+      where: NexusGenInputs['MessageWhereUniqueInput']; // MessageWhereUniqueInput!
     }
     updateOneProfile: { // args
       data: NexusGenInputs['ProfileUpdateInput']; // ProfileUpdateInput!
@@ -1452,10 +2009,15 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['UserUpdateInput']; // UserUpdateInput!
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
     }
-    upsertOnePost: { // args
-      create: NexusGenInputs['PostCreateInput']; // PostCreateInput!
-      update: NexusGenInputs['PostUpdateInput']; // PostUpdateInput!
-      where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
+    upsertOneChat: { // args
+      create: NexusGenInputs['ChatCreateInput']; // ChatCreateInput!
+      update: NexusGenInputs['ChatUpdateInput']; // ChatUpdateInput!
+      where: NexusGenInputs['ChatWhereUniqueInput']; // ChatWhereUniqueInput!
+    }
+    upsertOneMessage: { // args
+      create: NexusGenInputs['MessageCreateInput']; // MessageCreateInput!
+      update: NexusGenInputs['MessageUpdateInput']; // MessageUpdateInput!
+      where: NexusGenInputs['MessageWhereUniqueInput']; // MessageWhereUniqueInput!
     }
     upsertOneProfile: { // args
       create: NexusGenInputs['ProfileCreateInput']; // ProfileCreateInput!
@@ -1469,12 +2031,19 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
-    aggregatePost: { // args
-      cursor?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      orderBy?: Array<NexusGenInputs['PostOrderByWithRelationInput'] | null> | null; // [PostOrderByWithRelationInput]
+    aggregateChat: { // args
+      cursor?: NexusGenInputs['ChatWhereUniqueInput'] | null; // ChatWhereUniqueInput
+      orderBy?: Array<NexusGenInputs['ChatOrderByWithRelationInput'] | null> | null; // [ChatOrderByWithRelationInput]
       skip?: number | null; // Int
       take?: number | null; // Int
-      where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
+      where?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    }
+    aggregateMessage: { // args
+      cursor?: NexusGenInputs['MessageWhereUniqueInput'] | null; // MessageWhereUniqueInput
+      orderBy?: Array<NexusGenInputs['MessageOrderByWithRelationInput'] | null> | null; // [MessageOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
     }
     aggregateProfile: { // args
       cursor?: NexusGenInputs['ProfileWhereUniqueInput'] | null; // ProfileWhereUniqueInput
@@ -1490,13 +2059,21 @@ export interface NexusGenArgTypes {
       take?: number | null; // Int
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
-    findFirstPost: { // args
-      cursor?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      distinct?: Array<NexusGenEnums['PostScalarFieldEnum'] | null> | null; // [PostScalarFieldEnum]
-      orderBy?: Array<NexusGenInputs['PostOrderByWithRelationInput'] | null> | null; // [PostOrderByWithRelationInput]
+    findFirstChat: { // args
+      cursor?: NexusGenInputs['ChatWhereUniqueInput'] | null; // ChatWhereUniqueInput
+      distinct?: Array<NexusGenEnums['ChatScalarFieldEnum'] | null> | null; // [ChatScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['ChatOrderByWithRelationInput'] | null> | null; // [ChatOrderByWithRelationInput]
       skip?: number | null; // Int
       take?: number | null; // Int
-      where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
+      where?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    }
+    findFirstMessage: { // args
+      cursor?: NexusGenInputs['MessageWhereUniqueInput'] | null; // MessageWhereUniqueInput
+      distinct?: Array<NexusGenEnums['MessageScalarFieldEnum'] | null> | null; // [MessageScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['MessageOrderByWithRelationInput'] | null> | null; // [MessageOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
     }
     findFirstProfile: { // args
       cursor?: NexusGenInputs['ProfileWhereUniqueInput'] | null; // ProfileWhereUniqueInput
@@ -1514,21 +2091,37 @@ export interface NexusGenArgTypes {
       take?: number | null; // Int
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
-    findManyPost: { // args
-      cursor?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      distinct?: Array<NexusGenEnums['PostScalarFieldEnum'] | null> | null; // [PostScalarFieldEnum]
-      orderBy?: Array<NexusGenInputs['PostOrderByWithRelationInput'] | null> | null; // [PostOrderByWithRelationInput]
+    findManyChat: { // args
+      cursor?: NexusGenInputs['ChatWhereUniqueInput'] | null; // ChatWhereUniqueInput
+      distinct?: Array<NexusGenEnums['ChatScalarFieldEnum'] | null> | null; // [ChatScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['ChatOrderByWithRelationInput'] | null> | null; // [ChatOrderByWithRelationInput]
       skip?: number | null; // Int
       take?: number | null; // Int
-      where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
+      where?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
     }
-    findManyPostCount: { // args
-      cursor?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      distinct?: Array<NexusGenEnums['PostScalarFieldEnum'] | null> | null; // [PostScalarFieldEnum]
-      orderBy?: Array<NexusGenInputs['PostOrderByWithRelationInput'] | null> | null; // [PostOrderByWithRelationInput]
+    findManyChatCount: { // args
+      cursor?: NexusGenInputs['ChatWhereUniqueInput'] | null; // ChatWhereUniqueInput
+      distinct?: Array<NexusGenEnums['ChatScalarFieldEnum'] | null> | null; // [ChatScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['ChatOrderByWithRelationInput'] | null> | null; // [ChatOrderByWithRelationInput]
       skip?: number | null; // Int
       take?: number | null; // Int
-      where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
+      where?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    }
+    findManyMessage: { // args
+      cursor?: NexusGenInputs['MessageWhereUniqueInput'] | null; // MessageWhereUniqueInput
+      distinct?: Array<NexusGenEnums['MessageScalarFieldEnum'] | null> | null; // [MessageScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['MessageOrderByWithRelationInput'] | null> | null; // [MessageOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
+    }
+    findManyMessageCount: { // args
+      cursor?: NexusGenInputs['MessageWhereUniqueInput'] | null; // MessageWhereUniqueInput
+      distinct?: Array<NexusGenEnums['MessageScalarFieldEnum'] | null> | null; // [MessageScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['MessageOrderByWithRelationInput'] | null> | null; // [MessageOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
     }
     findManyProfile: { // args
       cursor?: NexusGenInputs['ProfileWhereUniqueInput'] | null; // ProfileWhereUniqueInput
@@ -1562,8 +2155,11 @@ export interface NexusGenArgTypes {
       take?: number | null; // Int
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
-    findUniquePost: { // args
-      where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
+    findUniqueChat: { // args
+      where: NexusGenInputs['ChatWhereUniqueInput']; // ChatWhereUniqueInput!
+    }
+    findUniqueMessage: { // args
+      where: NexusGenInputs['MessageWhereUniqueInput']; // MessageWhereUniqueInput!
     }
     findUniqueProfile: { // args
       where: NexusGenInputs['ProfileWhereUniqueInput']; // ProfileWhereUniqueInput!
@@ -1572,14 +2168,27 @@ export interface NexusGenArgTypes {
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
     }
   }
+  Subscription: {
+    chat: { // args
+      chatId: string; // String!
+    }
+  }
   User: {
-    posts: { // args
-      cursor?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      distinct?: NexusGenEnums['PostScalarFieldEnum'] | null; // PostScalarFieldEnum
-      orderBy?: NexusGenInputs['PostOrderByWithRelationInput'] | null; // PostOrderByWithRelationInput
+    chats: { // args
+      cursor?: NexusGenInputs['ChatWhereUniqueInput'] | null; // ChatWhereUniqueInput
+      distinct?: NexusGenEnums['ChatScalarFieldEnum'] | null; // ChatScalarFieldEnum
+      orderBy?: NexusGenInputs['ChatOrderByWithRelationInput'] | null; // ChatOrderByWithRelationInput
       skip?: number | null; // Int
       take?: number | null; // Int
-      where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
+      where?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    }
+    messages: { // args
+      cursor?: NexusGenInputs['MessageWhereUniqueInput'] | null; // MessageWhereUniqueInput
+      distinct?: NexusGenEnums['MessageScalarFieldEnum'] | null; // MessageScalarFieldEnum
+      orderBy?: NexusGenInputs['MessageOrderByWithRelationInput'] | null; // MessageOrderByWithRelationInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
     }
   }
 }

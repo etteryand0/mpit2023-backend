@@ -8,8 +8,7 @@ export const Profile = objectType({
   name: 'Profile',
   definition(t) {
     t.string('id')
-    t.string('userEmail')
-    t.nullable.string('username')
+    t.string('userId')
     t.nullable.string('bio')
     t.nullable.string('avatar')
     t.nullable.string('name')

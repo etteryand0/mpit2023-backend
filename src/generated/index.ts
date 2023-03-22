@@ -1,4 +1,5 @@
 export * from './InputTypes'
 export * from './User'
 export * from './Profile'
-export * from './Post'
+export * from './Chat'
+export * from './Message'

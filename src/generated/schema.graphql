@@ -2,10 +2,16 @@
 ### Do not make changes to this file directly
 
 
-type AggregatePost {
-  _count: PostCountAggregateOutputType
-  _max: PostMaxAggregateOutputType
-  _min: PostMinAggregateOutputType
+type AggregateChat {
+  _count: ChatCountAggregateOutputType
+  _max: ChatMaxAggregateOutputType
+  _min: ChatMinAggregateOutputType
+}
+
+type AggregateMessage {
+  _count: MessageCountAggregateOutputType
+  _max: MessageMaxAggregateOutputType
+  _min: MessageMinAggregateOutputType
 }
 
 type AggregateProfile {
@@ -32,6 +38,294 @@ scalar BigInt
 
 """The `Byte` scalar type represents byte value as a Buffer"""
 scalar Bytes
+
+type Chat {
+  _count: ChatCountOutputType!
+  createdAt: DateTime!
+  id: String!
+  members(cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, orderBy: UserOrderByWithRelationInput, skip: Int, take: Int, where: UserWhereInput): [User!]!
+  messages(cursor: MessageWhereUniqueInput, distinct: MessageScalarFieldEnum, orderBy: MessageOrderByWithRelationInput, skip: Int, take: Int, where: MessageWhereInput): [Message!]!
+}
+
+type ChatCountAggregateOutputType {
+  _all: Int!
+  createdAt: Int!
+  id: Int!
+}
+
+input ChatCountOrderByAggregateInput {
+  createdAt: SortOrder
+  id: SortOrder
+}
+
+type ChatCountOutputType {
+  members: Int!
+  messages: Int!
+}
+
+input ChatCreateInput {
+  createdAt: DateTime
+  id: String
+  members: UserCreateNestedManyWithoutChatsInput
+  messages: MessageCreateNestedManyWithoutChatInput
+}
+
+input ChatCreateManyInput {
+  createdAt: DateTime
+  id: String
+}
+
+input ChatCreateNestedManyWithoutMembersInput {
+  connect: [ChatWhereUniqueInput]
+  connectOrCreate: [ChatCreateOrConnectWithoutMembersInput]
+  create: [ChatCreateWithoutMembersInput]
+}
+
+input ChatCreateNestedOneWithoutMessagesInput {
+  connect: ChatWhereUniqueInput
+  connectOrCreate: ChatCreateOrConnectWithoutMessagesInput
+  create: ChatUncheckedCreateWithoutMessagesInput
+}
+
+input ChatCreateOrConnectWithoutMembersInput {
+  create: ChatUncheckedCreateWithoutMembersInput!
+  where: ChatWhereUniqueInput!
+}
+
+input ChatCreateOrConnectWithoutMessagesInput {
+  create: ChatUncheckedCreateWithoutMessagesInput!
+  where: ChatWhereUniqueInput!
+}
+
+input ChatCreateWithoutMembersInput {
+  createdAt: DateTime
+  id: String
+  messages: MessageCreateNestedManyWithoutChatInput
+}
+
+input ChatCreateWithoutMessagesInput {
+  createdAt: DateTime
+  id: String
+  members: UserCreateNestedManyWithoutChatsInput
+}
+
+input ChatListRelationFilter {
+  every: ChatWhereInput
+  none: ChatWhereInput
+  some: ChatWhereInput
+}
+
+type ChatMaxAggregateOutputType {
+  createdAt: DateTime
+  id: String
+}
+
+input ChatMaxOrderByAggregateInput {
+  createdAt: SortOrder
+  id: SortOrder
+}
+
+type ChatMinAggregateOutputType {
+  createdAt: DateTime
+  id: String
+}
+
+input ChatMinOrderByAggregateInput {
+  createdAt: SortOrder
+  id: SortOrder
+}
+
+input ChatOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ChatOrderByWithAggregationInput {
+  _count: ChatCountOrderByAggregateInput
+  _max: ChatMaxOrderByAggregateInput
+  _min: ChatMinOrderByAggregateInput
+  createdAt: SortOrder
+  id: SortOrder
+}
+
+input ChatOrderByWithRelationInput {
+  createdAt: SortOrder
+  id: SortOrder
+  members: UserOrderByRelationAggregateInput
+  messages: MessageOrderByRelationAggregateInput
+}
+
+input ChatRelationFilter {
+  is: ChatWhereInput
+  isNot: ChatWhereInput
+}
+
+enum ChatScalarFieldEnum {
+  createdAt
+  id
+}
+
+input ChatScalarWhereInput {
+  AND: [ChatScalarWhereInput]
+  NOT: [ChatScalarWhereInput]
+  OR: [ChatScalarWhereInput]
+  createdAt: DateTimeFilter
+  id: StringFilter
+}
+
+input ChatScalarWhereWithAggregatesInput {
+  AND: [ChatScalarWhereWithAggregatesInput]
+  NOT: [ChatScalarWhereWithAggregatesInput]
+  OR: [ChatScalarWhereWithAggregatesInput]
+  createdAt: DateTimeWithAggregatesFilter
+  id: StringWithAggregatesFilter
+}
+
+input ChatUncheckedCreateInput {
+  createdAt: DateTime
+  id: String
+  members: UserUncheckedCreateNestedManyWithoutChatsInput
+  messages: MessageUncheckedCreateNestedManyWithoutChatInput
+}
+
+input ChatUncheckedCreateNestedManyWithoutMembersInput {
+  connect: [ChatWhereUniqueInput]
+  connectOrCreate: [ChatCreateOrConnectWithoutMembersInput]
+  create: [ChatCreateWithoutMembersInput]
+}
+
+input ChatUncheckedCreateWithoutMembersInput {
+  createdAt: DateTime
+  id: String
+  messages: MessageUncheckedCreateNestedManyWithoutChatInput
+}
+
+input ChatUncheckedCreateWithoutMessagesInput {
+  createdAt: DateTime
+  id: String
+  members: UserUncheckedCreateNestedManyWithoutChatsInput
+}
+
+input ChatUncheckedUpdateInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  members: UserUncheckedUpdateManyWithoutChatsNestedInput
+  messages: MessageUncheckedUpdateManyWithoutChatNestedInput
+}
+
+input ChatUncheckedUpdateManyInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+}
+
+input ChatUncheckedUpdateManyWithoutChatsInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+}
+
+input ChatUncheckedUpdateManyWithoutMembersNestedInput {
+  connect: [ChatWhereUniqueInput]
+  connectOrCreate: [ChatCreateOrConnectWithoutMembersInput]
+  create: [ChatCreateWithoutMembersInput]
+  delete: [ChatWhereUniqueInput]
+  deleteMany: [ChatScalarWhereInput]
+  disconnect: [ChatWhereUniqueInput]
+  set: [ChatWhereUniqueInput]
+  update: [ChatUpdateWithWhereUniqueWithoutMembersInput]
+  updateMany: [ChatUpdateManyWithWhereWithoutMembersInput]
+  upsert: [ChatUpsertWithWhereUniqueWithoutMembersInput]
+}
+
+input ChatUncheckedUpdateWithoutMembersInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  messages: MessageUncheckedUpdateManyWithoutChatNestedInput
+}
+
+input ChatUncheckedUpdateWithoutMessagesInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  members: UserUncheckedUpdateManyWithoutChatsNestedInput
+}
+
+input ChatUpdateInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  members: UserUpdateManyWithoutChatsNestedInput
+  messages: MessageUpdateManyWithoutChatNestedInput
+}
+
+input ChatUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+}
+
+input ChatUpdateManyWithWhereWithoutMembersInput {
+  data: ChatUncheckedUpdateManyWithoutChatsInput!
+  where: ChatScalarWhereInput!
+}
+
+input ChatUpdateManyWithoutMembersNestedInput {
+  connect: [ChatWhereUniqueInput]
+  connectOrCreate: [ChatCreateOrConnectWithoutMembersInput]
+  create: [ChatCreateWithoutMembersInput]
+  delete: [ChatWhereUniqueInput]
+  deleteMany: [ChatScalarWhereInput]
+  disconnect: [ChatWhereUniqueInput]
+  set: [ChatWhereUniqueInput]
+  update: [ChatUpdateWithWhereUniqueWithoutMembersInput]
+  updateMany: [ChatUpdateManyWithWhereWithoutMembersInput]
+  upsert: [ChatUpsertWithWhereUniqueWithoutMembersInput]
+}
+
+input ChatUpdateOneRequiredWithoutMessagesNestedInput {
+  connect: ChatWhereUniqueInput
+  connectOrCreate: ChatCreateOrConnectWithoutMessagesInput
+  create: ChatUncheckedCreateWithoutMessagesInput
+  update: ChatUncheckedUpdateWithoutMessagesInput
+  upsert: ChatUpsertWithoutMessagesInput
+}
+
+input ChatUpdateWithWhereUniqueWithoutMembersInput {
+  data: ChatUncheckedUpdateWithoutMembersInput!
+  where: ChatWhereUniqueInput!
+}
+
+input ChatUpdateWithoutMembersInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  messages: MessageUpdateManyWithoutChatNestedInput
+}
+
+input ChatUpdateWithoutMessagesInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  members: UserUpdateManyWithoutChatsNestedInput
+}
+
+input ChatUpsertWithWhereUniqueWithoutMembersInput {
+  create: ChatUncheckedCreateWithoutMembersInput!
+  update: ChatUncheckedUpdateWithoutMembersInput!
+  where: ChatWhereUniqueInput!
+}
+
+input ChatUpsertWithoutMessagesInput {
+  create: ChatUncheckedCreateWithoutMessagesInput!
+  update: ChatUncheckedUpdateWithoutMessagesInput!
+}
+
+input ChatWhereInput {
+  AND: [ChatWhereInput]
+  NOT: [ChatWhereInput]
+  OR: [ChatWhereInput]
+  createdAt: DateTimeFilter
+  id: StringFilter
+  members: UserListRelationFilter
+  messages: MessageListRelationFilter
+}
+
+input ChatWhereUniqueInput {
+  id: String
+}
 
 """
 A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
@@ -75,25 +369,436 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar Json @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
 
+type Message {
+  chat: Chat!
+  chatId: String!
+  id: String!
+  message: String!
+  sender: User!
+  sentDate: DateTime!
+  userId: String!
+}
+
+type MessageCountAggregateOutputType {
+  _all: Int!
+  chatId: Int!
+  id: Int!
+  message: Int!
+  sentDate: Int!
+  userId: Int!
+}
+
+input MessageCountOrderByAggregateInput {
+  chatId: SortOrder
+  id: SortOrder
+  message: SortOrder
+  sentDate: SortOrder
+  userId: SortOrder
+}
+
+input MessageCreateInput {
+  chat: ChatCreateNestedOneWithoutMessagesInput!
+  id: String
+  message: String!
+  sender: UserCreateNestedOneWithoutMessagesInput!
+  sentDate: DateTime
+}
+
+input MessageCreateManyChatInput {
+  id: String
+  message: String!
+  sentDate: DateTime
+  userId: String!
+}
+
+input MessageCreateManyChatInputEnvelope {
+  data: MessageCreateManyChatInput!
+  skipDuplicates: Boolean
+}
+
+input MessageCreateManyInput {
+  chatId: String!
+  id: String
+  message: String!
+  sentDate: DateTime
+  userId: String!
+}
+
+input MessageCreateManySenderInput {
+  chatId: String!
+  id: String
+  message: String!
+  sentDate: DateTime
+}
+
+input MessageCreateManySenderInputEnvelope {
+  data: MessageCreateManySenderInput!
+  skipDuplicates: Boolean
+}
+
+input MessageCreateNestedManyWithoutChatInput {
+  connect: [MessageWhereUniqueInput]
+  connectOrCreate: [MessageCreateOrConnectWithoutChatInput]
+  create: [MessageCreateWithoutChatInput]
+  createMany: MessageCreateManyChatInputEnvelope
+}
+
+input MessageCreateNestedManyWithoutSenderInput {
+  connect: [MessageWhereUniqueInput]
+  connectOrCreate: [MessageCreateOrConnectWithoutSenderInput]
+  create: [MessageCreateWithoutSenderInput]
+  createMany: MessageCreateManySenderInputEnvelope
+}
+
+input MessageCreateOrConnectWithoutChatInput {
+  create: MessageUncheckedCreateWithoutChatInput!
+  where: MessageWhereUniqueInput!
+}
+
+input MessageCreateOrConnectWithoutSenderInput {
+  create: MessageUncheckedCreateWithoutSenderInput!
+  where: MessageWhereUniqueInput!
+}
+
+input MessageCreateWithoutChatInput {
+  id: String
+  message: String!
+  sender: UserCreateNestedOneWithoutMessagesInput!
+  sentDate: DateTime
+}
+
+input MessageCreateWithoutSenderInput {
+  chat: ChatCreateNestedOneWithoutMessagesInput!
+  id: String
+  message: String!
+  sentDate: DateTime
+}
+
+input MessageListRelationFilter {
+  every: MessageWhereInput
+  none: MessageWhereInput
+  some: MessageWhereInput
+}
+
+type MessageMaxAggregateOutputType {
+  chatId: String
+  id: String
+  message: String
+  sentDate: DateTime
+  userId: String
+}
+
+input MessageMaxOrderByAggregateInput {
+  chatId: SortOrder
+  id: SortOrder
+  message: SortOrder
+  sentDate: SortOrder
+  userId: SortOrder
+}
+
+type MessageMinAggregateOutputType {
+  chatId: String
+  id: String
+  message: String
+  sentDate: DateTime
+  userId: String
+}
+
+input MessageMinOrderByAggregateInput {
+  chatId: SortOrder
+  id: SortOrder
+  message: SortOrder
+  sentDate: SortOrder
+  userId: SortOrder
+}
+
+input MessageOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input MessageOrderByWithAggregationInput {
+  _count: MessageCountOrderByAggregateInput
+  _max: MessageMaxOrderByAggregateInput
+  _min: MessageMinOrderByAggregateInput
+  chatId: SortOrder
+  id: SortOrder
+  message: SortOrder
+  sentDate: SortOrder
+  userId: SortOrder
+}
+
+input MessageOrderByWithRelationInput {
+  chat: ChatOrderByWithRelationInput
+  chatId: SortOrder
+  id: SortOrder
+  message: SortOrder
+  sender: UserOrderByWithRelationInput
+  sentDate: SortOrder
+  userId: SortOrder
+}
+
+enum MessageScalarFieldEnum {
+  chatId
+  id
+  message
+  sentDate
+  userId
+}
+
+input MessageScalarWhereInput {
+  AND: [MessageScalarWhereInput]
+  NOT: [MessageScalarWhereInput]
+  OR: [MessageScalarWhereInput]
+  chatId: StringFilter
+  id: StringFilter
+  message: StringFilter
+  sentDate: DateTimeFilter
+  userId: StringFilter
+}
+
+input MessageScalarWhereWithAggregatesInput {
+  AND: [MessageScalarWhereWithAggregatesInput]
+  NOT: [MessageScalarWhereWithAggregatesInput]
+  OR: [MessageScalarWhereWithAggregatesInput]
+  chatId: StringWithAggregatesFilter
+  id: StringWithAggregatesFilter
+  message: StringWithAggregatesFilter
+  sentDate: DateTimeWithAggregatesFilter
+  userId: StringWithAggregatesFilter
+}
+
+input MessageUncheckedCreateInput {
+  chatId: String!
+  id: String
+  message: String!
+  sentDate: DateTime
+  userId: String!
+}
+
+input MessageUncheckedCreateNestedManyWithoutChatInput {
+  connect: [MessageWhereUniqueInput]
+  connectOrCreate: [MessageCreateOrConnectWithoutChatInput]
+  create: [MessageCreateWithoutChatInput]
+  createMany: MessageCreateManyChatInputEnvelope
+}
+
+input MessageUncheckedCreateNestedManyWithoutSenderInput {
+  connect: [MessageWhereUniqueInput]
+  connectOrCreate: [MessageCreateOrConnectWithoutSenderInput]
+  create: [MessageCreateWithoutSenderInput]
+  createMany: MessageCreateManySenderInputEnvelope
+}
+
+input MessageUncheckedCreateWithoutChatInput {
+  id: String
+  message: String!
+  sentDate: DateTime
+  userId: String!
+}
+
+input MessageUncheckedCreateWithoutSenderInput {
+  chatId: String!
+  id: String
+  message: String!
+  sentDate: DateTime
+}
+
+input MessageUncheckedUpdateInput {
+  chatId: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  message: StringFieldUpdateOperationsInput
+  sentDate: DateTimeFieldUpdateOperationsInput
+  userId: StringFieldUpdateOperationsInput
+}
+
+input MessageUncheckedUpdateManyInput {
+  chatId: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  message: StringFieldUpdateOperationsInput
+  sentDate: DateTimeFieldUpdateOperationsInput
+  userId: StringFieldUpdateOperationsInput
+}
+
+input MessageUncheckedUpdateManyWithoutChatNestedInput {
+  connect: [MessageWhereUniqueInput]
+  connectOrCreate: [MessageCreateOrConnectWithoutChatInput]
+  create: [MessageCreateWithoutChatInput]
+  createMany: MessageCreateManyChatInputEnvelope
+  delete: [MessageWhereUniqueInput]
+  deleteMany: [MessageScalarWhereInput]
+  disconnect: [MessageWhereUniqueInput]
+  set: [MessageWhereUniqueInput]
+  update: [MessageUpdateWithWhereUniqueWithoutChatInput]
+  updateMany: [MessageUpdateManyWithWhereWithoutChatInput]
+  upsert: [MessageUpsertWithWhereUniqueWithoutChatInput]
+}
+
+input MessageUncheckedUpdateManyWithoutMessagesInput {
+  id: StringFieldUpdateOperationsInput
+  message: StringFieldUpdateOperationsInput
+  sentDate: DateTimeFieldUpdateOperationsInput
+  userId: StringFieldUpdateOperationsInput
+}
+
+input MessageUncheckedUpdateManyWithoutSenderNestedInput {
+  connect: [MessageWhereUniqueInput]
+  connectOrCreate: [MessageCreateOrConnectWithoutSenderInput]
+  create: [MessageCreateWithoutSenderInput]
+  createMany: MessageCreateManySenderInputEnvelope
+  delete: [MessageWhereUniqueInput]
+  deleteMany: [MessageScalarWhereInput]
+  disconnect: [MessageWhereUniqueInput]
+  set: [MessageWhereUniqueInput]
+  update: [MessageUpdateWithWhereUniqueWithoutSenderInput]
+  updateMany: [MessageUpdateManyWithWhereWithoutSenderInput]
+  upsert: [MessageUpsertWithWhereUniqueWithoutSenderInput]
+}
+
+input MessageUncheckedUpdateWithoutChatInput {
+  id: StringFieldUpdateOperationsInput
+  message: StringFieldUpdateOperationsInput
+  sentDate: DateTimeFieldUpdateOperationsInput
+  userId: StringFieldUpdateOperationsInput
+}
+
+input MessageUncheckedUpdateWithoutSenderInput {
+  chatId: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  message: StringFieldUpdateOperationsInput
+  sentDate: DateTimeFieldUpdateOperationsInput
+}
+
+input MessageUpdateInput {
+  chat: ChatUpdateOneRequiredWithoutMessagesNestedInput
+  id: StringFieldUpdateOperationsInput
+  message: StringFieldUpdateOperationsInput
+  sender: UserUpdateOneRequiredWithoutMessagesNestedInput
+  sentDate: DateTimeFieldUpdateOperationsInput
+}
+
+input MessageUpdateManyMutationInput {
+  id: StringFieldUpdateOperationsInput
+  message: StringFieldUpdateOperationsInput
+  sentDate: DateTimeFieldUpdateOperationsInput
+}
+
+input MessageUpdateManyWithWhereWithoutChatInput {
+  data: MessageUncheckedUpdateManyWithoutMessagesInput!
+  where: MessageScalarWhereInput!
+}
+
+input MessageUpdateManyWithWhereWithoutSenderInput {
+  data: MessageUncheckedUpdateManyWithoutMessagesInput!
+  where: MessageScalarWhereInput!
+}
+
+input MessageUpdateManyWithoutChatNestedInput {
+  connect: [MessageWhereUniqueInput]
+  connectOrCreate: [MessageCreateOrConnectWithoutChatInput]
+  create: [MessageCreateWithoutChatInput]
+  createMany: MessageCreateManyChatInputEnvelope
+  delete: [MessageWhereUniqueInput]
+  deleteMany: [MessageScalarWhereInput]
+  disconnect: [MessageWhereUniqueInput]
+  set: [MessageWhereUniqueInput]
+  update: [MessageUpdateWithWhereUniqueWithoutChatInput]
+  updateMany: [MessageUpdateManyWithWhereWithoutChatInput]
+  upsert: [MessageUpsertWithWhereUniqueWithoutChatInput]
+}
+
+input MessageUpdateManyWithoutSenderNestedInput {
+  connect: [MessageWhereUniqueInput]
+  connectOrCreate: [MessageCreateOrConnectWithoutSenderInput]
+  create: [MessageCreateWithoutSenderInput]
+  createMany: MessageCreateManySenderInputEnvelope
+  delete: [MessageWhereUniqueInput]
+  deleteMany: [MessageScalarWhereInput]
+  disconnect: [MessageWhereUniqueInput]
+  set: [MessageWhereUniqueInput]
+  update: [MessageUpdateWithWhereUniqueWithoutSenderInput]
+  updateMany: [MessageUpdateManyWithWhereWithoutSenderInput]
+  upsert: [MessageUpsertWithWhereUniqueWithoutSenderInput]
+}
+
+input MessageUpdateWithWhereUniqueWithoutChatInput {
+  data: MessageUncheckedUpdateWithoutChatInput!
+  where: MessageWhereUniqueInput!
+}
+
+input MessageUpdateWithWhereUniqueWithoutSenderInput {
+  data: MessageUncheckedUpdateWithoutSenderInput!
+  where: MessageWhereUniqueInput!
+}
+
+input MessageUpdateWithoutChatInput {
+  id: StringFieldUpdateOperationsInput
+  message: StringFieldUpdateOperationsInput
+  sender: UserUpdateOneRequiredWithoutMessagesNestedInput
+  sentDate: DateTimeFieldUpdateOperationsInput
+}
+
+input MessageUpdateWithoutSenderInput {
+  chat: ChatUpdateOneRequiredWithoutMessagesNestedInput
+  id: StringFieldUpdateOperationsInput
+  message: StringFieldUpdateOperationsInput
+  sentDate: DateTimeFieldUpdateOperationsInput
+}
+
+input MessageUpsertWithWhereUniqueWithoutChatInput {
+  create: MessageUncheckedCreateWithoutChatInput!
+  update: MessageUncheckedUpdateWithoutChatInput!
+  where: MessageWhereUniqueInput!
+}
+
+input MessageUpsertWithWhereUniqueWithoutSenderInput {
+  create: MessageUncheckedCreateWithoutSenderInput!
+  update: MessageUncheckedUpdateWithoutSenderInput!
+  where: MessageWhereUniqueInput!
+}
+
+input MessageWhereInput {
+  AND: [MessageWhereInput]
+  NOT: [MessageWhereInput]
+  OR: [MessageWhereInput]
+  chat: ChatWhereInput
+  chatId: StringFilter
+  id: StringFilter
+  message: StringFilter
+  sender: UserWhereInput
+  sentDate: DateTimeFilter
+  userId: StringFilter
+}
+
+input MessageWhereUniqueInput {
+  id: String
+}
+
 type Mutation {
-  createOnePost(data: PostCreateInput!): Post!
+  createOneChat(data: ChatCreateInput!): Chat!
+  createOneMessage(data: MessageCreateInput!): Message!
   createOneProfile(data: ProfileCreateInput!): Profile!
   createOneUser(data: UserCreateInput!): User!
-  deleteManyPost(where: PostWhereInput): BatchPayload!
+  deleteManyChat(where: ChatWhereInput): BatchPayload!
+  deleteManyMessage(where: MessageWhereInput): BatchPayload!
   deleteManyProfile(where: ProfileWhereInput): BatchPayload!
   deleteManyUser(where: UserWhereInput): BatchPayload!
-  deleteOnePost(where: PostWhereUniqueInput!): Post
+  deleteOneChat(where: ChatWhereUniqueInput!): Chat
+  deleteOneMessage(where: MessageWhereUniqueInput!): Message
   deleteOneProfile(where: ProfileWhereUniqueInput!): Profile
   deleteOneUser(where: UserWhereUniqueInput!): User
-  login(data: SignInInput): Token
+  login(data: SignInInput!): Token!
+  sendMessage(data: SendMessageInput!): Message!
   signup(data: SignUpInput!): Token!
-  updateManyPost(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
+  updateManyChat(data: ChatUpdateManyMutationInput!, where: ChatWhereInput): BatchPayload!
+  updateManyMessage(data: MessageUpdateManyMutationInput!, where: MessageWhereInput): BatchPayload!
   updateManyProfile(data: ProfileUpdateManyMutationInput!, where: ProfileWhereInput): BatchPayload!
   updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  updateOnePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
+  updateOneChat(data: ChatUpdateInput!, where: ChatWhereUniqueInput!): Chat!
+  updateOneMessage(data: MessageUpdateInput!, where: MessageWhereUniqueInput!): Message!
   updateOneProfile(data: ProfileUpdateInput!, where: ProfileWhereUniqueInput!): Profile!
   updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
-  upsertOnePost(create: PostCreateInput!, update: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
+  upsertOneChat(create: ChatCreateInput!, update: ChatUpdateInput!, where: ChatWhereUniqueInput!): Chat!
+  upsertOneMessage(create: MessageCreateInput!, update: MessageUpdateInput!, where: MessageWhereUniqueInput!): Message!
   upsertOneProfile(create: ProfileCreateInput!, update: ProfileUpdateInput!, where: ProfileWhereUniqueInput!): Profile!
   upsertOneUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
 }
@@ -211,305 +916,6 @@ input NullableStringFieldUpdateOperationsInput {
   set: String
 }
 
-type Post {
-  author: User!
-  body: String!
-  createdAt: DateTime!
-  id: String!
-  title: String!
-  userId: String!
-}
-
-type PostCountAggregateOutputType {
-  _all: Int!
-  body: Int!
-  createdAt: Int!
-  id: Int!
-  title: Int!
-  userId: Int!
-}
-
-input PostCountOrderByAggregateInput {
-  body: SortOrder
-  createdAt: SortOrder
-  id: SortOrder
-  title: SortOrder
-  userId: SortOrder
-}
-
-input PostCreateInput {
-  author: UserCreateNestedOneWithoutPostsInput!
-  body: String!
-  createdAt: DateTime
-  id: String
-  title: String!
-}
-
-input PostCreateManyAuthorInput {
-  body: String!
-  createdAt: DateTime
-  id: String
-  title: String!
-}
-
-input PostCreateManyAuthorInputEnvelope {
-  data: PostCreateManyAuthorInput!
-  skipDuplicates: Boolean
-}
-
-input PostCreateManyInput {
-  body: String!
-  createdAt: DateTime
-  id: String
-  title: String!
-  userId: String!
-}
-
-input PostCreateNestedManyWithoutAuthorInput {
-  connect: [PostWhereUniqueInput]
-  connectOrCreate: [PostCreateOrConnectWithoutAuthorInput]
-  create: [PostCreateWithoutAuthorInput]
-  createMany: PostCreateManyAuthorInputEnvelope
-}
-
-input PostCreateOrConnectWithoutAuthorInput {
-  create: PostUncheckedCreateWithoutAuthorInput!
-  where: PostWhereUniqueInput!
-}
-
-input PostCreateWithoutAuthorInput {
-  body: String!
-  createdAt: DateTime
-  id: String
-  title: String!
-}
-
-input PostListRelationFilter {
-  every: PostWhereInput
-  none: PostWhereInput
-  some: PostWhereInput
-}
-
-type PostMaxAggregateOutputType {
-  body: String
-  createdAt: DateTime
-  id: String
-  title: String
-  userId: String
-}
-
-input PostMaxOrderByAggregateInput {
-  body: SortOrder
-  createdAt: SortOrder
-  id: SortOrder
-  title: SortOrder
-  userId: SortOrder
-}
-
-type PostMinAggregateOutputType {
-  body: String
-  createdAt: DateTime
-  id: String
-  title: String
-  userId: String
-}
-
-input PostMinOrderByAggregateInput {
-  body: SortOrder
-  createdAt: SortOrder
-  id: SortOrder
-  title: SortOrder
-  userId: SortOrder
-}
-
-input PostOrderByRelationAggregateInput {
-  _count: SortOrder
-}
-
-input PostOrderByWithAggregationInput {
-  _count: PostCountOrderByAggregateInput
-  _max: PostMaxOrderByAggregateInput
-  _min: PostMinOrderByAggregateInput
-  body: SortOrder
-  createdAt: SortOrder
-  id: SortOrder
-  title: SortOrder
-  userId: SortOrder
-}
-
-input PostOrderByWithRelationInput {
-  author: UserOrderByWithRelationInput
-  body: SortOrder
-  createdAt: SortOrder
-  id: SortOrder
-  title: SortOrder
-  userId: SortOrder
-}
-
-enum PostScalarFieldEnum {
-  body
-  createdAt
-  id
-  title
-  userId
-}
-
-input PostScalarWhereInput {
-  AND: [PostScalarWhereInput]
-  NOT: [PostScalarWhereInput]
-  OR: [PostScalarWhereInput]
-  body: StringFilter
-  createdAt: DateTimeFilter
-  id: StringFilter
-  title: StringFilter
-  userId: StringFilter
-}
-
-input PostScalarWhereWithAggregatesInput {
-  AND: [PostScalarWhereWithAggregatesInput]
-  NOT: [PostScalarWhereWithAggregatesInput]
-  OR: [PostScalarWhereWithAggregatesInput]
-  body: StringWithAggregatesFilter
-  createdAt: DateTimeWithAggregatesFilter
-  id: StringWithAggregatesFilter
-  title: StringWithAggregatesFilter
-  userId: StringWithAggregatesFilter
-}
-
-input PostUncheckedCreateInput {
-  body: String!
-  createdAt: DateTime
-  id: String
-  title: String!
-  userId: String!
-}
-
-input PostUncheckedCreateNestedManyWithoutAuthorInput {
-  connect: [PostWhereUniqueInput]
-  connectOrCreate: [PostCreateOrConnectWithoutAuthorInput]
-  create: [PostCreateWithoutAuthorInput]
-  createMany: PostCreateManyAuthorInputEnvelope
-}
-
-input PostUncheckedCreateWithoutAuthorInput {
-  body: String!
-  createdAt: DateTime
-  id: String
-  title: String!
-}
-
-input PostUncheckedUpdateInput {
-  body: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  title: StringFieldUpdateOperationsInput
-  userId: StringFieldUpdateOperationsInput
-}
-
-input PostUncheckedUpdateManyInput {
-  body: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  title: StringFieldUpdateOperationsInput
-  userId: StringFieldUpdateOperationsInput
-}
-
-input PostUncheckedUpdateManyWithoutAuthorNestedInput {
-  connect: [PostWhereUniqueInput]
-  connectOrCreate: [PostCreateOrConnectWithoutAuthorInput]
-  create: [PostCreateWithoutAuthorInput]
-  createMany: PostCreateManyAuthorInputEnvelope
-  delete: [PostWhereUniqueInput]
-  deleteMany: [PostScalarWhereInput]
-  disconnect: [PostWhereUniqueInput]
-  set: [PostWhereUniqueInput]
-  update: [PostUpdateWithWhereUniqueWithoutAuthorInput]
-  updateMany: [PostUpdateManyWithWhereWithoutAuthorInput]
-  upsert: [PostUpsertWithWhereUniqueWithoutAuthorInput]
-}
-
-input PostUncheckedUpdateManyWithoutPostsInput {
-  body: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  title: StringFieldUpdateOperationsInput
-}
-
-input PostUncheckedUpdateWithoutAuthorInput {
-  body: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  title: StringFieldUpdateOperationsInput
-}
-
-input PostUpdateInput {
-  author: UserUpdateOneRequiredWithoutPostsNestedInput
-  body: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  title: StringFieldUpdateOperationsInput
-}
-
-input PostUpdateManyMutationInput {
-  body: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  title: StringFieldUpdateOperationsInput
-}
-
-input PostUpdateManyWithWhereWithoutAuthorInput {
-  data: PostUncheckedUpdateManyWithoutPostsInput!
-  where: PostScalarWhereInput!
-}
-
-input PostUpdateManyWithoutAuthorNestedInput {
-  connect: [PostWhereUniqueInput]
-  connectOrCreate: [PostCreateOrConnectWithoutAuthorInput]
-  create: [PostCreateWithoutAuthorInput]
-  createMany: PostCreateManyAuthorInputEnvelope
-  delete: [PostWhereUniqueInput]
-  deleteMany: [PostScalarWhereInput]
-  disconnect: [PostWhereUniqueInput]
-  set: [PostWhereUniqueInput]
-  update: [PostUpdateWithWhereUniqueWithoutAuthorInput]
-  updateMany: [PostUpdateManyWithWhereWithoutAuthorInput]
-  upsert: [PostUpsertWithWhereUniqueWithoutAuthorInput]
-}
-
-input PostUpdateWithWhereUniqueWithoutAuthorInput {
-  data: PostUncheckedUpdateWithoutAuthorInput!
-  where: PostWhereUniqueInput!
-}
-
-input PostUpdateWithoutAuthorInput {
-  body: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  title: StringFieldUpdateOperationsInput
-}
-
-input PostUpsertWithWhereUniqueWithoutAuthorInput {
-  create: PostUncheckedCreateWithoutAuthorInput!
-  update: PostUncheckedUpdateWithoutAuthorInput!
-  where: PostWhereUniqueInput!
-}
-
-input PostWhereInput {
-  AND: [PostWhereInput]
-  NOT: [PostWhereInput]
-  OR: [PostWhereInput]
-  author: UserWhereInput
-  body: StringFilter
-  createdAt: DateTimeFilter
-  id: StringFilter
-  title: StringFilter
-  userId: StringFilter
-}
-
-input PostWhereUniqueInput {
-  id: String
-}
-
 type Profile {
   avatar: String
   bio: String
@@ -517,8 +923,7 @@ type Profile {
   name: String
   updatedAt: DateTime!
   user: User!
-  userEmail: String!
-  username: String
+  userId: String!
 }
 
 type ProfileCountAggregateOutputType {
@@ -528,8 +933,7 @@ type ProfileCountAggregateOutputType {
   id: Int!
   name: Int!
   updatedAt: Int!
-  userEmail: Int!
-  username: Int!
+  userId: Int!
 }
 
 input ProfileCountOrderByAggregateInput {
@@ -538,8 +942,7 @@ input ProfileCountOrderByAggregateInput {
   id: SortOrder
   name: SortOrder
   updatedAt: SortOrder
-  userEmail: SortOrder
-  username: SortOrder
+  userId: SortOrder
 }
 
 input ProfileCreateInput {
@@ -549,7 +952,6 @@ input ProfileCreateInput {
   name: String
   updatedAt: DateTime
   user: UserCreateNestedOneWithoutProfileInput!
-  username: String
 }
 
 input ProfileCreateManyInput {
@@ -558,8 +960,7 @@ input ProfileCreateManyInput {
   id: String
   name: String
   updatedAt: DateTime
-  userEmail: String!
-  username: String
+  userId: String!
 }
 
 input ProfileCreateNestedOneWithoutUserInput {
@@ -579,7 +980,6 @@ input ProfileCreateWithoutUserInput {
   id: String
   name: String
   updatedAt: DateTime
-  username: String
 }
 
 type ProfileMaxAggregateOutputType {
@@ -588,8 +988,7 @@ type ProfileMaxAggregateOutputType {
   id: String
   name: String
   updatedAt: DateTime
-  userEmail: String
-  username: String
+  userId: String
 }
 
 input ProfileMaxOrderByAggregateInput {
@@ -598,8 +997,7 @@ input ProfileMaxOrderByAggregateInput {
   id: SortOrder
   name: SortOrder
   updatedAt: SortOrder
-  userEmail: SortOrder
-  username: SortOrder
+  userId: SortOrder
 }
 
 type ProfileMinAggregateOutputType {
@@ -608,8 +1006,7 @@ type ProfileMinAggregateOutputType {
   id: String
   name: String
   updatedAt: DateTime
-  userEmail: String
-  username: String
+  userId: String
 }
 
 input ProfileMinOrderByAggregateInput {
@@ -618,8 +1015,7 @@ input ProfileMinOrderByAggregateInput {
   id: SortOrder
   name: SortOrder
   updatedAt: SortOrder
-  userEmail: SortOrder
-  username: SortOrder
+  userId: SortOrder
 }
 
 input ProfileOrderByWithAggregationInput {
@@ -631,8 +1027,7 @@ input ProfileOrderByWithAggregationInput {
   id: SortOrder
   name: SortOrder
   updatedAt: SortOrder
-  userEmail: SortOrder
-  username: SortOrder
+  userId: SortOrder
 }
 
 input ProfileOrderByWithRelationInput {
@@ -642,8 +1037,7 @@ input ProfileOrderByWithRelationInput {
   name: SortOrder
   updatedAt: SortOrder
   user: UserOrderByWithRelationInput
-  userEmail: SortOrder
-  username: SortOrder
+  userId: SortOrder
 }
 
 input ProfileRelationFilter {
@@ -657,8 +1051,7 @@ enum ProfileScalarFieldEnum {
   id
   name
   updatedAt
-  userEmail
-  username
+  userId
 }
 
 input ProfileScalarWhereWithAggregatesInput {
@@ -670,8 +1063,7 @@ input ProfileScalarWhereWithAggregatesInput {
   id: StringWithAggregatesFilter
   name: StringNullableWithAggregatesFilter
   updatedAt: DateTimeWithAggregatesFilter
-  userEmail: StringWithAggregatesFilter
-  username: StringNullableWithAggregatesFilter
+  userId: StringWithAggregatesFilter
 }
 
 input ProfileUncheckedCreateInput {
@@ -680,8 +1072,7 @@ input ProfileUncheckedCreateInput {
   id: String
   name: String
   updatedAt: DateTime
-  userEmail: String!
-  username: String
+  userId: String!
 }
 
 input ProfileUncheckedCreateNestedOneWithoutUserInput {
@@ -696,7 +1087,6 @@ input ProfileUncheckedCreateWithoutUserInput {
   id: String
   name: String
   updatedAt: DateTime
-  username: String
 }
 
 input ProfileUncheckedUpdateInput {
@@ -705,8 +1095,7 @@ input ProfileUncheckedUpdateInput {
   id: StringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
-  userEmail: StringFieldUpdateOperationsInput
-  username: NullableStringFieldUpdateOperationsInput
+  userId: StringFieldUpdateOperationsInput
 }
 
 input ProfileUncheckedUpdateManyInput {
@@ -715,8 +1104,7 @@ input ProfileUncheckedUpdateManyInput {
   id: StringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
-  userEmail: StringFieldUpdateOperationsInput
-  username: NullableStringFieldUpdateOperationsInput
+  userId: StringFieldUpdateOperationsInput
 }
 
 input ProfileUncheckedUpdateOneWithoutUserNestedInput {
@@ -735,7 +1123,6 @@ input ProfileUncheckedUpdateWithoutUserInput {
   id: StringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
-  username: NullableStringFieldUpdateOperationsInput
 }
 
 input ProfileUpdateInput {
@@ -745,7 +1132,6 @@ input ProfileUpdateInput {
   name: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   user: UserUpdateOneRequiredWithoutProfileNestedInput
-  username: NullableStringFieldUpdateOperationsInput
 }
 
 input ProfileUpdateManyMutationInput {
@@ -754,7 +1140,6 @@ input ProfileUpdateManyMutationInput {
   id: StringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
-  username: NullableStringFieldUpdateOperationsInput
 }
 
 input ProfileUpdateOneWithoutUserNestedInput {
@@ -773,7 +1158,6 @@ input ProfileUpdateWithoutUserInput {
   id: StringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
-  username: NullableStringFieldUpdateOperationsInput
 }
 
 input ProfileUpsertWithoutUserInput {
@@ -791,30 +1175,33 @@ input ProfileWhereInput {
   name: StringNullableFilter
   updatedAt: DateTimeFilter
   user: UserWhereInput
-  userEmail: StringFilter
-  username: StringNullableFilter
+  userId: StringFilter
 }
 
 input ProfileWhereUniqueInput {
   id: String
-  userEmail: String
-  username: String
+  userId: String
 }
 
 type Query {
-  aggregatePost(cursor: PostWhereUniqueInput, orderBy: [PostOrderByWithRelationInput], skip: Int, take: Int, where: PostWhereInput): AggregatePost
+  aggregateChat(cursor: ChatWhereUniqueInput, orderBy: [ChatOrderByWithRelationInput], skip: Int, take: Int, where: ChatWhereInput): AggregateChat
+  aggregateMessage(cursor: MessageWhereUniqueInput, orderBy: [MessageOrderByWithRelationInput], skip: Int, take: Int, where: MessageWhereInput): AggregateMessage
   aggregateProfile(cursor: ProfileWhereUniqueInput, orderBy: [ProfileOrderByWithRelationInput], skip: Int, take: Int, where: ProfileWhereInput): AggregateProfile
   aggregateUser(cursor: UserWhereUniqueInput, orderBy: [UserOrderByWithRelationInput], skip: Int, take: Int, where: UserWhereInput): AggregateUser
-  findFirstPost(cursor: PostWhereUniqueInput, distinct: [PostScalarFieldEnum], orderBy: [PostOrderByWithRelationInput], skip: Int, take: Int, where: PostWhereInput): Post
+  findFirstChat(cursor: ChatWhereUniqueInput, distinct: [ChatScalarFieldEnum], orderBy: [ChatOrderByWithRelationInput], skip: Int, take: Int, where: ChatWhereInput): Chat
+  findFirstMessage(cursor: MessageWhereUniqueInput, distinct: [MessageScalarFieldEnum], orderBy: [MessageOrderByWithRelationInput], skip: Int, take: Int, where: MessageWhereInput): Message
   findFirstProfile(cursor: ProfileWhereUniqueInput, distinct: [ProfileScalarFieldEnum], orderBy: [ProfileOrderByWithRelationInput], skip: Int, take: Int, where: ProfileWhereInput): Profile
   findFirstUser(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum], orderBy: [UserOrderByWithRelationInput], skip: Int, take: Int, where: UserWhereInput): User
-  findManyPost(cursor: PostWhereUniqueInput, distinct: [PostScalarFieldEnum], orderBy: [PostOrderByWithRelationInput], skip: Int, take: Int, where: PostWhereInput): [Post!]!
-  findManyPostCount(cursor: PostWhereUniqueInput, distinct: [PostScalarFieldEnum], orderBy: [PostOrderByWithRelationInput], skip: Int, take: Int, where: PostWhereInput): Int!
+  findManyChat(cursor: ChatWhereUniqueInput, distinct: [ChatScalarFieldEnum], orderBy: [ChatOrderByWithRelationInput], skip: Int, take: Int, where: ChatWhereInput): [Chat!]!
+  findManyChatCount(cursor: ChatWhereUniqueInput, distinct: [ChatScalarFieldEnum], orderBy: [ChatOrderByWithRelationInput], skip: Int, take: Int, where: ChatWhereInput): Int!
+  findManyMessage(cursor: MessageWhereUniqueInput, distinct: [MessageScalarFieldEnum], orderBy: [MessageOrderByWithRelationInput], skip: Int, take: Int, where: MessageWhereInput): [Message!]!
+  findManyMessageCount(cursor: MessageWhereUniqueInput, distinct: [MessageScalarFieldEnum], orderBy: [MessageOrderByWithRelationInput], skip: Int, take: Int, where: MessageWhereInput): Int!
   findManyProfile(cursor: ProfileWhereUniqueInput, distinct: [ProfileScalarFieldEnum], orderBy: [ProfileOrderByWithRelationInput], skip: Int, take: Int, where: ProfileWhereInput): [Profile!]!
   findManyProfileCount(cursor: ProfileWhereUniqueInput, distinct: [ProfileScalarFieldEnum], orderBy: [ProfileOrderByWithRelationInput], skip: Int, take: Int, where: ProfileWhereInput): Int!
   findManyUser(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum], orderBy: [UserOrderByWithRelationInput], skip: Int, take: Int, where: UserWhereInput): [User!]!
   findManyUserCount(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum], orderBy: [UserOrderByWithRelationInput], skip: Int, take: Int, where: UserWhereInput): Int!
-  findUniquePost(where: PostWhereUniqueInput!): Post
+  findUniqueChat(where: ChatWhereUniqueInput!): Chat
+  findUniqueMessage(where: MessageWhereUniqueInput!): Message
   findUniqueProfile(where: ProfileWhereUniqueInput!): Profile
   findUniqueUser(where: UserWhereUniqueInput!): User
   me: User!
@@ -825,15 +1212,19 @@ enum QueryMode {
   insensitive
 }
 
+input SendMessageInput {
+  chatId: String!
+  message: String!
+}
+
 input SignInInput {
-  email: String!
   password: String!
+  username: String!
 }
 
 input SignUpInput {
-  email: String!
-  name: String!
   password: String!
+  username: String!
 }
 
 enum SortOrder {
@@ -911,6 +1302,10 @@ input StringWithAggregatesFilter {
   startsWith: String
 }
 
+type Subscription {
+  chat(chatId: String!): Message
+}
+
 type Token {
   token: String
 }
@@ -924,53 +1319,62 @@ enum TransactionIsolationLevel {
 
 type User {
   _count: UserCountOutputType!
+  chats(cursor: ChatWhereUniqueInput, distinct: ChatScalarFieldEnum, orderBy: ChatOrderByWithRelationInput, skip: Int, take: Int, where: ChatWhereInput): [Chat!]!
   createdAt: DateTime!
-  email: String!
   id: String!
+  messages(cursor: MessageWhereUniqueInput, distinct: MessageScalarFieldEnum, orderBy: MessageOrderByWithRelationInput, skip: Int, take: Int, where: MessageWhereInput): [Message!]!
   password: String!
-  posts(cursor: PostWhereUniqueInput, distinct: PostScalarFieldEnum, orderBy: PostOrderByWithRelationInput, skip: Int, take: Int, where: PostWhereInput): [Post!]!
   profile: Profile
+  username: String!
 }
 
 type UserCountAggregateOutputType {
   _all: Int!
   createdAt: Int!
-  email: Int!
   id: Int!
   password: Int!
+  username: Int!
 }
 
 input UserCountOrderByAggregateInput {
   createdAt: SortOrder
-  email: SortOrder
   id: SortOrder
   password: SortOrder
+  username: SortOrder
 }
 
 type UserCountOutputType {
-  posts: Int!
+  chats: Int!
+  messages: Int!
 }
 
 input UserCreateInput {
+  chats: ChatCreateNestedManyWithoutMembersInput
   createdAt: DateTime
-  email: String!
   id: String
+  messages: MessageCreateNestedManyWithoutSenderInput
   password: String!
-  posts: PostCreateNestedManyWithoutAuthorInput
   profile: ProfileCreateNestedOneWithoutUserInput
+  username: String!
 }
 
 input UserCreateManyInput {
   createdAt: DateTime
-  email: String!
   id: String
   password: String!
+  username: String!
 }
 
-input UserCreateNestedOneWithoutPostsInput {
+input UserCreateNestedManyWithoutChatsInput {
+  connect: [UserWhereUniqueInput]
+  connectOrCreate: [UserCreateOrConnectWithoutChatsInput]
+  create: [UserCreateWithoutChatsInput]
+}
+
+input UserCreateNestedOneWithoutMessagesInput {
   connect: UserWhereUniqueInput
-  connectOrCreate: UserCreateOrConnectWithoutPostsInput
-  create: UserUncheckedCreateWithoutPostsInput
+  connectOrCreate: UserCreateOrConnectWithoutMessagesInput
+  create: UserUncheckedCreateWithoutMessagesInput
 }
 
 input UserCreateNestedOneWithoutProfileInput {
@@ -979,8 +1383,13 @@ input UserCreateNestedOneWithoutProfileInput {
   create: UserUncheckedCreateWithoutProfileInput
 }
 
-input UserCreateOrConnectWithoutPostsInput {
-  create: UserUncheckedCreateWithoutPostsInput!
+input UserCreateOrConnectWithoutChatsInput {
+  create: UserUncheckedCreateWithoutChatsInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateOrConnectWithoutMessagesInput {
+  create: UserUncheckedCreateWithoutMessagesInput!
   where: UserWhereUniqueInput!
 }
 
@@ -989,48 +1398,69 @@ input UserCreateOrConnectWithoutProfileInput {
   where: UserWhereUniqueInput!
 }
 
-input UserCreateWithoutPostsInput {
+input UserCreateWithoutChatsInput {
   createdAt: DateTime
-  email: String!
+  id: String
+  messages: MessageCreateNestedManyWithoutSenderInput
+  password: String!
+  profile: ProfileCreateNestedOneWithoutUserInput
+  username: String!
+}
+
+input UserCreateWithoutMessagesInput {
+  chats: ChatCreateNestedManyWithoutMembersInput
+  createdAt: DateTime
   id: String
   password: String!
   profile: ProfileCreateNestedOneWithoutUserInput
+  username: String!
 }
 
 input UserCreateWithoutProfileInput {
+  chats: ChatCreateNestedManyWithoutMembersInput
   createdAt: DateTime
-  email: String!
   id: String
+  messages: MessageCreateNestedManyWithoutSenderInput
   password: String!
-  posts: PostCreateNestedManyWithoutAuthorInput
+  username: String!
+}
+
+input UserListRelationFilter {
+  every: UserWhereInput
+  none: UserWhereInput
+  some: UserWhereInput
 }
 
 type UserMaxAggregateOutputType {
   createdAt: DateTime
-  email: String
   id: String
   password: String
+  username: String
 }
 
 input UserMaxOrderByAggregateInput {
   createdAt: SortOrder
-  email: SortOrder
   id: SortOrder
   password: SortOrder
+  username: SortOrder
 }
 
 type UserMinAggregateOutputType {
   createdAt: DateTime
-  email: String
   id: String
   password: String
+  username: String
 }
 
 input UserMinOrderByAggregateInput {
   createdAt: SortOrder
-  email: SortOrder
   id: SortOrder
   password: SortOrder
+  username: SortOrder
+}
+
+input UserOrderByRelationAggregateInput {
+  _count: SortOrder
 }
 
 input UserOrderByWithAggregationInput {
@@ -1038,18 +1468,19 @@ input UserOrderByWithAggregationInput {
   _max: UserMaxOrderByAggregateInput
   _min: UserMinOrderByAggregateInput
   createdAt: SortOrder
-  email: SortOrder
   id: SortOrder
   password: SortOrder
+  username: SortOrder
 }
 
 input UserOrderByWithRelationInput {
+  chats: ChatOrderByRelationAggregateInput
   createdAt: SortOrder
-  email: SortOrder
   id: SortOrder
+  messages: MessageOrderByRelationAggregateInput
   password: SortOrder
-  posts: PostOrderByRelationAggregateInput
   profile: ProfileOrderByWithRelationInput
+  username: SortOrder
 }
 
 input UserRelationFilter {
@@ -1059,9 +1490,19 @@ input UserRelationFilter {
 
 enum UserScalarFieldEnum {
   createdAt
-  email
   id
   password
+  username
+}
+
+input UserScalarWhereInput {
+  AND: [UserScalarWhereInput]
+  NOT: [UserScalarWhereInput]
+  OR: [UserScalarWhereInput]
+  createdAt: DateTimeFilter
+  id: StringFilter
+  password: StringFilter
+  username: StringFilter
 }
 
 input UserScalarWhereWithAggregatesInput {
@@ -1069,90 +1510,159 @@ input UserScalarWhereWithAggregatesInput {
   NOT: [UserScalarWhereWithAggregatesInput]
   OR: [UserScalarWhereWithAggregatesInput]
   createdAt: DateTimeWithAggregatesFilter
-  email: StringWithAggregatesFilter
   id: StringWithAggregatesFilter
   password: StringWithAggregatesFilter
+  username: StringWithAggregatesFilter
 }
 
 input UserUncheckedCreateInput {
+  chats: ChatUncheckedCreateNestedManyWithoutMembersInput
   createdAt: DateTime
-  email: String!
   id: String
+  messages: MessageUncheckedCreateNestedManyWithoutSenderInput
   password: String!
-  posts: PostUncheckedCreateNestedManyWithoutAuthorInput
   profile: ProfileUncheckedCreateNestedOneWithoutUserInput
+  username: String!
 }
 
-input UserUncheckedCreateWithoutPostsInput {
+input UserUncheckedCreateNestedManyWithoutChatsInput {
+  connect: [UserWhereUniqueInput]
+  connectOrCreate: [UserCreateOrConnectWithoutChatsInput]
+  create: [UserCreateWithoutChatsInput]
+}
+
+input UserUncheckedCreateWithoutChatsInput {
   createdAt: DateTime
-  email: String!
+  id: String
+  messages: MessageUncheckedCreateNestedManyWithoutSenderInput
+  password: String!
+  profile: ProfileUncheckedCreateNestedOneWithoutUserInput
+  username: String!
+}
+
+input UserUncheckedCreateWithoutMessagesInput {
+  chats: ChatUncheckedCreateNestedManyWithoutMembersInput
+  createdAt: DateTime
   id: String
   password: String!
   profile: ProfileUncheckedCreateNestedOneWithoutUserInput
+  username: String!
 }
 
 input UserUncheckedCreateWithoutProfileInput {
+  chats: ChatUncheckedCreateNestedManyWithoutMembersInput
   createdAt: DateTime
-  email: String!
   id: String
+  messages: MessageUncheckedCreateNestedManyWithoutSenderInput
   password: String!
-  posts: PostUncheckedCreateNestedManyWithoutAuthorInput
+  username: String!
 }
 
 input UserUncheckedUpdateInput {
+  chats: ChatUncheckedUpdateManyWithoutMembersNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+  messages: MessageUncheckedUpdateManyWithoutSenderNestedInput
   password: StringFieldUpdateOperationsInput
-  posts: PostUncheckedUpdateManyWithoutAuthorNestedInput
   profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
+  username: StringFieldUpdateOperationsInput
 }
 
 input UserUncheckedUpdateManyInput {
   createdAt: DateTimeFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
 }
 
-input UserUncheckedUpdateWithoutPostsInput {
+input UserUncheckedUpdateManyWithoutChatsNestedInput {
+  connect: [UserWhereUniqueInput]
+  connectOrCreate: [UserCreateOrConnectWithoutChatsInput]
+  create: [UserCreateWithoutChatsInput]
+  delete: [UserWhereUniqueInput]
+  deleteMany: [UserScalarWhereInput]
+  disconnect: [UserWhereUniqueInput]
+  set: [UserWhereUniqueInput]
+  update: [UserUpdateWithWhereUniqueWithoutChatsInput]
+  updateMany: [UserUpdateManyWithWhereWithoutChatsInput]
+  upsert: [UserUpsertWithWhereUniqueWithoutChatsInput]
+}
+
+input UserUncheckedUpdateManyWithoutMembersInput {
   createdAt: DateTimeFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUncheckedUpdateWithoutChatsInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  messages: MessageUncheckedUpdateManyWithoutSenderNestedInput
+  password: StringFieldUpdateOperationsInput
+  profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUncheckedUpdateWithoutMessagesInput {
+  chats: ChatUncheckedUpdateManyWithoutMembersNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
   profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
+  username: StringFieldUpdateOperationsInput
 }
 
 input UserUncheckedUpdateWithoutProfileInput {
+  chats: ChatUncheckedUpdateManyWithoutMembersNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+  messages: MessageUncheckedUpdateManyWithoutSenderNestedInput
   password: StringFieldUpdateOperationsInput
-  posts: PostUncheckedUpdateManyWithoutAuthorNestedInput
+  username: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateInput {
+  chats: ChatUpdateManyWithoutMembersNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+  messages: MessageUpdateManyWithoutSenderNestedInput
   password: StringFieldUpdateOperationsInput
-  posts: PostUpdateManyWithoutAuthorNestedInput
   profile: ProfileUpdateOneWithoutUserNestedInput
+  username: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateManyMutationInput {
   createdAt: DateTimeFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  username: StringFieldUpdateOperationsInput
 }
 
-input UserUpdateOneRequiredWithoutPostsNestedInput {
+input UserUpdateManyWithWhereWithoutChatsInput {
+  data: UserUncheckedUpdateManyWithoutMembersInput!
+  where: UserScalarWhereInput!
+}
+
+input UserUpdateManyWithoutChatsNestedInput {
+  connect: [UserWhereUniqueInput]
+  connectOrCreate: [UserCreateOrConnectWithoutChatsInput]
+  create: [UserCreateWithoutChatsInput]
+  delete: [UserWhereUniqueInput]
+  deleteMany: [UserScalarWhereInput]
+  disconnect: [UserWhereUniqueInput]
+  set: [UserWhereUniqueInput]
+  update: [UserUpdateWithWhereUniqueWithoutChatsInput]
+  updateMany: [UserUpdateManyWithWhereWithoutChatsInput]
+  upsert: [UserUpsertWithWhereUniqueWithoutChatsInput]
+}
+
+input UserUpdateOneRequiredWithoutMessagesNestedInput {
   connect: UserWhereUniqueInput
-  connectOrCreate: UserCreateOrConnectWithoutPostsInput
-  create: UserUncheckedCreateWithoutPostsInput
-  update: UserUncheckedUpdateWithoutPostsInput
-  upsert: UserUpsertWithoutPostsInput
+  connectOrCreate: UserCreateOrConnectWithoutMessagesInput
+  create: UserUncheckedCreateWithoutMessagesInput
+  update: UserUncheckedUpdateWithoutMessagesInput
+  upsert: UserUpsertWithoutMessagesInput
 }
 
 input UserUpdateOneRequiredWithoutProfileNestedInput {
@@ -1163,25 +1673,47 @@ input UserUpdateOneRequiredWithoutProfileNestedInput {
   upsert: UserUpsertWithoutProfileInput
 }
 
-input UserUpdateWithoutPostsInput {
+input UserUpdateWithWhereUniqueWithoutChatsInput {
+  data: UserUncheckedUpdateWithoutChatsInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserUpdateWithoutChatsInput {
   createdAt: DateTimeFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  messages: MessageUpdateManyWithoutSenderNestedInput
+  password: StringFieldUpdateOperationsInput
+  profile: ProfileUpdateOneWithoutUserNestedInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUpdateWithoutMessagesInput {
+  chats: ChatUpdateManyWithoutMembersNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
   profile: ProfileUpdateOneWithoutUserNestedInput
+  username: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateWithoutProfileInput {
+  chats: ChatUpdateManyWithoutMembersNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
+  messages: MessageUpdateManyWithoutSenderNestedInput
   password: StringFieldUpdateOperationsInput
-  posts: PostUpdateManyWithoutAuthorNestedInput
+  username: StringFieldUpdateOperationsInput
 }
 
-input UserUpsertWithoutPostsInput {
-  create: UserUncheckedCreateWithoutPostsInput!
-  update: UserUncheckedUpdateWithoutPostsInput!
+input UserUpsertWithWhereUniqueWithoutChatsInput {
+  create: UserUncheckedCreateWithoutChatsInput!
+  update: UserUncheckedUpdateWithoutChatsInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserUpsertWithoutMessagesInput {
+  create: UserUncheckedCreateWithoutMessagesInput!
+  update: UserUncheckedUpdateWithoutMessagesInput!
 }
 
 input UserUpsertWithoutProfileInput {
@@ -1193,15 +1725,16 @@ input UserWhereInput {
   AND: [UserWhereInput]
   NOT: [UserWhereInput]
   OR: [UserWhereInput]
+  chats: ChatListRelationFilter
   createdAt: DateTimeFilter
-  email: StringFilter
   id: StringFilter
+  messages: MessageListRelationFilter
   password: StringFilter
-  posts: PostListRelationFilter
   profile: ProfileWhereInput
+  username: StringFilter
 }
 
 input UserWhereUniqueInput {
-  email: String
   id: String
+  username: String
 }

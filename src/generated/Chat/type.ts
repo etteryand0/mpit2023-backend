@@ -1,20 +1,26 @@
 import { objectType } from 'nexus'
 
-export const User = objectType({
+export const Chat = objectType({
   nonNullDefaults: {
     output: true,
     input: false,
   },
-  name: 'User',
+  name: 'Chat',
   definition(t) {
     t.string('id')
-    t.string('username')
-    t.string('password')
     t.field('createdAt', { type: 'DateTime' })
-    t.nullable.field('profile', {
-      type: 'Profile',
+    t.list.field('members', {
+      type: 'User',
+      args: {
+        where: 'UserWhereInput',
+        orderBy: 'UserOrderByWithRelationInput',
+        cursor: 'UserWhereUniqueInput',
+        take: 'Int',
+        skip: 'Int',
+        distinct: 'UserScalarFieldEnum',
+      },
       resolve(root: any) {
-        return root.profile
+        return root.members
       },
     })
     t.list.field('messages', {
@@ -31,22 +37,8 @@ export const User = objectType({
         return root.messages
       },
     })
-    t.list.field('chats', {
-      type: 'Chat',
-      args: {
-        where: 'ChatWhereInput',
-        orderBy: 'ChatOrderByWithRelationInput',
-        cursor: 'ChatWhereUniqueInput',
-        take: 'Int',
-        skip: 'Int',
-        distinct: 'ChatScalarFieldEnum',
-      },
-      resolve(root: any) {
-        return root.chats
-      },
-    })
     t.field('_count', {
-      type: 'UserCountOutputType',
+      type: 'ChatCountOutputType',
       resolve(root: any) {
         return root._count
       },

@@ -1,11 +1,11 @@
 import { mutationField, nonNull } from 'nexus'
 
-export const PostDeleteManyMutation = mutationField('deleteManyPost', {
+export const ChatDeleteManyMutation = mutationField('deleteManyChat', {
   type: nonNull('BatchPayload'),
   args: {
-    where: 'PostWhereInput',
+    where: 'ChatWhereInput',
   },
   resolve: async (_parent, { where }, { prisma }) => {
-    return prisma.post.deleteMany({ where } as any)
+    return prisma.chat.deleteMany({ where } as any)
   },
 })

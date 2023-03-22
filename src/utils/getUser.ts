@@ -1,5 +1,4 @@
 import { verify } from 'jsonwebtoken'
-import cookie from 'cookie'
 import type prismaClient from '../context/prisma'
 import { IncomingMessage } from 'http'
 
@@ -29,16 +28,6 @@ export const getUser = async (
 }
 
 const getUserId = (request: IncomingMessage) => {
-  const { token } = cookie.parse(request.headers.cookie ?? '')
-  if (token && token !== 'null') {
-    try {
-      const verifiedToken = verify(token, process.env.JWT_SECRET as string) as unknown as Token
-      return verifiedToken && verifiedToken.userId
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
   const authorization = request.headers.authorization
   if (!authorization) {
     return null
@@ -50,7 +39,14 @@ const getUserId = (request: IncomingMessage) => {
     return null
   }
 
-  return bearerToken
+  try {
+    const verifiedToken = verify(bearerToken, process.env.JWT_SECRET as string) as unknown as Token
+    return verifiedToken.userId
+  } catch (e) {
+    console.log(e)
+  }
+
+  return null
 }
 
 export default getUser

@@ -1,21 +1,18 @@
 import { enumType, inputObjectType, objectType } from 'nexus'
 
-export const PostScalarFieldEnum = enumType({
-  name: 'PostScalarFieldEnum',
-  members: ['id', 'userId', 'title', 'body', 'createdAt'],
+export const ChatScalarFieldEnum = enumType({
+  name: 'ChatScalarFieldEnum',
+  members: ['id', 'createdAt'],
+})
+
+export const MessageScalarFieldEnum = enumType({
+  name: 'MessageScalarFieldEnum',
+  members: ['id', 'message', 'userId', 'chatId', 'sentDate'],
 })
 
 export const ProfileScalarFieldEnum = enumType({
   name: 'ProfileScalarFieldEnum',
-  members: [
-    'id',
-    'userEmail',
-    'username',
-    'bio',
-    'avatar',
-    'name',
-    'updatedAt',
-  ],
+  members: ['id', 'userId', 'bio', 'avatar', 'name', 'updatedAt'],
 })
 
 export const QueryMode = enumType({
@@ -40,82 +37,151 @@ export const TransactionIsolationLevel = enumType({
 
 export const UserScalarFieldEnum = enumType({
   name: 'UserScalarFieldEnum',
-  members: ['id', 'email', 'password', 'createdAt'],
+  members: ['id', 'username', 'password', 'createdAt'],
 })
 
-export const PostWhereInput = inputObjectType({
+export const MessageWhereInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostWhereInput',
+  name: 'MessageWhereInput',
   definition(t) {
-    t.list.field('AND', { type: 'PostWhereInput' })
-    t.list.field('OR', { type: 'PostWhereInput' })
-    t.list.field('NOT', { type: 'PostWhereInput' })
+    t.list.field('AND', { type: 'MessageWhereInput' })
+    t.list.field('OR', { type: 'MessageWhereInput' })
+    t.list.field('NOT', { type: 'MessageWhereInput' })
     t.field('id', { type: 'StringFilter' })
+    t.field('message', { type: 'StringFilter' })
     t.field('userId', { type: 'StringFilter' })
-    t.field('title', { type: 'StringFilter' })
-    t.field('body', { type: 'StringFilter' })
-    t.field('createdAt', { type: 'DateTimeFilter' })
-    t.field('author', { type: 'UserWhereInput' })
+    t.field('chatId', { type: 'StringFilter' })
+    t.field('sentDate', { type: 'DateTimeFilter' })
+    t.field('sender', { type: 'UserWhereInput' })
+    t.field('chat', { type: 'ChatWhereInput' })
   },
 })
 
-export const PostOrderByWithRelationInput = inputObjectType({
+export const MessageOrderByWithRelationInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostOrderByWithRelationInput',
+  name: 'MessageOrderByWithRelationInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
+    t.field('message', { type: 'SortOrder' })
     t.field('userId', { type: 'SortOrder' })
-    t.field('title', { type: 'SortOrder' })
-    t.field('body', { type: 'SortOrder' })
-    t.field('createdAt', { type: 'SortOrder' })
-    t.field('author', { type: 'UserOrderByWithRelationInput' })
+    t.field('chatId', { type: 'SortOrder' })
+    t.field('sentDate', { type: 'SortOrder' })
+    t.field('sender', { type: 'UserOrderByWithRelationInput' })
+    t.field('chat', { type: 'ChatOrderByWithRelationInput' })
   },
 })
 
-export const PostWhereUniqueInput = inputObjectType({
+export const MessageWhereUniqueInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostWhereUniqueInput',
+  name: 'MessageWhereUniqueInput',
   definition(t) {
     t.field('id', { type: 'String' })
   },
 })
 
-export const PostOrderByWithAggregationInput = inputObjectType({
+export const MessageOrderByWithAggregationInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostOrderByWithAggregationInput',
+  name: 'MessageOrderByWithAggregationInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
+    t.field('message', { type: 'SortOrder' })
     t.field('userId', { type: 'SortOrder' })
-    t.field('title', { type: 'SortOrder' })
-    t.field('body', { type: 'SortOrder' })
-    t.field('createdAt', { type: 'SortOrder' })
-    t.field('_count', { type: 'PostCountOrderByAggregateInput' })
-    t.field('_max', { type: 'PostMaxOrderByAggregateInput' })
-    t.field('_min', { type: 'PostMinOrderByAggregateInput' })
+    t.field('chatId', { type: 'SortOrder' })
+    t.field('sentDate', { type: 'SortOrder' })
+    t.field('_count', { type: 'MessageCountOrderByAggregateInput' })
+    t.field('_max', { type: 'MessageMaxOrderByAggregateInput' })
+    t.field('_min', { type: 'MessageMinOrderByAggregateInput' })
   },
 })
 
-export const PostScalarWhereWithAggregatesInput = inputObjectType({
+export const MessageScalarWhereWithAggregatesInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostScalarWhereWithAggregatesInput',
+  name: 'MessageScalarWhereWithAggregatesInput',
   definition(t) {
-    t.list.field('AND', { type: 'PostScalarWhereWithAggregatesInput' })
-    t.list.field('OR', { type: 'PostScalarWhereWithAggregatesInput' })
-    t.list.field('NOT', { type: 'PostScalarWhereWithAggregatesInput' })
+    t.list.field('AND', { type: 'MessageScalarWhereWithAggregatesInput' })
+    t.list.field('OR', { type: 'MessageScalarWhereWithAggregatesInput' })
+    t.list.field('NOT', { type: 'MessageScalarWhereWithAggregatesInput' })
     t.field('id', { type: 'StringWithAggregatesFilter' })
+    t.field('message', { type: 'StringWithAggregatesFilter' })
     t.field('userId', { type: 'StringWithAggregatesFilter' })
-    t.field('title', { type: 'StringWithAggregatesFilter' })
-    t.field('body', { type: 'StringWithAggregatesFilter' })
+    t.field('chatId', { type: 'StringWithAggregatesFilter' })
+    t.field('sentDate', { type: 'DateTimeWithAggregatesFilter' })
+  },
+})
+
+export const ChatWhereInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatWhereInput',
+  definition(t) {
+    t.list.field('AND', { type: 'ChatWhereInput' })
+    t.list.field('OR', { type: 'ChatWhereInput' })
+    t.list.field('NOT', { type: 'ChatWhereInput' })
+    t.field('id', { type: 'StringFilter' })
+    t.field('createdAt', { type: 'DateTimeFilter' })
+    t.field('members', { type: 'UserListRelationFilter' })
+    t.field('messages', { type: 'MessageListRelationFilter' })
+  },
+})
+
+export const ChatOrderByWithRelationInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatOrderByWithRelationInput',
+  definition(t) {
+    t.field('id', { type: 'SortOrder' })
+    t.field('createdAt', { type: 'SortOrder' })
+    t.field('members', { type: 'UserOrderByRelationAggregateInput' })
+    t.field('messages', { type: 'MessageOrderByRelationAggregateInput' })
+  },
+})
+
+export const ChatWhereUniqueInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatWhereUniqueInput',
+  definition(t) {
+    t.field('id', { type: 'String' })
+  },
+})
+
+export const ChatOrderByWithAggregationInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatOrderByWithAggregationInput',
+  definition(t) {
+    t.field('id', { type: 'SortOrder' })
+    t.field('createdAt', { type: 'SortOrder' })
+    t.field('_count', { type: 'ChatCountOrderByAggregateInput' })
+    t.field('_max', { type: 'ChatMaxOrderByAggregateInput' })
+    t.field('_min', { type: 'ChatMinOrderByAggregateInput' })
+  },
+})
+
+export const ChatScalarWhereWithAggregatesInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatScalarWhereWithAggregatesInput',
+  definition(t) {
+    t.list.field('AND', { type: 'ChatScalarWhereWithAggregatesInput' })
+    t.list.field('OR', { type: 'ChatScalarWhereWithAggregatesInput' })
+    t.list.field('NOT', { type: 'ChatScalarWhereWithAggregatesInput' })
+    t.field('id', { type: 'StringWithAggregatesFilter' })
     t.field('createdAt', { type: 'DateTimeWithAggregatesFilter' })
   },
 })
@@ -130,8 +196,7 @@ export const ProfileWhereInput = inputObjectType({
     t.list.field('OR', { type: 'ProfileWhereInput' })
     t.list.field('NOT', { type: 'ProfileWhereInput' })
     t.field('id', { type: 'StringFilter' })
-    t.field('userEmail', { type: 'StringFilter' })
-    t.field('username', { type: 'StringNullableFilter' })
+    t.field('userId', { type: 'StringFilter' })
     t.field('bio', { type: 'StringNullableFilter' })
     t.field('avatar', { type: 'StringNullableFilter' })
     t.field('name', { type: 'StringNullableFilter' })
@@ -147,8 +212,7 @@ export const ProfileOrderByWithRelationInput = inputObjectType({
   name: 'ProfileOrderByWithRelationInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
-    t.field('userEmail', { type: 'SortOrder' })
-    t.field('username', { type: 'SortOrder' })
+    t.field('userId', { type: 'SortOrder' })
     t.field('bio', { type: 'SortOrder' })
     t.field('avatar', { type: 'SortOrder' })
     t.field('name', { type: 'SortOrder' })
@@ -164,8 +228,7 @@ export const ProfileWhereUniqueInput = inputObjectType({
   name: 'ProfileWhereUniqueInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.field('userEmail', { type: 'String' })
-    t.field('username', { type: 'String' })
+    t.field('userId', { type: 'String' })
   },
 })
 
@@ -176,8 +239,7 @@ export const ProfileOrderByWithAggregationInput = inputObjectType({
   name: 'ProfileOrderByWithAggregationInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
-    t.field('userEmail', { type: 'SortOrder' })
-    t.field('username', { type: 'SortOrder' })
+    t.field('userId', { type: 'SortOrder' })
     t.field('bio', { type: 'SortOrder' })
     t.field('avatar', { type: 'SortOrder' })
     t.field('name', { type: 'SortOrder' })
@@ -198,8 +260,7 @@ export const ProfileScalarWhereWithAggregatesInput = inputObjectType({
     t.list.field('OR', { type: 'ProfileScalarWhereWithAggregatesInput' })
     t.list.field('NOT', { type: 'ProfileScalarWhereWithAggregatesInput' })
     t.field('id', { type: 'StringWithAggregatesFilter' })
-    t.field('userEmail', { type: 'StringWithAggregatesFilter' })
-    t.field('username', { type: 'StringNullableWithAggregatesFilter' })
+    t.field('userId', { type: 'StringWithAggregatesFilter' })
     t.field('bio', { type: 'StringNullableWithAggregatesFilter' })
     t.field('avatar', { type: 'StringNullableWithAggregatesFilter' })
     t.field('name', { type: 'StringNullableWithAggregatesFilter' })
@@ -217,11 +278,12 @@ export const UserWhereInput = inputObjectType({
     t.list.field('OR', { type: 'UserWhereInput' })
     t.list.field('NOT', { type: 'UserWhereInput' })
     t.field('id', { type: 'StringFilter' })
-    t.field('email', { type: 'StringFilter' })
+    t.field('username', { type: 'StringFilter' })
     t.field('password', { type: 'StringFilter' })
     t.field('createdAt', { type: 'DateTimeFilter' })
     t.field('profile', { type: 'ProfileWhereInput' })
-    t.field('posts', { type: 'PostListRelationFilter' })
+    t.field('messages', { type: 'MessageListRelationFilter' })
+    t.field('chats', { type: 'ChatListRelationFilter' })
   },
 })
 
@@ -232,11 +294,12 @@ export const UserOrderByWithRelationInput = inputObjectType({
   name: 'UserOrderByWithRelationInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
-    t.field('email', { type: 'SortOrder' })
+    t.field('username', { type: 'SortOrder' })
     t.field('password', { type: 'SortOrder' })
     t.field('createdAt', { type: 'SortOrder' })
     t.field('profile', { type: 'ProfileOrderByWithRelationInput' })
-    t.field('posts', { type: 'PostOrderByRelationAggregateInput' })
+    t.field('messages', { type: 'MessageOrderByRelationAggregateInput' })
+    t.field('chats', { type: 'ChatOrderByRelationAggregateInput' })
   },
 })
 
@@ -247,7 +310,7 @@ export const UserWhereUniqueInput = inputObjectType({
   name: 'UserWhereUniqueInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.field('email', { type: 'String' })
+    t.field('username', { type: 'String' })
   },
 })
 
@@ -258,7 +321,7 @@ export const UserOrderByWithAggregationInput = inputObjectType({
   name: 'UserOrderByWithAggregationInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
-    t.field('email', { type: 'SortOrder' })
+    t.field('username', { type: 'SortOrder' })
     t.field('password', { type: 'SortOrder' })
     t.field('createdAt', { type: 'SortOrder' })
     t.field('_count', { type: 'UserCountOrderByAggregateInput' })
@@ -277,105 +340,201 @@ export const UserScalarWhereWithAggregatesInput = inputObjectType({
     t.list.field('OR', { type: 'UserScalarWhereWithAggregatesInput' })
     t.list.field('NOT', { type: 'UserScalarWhereWithAggregatesInput' })
     t.field('id', { type: 'StringWithAggregatesFilter' })
-    t.field('email', { type: 'StringWithAggregatesFilter' })
+    t.field('username', { type: 'StringWithAggregatesFilter' })
     t.field('password', { type: 'StringWithAggregatesFilter' })
     t.field('createdAt', { type: 'DateTimeWithAggregatesFilter' })
   },
 })
 
-export const PostCreateInput = inputObjectType({
+export const MessageCreateInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostCreateInput',
+  name: 'MessageCreateInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.nonNull.field('title', { type: 'String' })
-    t.nonNull.field('body', { type: 'String' })
-    t.field('createdAt', { type: 'DateTime' })
-    t.nonNull.field('author', { type: 'UserCreateNestedOneWithoutPostsInput' })
+    t.nonNull.field('message', { type: 'String' })
+    t.field('sentDate', { type: 'DateTime' })
+    t.nonNull.field('sender', {
+      type: 'UserCreateNestedOneWithoutMessagesInput',
+    })
+    t.nonNull.field('chat', { type: 'ChatCreateNestedOneWithoutMessagesInput' })
   },
 })
 
-export const PostUncheckedCreateInput = inputObjectType({
+export const MessageUncheckedCreateInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostUncheckedCreateInput',
+  name: 'MessageUncheckedCreateInput',
   definition(t) {
     t.field('id', { type: 'String' })
+    t.nonNull.field('message', { type: 'String' })
     t.nonNull.field('userId', { type: 'String' })
-    t.nonNull.field('title', { type: 'String' })
-    t.nonNull.field('body', { type: 'String' })
-    t.field('createdAt', { type: 'DateTime' })
+    t.nonNull.field('chatId', { type: 'String' })
+    t.field('sentDate', { type: 'DateTime' })
   },
 })
 
-export const PostUpdateInput = inputObjectType({
+export const MessageUpdateInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostUpdateInput',
+  name: 'MessageUpdateInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('title', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('body', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
-    t.field('author', { type: 'UserUpdateOneRequiredWithoutPostsNestedInput' })
+    t.field('message', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('sentDate', { type: 'DateTimeFieldUpdateOperationsInput' })
+    t.field('sender', {
+      type: 'UserUpdateOneRequiredWithoutMessagesNestedInput',
+    })
+    t.field('chat', { type: 'ChatUpdateOneRequiredWithoutMessagesNestedInput' })
   },
 })
 
-export const PostUncheckedUpdateInput = inputObjectType({
+export const MessageUncheckedUpdateInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostUncheckedUpdateInput',
+  name: 'MessageUncheckedUpdateInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('message', { type: 'StringFieldUpdateOperationsInput' })
     t.field('userId', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('title', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('body', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
+    t.field('chatId', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('sentDate', { type: 'DateTimeFieldUpdateOperationsInput' })
   },
 })
 
-export const PostCreateManyInput = inputObjectType({
+export const MessageCreateManyInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostCreateManyInput',
+  name: 'MessageCreateManyInput',
   definition(t) {
     t.field('id', { type: 'String' })
+    t.nonNull.field('message', { type: 'String' })
     t.nonNull.field('userId', { type: 'String' })
-    t.nonNull.field('title', { type: 'String' })
-    t.nonNull.field('body', { type: 'String' })
+    t.nonNull.field('chatId', { type: 'String' })
+    t.field('sentDate', { type: 'DateTime' })
+  },
+})
+
+export const MessageUpdateManyMutationInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageUpdateManyMutationInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('message', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('sentDate', { type: 'DateTimeFieldUpdateOperationsInput' })
+  },
+})
+
+export const MessageUncheckedUpdateManyInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageUncheckedUpdateManyInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('message', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('userId', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('chatId', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('sentDate', { type: 'DateTimeFieldUpdateOperationsInput' })
+  },
+})
+
+export const ChatCreateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatCreateInput',
+  definition(t) {
+    t.field('id', { type: 'String' })
+    t.field('createdAt', { type: 'DateTime' })
+    t.field('members', { type: 'UserCreateNestedManyWithoutChatsInput' })
+    t.field('messages', { type: 'MessageCreateNestedManyWithoutChatInput' })
+  },
+})
+
+export const ChatUncheckedCreateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatUncheckedCreateInput',
+  definition(t) {
+    t.field('id', { type: 'String' })
+    t.field('createdAt', { type: 'DateTime' })
+    t.field('members', {
+      type: 'UserUncheckedCreateNestedManyWithoutChatsInput',
+    })
+    t.field('messages', {
+      type: 'MessageUncheckedCreateNestedManyWithoutChatInput',
+    })
+  },
+})
+
+export const ChatUpdateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatUpdateInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
+    t.field('members', { type: 'UserUpdateManyWithoutChatsNestedInput' })
+    t.field('messages', { type: 'MessageUpdateManyWithoutChatNestedInput' })
+  },
+})
+
+export const ChatUncheckedUpdateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatUncheckedUpdateInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
+    t.field('members', {
+      type: 'UserUncheckedUpdateManyWithoutChatsNestedInput',
+    })
+    t.field('messages', {
+      type: 'MessageUncheckedUpdateManyWithoutChatNestedInput',
+    })
+  },
+})
+
+export const ChatCreateManyInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatCreateManyInput',
+  definition(t) {
+    t.field('id', { type: 'String' })
     t.field('createdAt', { type: 'DateTime' })
   },
 })
 
-export const PostUpdateManyMutationInput = inputObjectType({
+export const ChatUpdateManyMutationInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostUpdateManyMutationInput',
+  name: 'ChatUpdateManyMutationInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('title', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('body', { type: 'StringFieldUpdateOperationsInput' })
     t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
   },
 })
 
-export const PostUncheckedUpdateManyInput = inputObjectType({
+export const ChatUncheckedUpdateManyInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostUncheckedUpdateManyInput',
+  name: 'ChatUncheckedUpdateManyInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('userId', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('title', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('body', { type: 'StringFieldUpdateOperationsInput' })
     t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
   },
 })
@@ -387,7 +546,6 @@ export const ProfileCreateInput = inputObjectType({
   name: 'ProfileCreateInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.field('username', { type: 'String' })
     t.field('bio', { type: 'String' })
     t.field('avatar', { type: 'String' })
     t.field('name', { type: 'String' })
@@ -403,8 +561,7 @@ export const ProfileUncheckedCreateInput = inputObjectType({
   name: 'ProfileUncheckedCreateInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.nonNull.field('userEmail', { type: 'String' })
-    t.field('username', { type: 'String' })
+    t.nonNull.field('userId', { type: 'String' })
     t.field('bio', { type: 'String' })
     t.field('avatar', { type: 'String' })
     t.field('name', { type: 'String' })
@@ -419,7 +576,6 @@ export const ProfileUpdateInput = inputObjectType({
   name: 'ProfileUpdateInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('username', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('bio', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('avatar', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('name', { type: 'NullableStringFieldUpdateOperationsInput' })
@@ -435,8 +591,7 @@ export const ProfileUncheckedUpdateInput = inputObjectType({
   name: 'ProfileUncheckedUpdateInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('userEmail', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('username', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.field('userId', { type: 'StringFieldUpdateOperationsInput' })
     t.field('bio', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('avatar', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('name', { type: 'NullableStringFieldUpdateOperationsInput' })
@@ -451,8 +606,7 @@ export const ProfileCreateManyInput = inputObjectType({
   name: 'ProfileCreateManyInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.nonNull.field('userEmail', { type: 'String' })
-    t.field('username', { type: 'String' })
+    t.nonNull.field('userId', { type: 'String' })
     t.field('bio', { type: 'String' })
     t.field('avatar', { type: 'String' })
     t.field('name', { type: 'String' })
@@ -467,7 +621,6 @@ export const ProfileUpdateManyMutationInput = inputObjectType({
   name: 'ProfileUpdateManyMutationInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('username', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('bio', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('avatar', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('name', { type: 'NullableStringFieldUpdateOperationsInput' })
@@ -482,8 +635,7 @@ export const ProfileUncheckedUpdateManyInput = inputObjectType({
   name: 'ProfileUncheckedUpdateManyInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('userEmail', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('username', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.field('userId', { type: 'StringFieldUpdateOperationsInput' })
     t.field('bio', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('avatar', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('name', { type: 'NullableStringFieldUpdateOperationsInput' })
@@ -498,11 +650,12 @@ export const UserCreateInput = inputObjectType({
   name: 'UserCreateInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.nonNull.field('email', { type: 'String' })
+    t.nonNull.field('username', { type: 'String' })
     t.nonNull.field('password', { type: 'String' })
     t.field('createdAt', { type: 'DateTime' })
     t.field('profile', { type: 'ProfileCreateNestedOneWithoutUserInput' })
-    t.field('posts', { type: 'PostCreateNestedManyWithoutAuthorInput' })
+    t.field('messages', { type: 'MessageCreateNestedManyWithoutSenderInput' })
+    t.field('chats', { type: 'ChatCreateNestedManyWithoutMembersInput' })
   },
 })
 
@@ -513,14 +666,17 @@ export const UserUncheckedCreateInput = inputObjectType({
   name: 'UserUncheckedCreateInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.nonNull.field('email', { type: 'String' })
+    t.nonNull.field('username', { type: 'String' })
     t.nonNull.field('password', { type: 'String' })
     t.field('createdAt', { type: 'DateTime' })
     t.field('profile', {
       type: 'ProfileUncheckedCreateNestedOneWithoutUserInput',
     })
-    t.field('posts', {
-      type: 'PostUncheckedCreateNestedManyWithoutAuthorInput',
+    t.field('messages', {
+      type: 'MessageUncheckedCreateNestedManyWithoutSenderInput',
+    })
+    t.field('chats', {
+      type: 'ChatUncheckedCreateNestedManyWithoutMembersInput',
     })
   },
 })
@@ -532,11 +688,12 @@ export const UserUpdateInput = inputObjectType({
   name: 'UserUpdateInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('email', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('username', { type: 'StringFieldUpdateOperationsInput' })
     t.field('password', { type: 'StringFieldUpdateOperationsInput' })
     t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
     t.field('profile', { type: 'ProfileUpdateOneWithoutUserNestedInput' })
-    t.field('posts', { type: 'PostUpdateManyWithoutAuthorNestedInput' })
+    t.field('messages', { type: 'MessageUpdateManyWithoutSenderNestedInput' })
+    t.field('chats', { type: 'ChatUpdateManyWithoutMembersNestedInput' })
   },
 })
 
@@ -547,14 +704,17 @@ export const UserUncheckedUpdateInput = inputObjectType({
   name: 'UserUncheckedUpdateInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('email', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('username', { type: 'StringFieldUpdateOperationsInput' })
     t.field('password', { type: 'StringFieldUpdateOperationsInput' })
     t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
     t.field('profile', {
       type: 'ProfileUncheckedUpdateOneWithoutUserNestedInput',
     })
-    t.field('posts', {
-      type: 'PostUncheckedUpdateManyWithoutAuthorNestedInput',
+    t.field('messages', {
+      type: 'MessageUncheckedUpdateManyWithoutSenderNestedInput',
+    })
+    t.field('chats', {
+      type: 'ChatUncheckedUpdateManyWithoutMembersNestedInput',
     })
   },
 })
@@ -566,7 +726,7 @@ export const UserCreateManyInput = inputObjectType({
   name: 'UserCreateManyInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.nonNull.field('email', { type: 'String' })
+    t.nonNull.field('username', { type: 'String' })
     t.nonNull.field('password', { type: 'String' })
     t.field('createdAt', { type: 'DateTime' })
   },
@@ -579,7 +739,7 @@ export const UserUpdateManyMutationInput = inputObjectType({
   name: 'UserUpdateManyMutationInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('email', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('username', { type: 'StringFieldUpdateOperationsInput' })
     t.field('password', { type: 'StringFieldUpdateOperationsInput' })
     t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
   },
@@ -592,7 +752,7 @@ export const UserUncheckedUpdateManyInput = inputObjectType({
   name: 'UserUncheckedUpdateManyInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('email', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('username', { type: 'StringFieldUpdateOperationsInput' })
     t.field('password', { type: 'StringFieldUpdateOperationsInput' })
     t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
   },
@@ -647,45 +807,56 @@ export const UserRelationFilter = inputObjectType({
   },
 })
 
-export const PostCountOrderByAggregateInput = inputObjectType({
+export const ChatRelationFilter = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostCountOrderByAggregateInput',
+  name: 'ChatRelationFilter',
   definition(t) {
-    t.field('id', { type: 'SortOrder' })
-    t.field('userId', { type: 'SortOrder' })
-    t.field('title', { type: 'SortOrder' })
-    t.field('body', { type: 'SortOrder' })
-    t.field('createdAt', { type: 'SortOrder' })
+    t.field('is', { type: 'ChatWhereInput' })
+    t.field('isNot', { type: 'ChatWhereInput' })
   },
 })
 
-export const PostMaxOrderByAggregateInput = inputObjectType({
+export const MessageCountOrderByAggregateInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostMaxOrderByAggregateInput',
+  name: 'MessageCountOrderByAggregateInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
+    t.field('message', { type: 'SortOrder' })
     t.field('userId', { type: 'SortOrder' })
-    t.field('title', { type: 'SortOrder' })
-    t.field('body', { type: 'SortOrder' })
-    t.field('createdAt', { type: 'SortOrder' })
+    t.field('chatId', { type: 'SortOrder' })
+    t.field('sentDate', { type: 'SortOrder' })
   },
 })
 
-export const PostMinOrderByAggregateInput = inputObjectType({
+export const MessageMaxOrderByAggregateInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostMinOrderByAggregateInput',
+  name: 'MessageMaxOrderByAggregateInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
+    t.field('message', { type: 'SortOrder' })
     t.field('userId', { type: 'SortOrder' })
-    t.field('title', { type: 'SortOrder' })
-    t.field('body', { type: 'SortOrder' })
-    t.field('createdAt', { type: 'SortOrder' })
+    t.field('chatId', { type: 'SortOrder' })
+    t.field('sentDate', { type: 'SortOrder' })
+  },
+})
+
+export const MessageMinOrderByAggregateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageMinOrderByAggregateInput',
+  definition(t) {
+    t.field('id', { type: 'SortOrder' })
+    t.field('message', { type: 'SortOrder' })
+    t.field('userId', { type: 'SortOrder' })
+    t.field('chatId', { type: 'SortOrder' })
+    t.field('sentDate', { type: 'SortOrder' })
   },
 })
 
@@ -733,6 +904,83 @@ export const DateTimeWithAggregatesFilter = inputObjectType({
   },
 })
 
+export const UserListRelationFilter = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserListRelationFilter',
+  definition(t) {
+    t.field('every', { type: 'UserWhereInput' })
+    t.field('some', { type: 'UserWhereInput' })
+    t.field('none', { type: 'UserWhereInput' })
+  },
+})
+
+export const MessageListRelationFilter = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageListRelationFilter',
+  definition(t) {
+    t.field('every', { type: 'MessageWhereInput' })
+    t.field('some', { type: 'MessageWhereInput' })
+    t.field('none', { type: 'MessageWhereInput' })
+  },
+})
+
+export const UserOrderByRelationAggregateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserOrderByRelationAggregateInput',
+  definition(t) {
+    t.field('_count', { type: 'SortOrder' })
+  },
+})
+
+export const MessageOrderByRelationAggregateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageOrderByRelationAggregateInput',
+  definition(t) {
+    t.field('_count', { type: 'SortOrder' })
+  },
+})
+
+export const ChatCountOrderByAggregateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatCountOrderByAggregateInput',
+  definition(t) {
+    t.field('id', { type: 'SortOrder' })
+    t.field('createdAt', { type: 'SortOrder' })
+  },
+})
+
+export const ChatMaxOrderByAggregateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatMaxOrderByAggregateInput',
+  definition(t) {
+    t.field('id', { type: 'SortOrder' })
+    t.field('createdAt', { type: 'SortOrder' })
+  },
+})
+
+export const ChatMinOrderByAggregateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatMinOrderByAggregateInput',
+  definition(t) {
+    t.field('id', { type: 'SortOrder' })
+    t.field('createdAt', { type: 'SortOrder' })
+  },
+})
+
 export const StringNullableFilter = inputObjectType({
   nonNullDefaults: {
     input: false,
@@ -761,8 +1009,7 @@ export const ProfileCountOrderByAggregateInput = inputObjectType({
   name: 'ProfileCountOrderByAggregateInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
-    t.field('userEmail', { type: 'SortOrder' })
-    t.field('username', { type: 'SortOrder' })
+    t.field('userId', { type: 'SortOrder' })
     t.field('bio', { type: 'SortOrder' })
     t.field('avatar', { type: 'SortOrder' })
     t.field('name', { type: 'SortOrder' })
@@ -777,8 +1024,7 @@ export const ProfileMaxOrderByAggregateInput = inputObjectType({
   name: 'ProfileMaxOrderByAggregateInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
-    t.field('userEmail', { type: 'SortOrder' })
-    t.field('username', { type: 'SortOrder' })
+    t.field('userId', { type: 'SortOrder' })
     t.field('bio', { type: 'SortOrder' })
     t.field('avatar', { type: 'SortOrder' })
     t.field('name', { type: 'SortOrder' })
@@ -793,8 +1039,7 @@ export const ProfileMinOrderByAggregateInput = inputObjectType({
   name: 'ProfileMinOrderByAggregateInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
-    t.field('userEmail', { type: 'SortOrder' })
-    t.field('username', { type: 'SortOrder' })
+    t.field('userId', { type: 'SortOrder' })
     t.field('bio', { type: 'SortOrder' })
     t.field('avatar', { type: 'SortOrder' })
     t.field('name', { type: 'SortOrder' })
@@ -837,23 +1082,23 @@ export const ProfileRelationFilter = inputObjectType({
   },
 })
 
-export const PostListRelationFilter = inputObjectType({
+export const ChatListRelationFilter = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostListRelationFilter',
+  name: 'ChatListRelationFilter',
   definition(t) {
-    t.field('every', { type: 'PostWhereInput' })
-    t.field('some', { type: 'PostWhereInput' })
-    t.field('none', { type: 'PostWhereInput' })
+    t.field('every', { type: 'ChatWhereInput' })
+    t.field('some', { type: 'ChatWhereInput' })
+    t.field('none', { type: 'ChatWhereInput' })
   },
 })
 
-export const PostOrderByRelationAggregateInput = inputObjectType({
+export const ChatOrderByRelationAggregateInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostOrderByRelationAggregateInput',
+  name: 'ChatOrderByRelationAggregateInput',
   definition(t) {
     t.field('_count', { type: 'SortOrder' })
   },
@@ -866,7 +1111,7 @@ export const UserCountOrderByAggregateInput = inputObjectType({
   name: 'UserCountOrderByAggregateInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
-    t.field('email', { type: 'SortOrder' })
+    t.field('username', { type: 'SortOrder' })
     t.field('password', { type: 'SortOrder' })
     t.field('createdAt', { type: 'SortOrder' })
   },
@@ -879,7 +1124,7 @@ export const UserMaxOrderByAggregateInput = inputObjectType({
   name: 'UserMaxOrderByAggregateInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
-    t.field('email', { type: 'SortOrder' })
+    t.field('username', { type: 'SortOrder' })
     t.field('password', { type: 'SortOrder' })
     t.field('createdAt', { type: 'SortOrder' })
   },
@@ -892,21 +1137,37 @@ export const UserMinOrderByAggregateInput = inputObjectType({
   name: 'UserMinOrderByAggregateInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
-    t.field('email', { type: 'SortOrder' })
+    t.field('username', { type: 'SortOrder' })
     t.field('password', { type: 'SortOrder' })
     t.field('createdAt', { type: 'SortOrder' })
   },
 })
 
-export const UserCreateNestedOneWithoutPostsInput = inputObjectType({
+export const UserCreateNestedOneWithoutMessagesInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'UserCreateNestedOneWithoutPostsInput',
+  name: 'UserCreateNestedOneWithoutMessagesInput',
   definition(t) {
-    t.field('create', { type: 'UserUncheckedCreateWithoutPostsInput' })
-    t.field('connectOrCreate', { type: 'UserCreateOrConnectWithoutPostsInput' })
+    t.field('create', { type: 'UserUncheckedCreateWithoutMessagesInput' })
+    t.field('connectOrCreate', {
+      type: 'UserCreateOrConnectWithoutMessagesInput',
+    })
     t.field('connect', { type: 'UserWhereUniqueInput' })
+  },
+})
+
+export const ChatCreateNestedOneWithoutMessagesInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatCreateNestedOneWithoutMessagesInput',
+  definition(t) {
+    t.field('create', { type: 'ChatUncheckedCreateWithoutMessagesInput' })
+    t.field('connectOrCreate', {
+      type: 'ChatCreateOrConnectWithoutMessagesInput',
+    })
+    t.field('connect', { type: 'ChatWhereUniqueInput' })
   },
 })
 
@@ -930,19 +1191,209 @@ export const DateTimeFieldUpdateOperationsInput = inputObjectType({
   },
 })
 
-export const UserUpdateOneRequiredWithoutPostsNestedInput = inputObjectType({
+export const UserUpdateOneRequiredWithoutMessagesNestedInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'UserUpdateOneRequiredWithoutPostsNestedInput',
+  name: 'UserUpdateOneRequiredWithoutMessagesNestedInput',
   definition(t) {
-    t.field('create', { type: 'UserUncheckedCreateWithoutPostsInput' })
-    t.field('connectOrCreate', { type: 'UserCreateOrConnectWithoutPostsInput' })
-    t.field('upsert', { type: 'UserUpsertWithoutPostsInput' })
+    t.field('create', { type: 'UserUncheckedCreateWithoutMessagesInput' })
+    t.field('connectOrCreate', {
+      type: 'UserCreateOrConnectWithoutMessagesInput',
+    })
+    t.field('upsert', { type: 'UserUpsertWithoutMessagesInput' })
     t.field('connect', { type: 'UserWhereUniqueInput' })
-    t.field('update', { type: 'UserUncheckedUpdateWithoutPostsInput' })
+    t.field('update', { type: 'UserUncheckedUpdateWithoutMessagesInput' })
   },
 })
+
+export const ChatUpdateOneRequiredWithoutMessagesNestedInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatUpdateOneRequiredWithoutMessagesNestedInput',
+  definition(t) {
+    t.field('create', { type: 'ChatUncheckedCreateWithoutMessagesInput' })
+    t.field('connectOrCreate', {
+      type: 'ChatCreateOrConnectWithoutMessagesInput',
+    })
+    t.field('upsert', { type: 'ChatUpsertWithoutMessagesInput' })
+    t.field('connect', { type: 'ChatWhereUniqueInput' })
+    t.field('update', { type: 'ChatUncheckedUpdateWithoutMessagesInput' })
+  },
+})
+
+export const UserCreateNestedManyWithoutChatsInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserCreateNestedManyWithoutChatsInput',
+  definition(t) {
+    t.list.field('create', { type: 'UserCreateWithoutChatsInput' })
+    t.list.field('connectOrCreate', {
+      type: 'UserCreateOrConnectWithoutChatsInput',
+    })
+    t.list.field('connect', { type: 'UserWhereUniqueInput' })
+  },
+})
+
+export const MessageCreateNestedManyWithoutChatInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageCreateNestedManyWithoutChatInput',
+  definition(t) {
+    t.list.field('create', { type: 'MessageCreateWithoutChatInput' })
+    t.list.field('connectOrCreate', {
+      type: 'MessageCreateOrConnectWithoutChatInput',
+    })
+    t.field('createMany', { type: 'MessageCreateManyChatInputEnvelope' })
+    t.list.field('connect', { type: 'MessageWhereUniqueInput' })
+  },
+})
+
+export const UserUncheckedCreateNestedManyWithoutChatsInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserUncheckedCreateNestedManyWithoutChatsInput',
+  definition(t) {
+    t.list.field('create', { type: 'UserCreateWithoutChatsInput' })
+    t.list.field('connectOrCreate', {
+      type: 'UserCreateOrConnectWithoutChatsInput',
+    })
+    t.list.field('connect', { type: 'UserWhereUniqueInput' })
+  },
+})
+
+export const MessageUncheckedCreateNestedManyWithoutChatInput = inputObjectType(
+  {
+    nonNullDefaults: {
+      input: false,
+    },
+    name: 'MessageUncheckedCreateNestedManyWithoutChatInput',
+    definition(t) {
+      t.list.field('create', { type: 'MessageCreateWithoutChatInput' })
+      t.list.field('connectOrCreate', {
+        type: 'MessageCreateOrConnectWithoutChatInput',
+      })
+      t.field('createMany', { type: 'MessageCreateManyChatInputEnvelope' })
+      t.list.field('connect', { type: 'MessageWhereUniqueInput' })
+    },
+  },
+)
+
+export const UserUpdateManyWithoutChatsNestedInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserUpdateManyWithoutChatsNestedInput',
+  definition(t) {
+    t.list.field('create', { type: 'UserCreateWithoutChatsInput' })
+    t.list.field('connectOrCreate', {
+      type: 'UserCreateOrConnectWithoutChatsInput',
+    })
+    t.list.field('upsert', {
+      type: 'UserUpsertWithWhereUniqueWithoutChatsInput',
+    })
+    t.list.field('set', { type: 'UserWhereUniqueInput' })
+    t.list.field('disconnect', { type: 'UserWhereUniqueInput' })
+    t.list.field('delete', { type: 'UserWhereUniqueInput' })
+    t.list.field('connect', { type: 'UserWhereUniqueInput' })
+    t.list.field('update', {
+      type: 'UserUpdateWithWhereUniqueWithoutChatsInput',
+    })
+    t.list.field('updateMany', {
+      type: 'UserUpdateManyWithWhereWithoutChatsInput',
+    })
+    t.list.field('deleteMany', { type: 'UserScalarWhereInput' })
+  },
+})
+
+export const MessageUpdateManyWithoutChatNestedInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageUpdateManyWithoutChatNestedInput',
+  definition(t) {
+    t.list.field('create', { type: 'MessageCreateWithoutChatInput' })
+    t.list.field('connectOrCreate', {
+      type: 'MessageCreateOrConnectWithoutChatInput',
+    })
+    t.list.field('upsert', {
+      type: 'MessageUpsertWithWhereUniqueWithoutChatInput',
+    })
+    t.field('createMany', { type: 'MessageCreateManyChatInputEnvelope' })
+    t.list.field('set', { type: 'MessageWhereUniqueInput' })
+    t.list.field('disconnect', { type: 'MessageWhereUniqueInput' })
+    t.list.field('delete', { type: 'MessageWhereUniqueInput' })
+    t.list.field('connect', { type: 'MessageWhereUniqueInput' })
+    t.list.field('update', {
+      type: 'MessageUpdateWithWhereUniqueWithoutChatInput',
+    })
+    t.list.field('updateMany', {
+      type: 'MessageUpdateManyWithWhereWithoutChatInput',
+    })
+    t.list.field('deleteMany', { type: 'MessageScalarWhereInput' })
+  },
+})
+
+export const UserUncheckedUpdateManyWithoutChatsNestedInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserUncheckedUpdateManyWithoutChatsNestedInput',
+  definition(t) {
+    t.list.field('create', { type: 'UserCreateWithoutChatsInput' })
+    t.list.field('connectOrCreate', {
+      type: 'UserCreateOrConnectWithoutChatsInput',
+    })
+    t.list.field('upsert', {
+      type: 'UserUpsertWithWhereUniqueWithoutChatsInput',
+    })
+    t.list.field('set', { type: 'UserWhereUniqueInput' })
+    t.list.field('disconnect', { type: 'UserWhereUniqueInput' })
+    t.list.field('delete', { type: 'UserWhereUniqueInput' })
+    t.list.field('connect', { type: 'UserWhereUniqueInput' })
+    t.list.field('update', {
+      type: 'UserUpdateWithWhereUniqueWithoutChatsInput',
+    })
+    t.list.field('updateMany', {
+      type: 'UserUpdateManyWithWhereWithoutChatsInput',
+    })
+    t.list.field('deleteMany', { type: 'UserScalarWhereInput' })
+  },
+})
+
+export const MessageUncheckedUpdateManyWithoutChatNestedInput = inputObjectType(
+  {
+    nonNullDefaults: {
+      input: false,
+    },
+    name: 'MessageUncheckedUpdateManyWithoutChatNestedInput',
+    definition(t) {
+      t.list.field('create', { type: 'MessageCreateWithoutChatInput' })
+      t.list.field('connectOrCreate', {
+        type: 'MessageCreateOrConnectWithoutChatInput',
+      })
+      t.list.field('upsert', {
+        type: 'MessageUpsertWithWhereUniqueWithoutChatInput',
+      })
+      t.field('createMany', { type: 'MessageCreateManyChatInputEnvelope' })
+      t.list.field('set', { type: 'MessageWhereUniqueInput' })
+      t.list.field('disconnect', { type: 'MessageWhereUniqueInput' })
+      t.list.field('delete', { type: 'MessageWhereUniqueInput' })
+      t.list.field('connect', { type: 'MessageWhereUniqueInput' })
+      t.list.field('update', {
+        type: 'MessageUpdateWithWhereUniqueWithoutChatInput',
+      })
+      t.list.field('updateMany', {
+        type: 'MessageUpdateManyWithWhereWithoutChatInput',
+      })
+      t.list.field('deleteMany', { type: 'MessageScalarWhereInput' })
+    },
+  },
+)
 
 export const UserCreateNestedOneWithoutProfileInput = inputObjectType({
   nonNullDefaults: {
@@ -998,18 +1449,32 @@ export const ProfileCreateNestedOneWithoutUserInput = inputObjectType({
   },
 })
 
-export const PostCreateNestedManyWithoutAuthorInput = inputObjectType({
+export const MessageCreateNestedManyWithoutSenderInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostCreateNestedManyWithoutAuthorInput',
+  name: 'MessageCreateNestedManyWithoutSenderInput',
   definition(t) {
-    t.list.field('create', { type: 'PostCreateWithoutAuthorInput' })
+    t.list.field('create', { type: 'MessageCreateWithoutSenderInput' })
     t.list.field('connectOrCreate', {
-      type: 'PostCreateOrConnectWithoutAuthorInput',
+      type: 'MessageCreateOrConnectWithoutSenderInput',
     })
-    t.field('createMany', { type: 'PostCreateManyAuthorInputEnvelope' })
-    t.list.field('connect', { type: 'PostWhereUniqueInput' })
+    t.field('createMany', { type: 'MessageCreateManySenderInputEnvelope' })
+    t.list.field('connect', { type: 'MessageWhereUniqueInput' })
+  },
+})
+
+export const ChatCreateNestedManyWithoutMembersInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatCreateNestedManyWithoutMembersInput',
+  definition(t) {
+    t.list.field('create', { type: 'ChatCreateWithoutMembersInput' })
+    t.list.field('connectOrCreate', {
+      type: 'ChatCreateOrConnectWithoutMembersInput',
+    })
+    t.list.field('connect', { type: 'ChatWhereUniqueInput' })
   },
 })
 
@@ -1027,20 +1492,37 @@ export const ProfileUncheckedCreateNestedOneWithoutUserInput = inputObjectType({
   },
 })
 
-export const PostUncheckedCreateNestedManyWithoutAuthorInput = inputObjectType({
-  nonNullDefaults: {
-    input: false,
+export const MessageUncheckedCreateNestedManyWithoutSenderInput =
+  inputObjectType({
+    nonNullDefaults: {
+      input: false,
+    },
+    name: 'MessageUncheckedCreateNestedManyWithoutSenderInput',
+    definition(t) {
+      t.list.field('create', { type: 'MessageCreateWithoutSenderInput' })
+      t.list.field('connectOrCreate', {
+        type: 'MessageCreateOrConnectWithoutSenderInput',
+      })
+      t.field('createMany', { type: 'MessageCreateManySenderInputEnvelope' })
+      t.list.field('connect', { type: 'MessageWhereUniqueInput' })
+    },
+  })
+
+export const ChatUncheckedCreateNestedManyWithoutMembersInput = inputObjectType(
+  {
+    nonNullDefaults: {
+      input: false,
+    },
+    name: 'ChatUncheckedCreateNestedManyWithoutMembersInput',
+    definition(t) {
+      t.list.field('create', { type: 'ChatCreateWithoutMembersInput' })
+      t.list.field('connectOrCreate', {
+        type: 'ChatCreateOrConnectWithoutMembersInput',
+      })
+      t.list.field('connect', { type: 'ChatWhereUniqueInput' })
+    },
   },
-  name: 'PostUncheckedCreateNestedManyWithoutAuthorInput',
-  definition(t) {
-    t.list.field('create', { type: 'PostCreateWithoutAuthorInput' })
-    t.list.field('connectOrCreate', {
-      type: 'PostCreateOrConnectWithoutAuthorInput',
-    })
-    t.field('createMany', { type: 'PostCreateManyAuthorInputEnvelope' })
-    t.list.field('connect', { type: 'PostWhereUniqueInput' })
-  },
-})
+)
 
 export const ProfileUpdateOneWithoutUserNestedInput = inputObjectType({
   nonNullDefaults: {
@@ -1060,31 +1542,58 @@ export const ProfileUpdateOneWithoutUserNestedInput = inputObjectType({
   },
 })
 
-export const PostUpdateManyWithoutAuthorNestedInput = inputObjectType({
+export const MessageUpdateManyWithoutSenderNestedInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostUpdateManyWithoutAuthorNestedInput',
+  name: 'MessageUpdateManyWithoutSenderNestedInput',
   definition(t) {
-    t.list.field('create', { type: 'PostCreateWithoutAuthorInput' })
+    t.list.field('create', { type: 'MessageCreateWithoutSenderInput' })
     t.list.field('connectOrCreate', {
-      type: 'PostCreateOrConnectWithoutAuthorInput',
+      type: 'MessageCreateOrConnectWithoutSenderInput',
     })
     t.list.field('upsert', {
-      type: 'PostUpsertWithWhereUniqueWithoutAuthorInput',
+      type: 'MessageUpsertWithWhereUniqueWithoutSenderInput',
     })
-    t.field('createMany', { type: 'PostCreateManyAuthorInputEnvelope' })
-    t.list.field('set', { type: 'PostWhereUniqueInput' })
-    t.list.field('disconnect', { type: 'PostWhereUniqueInput' })
-    t.list.field('delete', { type: 'PostWhereUniqueInput' })
-    t.list.field('connect', { type: 'PostWhereUniqueInput' })
+    t.field('createMany', { type: 'MessageCreateManySenderInputEnvelope' })
+    t.list.field('set', { type: 'MessageWhereUniqueInput' })
+    t.list.field('disconnect', { type: 'MessageWhereUniqueInput' })
+    t.list.field('delete', { type: 'MessageWhereUniqueInput' })
+    t.list.field('connect', { type: 'MessageWhereUniqueInput' })
     t.list.field('update', {
-      type: 'PostUpdateWithWhereUniqueWithoutAuthorInput',
+      type: 'MessageUpdateWithWhereUniqueWithoutSenderInput',
     })
     t.list.field('updateMany', {
-      type: 'PostUpdateManyWithWhereWithoutAuthorInput',
+      type: 'MessageUpdateManyWithWhereWithoutSenderInput',
     })
-    t.list.field('deleteMany', { type: 'PostScalarWhereInput' })
+    t.list.field('deleteMany', { type: 'MessageScalarWhereInput' })
+  },
+})
+
+export const ChatUpdateManyWithoutMembersNestedInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatUpdateManyWithoutMembersNestedInput',
+  definition(t) {
+    t.list.field('create', { type: 'ChatCreateWithoutMembersInput' })
+    t.list.field('connectOrCreate', {
+      type: 'ChatCreateOrConnectWithoutMembersInput',
+    })
+    t.list.field('upsert', {
+      type: 'ChatUpsertWithWhereUniqueWithoutMembersInput',
+    })
+    t.list.field('set', { type: 'ChatWhereUniqueInput' })
+    t.list.field('disconnect', { type: 'ChatWhereUniqueInput' })
+    t.list.field('delete', { type: 'ChatWhereUniqueInput' })
+    t.list.field('connect', { type: 'ChatWhereUniqueInput' })
+    t.list.field('update', {
+      type: 'ChatUpdateWithWhereUniqueWithoutMembersInput',
+    })
+    t.list.field('updateMany', {
+      type: 'ChatUpdateManyWithWhereWithoutMembersInput',
+    })
+    t.list.field('deleteMany', { type: 'ChatScalarWhereInput' })
   },
 })
 
@@ -1106,33 +1615,63 @@ export const ProfileUncheckedUpdateOneWithoutUserNestedInput = inputObjectType({
   },
 })
 
-export const PostUncheckedUpdateManyWithoutAuthorNestedInput = inputObjectType({
-  nonNullDefaults: {
-    input: false,
+export const MessageUncheckedUpdateManyWithoutSenderNestedInput =
+  inputObjectType({
+    nonNullDefaults: {
+      input: false,
+    },
+    name: 'MessageUncheckedUpdateManyWithoutSenderNestedInput',
+    definition(t) {
+      t.list.field('create', { type: 'MessageCreateWithoutSenderInput' })
+      t.list.field('connectOrCreate', {
+        type: 'MessageCreateOrConnectWithoutSenderInput',
+      })
+      t.list.field('upsert', {
+        type: 'MessageUpsertWithWhereUniqueWithoutSenderInput',
+      })
+      t.field('createMany', { type: 'MessageCreateManySenderInputEnvelope' })
+      t.list.field('set', { type: 'MessageWhereUniqueInput' })
+      t.list.field('disconnect', { type: 'MessageWhereUniqueInput' })
+      t.list.field('delete', { type: 'MessageWhereUniqueInput' })
+      t.list.field('connect', { type: 'MessageWhereUniqueInput' })
+      t.list.field('update', {
+        type: 'MessageUpdateWithWhereUniqueWithoutSenderInput',
+      })
+      t.list.field('updateMany', {
+        type: 'MessageUpdateManyWithWhereWithoutSenderInput',
+      })
+      t.list.field('deleteMany', { type: 'MessageScalarWhereInput' })
+    },
+  })
+
+export const ChatUncheckedUpdateManyWithoutMembersNestedInput = inputObjectType(
+  {
+    nonNullDefaults: {
+      input: false,
+    },
+    name: 'ChatUncheckedUpdateManyWithoutMembersNestedInput',
+    definition(t) {
+      t.list.field('create', { type: 'ChatCreateWithoutMembersInput' })
+      t.list.field('connectOrCreate', {
+        type: 'ChatCreateOrConnectWithoutMembersInput',
+      })
+      t.list.field('upsert', {
+        type: 'ChatUpsertWithWhereUniqueWithoutMembersInput',
+      })
+      t.list.field('set', { type: 'ChatWhereUniqueInput' })
+      t.list.field('disconnect', { type: 'ChatWhereUniqueInput' })
+      t.list.field('delete', { type: 'ChatWhereUniqueInput' })
+      t.list.field('connect', { type: 'ChatWhereUniqueInput' })
+      t.list.field('update', {
+        type: 'ChatUpdateWithWhereUniqueWithoutMembersInput',
+      })
+      t.list.field('updateMany', {
+        type: 'ChatUpdateManyWithWhereWithoutMembersInput',
+      })
+      t.list.field('deleteMany', { type: 'ChatScalarWhereInput' })
+    },
   },
-  name: 'PostUncheckedUpdateManyWithoutAuthorNestedInput',
-  definition(t) {
-    t.list.field('create', { type: 'PostCreateWithoutAuthorInput' })
-    t.list.field('connectOrCreate', {
-      type: 'PostCreateOrConnectWithoutAuthorInput',
-    })
-    t.list.field('upsert', {
-      type: 'PostUpsertWithWhereUniqueWithoutAuthorInput',
-    })
-    t.field('createMany', { type: 'PostCreateManyAuthorInputEnvelope' })
-    t.list.field('set', { type: 'PostWhereUniqueInput' })
-    t.list.field('disconnect', { type: 'PostWhereUniqueInput' })
-    t.list.field('delete', { type: 'PostWhereUniqueInput' })
-    t.list.field('connect', { type: 'PostWhereUniqueInput' })
-    t.list.field('update', {
-      type: 'PostUpdateWithWhereUniqueWithoutAuthorInput',
-    })
-    t.list.field('updateMany', {
-      type: 'PostUpdateManyWithWhereWithoutAuthorInput',
-    })
-    t.list.field('deleteMany', { type: 'PostScalarWhereInput' })
-  },
-})
+)
 
 export const NestedStringFilter = inputObjectType({
   nonNullDefaults: {
@@ -1291,85 +1830,385 @@ export const NestedIntNullableFilter = inputObjectType({
   },
 })
 
-export const UserCreateWithoutPostsInput = inputObjectType({
+export const UserCreateWithoutMessagesInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'UserCreateWithoutPostsInput',
+  name: 'UserCreateWithoutMessagesInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.nonNull.field('email', { type: 'String' })
+    t.nonNull.field('username', { type: 'String' })
     t.nonNull.field('password', { type: 'String' })
     t.field('createdAt', { type: 'DateTime' })
     t.field('profile', { type: 'ProfileCreateNestedOneWithoutUserInput' })
+    t.field('chats', { type: 'ChatCreateNestedManyWithoutMembersInput' })
   },
 })
 
-export const UserUncheckedCreateWithoutPostsInput = inputObjectType({
+export const UserUncheckedCreateWithoutMessagesInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'UserUncheckedCreateWithoutPostsInput',
+  name: 'UserUncheckedCreateWithoutMessagesInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.nonNull.field('email', { type: 'String' })
+    t.nonNull.field('username', { type: 'String' })
     t.nonNull.field('password', { type: 'String' })
     t.field('createdAt', { type: 'DateTime' })
     t.field('profile', {
       type: 'ProfileUncheckedCreateNestedOneWithoutUserInput',
     })
+    t.field('chats', {
+      type: 'ChatUncheckedCreateNestedManyWithoutMembersInput',
+    })
   },
 })
 
-export const UserCreateOrConnectWithoutPostsInput = inputObjectType({
+export const UserCreateOrConnectWithoutMessagesInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'UserCreateOrConnectWithoutPostsInput',
+  name: 'UserCreateOrConnectWithoutMessagesInput',
   definition(t) {
     t.nonNull.field('where', { type: 'UserWhereUniqueInput' })
-    t.nonNull.field('create', { type: 'UserUncheckedCreateWithoutPostsInput' })
+    t.nonNull.field('create', {
+      type: 'UserUncheckedCreateWithoutMessagesInput',
+    })
   },
 })
 
-export const UserUpsertWithoutPostsInput = inputObjectType({
+export const ChatCreateWithoutMessagesInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'UserUpsertWithoutPostsInput',
+  name: 'ChatCreateWithoutMessagesInput',
   definition(t) {
-    t.nonNull.field('update', { type: 'UserUncheckedUpdateWithoutPostsInput' })
-    t.nonNull.field('create', { type: 'UserUncheckedCreateWithoutPostsInput' })
+    t.field('id', { type: 'String' })
+    t.field('createdAt', { type: 'DateTime' })
+    t.field('members', { type: 'UserCreateNestedManyWithoutChatsInput' })
   },
 })
 
-export const UserUpdateWithoutPostsInput = inputObjectType({
+export const ChatUncheckedCreateWithoutMessagesInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'UserUpdateWithoutPostsInput',
+  name: 'ChatUncheckedCreateWithoutMessagesInput',
+  definition(t) {
+    t.field('id', { type: 'String' })
+    t.field('createdAt', { type: 'DateTime' })
+    t.field('members', {
+      type: 'UserUncheckedCreateNestedManyWithoutChatsInput',
+    })
+  },
+})
+
+export const ChatCreateOrConnectWithoutMessagesInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatCreateOrConnectWithoutMessagesInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'ChatWhereUniqueInput' })
+    t.nonNull.field('create', {
+      type: 'ChatUncheckedCreateWithoutMessagesInput',
+    })
+  },
+})
+
+export const UserUpsertWithoutMessagesInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserUpsertWithoutMessagesInput',
+  definition(t) {
+    t.nonNull.field('update', {
+      type: 'UserUncheckedUpdateWithoutMessagesInput',
+    })
+    t.nonNull.field('create', {
+      type: 'UserUncheckedCreateWithoutMessagesInput',
+    })
+  },
+})
+
+export const UserUpdateWithoutMessagesInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserUpdateWithoutMessagesInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('email', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('username', { type: 'StringFieldUpdateOperationsInput' })
     t.field('password', { type: 'StringFieldUpdateOperationsInput' })
     t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
     t.field('profile', { type: 'ProfileUpdateOneWithoutUserNestedInput' })
+    t.field('chats', { type: 'ChatUpdateManyWithoutMembersNestedInput' })
   },
 })
 
-export const UserUncheckedUpdateWithoutPostsInput = inputObjectType({
+export const UserUncheckedUpdateWithoutMessagesInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'UserUncheckedUpdateWithoutPostsInput',
+  name: 'UserUncheckedUpdateWithoutMessagesInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('email', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('username', { type: 'StringFieldUpdateOperationsInput' })
     t.field('password', { type: 'StringFieldUpdateOperationsInput' })
     t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
     t.field('profile', {
       type: 'ProfileUncheckedUpdateOneWithoutUserNestedInput',
     })
+    t.field('chats', {
+      type: 'ChatUncheckedUpdateManyWithoutMembersNestedInput',
+    })
+  },
+})
+
+export const ChatUpsertWithoutMessagesInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatUpsertWithoutMessagesInput',
+  definition(t) {
+    t.nonNull.field('update', {
+      type: 'ChatUncheckedUpdateWithoutMessagesInput',
+    })
+    t.nonNull.field('create', {
+      type: 'ChatUncheckedCreateWithoutMessagesInput',
+    })
+  },
+})
+
+export const ChatUpdateWithoutMessagesInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatUpdateWithoutMessagesInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
+    t.field('members', { type: 'UserUpdateManyWithoutChatsNestedInput' })
+  },
+})
+
+export const ChatUncheckedUpdateWithoutMessagesInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatUncheckedUpdateWithoutMessagesInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
+    t.field('members', {
+      type: 'UserUncheckedUpdateManyWithoutChatsNestedInput',
+    })
+  },
+})
+
+export const UserCreateWithoutChatsInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserCreateWithoutChatsInput',
+  definition(t) {
+    t.field('id', { type: 'String' })
+    t.nonNull.field('username', { type: 'String' })
+    t.nonNull.field('password', { type: 'String' })
+    t.field('createdAt', { type: 'DateTime' })
+    t.field('profile', { type: 'ProfileCreateNestedOneWithoutUserInput' })
+    t.field('messages', { type: 'MessageCreateNestedManyWithoutSenderInput' })
+  },
+})
+
+export const UserUncheckedCreateWithoutChatsInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserUncheckedCreateWithoutChatsInput',
+  definition(t) {
+    t.field('id', { type: 'String' })
+    t.nonNull.field('username', { type: 'String' })
+    t.nonNull.field('password', { type: 'String' })
+    t.field('createdAt', { type: 'DateTime' })
+    t.field('profile', {
+      type: 'ProfileUncheckedCreateNestedOneWithoutUserInput',
+    })
+    t.field('messages', {
+      type: 'MessageUncheckedCreateNestedManyWithoutSenderInput',
+    })
+  },
+})
+
+export const UserCreateOrConnectWithoutChatsInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserCreateOrConnectWithoutChatsInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'UserWhereUniqueInput' })
+    t.nonNull.field('create', { type: 'UserUncheckedCreateWithoutChatsInput' })
+  },
+})
+
+export const MessageCreateWithoutChatInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageCreateWithoutChatInput',
+  definition(t) {
+    t.field('id', { type: 'String' })
+    t.nonNull.field('message', { type: 'String' })
+    t.field('sentDate', { type: 'DateTime' })
+    t.nonNull.field('sender', {
+      type: 'UserCreateNestedOneWithoutMessagesInput',
+    })
+  },
+})
+
+export const MessageUncheckedCreateWithoutChatInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageUncheckedCreateWithoutChatInput',
+  definition(t) {
+    t.field('id', { type: 'String' })
+    t.nonNull.field('message', { type: 'String' })
+    t.nonNull.field('userId', { type: 'String' })
+    t.field('sentDate', { type: 'DateTime' })
+  },
+})
+
+export const MessageCreateOrConnectWithoutChatInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageCreateOrConnectWithoutChatInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'MessageWhereUniqueInput' })
+    t.nonNull.field('create', {
+      type: 'MessageUncheckedCreateWithoutChatInput',
+    })
+  },
+})
+
+export const MessageCreateManyChatInputEnvelope = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageCreateManyChatInputEnvelope',
+  definition(t) {
+    t.nonNull.field('data', { type: 'MessageCreateManyChatInput' })
+    t.field('skipDuplicates', { type: 'Boolean' })
+  },
+})
+
+export const UserUpsertWithWhereUniqueWithoutChatsInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserUpsertWithWhereUniqueWithoutChatsInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'UserWhereUniqueInput' })
+    t.nonNull.field('update', { type: 'UserUncheckedUpdateWithoutChatsInput' })
+    t.nonNull.field('create', { type: 'UserUncheckedCreateWithoutChatsInput' })
+  },
+})
+
+export const UserUpdateWithWhereUniqueWithoutChatsInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserUpdateWithWhereUniqueWithoutChatsInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'UserWhereUniqueInput' })
+    t.nonNull.field('data', { type: 'UserUncheckedUpdateWithoutChatsInput' })
+  },
+})
+
+export const UserUpdateManyWithWhereWithoutChatsInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserUpdateManyWithWhereWithoutChatsInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'UserScalarWhereInput' })
+    t.nonNull.field('data', {
+      type: 'UserUncheckedUpdateManyWithoutMembersInput',
+    })
+  },
+})
+
+export const UserScalarWhereInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserScalarWhereInput',
+  definition(t) {
+    t.list.field('AND', { type: 'UserScalarWhereInput' })
+    t.list.field('OR', { type: 'UserScalarWhereInput' })
+    t.list.field('NOT', { type: 'UserScalarWhereInput' })
+    t.field('id', { type: 'StringFilter' })
+    t.field('username', { type: 'StringFilter' })
+    t.field('password', { type: 'StringFilter' })
+    t.field('createdAt', { type: 'DateTimeFilter' })
+  },
+})
+
+export const MessageUpsertWithWhereUniqueWithoutChatInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageUpsertWithWhereUniqueWithoutChatInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'MessageWhereUniqueInput' })
+    t.nonNull.field('update', {
+      type: 'MessageUncheckedUpdateWithoutChatInput',
+    })
+    t.nonNull.field('create', {
+      type: 'MessageUncheckedCreateWithoutChatInput',
+    })
+  },
+})
+
+export const MessageUpdateWithWhereUniqueWithoutChatInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageUpdateWithWhereUniqueWithoutChatInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'MessageWhereUniqueInput' })
+    t.nonNull.field('data', { type: 'MessageUncheckedUpdateWithoutChatInput' })
+  },
+})
+
+export const MessageUpdateManyWithWhereWithoutChatInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageUpdateManyWithWhereWithoutChatInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'MessageScalarWhereInput' })
+    t.nonNull.field('data', {
+      type: 'MessageUncheckedUpdateManyWithoutMessagesInput',
+    })
+  },
+})
+
+export const MessageScalarWhereInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageScalarWhereInput',
+  definition(t) {
+    t.list.field('AND', { type: 'MessageScalarWhereInput' })
+    t.list.field('OR', { type: 'MessageScalarWhereInput' })
+    t.list.field('NOT', { type: 'MessageScalarWhereInput' })
+    t.field('id', { type: 'StringFilter' })
+    t.field('message', { type: 'StringFilter' })
+    t.field('userId', { type: 'StringFilter' })
+    t.field('chatId', { type: 'StringFilter' })
+    t.field('sentDate', { type: 'DateTimeFilter' })
   },
 })
 
@@ -1380,10 +2219,11 @@ export const UserCreateWithoutProfileInput = inputObjectType({
   name: 'UserCreateWithoutProfileInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.nonNull.field('email', { type: 'String' })
+    t.nonNull.field('username', { type: 'String' })
     t.nonNull.field('password', { type: 'String' })
     t.field('createdAt', { type: 'DateTime' })
-    t.field('posts', { type: 'PostCreateNestedManyWithoutAuthorInput' })
+    t.field('messages', { type: 'MessageCreateNestedManyWithoutSenderInput' })
+    t.field('chats', { type: 'ChatCreateNestedManyWithoutMembersInput' })
   },
 })
 
@@ -1394,11 +2234,14 @@ export const UserUncheckedCreateWithoutProfileInput = inputObjectType({
   name: 'UserUncheckedCreateWithoutProfileInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.nonNull.field('email', { type: 'String' })
+    t.nonNull.field('username', { type: 'String' })
     t.nonNull.field('password', { type: 'String' })
     t.field('createdAt', { type: 'DateTime' })
-    t.field('posts', {
-      type: 'PostUncheckedCreateNestedManyWithoutAuthorInput',
+    t.field('messages', {
+      type: 'MessageUncheckedCreateNestedManyWithoutSenderInput',
+    })
+    t.field('chats', {
+      type: 'ChatUncheckedCreateNestedManyWithoutMembersInput',
     })
   },
 })
@@ -1438,10 +2281,11 @@ export const UserUpdateWithoutProfileInput = inputObjectType({
   name: 'UserUpdateWithoutProfileInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('email', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('username', { type: 'StringFieldUpdateOperationsInput' })
     t.field('password', { type: 'StringFieldUpdateOperationsInput' })
     t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
-    t.field('posts', { type: 'PostUpdateManyWithoutAuthorNestedInput' })
+    t.field('messages', { type: 'MessageUpdateManyWithoutSenderNestedInput' })
+    t.field('chats', { type: 'ChatUpdateManyWithoutMembersNestedInput' })
   },
 })
 
@@ -1452,11 +2296,14 @@ export const UserUncheckedUpdateWithoutProfileInput = inputObjectType({
   name: 'UserUncheckedUpdateWithoutProfileInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('email', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('username', { type: 'StringFieldUpdateOperationsInput' })
     t.field('password', { type: 'StringFieldUpdateOperationsInput' })
     t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
-    t.field('posts', {
-      type: 'PostUncheckedUpdateManyWithoutAuthorNestedInput',
+    t.field('messages', {
+      type: 'MessageUncheckedUpdateManyWithoutSenderNestedInput',
+    })
+    t.field('chats', {
+      type: 'ChatUncheckedUpdateManyWithoutMembersNestedInput',
     })
   },
 })
@@ -1468,7 +2315,6 @@ export const ProfileCreateWithoutUserInput = inputObjectType({
   name: 'ProfileCreateWithoutUserInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.field('username', { type: 'String' })
     t.field('bio', { type: 'String' })
     t.field('avatar', { type: 'String' })
     t.field('name', { type: 'String' })
@@ -1483,7 +2329,6 @@ export const ProfileUncheckedCreateWithoutUserInput = inputObjectType({
   name: 'ProfileUncheckedCreateWithoutUserInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.field('username', { type: 'String' })
     t.field('bio', { type: 'String' })
     t.field('avatar', { type: 'String' })
     t.field('name', { type: 'String' })
@@ -1504,51 +2349,92 @@ export const ProfileCreateOrConnectWithoutUserInput = inputObjectType({
   },
 })
 
-export const PostCreateWithoutAuthorInput = inputObjectType({
+export const MessageCreateWithoutSenderInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostCreateWithoutAuthorInput',
+  name: 'MessageCreateWithoutSenderInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.nonNull.field('title', { type: 'String' })
-    t.nonNull.field('body', { type: 'String' })
-    t.field('createdAt', { type: 'DateTime' })
+    t.nonNull.field('message', { type: 'String' })
+    t.field('sentDate', { type: 'DateTime' })
+    t.nonNull.field('chat', { type: 'ChatCreateNestedOneWithoutMessagesInput' })
   },
 })
 
-export const PostUncheckedCreateWithoutAuthorInput = inputObjectType({
+export const MessageUncheckedCreateWithoutSenderInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostUncheckedCreateWithoutAuthorInput',
+  name: 'MessageUncheckedCreateWithoutSenderInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.nonNull.field('title', { type: 'String' })
-    t.nonNull.field('body', { type: 'String' })
-    t.field('createdAt', { type: 'DateTime' })
+    t.nonNull.field('message', { type: 'String' })
+    t.nonNull.field('chatId', { type: 'String' })
+    t.field('sentDate', { type: 'DateTime' })
   },
 })
 
-export const PostCreateOrConnectWithoutAuthorInput = inputObjectType({
+export const MessageCreateOrConnectWithoutSenderInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostCreateOrConnectWithoutAuthorInput',
+  name: 'MessageCreateOrConnectWithoutSenderInput',
   definition(t) {
-    t.nonNull.field('where', { type: 'PostWhereUniqueInput' })
-    t.nonNull.field('create', { type: 'PostUncheckedCreateWithoutAuthorInput' })
+    t.nonNull.field('where', { type: 'MessageWhereUniqueInput' })
+    t.nonNull.field('create', {
+      type: 'MessageUncheckedCreateWithoutSenderInput',
+    })
   },
 })
 
-export const PostCreateManyAuthorInputEnvelope = inputObjectType({
+export const MessageCreateManySenderInputEnvelope = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostCreateManyAuthorInputEnvelope',
+  name: 'MessageCreateManySenderInputEnvelope',
   definition(t) {
-    t.nonNull.field('data', { type: 'PostCreateManyAuthorInput' })
+    t.nonNull.field('data', { type: 'MessageCreateManySenderInput' })
     t.field('skipDuplicates', { type: 'Boolean' })
+  },
+})
+
+export const ChatCreateWithoutMembersInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatCreateWithoutMembersInput',
+  definition(t) {
+    t.field('id', { type: 'String' })
+    t.field('createdAt', { type: 'DateTime' })
+    t.field('messages', { type: 'MessageCreateNestedManyWithoutChatInput' })
+  },
+})
+
+export const ChatUncheckedCreateWithoutMembersInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatUncheckedCreateWithoutMembersInput',
+  definition(t) {
+    t.field('id', { type: 'String' })
+    t.field('createdAt', { type: 'DateTime' })
+    t.field('messages', {
+      type: 'MessageUncheckedCreateNestedManyWithoutChatInput',
+    })
+  },
+})
+
+export const ChatCreateOrConnectWithoutMembersInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatCreateOrConnectWithoutMembersInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'ChatWhereUniqueInput' })
+    t.nonNull.field('create', {
+      type: 'ChatUncheckedCreateWithoutMembersInput',
+    })
   },
 })
 
@@ -1574,7 +2460,6 @@ export const ProfileUpdateWithoutUserInput = inputObjectType({
   name: 'ProfileUpdateWithoutUserInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('username', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('bio', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('avatar', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('name', { type: 'NullableStringFieldUpdateOperationsInput' })
@@ -1589,7 +2474,6 @@ export const ProfileUncheckedUpdateWithoutUserInput = inputObjectType({
   name: 'ProfileUncheckedUpdateWithoutUserInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('username', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('bio', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('avatar', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('name', { type: 'NullableStringFieldUpdateOperationsInput' })
@@ -1597,120 +2481,300 @@ export const ProfileUncheckedUpdateWithoutUserInput = inputObjectType({
   },
 })
 
-export const PostUpsertWithWhereUniqueWithoutAuthorInput = inputObjectType({
+export const MessageUpsertWithWhereUniqueWithoutSenderInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostUpsertWithWhereUniqueWithoutAuthorInput',
+  name: 'MessageUpsertWithWhereUniqueWithoutSenderInput',
   definition(t) {
-    t.nonNull.field('where', { type: 'PostWhereUniqueInput' })
-    t.nonNull.field('update', { type: 'PostUncheckedUpdateWithoutAuthorInput' })
-    t.nonNull.field('create', { type: 'PostUncheckedCreateWithoutAuthorInput' })
-  },
-})
-
-export const PostUpdateWithWhereUniqueWithoutAuthorInput = inputObjectType({
-  nonNullDefaults: {
-    input: false,
-  },
-  name: 'PostUpdateWithWhereUniqueWithoutAuthorInput',
-  definition(t) {
-    t.nonNull.field('where', { type: 'PostWhereUniqueInput' })
-    t.nonNull.field('data', { type: 'PostUncheckedUpdateWithoutAuthorInput' })
-  },
-})
-
-export const PostUpdateManyWithWhereWithoutAuthorInput = inputObjectType({
-  nonNullDefaults: {
-    input: false,
-  },
-  name: 'PostUpdateManyWithWhereWithoutAuthorInput',
-  definition(t) {
-    t.nonNull.field('where', { type: 'PostScalarWhereInput' })
-    t.nonNull.field('data', {
-      type: 'PostUncheckedUpdateManyWithoutPostsInput',
+    t.nonNull.field('where', { type: 'MessageWhereUniqueInput' })
+    t.nonNull.field('update', {
+      type: 'MessageUncheckedUpdateWithoutSenderInput',
+    })
+    t.nonNull.field('create', {
+      type: 'MessageUncheckedCreateWithoutSenderInput',
     })
   },
 })
 
-export const PostScalarWhereInput = inputObjectType({
+export const MessageUpdateWithWhereUniqueWithoutSenderInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostScalarWhereInput',
+  name: 'MessageUpdateWithWhereUniqueWithoutSenderInput',
   definition(t) {
-    t.list.field('AND', { type: 'PostScalarWhereInput' })
-    t.list.field('OR', { type: 'PostScalarWhereInput' })
-    t.list.field('NOT', { type: 'PostScalarWhereInput' })
+    t.nonNull.field('where', { type: 'MessageWhereUniqueInput' })
+    t.nonNull.field('data', {
+      type: 'MessageUncheckedUpdateWithoutSenderInput',
+    })
+  },
+})
+
+export const MessageUpdateManyWithWhereWithoutSenderInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageUpdateManyWithWhereWithoutSenderInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'MessageScalarWhereInput' })
+    t.nonNull.field('data', {
+      type: 'MessageUncheckedUpdateManyWithoutMessagesInput',
+    })
+  },
+})
+
+export const ChatUpsertWithWhereUniqueWithoutMembersInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatUpsertWithWhereUniqueWithoutMembersInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'ChatWhereUniqueInput' })
+    t.nonNull.field('update', {
+      type: 'ChatUncheckedUpdateWithoutMembersInput',
+    })
+    t.nonNull.field('create', {
+      type: 'ChatUncheckedCreateWithoutMembersInput',
+    })
+  },
+})
+
+export const ChatUpdateWithWhereUniqueWithoutMembersInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatUpdateWithWhereUniqueWithoutMembersInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'ChatWhereUniqueInput' })
+    t.nonNull.field('data', { type: 'ChatUncheckedUpdateWithoutMembersInput' })
+  },
+})
+
+export const ChatUpdateManyWithWhereWithoutMembersInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatUpdateManyWithWhereWithoutMembersInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'ChatScalarWhereInput' })
+    t.nonNull.field('data', {
+      type: 'ChatUncheckedUpdateManyWithoutChatsInput',
+    })
+  },
+})
+
+export const ChatScalarWhereInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatScalarWhereInput',
+  definition(t) {
+    t.list.field('AND', { type: 'ChatScalarWhereInput' })
+    t.list.field('OR', { type: 'ChatScalarWhereInput' })
+    t.list.field('NOT', { type: 'ChatScalarWhereInput' })
     t.field('id', { type: 'StringFilter' })
-    t.field('userId', { type: 'StringFilter' })
-    t.field('title', { type: 'StringFilter' })
-    t.field('body', { type: 'StringFilter' })
     t.field('createdAt', { type: 'DateTimeFilter' })
   },
 })
 
-export const PostCreateManyAuthorInput = inputObjectType({
+export const MessageCreateManyChatInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostCreateManyAuthorInput',
+  name: 'MessageCreateManyChatInput',
   definition(t) {
     t.field('id', { type: 'String' })
-    t.nonNull.field('title', { type: 'String' })
-    t.nonNull.field('body', { type: 'String' })
-    t.field('createdAt', { type: 'DateTime' })
+    t.nonNull.field('message', { type: 'String' })
+    t.nonNull.field('userId', { type: 'String' })
+    t.field('sentDate', { type: 'DateTime' })
   },
 })
 
-export const PostUpdateWithoutAuthorInput = inputObjectType({
+export const UserUpdateWithoutChatsInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostUpdateWithoutAuthorInput',
+  name: 'UserUpdateWithoutChatsInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('title', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('body', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('username', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('password', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
+    t.field('profile', { type: 'ProfileUpdateOneWithoutUserNestedInput' })
+    t.field('messages', { type: 'MessageUpdateManyWithoutSenderNestedInput' })
+  },
+})
+
+export const UserUncheckedUpdateWithoutChatsInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserUncheckedUpdateWithoutChatsInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('username', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('password', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
+    t.field('profile', {
+      type: 'ProfileUncheckedUpdateOneWithoutUserNestedInput',
+    })
+    t.field('messages', {
+      type: 'MessageUncheckedUpdateManyWithoutSenderNestedInput',
+    })
+  },
+})
+
+export const UserUncheckedUpdateManyWithoutMembersInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserUncheckedUpdateManyWithoutMembersInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('username', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('password', { type: 'StringFieldUpdateOperationsInput' })
     t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
   },
 })
 
-export const PostUncheckedUpdateWithoutAuthorInput = inputObjectType({
+export const MessageUpdateWithoutChatInput = inputObjectType({
   nonNullDefaults: {
     input: false,
   },
-  name: 'PostUncheckedUpdateWithoutAuthorInput',
+  name: 'MessageUpdateWithoutChatInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('title', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('body', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('message', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('sentDate', { type: 'DateTimeFieldUpdateOperationsInput' })
+    t.field('sender', {
+      type: 'UserUpdateOneRequiredWithoutMessagesNestedInput',
+    })
+  },
+})
+
+export const MessageUncheckedUpdateWithoutChatInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageUncheckedUpdateWithoutChatInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('message', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('userId', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('sentDate', { type: 'DateTimeFieldUpdateOperationsInput' })
+  },
+})
+
+export const MessageUncheckedUpdateManyWithoutMessagesInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageUncheckedUpdateManyWithoutMessagesInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('message', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('userId', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('sentDate', { type: 'DateTimeFieldUpdateOperationsInput' })
+  },
+})
+
+export const MessageCreateManySenderInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageCreateManySenderInput',
+  definition(t) {
+    t.field('id', { type: 'String' })
+    t.nonNull.field('message', { type: 'String' })
+    t.nonNull.field('chatId', { type: 'String' })
+    t.field('sentDate', { type: 'DateTime' })
+  },
+})
+
+export const MessageUpdateWithoutSenderInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageUpdateWithoutSenderInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('message', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('sentDate', { type: 'DateTimeFieldUpdateOperationsInput' })
+    t.field('chat', { type: 'ChatUpdateOneRequiredWithoutMessagesNestedInput' })
+  },
+})
+
+export const MessageUncheckedUpdateWithoutSenderInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'MessageUncheckedUpdateWithoutSenderInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('message', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('chatId', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('sentDate', { type: 'DateTimeFieldUpdateOperationsInput' })
+  },
+})
+
+export const ChatUpdateWithoutMembersInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatUpdateWithoutMembersInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
+    t.field('messages', { type: 'MessageUpdateManyWithoutChatNestedInput' })
+  },
+})
+
+export const ChatUncheckedUpdateWithoutMembersInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatUncheckedUpdateWithoutMembersInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
+    t.field('messages', {
+      type: 'MessageUncheckedUpdateManyWithoutChatNestedInput',
+    })
+  },
+})
+
+export const ChatUncheckedUpdateManyWithoutChatsInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ChatUncheckedUpdateManyWithoutChatsInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
     t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
   },
 })
 
-export const PostUncheckedUpdateManyWithoutPostsInput = inputObjectType({
-  nonNullDefaults: {
-    input: false,
-  },
-  name: 'PostUncheckedUpdateManyWithoutPostsInput',
-  definition(t) {
-    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('title', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('body', { type: 'StringFieldUpdateOperationsInput' })
-    t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
-  },
-})
-
-export const AggregatePost = objectType({
+export const AggregateMessage = objectType({
   nonNullDefaults: {
     output: true,
   },
-  name: 'AggregatePost',
+  name: 'AggregateMessage',
   definition(t) {
-    t.nullable.field('_count', { type: 'PostCountAggregateOutputType' })
-    t.nullable.field('_min', { type: 'PostMinAggregateOutputType' })
-    t.nullable.field('_max', { type: 'PostMaxAggregateOutputType' })
+    t.nullable.field('_count', { type: 'MessageCountAggregateOutputType' })
+    t.nullable.field('_min', { type: 'MessageMinAggregateOutputType' })
+    t.nullable.field('_max', { type: 'MessageMaxAggregateOutputType' })
+  },
+})
+
+export const AggregateChat = objectType({
+  nonNullDefaults: {
+    output: true,
+  },
+  name: 'AggregateChat',
+  definition(t) {
+    t.nullable.field('_count', { type: 'ChatCountAggregateOutputType' })
+    t.nullable.field('_min', { type: 'ChatMinAggregateOutputType' })
+    t.nullable.field('_max', { type: 'ChatMaxAggregateOutputType' })
   },
 })
 
@@ -1738,45 +2802,90 @@ export const AggregateUser = objectType({
   },
 })
 
-export const PostCountAggregateOutputType = objectType({
+export const MessageCountAggregateOutputType = objectType({
   nonNullDefaults: {
     output: true,
   },
-  name: 'PostCountAggregateOutputType',
+  name: 'MessageCountAggregateOutputType',
   definition(t) {
     t.field('id', { type: 'Int' })
+    t.field('message', { type: 'Int' })
     t.field('userId', { type: 'Int' })
-    t.field('title', { type: 'Int' })
-    t.field('body', { type: 'Int' })
+    t.field('chatId', { type: 'Int' })
+    t.field('sentDate', { type: 'Int' })
+    t.field('_all', { type: 'Int' })
+  },
+})
+
+export const MessageMinAggregateOutputType = objectType({
+  nonNullDefaults: {
+    output: true,
+  },
+  name: 'MessageMinAggregateOutputType',
+  definition(t) {
+    t.nullable.field('id', { type: 'String' })
+    t.nullable.field('message', { type: 'String' })
+    t.nullable.field('userId', { type: 'String' })
+    t.nullable.field('chatId', { type: 'String' })
+    t.nullable.field('sentDate', { type: 'DateTime' })
+  },
+})
+
+export const MessageMaxAggregateOutputType = objectType({
+  nonNullDefaults: {
+    output: true,
+  },
+  name: 'MessageMaxAggregateOutputType',
+  definition(t) {
+    t.nullable.field('id', { type: 'String' })
+    t.nullable.field('message', { type: 'String' })
+    t.nullable.field('userId', { type: 'String' })
+    t.nullable.field('chatId', { type: 'String' })
+    t.nullable.field('sentDate', { type: 'DateTime' })
+  },
+})
+
+export const ChatCountOutputType = objectType({
+  nonNullDefaults: {
+    output: true,
+  },
+  name: 'ChatCountOutputType',
+  definition(t) {
+    t.field('members', { type: 'Int' })
+    t.field('messages', { type: 'Int' })
+  },
+})
+
+export const ChatCountAggregateOutputType = objectType({
+  nonNullDefaults: {
+    output: true,
+  },
+  name: 'ChatCountAggregateOutputType',
+  definition(t) {
+    t.field('id', { type: 'Int' })
     t.field('createdAt', { type: 'Int' })
     t.field('_all', { type: 'Int' })
   },
 })
 
-export const PostMinAggregateOutputType = objectType({
+export const ChatMinAggregateOutputType = objectType({
   nonNullDefaults: {
     output: true,
   },
-  name: 'PostMinAggregateOutputType',
+  name: 'ChatMinAggregateOutputType',
   definition(t) {
     t.nullable.field('id', { type: 'String' })
-    t.nullable.field('userId', { type: 'String' })
-    t.nullable.field('title', { type: 'String' })
-    t.nullable.field('body', { type: 'String' })
     t.nullable.field('createdAt', { type: 'DateTime' })
   },
 })
 
-export const PostMaxAggregateOutputType = objectType({
+export const ChatMaxAggregateOutputType = objectType({
   nonNullDefaults: {
     output: true,
   },
-  name: 'PostMaxAggregateOutputType',
+  name: 'ChatMaxAggregateOutputType',
   definition(t) {
     t.nullable.field('id', { type: 'String' })
-    t.nullable.field('userId', { type: 'String' })
-    t.nullable.field('title', { type: 'String' })
-    t.nullable.field('body', { type: 'String' })
     t.nullable.field('createdAt', { type: 'DateTime' })
   },
 })
@@ -1788,8 +2897,7 @@ export const ProfileCountAggregateOutputType = objectType({
   name: 'ProfileCountAggregateOutputType',
   definition(t) {
     t.field('id', { type: 'Int' })
-    t.field('userEmail', { type: 'Int' })
-    t.field('username', { type: 'Int' })
+    t.field('userId', { type: 'Int' })
     t.field('bio', { type: 'Int' })
     t.field('avatar', { type: 'Int' })
     t.field('name', { type: 'Int' })
@@ -1805,8 +2913,7 @@ export const ProfileMinAggregateOutputType = objectType({
   name: 'ProfileMinAggregateOutputType',
   definition(t) {
     t.nullable.field('id', { type: 'String' })
-    t.nullable.field('userEmail', { type: 'String' })
-    t.nullable.field('username', { type: 'String' })
+    t.nullable.field('userId', { type: 'String' })
     t.nullable.field('bio', { type: 'String' })
     t.nullable.field('avatar', { type: 'String' })
     t.nullable.field('name', { type: 'String' })
@@ -1821,8 +2928,7 @@ export const ProfileMaxAggregateOutputType = objectType({
   name: 'ProfileMaxAggregateOutputType',
   definition(t) {
     t.nullable.field('id', { type: 'String' })
-    t.nullable.field('userEmail', { type: 'String' })
-    t.nullable.field('username', { type: 'String' })
+    t.nullable.field('userId', { type: 'String' })
     t.nullable.field('bio', { type: 'String' })
     t.nullable.field('avatar', { type: 'String' })
     t.nullable.field('name', { type: 'String' })
@@ -1836,7 +2942,8 @@ export const UserCountOutputType = objectType({
   },
   name: 'UserCountOutputType',
   definition(t) {
-    t.field('posts', { type: 'Int' })
+    t.field('messages', { type: 'Int' })
+    t.field('chats', { type: 'Int' })
   },
 })
 
@@ -1847,7 +2954,7 @@ export const UserCountAggregateOutputType = objectType({
   name: 'UserCountAggregateOutputType',
   definition(t) {
     t.field('id', { type: 'Int' })
-    t.field('email', { type: 'Int' })
+    t.field('username', { type: 'Int' })
     t.field('password', { type: 'Int' })
     t.field('createdAt', { type: 'Int' })
     t.field('_all', { type: 'Int' })
@@ -1861,7 +2968,7 @@ export const UserMinAggregateOutputType = objectType({
   name: 'UserMinAggregateOutputType',
   definition(t) {
     t.nullable.field('id', { type: 'String' })
-    t.nullable.field('email', { type: 'String' })
+    t.nullable.field('username', { type: 'String' })
     t.nullable.field('password', { type: 'String' })
     t.nullable.field('createdAt', { type: 'DateTime' })
   },
@@ -1874,7 +2981,7 @@ export const UserMaxAggregateOutputType = objectType({
   name: 'UserMaxAggregateOutputType',
   definition(t) {
     t.nullable.field('id', { type: 'String' })
-    t.nullable.field('email', { type: 'String' })
+    t.nullable.field('username', { type: 'String' })
     t.nullable.field('password', { type: 'String' })
     t.nullable.field('createdAt', { type: 'DateTime' })
   },

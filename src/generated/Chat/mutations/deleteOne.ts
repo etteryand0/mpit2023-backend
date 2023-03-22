@@ -1,12 +1,12 @@
 import { mutationField, nonNull } from 'nexus'
 
-export const PostDeleteOneMutation = mutationField('deleteOnePost', {
-  type: 'Post',
+export const ChatDeleteOneMutation = mutationField('deleteOneChat', {
+  type: 'Chat',
   args: {
-    where: nonNull('PostWhereUniqueInput'),
+    where: nonNull('ChatWhereUniqueInput'),
   },
   resolve: async (_parent, { where }, { prisma, select }) => {
-    return prisma.post.delete({
+    return prisma.chat.delete({
       where,
       ...select,
     })
