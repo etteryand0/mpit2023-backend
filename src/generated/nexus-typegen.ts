@@ -2238,14 +2238,23 @@ export interface NexusGenInputs {
     userId?: string | null; // String
   }
   RoomCountOrderByAggregateInput: { // input type
+    description?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    image?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   RoomCreateInput: { // input type
+    description?: string | null; // String
     events?: NexusGenInputs['EventCreateNestedManyWithoutRoomInput'] | null; // EventCreateNestedManyWithoutRoomInput
     id: string; // String!
+    image?: string | null; // String
+    title: string; // String!
   }
   RoomCreateManyInput: { // input type
+    description?: string | null; // String
     id: string; // String!
+    image?: string | null; // String
+    title: string; // String!
   }
   RoomCreateNestedOneWithoutEventsInput: { // input type
     connect?: NexusGenInputs['RoomWhereUniqueInput'] | null; // RoomWhereUniqueInput
@@ -2257,23 +2266,38 @@ export interface NexusGenInputs {
     where: NexusGenInputs['RoomWhereUniqueInput']; // RoomWhereUniqueInput!
   }
   RoomCreateWithoutEventsInput: { // input type
+    description?: string | null; // String
     id: string; // String!
+    image?: string | null; // String
+    title: string; // String!
   }
   RoomMaxOrderByAggregateInput: { // input type
+    description?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    image?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   RoomMinOrderByAggregateInput: { // input type
+    description?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    image?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   RoomOrderByWithAggregationInput: { // input type
     _count?: NexusGenInputs['RoomCountOrderByAggregateInput'] | null; // RoomCountOrderByAggregateInput
     _max?: NexusGenInputs['RoomMaxOrderByAggregateInput'] | null; // RoomMaxOrderByAggregateInput
     _min?: NexusGenInputs['RoomMinOrderByAggregateInput'] | null; // RoomMinOrderByAggregateInput
+    description?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    image?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   RoomOrderByWithRelationInput: { // input type
+    description?: NexusGenEnums['SortOrder'] | null; // SortOrder
     events?: NexusGenInputs['EventOrderByRelationAggregateInput'] | null; // EventOrderByRelationAggregateInput
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    image?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    title?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   RoomRelationFilter: { // input type
     is?: NexusGenInputs['RoomWhereInput'] | null; // RoomWhereInput
@@ -2283,31 +2307,55 @@ export interface NexusGenInputs {
     AND?: Array<NexusGenInputs['RoomScalarWhereWithAggregatesInput'] | null> | null; // [RoomScalarWhereWithAggregatesInput]
     NOT?: Array<NexusGenInputs['RoomScalarWhereWithAggregatesInput'] | null> | null; // [RoomScalarWhereWithAggregatesInput]
     OR?: Array<NexusGenInputs['RoomScalarWhereWithAggregatesInput'] | null> | null; // [RoomScalarWhereWithAggregatesInput]
+    description?: NexusGenInputs['StringNullableWithAggregatesFilter'] | null; // StringNullableWithAggregatesFilter
     id?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+    image?: NexusGenInputs['StringNullableWithAggregatesFilter'] | null; // StringNullableWithAggregatesFilter
+    title?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
   }
   RoomUncheckedCreateInput: { // input type
+    description?: string | null; // String
     events?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutRoomInput'] | null; // EventUncheckedCreateNestedManyWithoutRoomInput
     id: string; // String!
+    image?: string | null; // String
+    title: string; // String!
   }
   RoomUncheckedCreateWithoutEventsInput: { // input type
+    description?: string | null; // String
     id: string; // String!
+    image?: string | null; // String
+    title: string; // String!
   }
   RoomUncheckedUpdateInput: { // input type
+    description?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     events?: NexusGenInputs['EventUncheckedUpdateManyWithoutRoomNestedInput'] | null; // EventUncheckedUpdateManyWithoutRoomNestedInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   RoomUncheckedUpdateManyInput: { // input type
+    description?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   RoomUncheckedUpdateWithoutEventsInput: { // input type
+    description?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   RoomUpdateInput: { // input type
+    description?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     events?: NexusGenInputs['EventUpdateManyWithoutRoomNestedInput'] | null; // EventUpdateManyWithoutRoomNestedInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   RoomUpdateManyMutationInput: { // input type
+    description?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   RoomUpdateOneRequiredWithoutEventsNestedInput: { // input type
     connect?: NexusGenInputs['RoomWhereUniqueInput'] | null; // RoomWhereUniqueInput
@@ -2317,7 +2365,10 @@ export interface NexusGenInputs {
     upsert?: NexusGenInputs['RoomUpsertWithoutEventsInput'] | null; // RoomUpsertWithoutEventsInput
   }
   RoomUpdateWithoutEventsInput: { // input type
+    description?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   RoomUpsertWithoutEventsInput: { // input type
     create: NexusGenInputs['RoomUncheckedCreateWithoutEventsInput']; // RoomUncheckedCreateWithoutEventsInput!
@@ -2327,8 +2378,11 @@ export interface NexusGenInputs {
     AND?: Array<NexusGenInputs['RoomWhereInput'] | null> | null; // [RoomWhereInput]
     NOT?: Array<NexusGenInputs['RoomWhereInput'] | null> | null; // [RoomWhereInput]
     OR?: Array<NexusGenInputs['RoomWhereInput'] | null> | null; // [RoomWhereInput]
+    description?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     events?: NexusGenInputs['EventListRelationFilter'] | null; // EventListRelationFilter
     id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    image?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
+    title?: NexusGenInputs['StringFilter'] | null; // StringFilter
   }
   RoomWhereUniqueInput: { // input type
     id?: string | null; // String
@@ -3356,7 +3410,7 @@ export interface NexusGenEnums {
   MessageScalarFieldEnum: "chatId" | "id" | "message" | "sentDate" | "userId"
   ProfileScalarFieldEnum: "avatar" | "bio" | "id" | "jobTitle" | "name" | "surname" | "updatedAt" | "userId"
   QueryMode: "default" | "insensitive"
-  RoomScalarFieldEnum: "id"
+  RoomScalarFieldEnum: "description" | "id" | "image" | "title"
   SortOrder: "asc" | "desc"
   TransactionIsolationLevel: "ReadCommitted" | "ReadUncommitted" | "RepeatableRead" | "Serializable"
   UserRole: "Dean" | "Parent" | "Staff" | "Student"
@@ -3591,20 +3645,32 @@ export interface NexusGenObjects {
   }
   Query: {};
   Room: { // root type
+    description?: string | null; // String
     id: string; // String!
+    image?: string | null; // String
+    title: string; // String!
   }
   RoomCountAggregateOutputType: { // root type
     _all: number; // Int!
+    description: number; // Int!
     id: number; // Int!
+    image: number; // Int!
+    title: number; // Int!
   }
   RoomCountOutputType: { // root type
     events: number; // Int!
   }
   RoomMaxAggregateOutputType: { // root type
+    description?: string | null; // String
     id?: string | null; // String
+    image?: string | null; // String
+    title?: string | null; // String
   }
   RoomMinAggregateOutputType: { // root type
+    description?: string | null; // String
     id?: string | null; // String
+    image?: string | null; // String
+    title?: string | null; // String
   }
   Subscription: {};
   Token: { // root type
@@ -3980,21 +4046,33 @@ export interface NexusGenFieldTypes {
   }
   Room: { // field return type
     _count: NexusGenRootTypes['RoomCountOutputType']; // RoomCountOutputType!
+    description: string | null; // String
     events: NexusGenRootTypes['Event'][]; // [Event!]!
     id: string; // String!
+    image: string | null; // String
+    title: string; // String!
   }
   RoomCountAggregateOutputType: { // field return type
     _all: number; // Int!
+    description: number; // Int!
     id: number; // Int!
+    image: number; // Int!
+    title: number; // Int!
   }
   RoomCountOutputType: { // field return type
     events: number; // Int!
   }
   RoomMaxAggregateOutputType: { // field return type
+    description: string | null; // String
     id: string | null; // String
+    image: string | null; // String
+    title: string | null; // String
   }
   RoomMinAggregateOutputType: { // field return type
+    description: string | null; // String
     id: string | null; // String
+    image: string | null; // String
+    title: string | null; // String
   }
   Subscription: { // field return type
     chat: NexusGenRootTypes['Message'] | null; // Message
@@ -4371,21 +4449,33 @@ export interface NexusGenFieldTypeNames {
   }
   Room: { // field return type name
     _count: 'RoomCountOutputType'
+    description: 'String'
     events: 'Event'
     id: 'String'
+    image: 'String'
+    title: 'String'
   }
   RoomCountAggregateOutputType: { // field return type name
     _all: 'Int'
+    description: 'Int'
     id: 'Int'
+    image: 'Int'
+    title: 'Int'
   }
   RoomCountOutputType: { // field return type name
     events: 'Int'
   }
   RoomMaxAggregateOutputType: { // field return type name
+    description: 'String'
     id: 'String'
+    image: 'String'
+    title: 'String'
   }
   RoomMinAggregateOutputType: { // field return type name
+    description: 'String'
     id: 'String'
+    image: 'String'
+    title: 'String'
   }
   Subscription: { // field return type name
     chat: 'Message'

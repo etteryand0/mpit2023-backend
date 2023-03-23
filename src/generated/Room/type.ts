@@ -8,6 +8,9 @@ export const Room = objectType({
   name: 'Room',
   definition(t) {
     t.string('id')
+    t.string('title')
+    t.nullable.string('image')
+    t.nullable.string('description')
     t.list.field('events', {
       type: 'Event',
       args: {

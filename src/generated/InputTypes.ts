@@ -51,7 +51,7 @@ export const QueryMode = enumType({
 
 export const RoomScalarFieldEnum = enumType({
   name: 'RoomScalarFieldEnum',
-  members: ['id'],
+  members: ['id', 'title', 'image', 'description'],
 })
 
 export const SortOrder = enumType({
@@ -156,6 +156,9 @@ export const RoomWhereInput = inputObjectType({
     t.list.field('OR', { type: 'RoomWhereInput' })
     t.list.field('NOT', { type: 'RoomWhereInput' })
     t.field('id', { type: 'StringFilter' })
+    t.field('title', { type: 'StringFilter' })
+    t.field('image', { type: 'StringNullableFilter' })
+    t.field('description', { type: 'StringNullableFilter' })
     t.field('events', { type: 'EventListRelationFilter' })
   },
 })
@@ -167,6 +170,9 @@ export const RoomOrderByWithRelationInput = inputObjectType({
   name: 'RoomOrderByWithRelationInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
+    t.field('title', { type: 'SortOrder' })
+    t.field('image', { type: 'SortOrder' })
+    t.field('description', { type: 'SortOrder' })
     t.field('events', { type: 'EventOrderByRelationAggregateInput' })
   },
 })
@@ -188,6 +194,9 @@ export const RoomOrderByWithAggregationInput = inputObjectType({
   name: 'RoomOrderByWithAggregationInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
+    t.field('title', { type: 'SortOrder' })
+    t.field('image', { type: 'SortOrder' })
+    t.field('description', { type: 'SortOrder' })
     t.field('_count', { type: 'RoomCountOrderByAggregateInput' })
     t.field('_max', { type: 'RoomMaxOrderByAggregateInput' })
     t.field('_min', { type: 'RoomMinOrderByAggregateInput' })
@@ -204,6 +213,9 @@ export const RoomScalarWhereWithAggregatesInput = inputObjectType({
     t.list.field('OR', { type: 'RoomScalarWhereWithAggregatesInput' })
     t.list.field('NOT', { type: 'RoomScalarWhereWithAggregatesInput' })
     t.field('id', { type: 'StringWithAggregatesFilter' })
+    t.field('title', { type: 'StringWithAggregatesFilter' })
+    t.field('image', { type: 'StringNullableWithAggregatesFilter' })
+    t.field('description', { type: 'StringNullableWithAggregatesFilter' })
   },
 })
 
@@ -741,6 +753,9 @@ export const RoomCreateInput = inputObjectType({
   name: 'RoomCreateInput',
   definition(t) {
     t.nonNull.field('id', { type: 'String' })
+    t.nonNull.field('title', { type: 'String' })
+    t.field('image', { type: 'String' })
+    t.field('description', { type: 'String' })
     t.field('events', { type: 'EventCreateNestedManyWithoutRoomInput' })
   },
 })
@@ -752,6 +767,9 @@ export const RoomUncheckedCreateInput = inputObjectType({
   name: 'RoomUncheckedCreateInput',
   definition(t) {
     t.nonNull.field('id', { type: 'String' })
+    t.nonNull.field('title', { type: 'String' })
+    t.field('image', { type: 'String' })
+    t.field('description', { type: 'String' })
     t.field('events', {
       type: 'EventUncheckedCreateNestedManyWithoutRoomInput',
     })
@@ -765,6 +783,9 @@ export const RoomUpdateInput = inputObjectType({
   name: 'RoomUpdateInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('title', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('image', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.field('description', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('events', { type: 'EventUpdateManyWithoutRoomNestedInput' })
   },
 })
@@ -776,6 +797,9 @@ export const RoomUncheckedUpdateInput = inputObjectType({
   name: 'RoomUncheckedUpdateInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('title', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('image', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.field('description', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('events', {
       type: 'EventUncheckedUpdateManyWithoutRoomNestedInput',
     })
@@ -789,6 +813,9 @@ export const RoomCreateManyInput = inputObjectType({
   name: 'RoomCreateManyInput',
   definition(t) {
     t.nonNull.field('id', { type: 'String' })
+    t.nonNull.field('title', { type: 'String' })
+    t.field('image', { type: 'String' })
+    t.field('description', { type: 'String' })
   },
 })
 
@@ -799,6 +826,9 @@ export const RoomUpdateManyMutationInput = inputObjectType({
   name: 'RoomUpdateManyMutationInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('title', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('image', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.field('description', { type: 'NullableStringFieldUpdateOperationsInput' })
   },
 })
 
@@ -809,6 +839,9 @@ export const RoomUncheckedUpdateManyInput = inputObjectType({
   name: 'RoomUncheckedUpdateManyInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('title', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('image', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.field('description', { type: 'NullableStringFieldUpdateOperationsInput' })
   },
 })
 
@@ -1620,6 +1653,27 @@ export const StringWithAggregatesFilter = inputObjectType({
   },
 })
 
+export const StringNullableFilter = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'StringNullableFilter',
+  definition(t) {
+    t.field('equals', { type: 'String' })
+    t.list.field('in', { type: 'String' })
+    t.list.field('notIn', { type: 'String' })
+    t.field('lt', { type: 'String' })
+    t.field('lte', { type: 'String' })
+    t.field('gt', { type: 'String' })
+    t.field('gte', { type: 'String' })
+    t.field('contains', { type: 'String' })
+    t.field('startsWith', { type: 'String' })
+    t.field('endsWith', { type: 'String' })
+    t.field('mode', { type: 'QueryMode' })
+    t.field('not', { type: 'NestedStringNullableFilter' })
+  },
+})
+
 export const RoomCountOrderByAggregateInput = inputObjectType({
   nonNullDefaults: {
     input: false,
@@ -1627,6 +1681,9 @@ export const RoomCountOrderByAggregateInput = inputObjectType({
   name: 'RoomCountOrderByAggregateInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
+    t.field('title', { type: 'SortOrder' })
+    t.field('image', { type: 'SortOrder' })
+    t.field('description', { type: 'SortOrder' })
   },
 })
 
@@ -1637,6 +1694,9 @@ export const RoomMaxOrderByAggregateInput = inputObjectType({
   name: 'RoomMaxOrderByAggregateInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
+    t.field('title', { type: 'SortOrder' })
+    t.field('image', { type: 'SortOrder' })
+    t.field('description', { type: 'SortOrder' })
   },
 })
 
@@ -1647,6 +1707,33 @@ export const RoomMinOrderByAggregateInput = inputObjectType({
   name: 'RoomMinOrderByAggregateInput',
   definition(t) {
     t.field('id', { type: 'SortOrder' })
+    t.field('title', { type: 'SortOrder' })
+    t.field('image', { type: 'SortOrder' })
+    t.field('description', { type: 'SortOrder' })
+  },
+})
+
+export const StringNullableWithAggregatesFilter = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'StringNullableWithAggregatesFilter',
+  definition(t) {
+    t.field('equals', { type: 'String' })
+    t.list.field('in', { type: 'String' })
+    t.list.field('notIn', { type: 'String' })
+    t.field('lt', { type: 'String' })
+    t.field('lte', { type: 'String' })
+    t.field('gt', { type: 'String' })
+    t.field('gte', { type: 'String' })
+    t.field('contains', { type: 'String' })
+    t.field('startsWith', { type: 'String' })
+    t.field('endsWith', { type: 'String' })
+    t.field('mode', { type: 'QueryMode' })
+    t.field('not', { type: 'NestedStringNullableWithAggregatesFilter' })
+    t.field('_count', { type: 'NestedIntNullableFilter' })
+    t.field('_min', { type: 'NestedStringNullableFilter' })
+    t.field('_max', { type: 'NestedStringNullableFilter' })
   },
 })
 
@@ -1675,27 +1762,6 @@ export const DateTimeFilter = inputObjectType({
     t.field('gt', { type: 'DateTime' })
     t.field('gte', { type: 'DateTime' })
     t.field('not', { type: 'NestedDateTimeFilter' })
-  },
-})
-
-export const StringNullableFilter = inputObjectType({
-  nonNullDefaults: {
-    input: false,
-  },
-  name: 'StringNullableFilter',
-  definition(t) {
-    t.field('equals', { type: 'String' })
-    t.list.field('in', { type: 'String' })
-    t.list.field('notIn', { type: 'String' })
-    t.field('lt', { type: 'String' })
-    t.field('lte', { type: 'String' })
-    t.field('gt', { type: 'String' })
-    t.field('gte', { type: 'String' })
-    t.field('contains', { type: 'String' })
-    t.field('startsWith', { type: 'String' })
-    t.field('endsWith', { type: 'String' })
-    t.field('mode', { type: 'QueryMode' })
-    t.field('not', { type: 'NestedStringNullableFilter' })
   },
 })
 
@@ -1861,30 +1927,6 @@ export const DateTimeWithAggregatesFilter = inputObjectType({
     t.field('_count', { type: 'NestedIntFilter' })
     t.field('_min', { type: 'NestedDateTimeFilter' })
     t.field('_max', { type: 'NestedDateTimeFilter' })
-  },
-})
-
-export const StringNullableWithAggregatesFilter = inputObjectType({
-  nonNullDefaults: {
-    input: false,
-  },
-  name: 'StringNullableWithAggregatesFilter',
-  definition(t) {
-    t.field('equals', { type: 'String' })
-    t.list.field('in', { type: 'String' })
-    t.list.field('notIn', { type: 'String' })
-    t.field('lt', { type: 'String' })
-    t.field('lte', { type: 'String' })
-    t.field('gt', { type: 'String' })
-    t.field('gte', { type: 'String' })
-    t.field('contains', { type: 'String' })
-    t.field('startsWith', { type: 'String' })
-    t.field('endsWith', { type: 'String' })
-    t.field('mode', { type: 'QueryMode' })
-    t.field('not', { type: 'NestedStringNullableWithAggregatesFilter' })
-    t.field('_count', { type: 'NestedIntNullableFilter' })
-    t.field('_min', { type: 'NestedStringNullableFilter' })
-    t.field('_max', { type: 'NestedStringNullableFilter' })
   },
 })
 
@@ -2295,6 +2337,16 @@ export const EventUncheckedCreateNestedManyWithoutRoomInput = inputObjectType({
   },
 })
 
+export const NullableStringFieldUpdateOperationsInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'NullableStringFieldUpdateOperationsInput',
+  definition(t) {
+    t.field('set', { type: 'String' })
+  },
+})
+
 export const EventUpdateManyWithoutRoomNestedInput = inputObjectType({
   nonNullDefaults: {
     input: false,
@@ -2517,16 +2569,6 @@ export const DateTimeFieldUpdateOperationsInput = inputObjectType({
   name: 'DateTimeFieldUpdateOperationsInput',
   definition(t) {
     t.field('set', { type: 'DateTime' })
-  },
-})
-
-export const NullableStringFieldUpdateOperationsInput = inputObjectType({
-  nonNullDefaults: {
-    input: false,
-  },
-  name: 'NullableStringFieldUpdateOperationsInput',
-  definition(t) {
-    t.field('set', { type: 'String' })
   },
 })
 
@@ -3754,34 +3796,6 @@ export const NestedStringWithAggregatesFilter = inputObjectType({
   },
 })
 
-export const NestedBoolFilter = inputObjectType({
-  nonNullDefaults: {
-    input: false,
-  },
-  name: 'NestedBoolFilter',
-  definition(t) {
-    t.field('equals', { type: 'Boolean' })
-    t.field('not', { type: 'NestedBoolFilter' })
-  },
-})
-
-export const NestedDateTimeFilter = inputObjectType({
-  nonNullDefaults: {
-    input: false,
-  },
-  name: 'NestedDateTimeFilter',
-  definition(t) {
-    t.field('equals', { type: 'DateTime' })
-    t.list.field('in', { type: 'DateTime' })
-    t.list.field('notIn', { type: 'DateTime' })
-    t.field('lt', { type: 'DateTime' })
-    t.field('lte', { type: 'DateTime' })
-    t.field('gt', { type: 'DateTime' })
-    t.field('gte', { type: 'DateTime' })
-    t.field('not', { type: 'NestedDateTimeFilter' })
-  },
-})
-
 export const NestedStringNullableFilter = inputObjectType({
   nonNullDefaults: {
     input: false,
@@ -3799,40 +3813,6 @@ export const NestedStringNullableFilter = inputObjectType({
     t.field('startsWith', { type: 'String' })
     t.field('endsWith', { type: 'String' })
     t.field('not', { type: 'NestedStringNullableFilter' })
-  },
-})
-
-export const NestedBoolWithAggregatesFilter = inputObjectType({
-  nonNullDefaults: {
-    input: false,
-  },
-  name: 'NestedBoolWithAggregatesFilter',
-  definition(t) {
-    t.field('equals', { type: 'Boolean' })
-    t.field('not', { type: 'NestedBoolWithAggregatesFilter' })
-    t.field('_count', { type: 'NestedIntFilter' })
-    t.field('_min', { type: 'NestedBoolFilter' })
-    t.field('_max', { type: 'NestedBoolFilter' })
-  },
-})
-
-export const NestedDateTimeWithAggregatesFilter = inputObjectType({
-  nonNullDefaults: {
-    input: false,
-  },
-  name: 'NestedDateTimeWithAggregatesFilter',
-  definition(t) {
-    t.field('equals', { type: 'DateTime' })
-    t.list.field('in', { type: 'DateTime' })
-    t.list.field('notIn', { type: 'DateTime' })
-    t.field('lt', { type: 'DateTime' })
-    t.field('lte', { type: 'DateTime' })
-    t.field('gt', { type: 'DateTime' })
-    t.field('gte', { type: 'DateTime' })
-    t.field('not', { type: 'NestedDateTimeWithAggregatesFilter' })
-    t.field('_count', { type: 'NestedIntFilter' })
-    t.field('_min', { type: 'NestedDateTimeFilter' })
-    t.field('_max', { type: 'NestedDateTimeFilter' })
   },
 })
 
@@ -3873,6 +3853,68 @@ export const NestedIntNullableFilter = inputObjectType({
     t.field('gt', { type: 'Int' })
     t.field('gte', { type: 'Int' })
     t.field('not', { type: 'NestedIntNullableFilter' })
+  },
+})
+
+export const NestedBoolFilter = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'NestedBoolFilter',
+  definition(t) {
+    t.field('equals', { type: 'Boolean' })
+    t.field('not', { type: 'NestedBoolFilter' })
+  },
+})
+
+export const NestedDateTimeFilter = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'NestedDateTimeFilter',
+  definition(t) {
+    t.field('equals', { type: 'DateTime' })
+    t.list.field('in', { type: 'DateTime' })
+    t.list.field('notIn', { type: 'DateTime' })
+    t.field('lt', { type: 'DateTime' })
+    t.field('lte', { type: 'DateTime' })
+    t.field('gt', { type: 'DateTime' })
+    t.field('gte', { type: 'DateTime' })
+    t.field('not', { type: 'NestedDateTimeFilter' })
+  },
+})
+
+export const NestedBoolWithAggregatesFilter = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'NestedBoolWithAggregatesFilter',
+  definition(t) {
+    t.field('equals', { type: 'Boolean' })
+    t.field('not', { type: 'NestedBoolWithAggregatesFilter' })
+    t.field('_count', { type: 'NestedIntFilter' })
+    t.field('_min', { type: 'NestedBoolFilter' })
+    t.field('_max', { type: 'NestedBoolFilter' })
+  },
+})
+
+export const NestedDateTimeWithAggregatesFilter = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'NestedDateTimeWithAggregatesFilter',
+  definition(t) {
+    t.field('equals', { type: 'DateTime' })
+    t.list.field('in', { type: 'DateTime' })
+    t.list.field('notIn', { type: 'DateTime' })
+    t.field('lt', { type: 'DateTime' })
+    t.field('lte', { type: 'DateTime' })
+    t.field('gt', { type: 'DateTime' })
+    t.field('gte', { type: 'DateTime' })
+    t.field('not', { type: 'NestedDateTimeWithAggregatesFilter' })
+    t.field('_count', { type: 'NestedIntFilter' })
+    t.field('_min', { type: 'NestedDateTimeFilter' })
+    t.field('_max', { type: 'NestedDateTimeFilter' })
   },
 })
 
@@ -4337,6 +4379,9 @@ export const RoomCreateWithoutEventsInput = inputObjectType({
   name: 'RoomCreateWithoutEventsInput',
   definition(t) {
     t.nonNull.field('id', { type: 'String' })
+    t.nonNull.field('title', { type: 'String' })
+    t.field('image', { type: 'String' })
+    t.field('description', { type: 'String' })
   },
 })
 
@@ -4347,6 +4392,9 @@ export const RoomUncheckedCreateWithoutEventsInput = inputObjectType({
   name: 'RoomUncheckedCreateWithoutEventsInput',
   definition(t) {
     t.nonNull.field('id', { type: 'String' })
+    t.nonNull.field('title', { type: 'String' })
+    t.field('image', { type: 'String' })
+    t.field('description', { type: 'String' })
   },
 })
 
@@ -4663,6 +4711,9 @@ export const RoomUpdateWithoutEventsInput = inputObjectType({
   name: 'RoomUpdateWithoutEventsInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('title', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('image', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.field('description', { type: 'NullableStringFieldUpdateOperationsInput' })
   },
 })
 
@@ -4673,6 +4724,9 @@ export const RoomUncheckedUpdateWithoutEventsInput = inputObjectType({
   name: 'RoomUncheckedUpdateWithoutEventsInput',
   definition(t) {
     t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('title', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('image', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.field('description', { type: 'NullableStringFieldUpdateOperationsInput' })
   },
 })
 
@@ -7317,6 +7371,9 @@ export const RoomCountAggregateOutputType = objectType({
   name: 'RoomCountAggregateOutputType',
   definition(t) {
     t.field('id', { type: 'Int' })
+    t.field('title', { type: 'Int' })
+    t.field('image', { type: 'Int' })
+    t.field('description', { type: 'Int' })
     t.field('_all', { type: 'Int' })
   },
 })
@@ -7328,6 +7385,9 @@ export const RoomMinAggregateOutputType = objectType({
   name: 'RoomMinAggregateOutputType',
   definition(t) {
     t.nullable.field('id', { type: 'String' })
+    t.nullable.field('title', { type: 'String' })
+    t.nullable.field('image', { type: 'String' })
+    t.nullable.field('description', { type: 'String' })
   },
 })
 
@@ -7338,6 +7398,9 @@ export const RoomMaxAggregateOutputType = objectType({
   name: 'RoomMaxAggregateOutputType',
   definition(t) {
     t.nullable.field('id', { type: 'String' })
+    t.nullable.field('title', { type: 'String' })
+    t.nullable.field('image', { type: 'String' })
+    t.nullable.field('description', { type: 'String' })
   },
 })
 
