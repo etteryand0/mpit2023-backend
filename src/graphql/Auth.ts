@@ -57,11 +57,7 @@ export const SignUpMutation = mutationField('signup', {
   args: {
     data: nonNull('SignUpInput'),
   },
-  async resolve(_parent, { data }, { prisma, user }) {
-    if (user) {
-      throw new GraphQLError("Already signed in", { extensions: { code: 400 } })
-    }
-
+  async resolve(_parent, { data }, { prisma }) {
     data.password = await hash(data.password, 10)
 
     const userId = (await prisma.user.create({
@@ -89,11 +85,7 @@ export const SignIn = mutationField('login', {
   args: {
     data: nonNull('SignInInput'),
   },
-  async resolve(_parent, { data }, { prisma, user }) {
-    if (user) {
-      throw new GraphQLError("Already signed in", { extensions: { code: 400 } })
-    }
-
+  async resolve(_parent, { data }, { prisma }) {
     const userfound = await prisma.user.findUnique({
       where: { username: data.username },
       select: { password: true, id: true }
