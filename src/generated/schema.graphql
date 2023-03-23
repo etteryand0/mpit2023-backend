@@ -2878,6 +2878,7 @@ type Room {
   _count: RoomCountOutputType!
   description: String
   events(cursor: EventWhereUniqueInput, distinct: EventScalarFieldEnum, orderBy: EventOrderByWithRelationInput, skip: Int, take: Int, where: EventWhereInput): [Event!]!
+  gallery: [String!]!
   id: String!
   image: String
   title: String!
@@ -2886,6 +2887,7 @@ type Room {
 type RoomCountAggregateOutputType {
   _all: Int!
   description: Int!
+  gallery: Int!
   id: Int!
   image: Int!
   title: Int!
@@ -2893,6 +2895,7 @@ type RoomCountAggregateOutputType {
 
 input RoomCountOrderByAggregateInput {
   description: SortOrder
+  gallery: SortOrder
   id: SortOrder
   image: SortOrder
   title: SortOrder
@@ -2905,6 +2908,7 @@ type RoomCountOutputType {
 input RoomCreateInput {
   description: String
   events: EventCreateNestedManyWithoutRoomInput
+  gallery: [String]
   id: String!
   image: String
   title: String!
@@ -2912,6 +2916,7 @@ input RoomCreateInput {
 
 input RoomCreateManyInput {
   description: String
+  gallery: [String]
   id: String!
   image: String
   title: String!
@@ -2930,9 +2935,14 @@ input RoomCreateOrConnectWithoutEventsInput {
 
 input RoomCreateWithoutEventsInput {
   description: String
+  gallery: [String]
   id: String!
   image: String
   title: String!
+}
+
+input RoomCreategalleryInput {
+  set: String!
 }
 
 type RoomMaxAggregateOutputType {
@@ -2968,6 +2978,7 @@ input RoomOrderByWithAggregationInput {
   _max: RoomMaxOrderByAggregateInput
   _min: RoomMinOrderByAggregateInput
   description: SortOrder
+  gallery: SortOrder
   id: SortOrder
   image: SortOrder
   title: SortOrder
@@ -2976,6 +2987,7 @@ input RoomOrderByWithAggregationInput {
 input RoomOrderByWithRelationInput {
   description: SortOrder
   events: EventOrderByRelationAggregateInput
+  gallery: SortOrder
   id: SortOrder
   image: SortOrder
   title: SortOrder
@@ -2988,6 +3000,7 @@ input RoomRelationFilter {
 
 enum RoomScalarFieldEnum {
   description
+  gallery
   id
   image
   title
@@ -2998,6 +3011,7 @@ input RoomScalarWhereWithAggregatesInput {
   NOT: [RoomScalarWhereWithAggregatesInput]
   OR: [RoomScalarWhereWithAggregatesInput]
   description: StringNullableWithAggregatesFilter
+  gallery: StringNullableListFilter
   id: StringWithAggregatesFilter
   image: StringNullableWithAggregatesFilter
   title: StringWithAggregatesFilter
@@ -3006,6 +3020,7 @@ input RoomScalarWhereWithAggregatesInput {
 input RoomUncheckedCreateInput {
   description: String
   events: EventUncheckedCreateNestedManyWithoutRoomInput
+  gallery: [String]
   id: String!
   image: String
   title: String!
@@ -3013,6 +3028,7 @@ input RoomUncheckedCreateInput {
 
 input RoomUncheckedCreateWithoutEventsInput {
   description: String
+  gallery: [String]
   id: String!
   image: String
   title: String!
@@ -3021,6 +3037,7 @@ input RoomUncheckedCreateWithoutEventsInput {
 input RoomUncheckedUpdateInput {
   description: NullableStringFieldUpdateOperationsInput
   events: EventUncheckedUpdateManyWithoutRoomNestedInput
+  gallery: [String]
   id: StringFieldUpdateOperationsInput
   image: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -3028,6 +3045,7 @@ input RoomUncheckedUpdateInput {
 
 input RoomUncheckedUpdateManyInput {
   description: NullableStringFieldUpdateOperationsInput
+  gallery: [String]
   id: StringFieldUpdateOperationsInput
   image: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -3035,6 +3053,7 @@ input RoomUncheckedUpdateManyInput {
 
 input RoomUncheckedUpdateWithoutEventsInput {
   description: NullableStringFieldUpdateOperationsInput
+  gallery: [String]
   id: StringFieldUpdateOperationsInput
   image: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -3043,6 +3062,7 @@ input RoomUncheckedUpdateWithoutEventsInput {
 input RoomUpdateInput {
   description: NullableStringFieldUpdateOperationsInput
   events: EventUpdateManyWithoutRoomNestedInput
+  gallery: [String]
   id: StringFieldUpdateOperationsInput
   image: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -3050,6 +3070,7 @@ input RoomUpdateInput {
 
 input RoomUpdateManyMutationInput {
   description: NullableStringFieldUpdateOperationsInput
+  gallery: [String]
   id: StringFieldUpdateOperationsInput
   image: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
@@ -3065,9 +3086,15 @@ input RoomUpdateOneRequiredWithoutEventsNestedInput {
 
 input RoomUpdateWithoutEventsInput {
   description: NullableStringFieldUpdateOperationsInput
+  gallery: [String]
   id: StringFieldUpdateOperationsInput
   image: NullableStringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
+}
+
+input RoomUpdategalleryInput {
+  push: [String]
+  set: [String]
 }
 
 input RoomUpsertWithoutEventsInput {
@@ -3081,6 +3108,7 @@ input RoomWhereInput {
   OR: [RoomWhereInput]
   description: StringNullableFilter
   events: EventListRelationFilter
+  gallery: StringNullableListFilter
   id: StringFilter
   image: StringNullableFilter
   title: StringFilter
@@ -3142,6 +3170,14 @@ input StringNullableFilter {
   not: NestedStringNullableFilter
   notIn: [String]
   startsWith: String
+}
+
+input StringNullableListFilter {
+  equals: [String]
+  has: String
+  hasEvery: [String]
+  hasSome: [String]
+  isEmpty: Boolean
 }
 
 input StringNullableWithAggregatesFilter {

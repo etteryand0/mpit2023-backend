@@ -2239,6 +2239,7 @@ export interface NexusGenInputs {
   }
   RoomCountOrderByAggregateInput: { // input type
     description?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    gallery?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     image?: NexusGenEnums['SortOrder'] | null; // SortOrder
     title?: NexusGenEnums['SortOrder'] | null; // SortOrder
@@ -2246,12 +2247,14 @@ export interface NexusGenInputs {
   RoomCreateInput: { // input type
     description?: string | null; // String
     events?: NexusGenInputs['EventCreateNestedManyWithoutRoomInput'] | null; // EventCreateNestedManyWithoutRoomInput
+    gallery?: Array<string | null> | null; // [String]
     id: string; // String!
     image?: string | null; // String
     title: string; // String!
   }
   RoomCreateManyInput: { // input type
     description?: string | null; // String
+    gallery?: Array<string | null> | null; // [String]
     id: string; // String!
     image?: string | null; // String
     title: string; // String!
@@ -2267,9 +2270,13 @@ export interface NexusGenInputs {
   }
   RoomCreateWithoutEventsInput: { // input type
     description?: string | null; // String
+    gallery?: Array<string | null> | null; // [String]
     id: string; // String!
     image?: string | null; // String
     title: string; // String!
+  }
+  RoomCreategalleryInput: { // input type
+    set: string; // String!
   }
   RoomMaxOrderByAggregateInput: { // input type
     description?: NexusGenEnums['SortOrder'] | null; // SortOrder
@@ -2288,6 +2295,7 @@ export interface NexusGenInputs {
     _max?: NexusGenInputs['RoomMaxOrderByAggregateInput'] | null; // RoomMaxOrderByAggregateInput
     _min?: NexusGenInputs['RoomMinOrderByAggregateInput'] | null; // RoomMinOrderByAggregateInput
     description?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    gallery?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     image?: NexusGenEnums['SortOrder'] | null; // SortOrder
     title?: NexusGenEnums['SortOrder'] | null; // SortOrder
@@ -2295,6 +2303,7 @@ export interface NexusGenInputs {
   RoomOrderByWithRelationInput: { // input type
     description?: NexusGenEnums['SortOrder'] | null; // SortOrder
     events?: NexusGenInputs['EventOrderByRelationAggregateInput'] | null; // EventOrderByRelationAggregateInput
+    gallery?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     image?: NexusGenEnums['SortOrder'] | null; // SortOrder
     title?: NexusGenEnums['SortOrder'] | null; // SortOrder
@@ -2308,6 +2317,7 @@ export interface NexusGenInputs {
     NOT?: Array<NexusGenInputs['RoomScalarWhereWithAggregatesInput'] | null> | null; // [RoomScalarWhereWithAggregatesInput]
     OR?: Array<NexusGenInputs['RoomScalarWhereWithAggregatesInput'] | null> | null; // [RoomScalarWhereWithAggregatesInput]
     description?: NexusGenInputs['StringNullableWithAggregatesFilter'] | null; // StringNullableWithAggregatesFilter
+    gallery?: NexusGenInputs['StringNullableListFilter'] | null; // StringNullableListFilter
     id?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
     image?: NexusGenInputs['StringNullableWithAggregatesFilter'] | null; // StringNullableWithAggregatesFilter
     title?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
@@ -2315,12 +2325,14 @@ export interface NexusGenInputs {
   RoomUncheckedCreateInput: { // input type
     description?: string | null; // String
     events?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutRoomInput'] | null; // EventUncheckedCreateNestedManyWithoutRoomInput
+    gallery?: Array<string | null> | null; // [String]
     id: string; // String!
     image?: string | null; // String
     title: string; // String!
   }
   RoomUncheckedCreateWithoutEventsInput: { // input type
     description?: string | null; // String
+    gallery?: Array<string | null> | null; // [String]
     id: string; // String!
     image?: string | null; // String
     title: string; // String!
@@ -2328,18 +2340,21 @@ export interface NexusGenInputs {
   RoomUncheckedUpdateInput: { // input type
     description?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     events?: NexusGenInputs['EventUncheckedUpdateManyWithoutRoomNestedInput'] | null; // EventUncheckedUpdateManyWithoutRoomNestedInput
+    gallery?: Array<string | null> | null; // [String]
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   RoomUncheckedUpdateManyInput: { // input type
     description?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    gallery?: Array<string | null> | null; // [String]
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   RoomUncheckedUpdateWithoutEventsInput: { // input type
     description?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    gallery?: Array<string | null> | null; // [String]
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
@@ -2347,12 +2362,14 @@ export interface NexusGenInputs {
   RoomUpdateInput: { // input type
     description?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     events?: NexusGenInputs['EventUpdateManyWithoutRoomNestedInput'] | null; // EventUpdateManyWithoutRoomNestedInput
+    gallery?: Array<string | null> | null; // [String]
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   RoomUpdateManyMutationInput: { // input type
     description?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    gallery?: Array<string | null> | null; // [String]
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
@@ -2366,9 +2383,14 @@ export interface NexusGenInputs {
   }
   RoomUpdateWithoutEventsInput: { // input type
     description?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    gallery?: Array<string | null> | null; // [String]
     id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  RoomUpdategalleryInput: { // input type
+    push?: Array<string | null> | null; // [String]
+    set?: Array<string | null> | null; // [String]
   }
   RoomUpsertWithoutEventsInput: { // input type
     create: NexusGenInputs['RoomUncheckedCreateWithoutEventsInput']; // RoomUncheckedCreateWithoutEventsInput!
@@ -2380,6 +2402,7 @@ export interface NexusGenInputs {
     OR?: Array<NexusGenInputs['RoomWhereInput'] | null> | null; // [RoomWhereInput]
     description?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     events?: NexusGenInputs['EventListRelationFilter'] | null; // EventListRelationFilter
+    gallery?: NexusGenInputs['StringNullableListFilter'] | null; // StringNullableListFilter
     id?: NexusGenInputs['StringFilter'] | null; // StringFilter
     image?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
     title?: NexusGenInputs['StringFilter'] | null; // StringFilter
@@ -2429,6 +2452,13 @@ export interface NexusGenInputs {
     not?: NexusGenInputs['NestedStringNullableFilter'] | null; // NestedStringNullableFilter
     notIn?: Array<string | null> | null; // [String]
     startsWith?: string | null; // String
+  }
+  StringNullableListFilter: { // input type
+    equals?: Array<string | null> | null; // [String]
+    has?: string | null; // String
+    hasEvery?: Array<string | null> | null; // [String]
+    hasSome?: Array<string | null> | null; // [String]
+    isEmpty?: boolean | null; // Boolean
   }
   StringNullableWithAggregatesFilter: { // input type
     _count?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
@@ -3410,7 +3440,7 @@ export interface NexusGenEnums {
   MessageScalarFieldEnum: "chatId" | "id" | "message" | "sentDate" | "userId"
   ProfileScalarFieldEnum: "avatar" | "bio" | "id" | "jobTitle" | "name" | "surname" | "updatedAt" | "userId"
   QueryMode: "default" | "insensitive"
-  RoomScalarFieldEnum: "description" | "id" | "image" | "title"
+  RoomScalarFieldEnum: "description" | "gallery" | "id" | "image" | "title"
   SortOrder: "asc" | "desc"
   TransactionIsolationLevel: "ReadCommitted" | "ReadUncommitted" | "RepeatableRead" | "Serializable"
   UserRole: "Dean" | "Parent" | "Staff" | "Student"
@@ -3646,6 +3676,7 @@ export interface NexusGenObjects {
   Query: {};
   Room: { // root type
     description?: string | null; // String
+    gallery: string[]; // [String!]!
     id: string; // String!
     image?: string | null; // String
     title: string; // String!
@@ -3653,6 +3684,7 @@ export interface NexusGenObjects {
   RoomCountAggregateOutputType: { // root type
     _all: number; // Int!
     description: number; // Int!
+    gallery: number; // Int!
     id: number; // Int!
     image: number; // Int!
     title: number; // Int!
@@ -4048,6 +4080,7 @@ export interface NexusGenFieldTypes {
     _count: NexusGenRootTypes['RoomCountOutputType']; // RoomCountOutputType!
     description: string | null; // String
     events: NexusGenRootTypes['Event'][]; // [Event!]!
+    gallery: string[]; // [String!]!
     id: string; // String!
     image: string | null; // String
     title: string; // String!
@@ -4055,6 +4088,7 @@ export interface NexusGenFieldTypes {
   RoomCountAggregateOutputType: { // field return type
     _all: number; // Int!
     description: number; // Int!
+    gallery: number; // Int!
     id: number; // Int!
     image: number; // Int!
     title: number; // Int!
@@ -4451,6 +4485,7 @@ export interface NexusGenFieldTypeNames {
     _count: 'RoomCountOutputType'
     description: 'String'
     events: 'Event'
+    gallery: 'String'
     id: 'String'
     image: 'String'
     title: 'String'
@@ -4458,6 +4493,7 @@ export interface NexusGenFieldTypeNames {
   RoomCountAggregateOutputType: { // field return type name
     _all: 'Int'
     description: 'Int'
+    gallery: 'Int'
     id: 'Int'
     image: 'Int'
     title: 'Int'

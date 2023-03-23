@@ -51,7 +51,7 @@ export const QueryMode = enumType({
 
 export const RoomScalarFieldEnum = enumType({
   name: 'RoomScalarFieldEnum',
-  members: ['id', 'title', 'image', 'description'],
+  members: ['id', 'title', 'image', 'description', 'gallery'],
 })
 
 export const SortOrder = enumType({
@@ -159,6 +159,7 @@ export const RoomWhereInput = inputObjectType({
     t.field('title', { type: 'StringFilter' })
     t.field('image', { type: 'StringNullableFilter' })
     t.field('description', { type: 'StringNullableFilter' })
+    t.field('gallery', { type: 'StringNullableListFilter' })
     t.field('events', { type: 'EventListRelationFilter' })
   },
 })
@@ -173,6 +174,7 @@ export const RoomOrderByWithRelationInput = inputObjectType({
     t.field('title', { type: 'SortOrder' })
     t.field('image', { type: 'SortOrder' })
     t.field('description', { type: 'SortOrder' })
+    t.field('gallery', { type: 'SortOrder' })
     t.field('events', { type: 'EventOrderByRelationAggregateInput' })
   },
 })
@@ -197,6 +199,7 @@ export const RoomOrderByWithAggregationInput = inputObjectType({
     t.field('title', { type: 'SortOrder' })
     t.field('image', { type: 'SortOrder' })
     t.field('description', { type: 'SortOrder' })
+    t.field('gallery', { type: 'SortOrder' })
     t.field('_count', { type: 'RoomCountOrderByAggregateInput' })
     t.field('_max', { type: 'RoomMaxOrderByAggregateInput' })
     t.field('_min', { type: 'RoomMinOrderByAggregateInput' })
@@ -216,6 +219,7 @@ export const RoomScalarWhereWithAggregatesInput = inputObjectType({
     t.field('title', { type: 'StringWithAggregatesFilter' })
     t.field('image', { type: 'StringNullableWithAggregatesFilter' })
     t.field('description', { type: 'StringNullableWithAggregatesFilter' })
+    t.field('gallery', { type: 'StringNullableListFilter' })
   },
 })
 
@@ -756,6 +760,7 @@ export const RoomCreateInput = inputObjectType({
     t.nonNull.field('title', { type: 'String' })
     t.field('image', { type: 'String' })
     t.field('description', { type: 'String' })
+    t.list.field('gallery', { type: 'String' })
     t.field('events', { type: 'EventCreateNestedManyWithoutRoomInput' })
   },
 })
@@ -770,6 +775,7 @@ export const RoomUncheckedCreateInput = inputObjectType({
     t.nonNull.field('title', { type: 'String' })
     t.field('image', { type: 'String' })
     t.field('description', { type: 'String' })
+    t.list.field('gallery', { type: 'String' })
     t.field('events', {
       type: 'EventUncheckedCreateNestedManyWithoutRoomInput',
     })
@@ -786,6 +792,7 @@ export const RoomUpdateInput = inputObjectType({
     t.field('title', { type: 'StringFieldUpdateOperationsInput' })
     t.field('image', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('description', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.list.field('gallery', { type: 'String' })
     t.field('events', { type: 'EventUpdateManyWithoutRoomNestedInput' })
   },
 })
@@ -800,6 +807,7 @@ export const RoomUncheckedUpdateInput = inputObjectType({
     t.field('title', { type: 'StringFieldUpdateOperationsInput' })
     t.field('image', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('description', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.list.field('gallery', { type: 'String' })
     t.field('events', {
       type: 'EventUncheckedUpdateManyWithoutRoomNestedInput',
     })
@@ -816,6 +824,7 @@ export const RoomCreateManyInput = inputObjectType({
     t.nonNull.field('title', { type: 'String' })
     t.field('image', { type: 'String' })
     t.field('description', { type: 'String' })
+    t.list.field('gallery', { type: 'String' })
   },
 })
 
@@ -829,6 +838,7 @@ export const RoomUpdateManyMutationInput = inputObjectType({
     t.field('title', { type: 'StringFieldUpdateOperationsInput' })
     t.field('image', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('description', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.list.field('gallery', { type: 'String' })
   },
 })
 
@@ -842,6 +852,7 @@ export const RoomUncheckedUpdateManyInput = inputObjectType({
     t.field('title', { type: 'StringFieldUpdateOperationsInput' })
     t.field('image', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('description', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.list.field('gallery', { type: 'String' })
   },
 })
 
@@ -1674,6 +1685,20 @@ export const StringNullableFilter = inputObjectType({
   },
 })
 
+export const StringNullableListFilter = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'StringNullableListFilter',
+  definition(t) {
+    t.list.field('equals', { type: 'String' })
+    t.field('has', { type: 'String' })
+    t.list.field('hasEvery', { type: 'String' })
+    t.list.field('hasSome', { type: 'String' })
+    t.field('isEmpty', { type: 'Boolean' })
+  },
+})
+
 export const RoomCountOrderByAggregateInput = inputObjectType({
   nonNullDefaults: {
     input: false,
@@ -1684,6 +1709,7 @@ export const RoomCountOrderByAggregateInput = inputObjectType({
     t.field('title', { type: 'SortOrder' })
     t.field('image', { type: 'SortOrder' })
     t.field('description', { type: 'SortOrder' })
+    t.field('gallery', { type: 'SortOrder' })
   },
 })
 
@@ -2307,6 +2333,16 @@ export const EventUncheckedUpdateManyWithoutCategoriesNestedInput =
     },
   })
 
+export const RoomCreategalleryInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'RoomCreategalleryInput',
+  definition(t) {
+    t.nonNull.field('set', { type: 'String' })
+  },
+})
+
 export const EventCreateNestedManyWithoutRoomInput = inputObjectType({
   nonNullDefaults: {
     input: false,
@@ -2344,6 +2380,17 @@ export const NullableStringFieldUpdateOperationsInput = inputObjectType({
   name: 'NullableStringFieldUpdateOperationsInput',
   definition(t) {
     t.field('set', { type: 'String' })
+  },
+})
+
+export const RoomUpdategalleryInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'RoomUpdategalleryInput',
+  definition(t) {
+    t.list.field('set', { type: 'String' })
+    t.list.field('push', { type: 'String' })
   },
 })
 
@@ -4382,6 +4429,7 @@ export const RoomCreateWithoutEventsInput = inputObjectType({
     t.nonNull.field('title', { type: 'String' })
     t.field('image', { type: 'String' })
     t.field('description', { type: 'String' })
+    t.list.field('gallery', { type: 'String' })
   },
 })
 
@@ -4395,6 +4443,7 @@ export const RoomUncheckedCreateWithoutEventsInput = inputObjectType({
     t.nonNull.field('title', { type: 'String' })
     t.field('image', { type: 'String' })
     t.field('description', { type: 'String' })
+    t.list.field('gallery', { type: 'String' })
   },
 })
 
@@ -4714,6 +4763,7 @@ export const RoomUpdateWithoutEventsInput = inputObjectType({
     t.field('title', { type: 'StringFieldUpdateOperationsInput' })
     t.field('image', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('description', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.list.field('gallery', { type: 'String' })
   },
 })
 
@@ -4727,6 +4777,7 @@ export const RoomUncheckedUpdateWithoutEventsInput = inputObjectType({
     t.field('title', { type: 'StringFieldUpdateOperationsInput' })
     t.field('image', { type: 'NullableStringFieldUpdateOperationsInput' })
     t.field('description', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.list.field('gallery', { type: 'String' })
   },
 })
 
@@ -7374,6 +7425,7 @@ export const RoomCountAggregateOutputType = objectType({
     t.field('title', { type: 'Int' })
     t.field('image', { type: 'Int' })
     t.field('description', { type: 'Int' })
+    t.field('gallery', { type: 'Int' })
     t.field('_all', { type: 'Int' })
   },
 })

@@ -11,6 +11,7 @@ export const Room = objectType({
     t.string('title')
     t.nullable.string('image')
     t.nullable.string('description')
+    t.list.string('gallery')
     t.list.field('events', {
       type: 'Event',
       args: {

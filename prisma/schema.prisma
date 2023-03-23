@@ -24,11 +24,12 @@ model Category {
 }
 
 model Room {
-  id          String  @id
+  id          String   @id
   events      Event[]
   title       String
   image       String?
   description String?
+  gallery     String[]
 }
 
 model Event {
