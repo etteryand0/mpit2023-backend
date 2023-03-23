@@ -2331,6 +2331,7 @@ type Mutation {
   updateManyProfile(data: ProfileUpdateManyMutationInput!, where: ProfileWhereInput): BatchPayload!
   updateManyRoom(data: RoomUpdateManyMutationInput!, where: RoomWhereInput): BatchPayload!
   updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updateMyProfile(data: UpdateMyProfileInput!): Profile!
   updateOneCategory(data: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category!
   updateOneChat(data: ChatUpdateInput!, where: ChatWhereUniqueInput!): Chat!
   updateOneEvent(data: EventUpdateInput!, where: EventWhereUniqueInput!): Event!
@@ -3229,6 +3230,14 @@ enum TransactionIsolationLevel {
   ReadUncommitted
   RepeatableRead
   Serializable
+}
+
+input UpdateMyProfileInput {
+  avatar: NullableStringFieldUpdateOperationsInput
+  bio: NullableStringFieldUpdateOperationsInput
+  jobTitle: NullableStringFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  surname: NullableStringFieldUpdateOperationsInput
 }
 
 type User {

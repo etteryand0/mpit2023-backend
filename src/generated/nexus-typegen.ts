@@ -2494,6 +2494,13 @@ export interface NexusGenInputs {
     notIn?: Array<string | null> | null; // [String]
     startsWith?: string | null; // String
   }
+  UpdateMyProfileInput: { // input type
+    avatar?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    bio?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    jobTitle?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    surname?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
   UserCountOrderByAggregateInput: { // input type
     createdAt?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
@@ -3981,6 +3988,7 @@ export interface NexusGenFieldTypes {
     updateManyProfile: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManyRoom: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManyUser: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateMyProfile: NexusGenRootTypes['Profile']; // Profile!
     updateOneCategory: NexusGenRootTypes['Category']; // Category!
     updateOneChat: NexusGenRootTypes['Chat']; // Chat!
     updateOneEvent: NexusGenRootTypes['Event']; // Event!
@@ -4386,6 +4394,7 @@ export interface NexusGenFieldTypeNames {
     updateManyProfile: 'BatchPayload'
     updateManyRoom: 'BatchPayload'
     updateManyUser: 'BatchPayload'
+    updateMyProfile: 'Profile'
     updateOneCategory: 'Category'
     updateOneChat: 'Chat'
     updateOneEvent: 'Event'
@@ -4734,6 +4743,9 @@ export interface NexusGenArgTypes {
     updateManyUser: { // args
       data: NexusGenInputs['UserUpdateManyMutationInput']; // UserUpdateManyMutationInput!
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    }
+    updateMyProfile: { // args
+      data: NexusGenInputs['UpdateMyProfileInput']; // UpdateMyProfileInput!
     }
     updateOneCategory: { // args
       data: NexusGenInputs['CategoryUpdateInput']; // CategoryUpdateInput!
