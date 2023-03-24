@@ -18,6 +18,8 @@ import { permissions } from "./shield";
 
 const app = express()
 
+app.use(cors())
+
 const httpServer = createServer(app)
 
 const wsServer = new WebSocketServer({
@@ -58,11 +60,11 @@ const run = async () => {
   }))
   
   app.post('/api/upload', function(req: any, res) {
-    if (!req.files || Object.keys(req.files).length === 0) {
-      return res.status(400).send('No files were uploaded.');
+    if (!req.files) {
+      return res.status(400).send('No file was uploaded.');
     }
   
-    const file = req.files.media
+    const file = req.files.file
     const filename = `${nanoid()}.${extname(file.name)}`
     const uploadPath = join(process.cwd(), 'uploads', filename)
   
