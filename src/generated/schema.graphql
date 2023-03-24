@@ -2450,10 +2450,10 @@ type Mutation {
   deleteOneUser(where: UserWhereUniqueInput!): User
   generateShortLink(eventId: String!): String!
   issueEvent(data: IssueEventInput!): Event!
-  login(data: SignInInput!): Token!
+  login(data: SignInInput!): UserAndToken!
   registerForEvent(eventId: String!): Event!
   sendMessage(data: SendMessageInput!): Message!
-  signup(data: SignUpInput!): Token!
+  signup(data: SignUpInput!): UserAndToken!
   unsignFromEvent(eventId: String!): Event!
   updateManyCategory(data: CategoryUpdateManyMutationInput!, where: CategoryWhereInput): BatchPayload!
   updateManyChat(data: ChatUpdateManyMutationInput!, where: ChatWhereInput): BatchPayload!
@@ -3702,10 +3702,6 @@ type Subscription {
   chat(chatId: String!): Message
 }
 
-type Token {
-  token: String
-}
-
 enum TransactionIsolationLevel {
   ReadCommitted
   ReadUncommitted
@@ -3738,6 +3734,11 @@ type User {
   role: UserRole!
   shortLinks(cursor: ShortLinkWhereUniqueInput, distinct: ShortLinkScalarFieldEnum, orderBy: ShortLinkOrderByWithRelationInput, skip: Int, take: Int, where: ShortLinkWhereInput): [ShortLink!]!
   username: String!
+}
+
+type UserAndToken {
+  token: String!
+  user: User!
 }
 
 type UserCountAggregateOutputType {

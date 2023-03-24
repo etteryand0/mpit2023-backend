@@ -4230,9 +4230,6 @@ export interface NexusGenObjects {
     userId?: string | null; // String
   }
   Subscription: {};
-  Token: { // root type
-    token?: string | null; // String
-  }
   User: { // root type
     createdAt: NexusGenScalars['DateTime']; // DateTime!
     id: string; // String!
@@ -4240,6 +4237,10 @@ export interface NexusGenObjects {
     password: string; // String!
     role: NexusGenEnums['UserRole']; // UserRole!
     username: string; // String!
+  }
+  UserAndToken: { // root type
+    token: string; // String!
+    user: NexusGenRootTypes['User']; // User!
   }
   UserCountAggregateOutputType: { // root type
     _all: number; // Int!
@@ -4507,10 +4508,10 @@ export interface NexusGenFieldTypes {
     deleteOneUser: NexusGenRootTypes['User'] | null; // User
     generateShortLink: string; // String!
     issueEvent: NexusGenRootTypes['Event']; // Event!
-    login: NexusGenRootTypes['Token']; // Token!
+    login: NexusGenRootTypes['UserAndToken']; // UserAndToken!
     registerForEvent: NexusGenRootTypes['Event']; // Event!
     sendMessage: NexusGenRootTypes['Message']; // Message!
-    signup: NexusGenRootTypes['Token']; // Token!
+    signup: NexusGenRootTypes['UserAndToken']; // UserAndToken!
     unsignFromEvent: NexusGenRootTypes['Event']; // Event!
     updateManyCategory: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManyChat: NexusGenRootTypes['BatchPayload']; // BatchPayload!
@@ -4681,9 +4682,6 @@ export interface NexusGenFieldTypes {
   Subscription: { // field return type
     chat: NexusGenRootTypes['Message'] | null; // Message
   }
-  Token: { // field return type
-    token: string | null; // String
-  }
   User: { // field return type
     _count: NexusGenRootTypes['UserCountOutputType']; // UserCountOutputType!
     chats: NexusGenRootTypes['Chat'][]; // [Chat!]!
@@ -4701,6 +4699,10 @@ export interface NexusGenFieldTypes {
     role: NexusGenEnums['UserRole']; // UserRole!
     shortLinks: NexusGenRootTypes['ShortLink'][]; // [ShortLink!]!
     username: string; // String!
+  }
+  UserAndToken: { // field return type
+    token: string; // String!
+    user: NexusGenRootTypes['User']; // User!
   }
   UserCountAggregateOutputType: { // field return type
     _all: number; // Int!
@@ -4958,10 +4960,10 @@ export interface NexusGenFieldTypeNames {
     deleteOneUser: 'User'
     generateShortLink: 'String'
     issueEvent: 'Event'
-    login: 'Token'
+    login: 'UserAndToken'
     registerForEvent: 'Event'
     sendMessage: 'Message'
-    signup: 'Token'
+    signup: 'UserAndToken'
     unsignFromEvent: 'Event'
     updateManyCategory: 'BatchPayload'
     updateManyChat: 'BatchPayload'
@@ -5132,9 +5134,6 @@ export interface NexusGenFieldTypeNames {
   Subscription: { // field return type name
     chat: 'Message'
   }
-  Token: { // field return type name
-    token: 'String'
-  }
   User: { // field return type name
     _count: 'UserCountOutputType'
     chats: 'Chat'
@@ -5152,6 +5151,10 @@ export interface NexusGenFieldTypeNames {
     role: 'UserRole'
     shortLinks: 'ShortLink'
     username: 'String'
+  }
+  UserAndToken: { // field return type name
+    token: 'String'
+    user: 'User'
   }
   UserCountAggregateOutputType: { // field return type name
     _all: 'Int'

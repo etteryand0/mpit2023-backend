@@ -8,9 +8,10 @@ import { UserRole } from '@prisma/client'
 const JWT_SECRET = process.env.JWT_SECRET
 
 export const GQLToken = objectType({
-  name: 'Token',
+  name: 'UserAndToken',
   definition(t) {
-    t.string('token')
+    t.nonNull.string('token')
+    t.nonNull.field('user', { type: 'User' })
   },
 })
 
@@ -53,55 +54,53 @@ export const SignInInput = inputObjectType({
 
 
 export const SignUpMutation = mutationField('signup', {
-  type: nonNull('Token'),
+  type: nonNull('UserAndToken'),
   args: {
     data: nonNull('SignUpInput'),
   },
   async resolve(_parent, { data }, { prisma }) {
     data.password = await hash(data.password, 10)
 
-    const userId = (await prisma.user.create({
+    const user = await prisma.user.create({
       data: {
         role: UserRole.Student,
         ...data,
       },
-      select: { id: true },
-    })).id
+    })
 
     await prisma.profile.create({
       data: {
-        user: {connect: { id: userId }}
+        user: {connect: { id: user.id }}
       }
     })
 
-    const token = sign({ userId }, JWT_SECRET)
+    const token = sign({ userId: user.id }, JWT_SECRET)
 
-    return { token }
+    return { token, user }
   }
 })
 
 export const SignIn = mutationField('login', {
-  type: nonNull('Token'),
+  type: nonNull('UserAndToken'),
   args: {
     data: nonNull('SignInInput'),
   },
   async resolve(_parent, { data }, { prisma }) {
-    const userfound = await prisma.user.findUnique({
+    const user = await prisma.user.findUnique({
       where: { username: data.username },
-      select: { password: true, id: true }
     })
 
-    if (!userfound) {
+    if (!user) {
       throw new GraphQLError('Incorrect password or username', { extensions: { code: ApolloServerErrorCode.BAD_USER_INPUT } })
     }
 
-    const passwordValid = await compare(data.password, userfound.password)
+    const passwordValid = await compare(data.password, user.password)
     if (!passwordValid) {
       throw new GraphQLError('Incorrect password or username', { extensions: { code: ApolloServerErrorCode.BAD_USER_INPUT } })
     }
 
-    const token = sign({ userId: userfound.id }, JWT_SECRET)
+    const token = sign({ userId: user.id }, JWT_SECRET)
 
-    return { token }
+    return { token, user }
   }
 })
