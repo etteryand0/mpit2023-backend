@@ -1,5 +1,5 @@
 import transliterate from '../utils/transliterate'
-import { inputObjectType, mutationField, nonNull, stringArg } from 'nexus'
+import { inputObjectType, list, mutationField, nonNull, queryField, stringArg } from 'nexus'
 import { UserRole } from '@prisma/client'
 
 export const IssueEventInput = inputObjectType({
@@ -8,7 +8,7 @@ export const IssueEventInput = inputObjectType({
     input: false,
   },
   definition(t) {
-    t.nonNull.field('id', { type: 'String' })
+    t.field('id', { type: 'String' })
     t.field('approved', { type: 'Boolean' })
     t.nonNull.field('title', { type: 'String' })
     t.nonNull.field('shortDescription', { type: 'String' })
@@ -105,7 +105,13 @@ export const RegisterForEventMutation = mutationField('registerForEvent', {
         id: eventId,
       },
       data: {
-        participants: { connect: { id } }
+        participants: {
+          connect: [
+            {
+              id: "clfki12af0000upv4y1nqfi3m"
+            }
+          ]
+        }
       },
     })
 
@@ -114,10 +120,43 @@ export const RegisterForEventMutation = mutationField('registerForEvent', {
         eventId,
       },
       data: {
-        members: { connect: { id } }
+        members: { connect: [{ id: user.id }] }
       }
     })
 
     return event
+  },
+})
+
+export const FindMyRegisteredEventsQuery = queryField('findMyRegisteredEvents',{
+  type: nonNull(list(nonNull('Event'))),
+  resolve(_parent, _args, { prisma, user, select }) {
+    return prisma.event.findMany({
+      where: {
+        participants: {some: {id: user.id}},
+        approved: {equals: true}
+      },
+      ...select
+    })
+  }
+})
+
+export const UnsignFromEventMutation = mutationField('unsignFromEvent', {
+  type: nonNull('Event'),
+  args: {
+    eventId: nonNull(stringArg())
+  },
+  resolve(_parent, { eventId }, { prisma, user, select }) {
+    return prisma.event.update({
+      where: {
+        id: eventId
+      },
+      data: {
+        participants: {
+          disconnect: {id: user.id}
+        }
+      },
+      ...select
+    })
   },
 })

@@ -608,6 +608,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserCreateNestedManyWithoutEventsResponsibleInput
     room: NexusGenInputs['RoomCreateNestedOneWithoutEventsInput']; // RoomCreateNestedOneWithoutEventsInput!
     shortDescription: string; // String!
+    shortLinks?: NexusGenInputs['ShortLinkCreateNestedManyWithoutEventInput'] | null; // ShortLinkCreateNestedManyWithoutEventInput
     title: string; // String!
   }
   EventCreateManyInput: { // input type
@@ -681,6 +682,11 @@ export interface NexusGenInputs {
     connectOrCreate?: NexusGenInputs['EventCreateOrConnectWithoutChatInput'] | null; // EventCreateOrConnectWithoutChatInput
     create?: NexusGenInputs['EventUncheckedCreateWithoutChatInput'] | null; // EventUncheckedCreateWithoutChatInput
   }
+  EventCreateNestedOneWithoutShortLinksInput: { // input type
+    connect?: NexusGenInputs['EventWhereUniqueInput'] | null; // EventWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['EventCreateOrConnectWithoutShortLinksInput'] | null; // EventCreateOrConnectWithoutShortLinksInput
+    create?: NexusGenInputs['EventUncheckedCreateWithoutShortLinksInput'] | null; // EventUncheckedCreateWithoutShortLinksInput
+  }
   EventCreateOrConnectWithoutCategoriesInput: { // input type
     create: NexusGenInputs['EventUncheckedCreateWithoutCategoriesInput']; // EventUncheckedCreateWithoutCategoriesInput!
     where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
@@ -705,6 +711,10 @@ export interface NexusGenInputs {
     create: NexusGenInputs['EventUncheckedCreateWithoutRoomInput']; // EventUncheckedCreateWithoutRoomInput!
     where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
   }
+  EventCreateOrConnectWithoutShortLinksInput: { // input type
+    create: NexusGenInputs['EventUncheckedCreateWithoutShortLinksInput']; // EventUncheckedCreateWithoutShortLinksInput!
+    where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
+  }
   EventCreateWithoutCategoriesInput: { // input type
     approved?: boolean | null; // Boolean
     chat?: NexusGenInputs['ChatCreateNestedOneWithoutEventInput'] | null; // ChatCreateNestedOneWithoutEventInput
@@ -717,6 +727,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserCreateNestedManyWithoutEventsResponsibleInput
     room: NexusGenInputs['RoomCreateNestedOneWithoutEventsInput']; // RoomCreateNestedOneWithoutEventsInput!
     shortDescription: string; // String!
+    shortLinks?: NexusGenInputs['ShortLinkCreateNestedManyWithoutEventInput'] | null; // ShortLinkCreateNestedManyWithoutEventInput
     title: string; // String!
   }
   EventCreateWithoutChatInput: { // input type
@@ -731,6 +742,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserCreateNestedManyWithoutEventsResponsibleInput
     room: NexusGenInputs['RoomCreateNestedOneWithoutEventsInput']; // RoomCreateNestedOneWithoutEventsInput!
     shortDescription: string; // String!
+    shortLinks?: NexusGenInputs['ShortLinkCreateNestedManyWithoutEventInput'] | null; // ShortLinkCreateNestedManyWithoutEventInput
     title: string; // String!
   }
   EventCreateWithoutIssuedByInput: { // input type
@@ -745,6 +757,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserCreateNestedManyWithoutEventsResponsibleInput
     room: NexusGenInputs['RoomCreateNestedOneWithoutEventsInput']; // RoomCreateNestedOneWithoutEventsInput!
     shortDescription: string; // String!
+    shortLinks?: NexusGenInputs['ShortLinkCreateNestedManyWithoutEventInput'] | null; // ShortLinkCreateNestedManyWithoutEventInput
     title: string; // String!
   }
   EventCreateWithoutParticipantsInput: { // input type
@@ -759,6 +772,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserCreateNestedManyWithoutEventsResponsibleInput
     room: NexusGenInputs['RoomCreateNestedOneWithoutEventsInput']; // RoomCreateNestedOneWithoutEventsInput!
     shortDescription: string; // String!
+    shortLinks?: NexusGenInputs['ShortLinkCreateNestedManyWithoutEventInput'] | null; // ShortLinkCreateNestedManyWithoutEventInput
     title: string; // String!
   }
   EventCreateWithoutResponsiblesInput: { // input type
@@ -773,6 +787,7 @@ export interface NexusGenInputs {
     participants?: NexusGenInputs['UserCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserCreateNestedManyWithoutEventsParticipatingInput
     room: NexusGenInputs['RoomCreateNestedOneWithoutEventsInput']; // RoomCreateNestedOneWithoutEventsInput!
     shortDescription: string; // String!
+    shortLinks?: NexusGenInputs['ShortLinkCreateNestedManyWithoutEventInput'] | null; // ShortLinkCreateNestedManyWithoutEventInput
     title: string; // String!
   }
   EventCreateWithoutRoomInput: { // input type
@@ -786,6 +801,22 @@ export interface NexusGenInputs {
     issuedBy?: NexusGenInputs['UserCreateNestedOneWithoutEventsIssuedInput'] | null; // UserCreateNestedOneWithoutEventsIssuedInput
     participants?: NexusGenInputs['UserCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserCreateNestedManyWithoutEventsParticipatingInput
     responsibles?: NexusGenInputs['UserCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserCreateNestedManyWithoutEventsResponsibleInput
+    shortDescription: string; // String!
+    shortLinks?: NexusGenInputs['ShortLinkCreateNestedManyWithoutEventInput'] | null; // ShortLinkCreateNestedManyWithoutEventInput
+    title: string; // String!
+  }
+  EventCreateWithoutShortLinksInput: { // input type
+    approved?: boolean | null; // Boolean
+    categories?: NexusGenInputs['CategoryCreateNestedManyWithoutEventsInput'] | null; // CategoryCreateNestedManyWithoutEventsInput
+    chat?: NexusGenInputs['ChatCreateNestedOneWithoutEventInput'] | null; // ChatCreateNestedOneWithoutEventInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    issuedBy?: NexusGenInputs['UserCreateNestedOneWithoutEventsIssuedInput'] | null; // UserCreateNestedOneWithoutEventsIssuedInput
+    participants?: NexusGenInputs['UserCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserCreateNestedManyWithoutEventsParticipatingInput
+    responsibles?: NexusGenInputs['UserCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserCreateNestedManyWithoutEventsResponsibleInput
+    room: NexusGenInputs['RoomCreateNestedOneWithoutEventsInput']; // RoomCreateNestedOneWithoutEventsInput!
     shortDescription: string; // String!
     title: string; // String!
   }
@@ -847,6 +878,7 @@ export interface NexusGenInputs {
     room?: NexusGenInputs['RoomOrderByWithRelationInput'] | null; // RoomOrderByWithRelationInput
     roomId?: NexusGenEnums['SortOrder'] | null; // SortOrder
     shortDescription?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    shortLinks?: NexusGenInputs['ShortLinkOrderByRelationAggregateInput'] | null; // ShortLinkOrderByRelationAggregateInput
     title?: NexusGenEnums['SortOrder'] | null; // SortOrder
     userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
@@ -894,6 +926,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
     roomId: string; // String!
     shortDescription: string; // String!
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedCreateNestedManyWithoutEventInput'] | null; // ShortLinkUncheckedCreateNestedManyWithoutEventInput
     title: string; // String!
     userId?: string | null; // String
   }
@@ -935,6 +968,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
     roomId: string; // String!
     shortDescription: string; // String!
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedCreateNestedManyWithoutEventInput'] | null; // ShortLinkUncheckedCreateNestedManyWithoutEventInput
     title: string; // String!
     userId?: string | null; // String
   }
@@ -949,6 +983,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
     roomId: string; // String!
     shortDescription: string; // String!
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedCreateNestedManyWithoutEventInput'] | null; // ShortLinkUncheckedCreateNestedManyWithoutEventInput
     title: string; // String!
     userId?: string | null; // String
   }
@@ -964,6 +999,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
     roomId: string; // String!
     shortDescription: string; // String!
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedCreateNestedManyWithoutEventInput'] | null; // ShortLinkUncheckedCreateNestedManyWithoutEventInput
     title: string; // String!
   }
   EventUncheckedCreateWithoutParticipantsInput: { // input type
@@ -977,6 +1013,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
     roomId: string; // String!
     shortDescription: string; // String!
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedCreateNestedManyWithoutEventInput'] | null; // ShortLinkUncheckedCreateNestedManyWithoutEventInput
     title: string; // String!
     userId?: string | null; // String
   }
@@ -991,6 +1028,7 @@ export interface NexusGenInputs {
     participants?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
     roomId: string; // String!
     shortDescription: string; // String!
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedCreateNestedManyWithoutEventInput'] | null; // ShortLinkUncheckedCreateNestedManyWithoutEventInput
     title: string; // String!
     userId?: string | null; // String
   }
@@ -1004,6 +1042,22 @@ export interface NexusGenInputs {
     image?: string | null; // String
     participants?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
     responsibles?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
+    shortDescription: string; // String!
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedCreateNestedManyWithoutEventInput'] | null; // ShortLinkUncheckedCreateNestedManyWithoutEventInput
+    title: string; // String!
+    userId?: string | null; // String
+  }
+  EventUncheckedCreateWithoutShortLinksInput: { // input type
+    approved?: boolean | null; // Boolean
+    categories?: NexusGenInputs['CategoryUncheckedCreateNestedManyWithoutEventsInput'] | null; // CategoryUncheckedCreateNestedManyWithoutEventsInput
+    chat?: NexusGenInputs['ChatUncheckedCreateNestedOneWithoutEventInput'] | null; // ChatUncheckedCreateNestedOneWithoutEventInput
+    date: NexusGenScalars['DateTime']; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    image?: string | null; // String
+    participants?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
+    responsibles?: NexusGenInputs['UserUncheckedCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
+    roomId: string; // String!
     shortDescription: string; // String!
     title: string; // String!
     userId?: string | null; // String
@@ -1020,6 +1074,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
     roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutEventNestedInput'] | null; // ShortLinkUncheckedUpdateManyWithoutEventNestedInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
@@ -1150,6 +1205,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
     roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutEventNestedInput'] | null; // ShortLinkUncheckedUpdateManyWithoutEventNestedInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
@@ -1164,6 +1220,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
     roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutEventNestedInput'] | null; // ShortLinkUncheckedUpdateManyWithoutEventNestedInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
@@ -1179,6 +1236,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
     roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutEventNestedInput'] | null; // ShortLinkUncheckedUpdateManyWithoutEventNestedInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   EventUncheckedUpdateWithoutParticipantsInput: { // input type
@@ -1192,6 +1250,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
     roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutEventNestedInput'] | null; // ShortLinkUncheckedUpdateManyWithoutEventNestedInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
@@ -1206,6 +1265,7 @@ export interface NexusGenInputs {
     participants?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
     roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutEventNestedInput'] | null; // ShortLinkUncheckedUpdateManyWithoutEventNestedInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
   }
@@ -1219,6 +1279,22 @@ export interface NexusGenInputs {
     image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     participants?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
     responsibles?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutEventNestedInput'] | null; // ShortLinkUncheckedUpdateManyWithoutEventNestedInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+  }
+  EventUncheckedUpdateWithoutShortLinksInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    categories?: NexusGenInputs['CategoryUncheckedUpdateManyWithoutEventsNestedInput'] | null; // CategoryUncheckedUpdateManyWithoutEventsNestedInput
+    chat?: NexusGenInputs['ChatUncheckedUpdateOneWithoutEventNestedInput'] | null; // ChatUncheckedUpdateOneWithoutEventNestedInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    participants?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
+    responsibles?: NexusGenInputs['UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
+    roomId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     userId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
@@ -1236,6 +1312,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUpdateManyWithoutEventsResponsibleNestedInput
     room?: NexusGenInputs['RoomUpdateOneRequiredWithoutEventsNestedInput'] | null; // RoomUpdateOneRequiredWithoutEventsNestedInput
     shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUpdateManyWithoutEventNestedInput'] | null; // ShortLinkUpdateManyWithoutEventNestedInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   EventUpdateManyMutationInput: { // input type
@@ -1336,6 +1413,13 @@ export interface NexusGenInputs {
     update?: NexusGenInputs['EventUncheckedUpdateWithoutChatInput'] | null; // EventUncheckedUpdateWithoutChatInput
     upsert?: NexusGenInputs['EventUpsertWithoutChatInput'] | null; // EventUpsertWithoutChatInput
   }
+  EventUpdateOneRequiredWithoutShortLinksNestedInput: { // input type
+    connect?: NexusGenInputs['EventWhereUniqueInput'] | null; // EventWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['EventCreateOrConnectWithoutShortLinksInput'] | null; // EventCreateOrConnectWithoutShortLinksInput
+    create?: NexusGenInputs['EventUncheckedCreateWithoutShortLinksInput'] | null; // EventUncheckedCreateWithoutShortLinksInput
+    update?: NexusGenInputs['EventUncheckedUpdateWithoutShortLinksInput'] | null; // EventUncheckedUpdateWithoutShortLinksInput
+    upsert?: NexusGenInputs['EventUpsertWithoutShortLinksInput'] | null; // EventUpsertWithoutShortLinksInput
+  }
   EventUpdateWithWhereUniqueWithoutCategoriesInput: { // input type
     data: NexusGenInputs['EventUncheckedUpdateWithoutCategoriesInput']; // EventUncheckedUpdateWithoutCategoriesInput!
     where: NexusGenInputs['EventWhereUniqueInput']; // EventWhereUniqueInput!
@@ -1368,6 +1452,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUpdateManyWithoutEventsResponsibleNestedInput
     room?: NexusGenInputs['RoomUpdateOneRequiredWithoutEventsNestedInput'] | null; // RoomUpdateOneRequiredWithoutEventsNestedInput
     shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUpdateManyWithoutEventNestedInput'] | null; // ShortLinkUpdateManyWithoutEventNestedInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   EventUpdateWithoutChatInput: { // input type
@@ -1382,6 +1467,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUpdateManyWithoutEventsResponsibleNestedInput
     room?: NexusGenInputs['RoomUpdateOneRequiredWithoutEventsNestedInput'] | null; // RoomUpdateOneRequiredWithoutEventsNestedInput
     shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUpdateManyWithoutEventNestedInput'] | null; // ShortLinkUpdateManyWithoutEventNestedInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   EventUpdateWithoutIssuedByInput: { // input type
@@ -1396,6 +1482,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUpdateManyWithoutEventsResponsibleNestedInput
     room?: NexusGenInputs['RoomUpdateOneRequiredWithoutEventsNestedInput'] | null; // RoomUpdateOneRequiredWithoutEventsNestedInput
     shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUpdateManyWithoutEventNestedInput'] | null; // ShortLinkUpdateManyWithoutEventNestedInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   EventUpdateWithoutParticipantsInput: { // input type
@@ -1410,6 +1497,7 @@ export interface NexusGenInputs {
     responsibles?: NexusGenInputs['UserUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUpdateManyWithoutEventsResponsibleNestedInput
     room?: NexusGenInputs['RoomUpdateOneRequiredWithoutEventsNestedInput'] | null; // RoomUpdateOneRequiredWithoutEventsNestedInput
     shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUpdateManyWithoutEventNestedInput'] | null; // ShortLinkUpdateManyWithoutEventNestedInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   EventUpdateWithoutResponsiblesInput: { // input type
@@ -1424,6 +1512,7 @@ export interface NexusGenInputs {
     participants?: NexusGenInputs['UserUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUpdateManyWithoutEventsParticipatingNestedInput
     room?: NexusGenInputs['RoomUpdateOneRequiredWithoutEventsNestedInput'] | null; // RoomUpdateOneRequiredWithoutEventsNestedInput
     shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUpdateManyWithoutEventNestedInput'] | null; // ShortLinkUpdateManyWithoutEventNestedInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   EventUpdateWithoutRoomInput: { // input type
@@ -1437,6 +1526,22 @@ export interface NexusGenInputs {
     issuedBy?: NexusGenInputs['UserUpdateOneWithoutEventsIssuedNestedInput'] | null; // UserUpdateOneWithoutEventsIssuedNestedInput
     participants?: NexusGenInputs['UserUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUpdateManyWithoutEventsParticipatingNestedInput
     responsibles?: NexusGenInputs['UserUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUpdateManyWithoutEventsResponsibleNestedInput
+    shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUpdateManyWithoutEventNestedInput'] | null; // ShortLinkUpdateManyWithoutEventNestedInput
+    title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  EventUpdateWithoutShortLinksInput: { // input type
+    approved?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
+    categories?: NexusGenInputs['CategoryUpdateManyWithoutEventsNestedInput'] | null; // CategoryUpdateManyWithoutEventsNestedInput
+    chat?: NexusGenInputs['ChatUpdateOneWithoutEventNestedInput'] | null; // ChatUpdateOneWithoutEventNestedInput
+    date?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    description?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    image?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    issuedBy?: NexusGenInputs['UserUpdateOneWithoutEventsIssuedNestedInput'] | null; // UserUpdateOneWithoutEventsIssuedNestedInput
+    participants?: NexusGenInputs['UserUpdateManyWithoutEventsParticipatingNestedInput'] | null; // UserUpdateManyWithoutEventsParticipatingNestedInput
+    responsibles?: NexusGenInputs['UserUpdateManyWithoutEventsResponsibleNestedInput'] | null; // UserUpdateManyWithoutEventsResponsibleNestedInput
+    room?: NexusGenInputs['RoomUpdateOneRequiredWithoutEventsNestedInput'] | null; // RoomUpdateOneRequiredWithoutEventsNestedInput
     shortDescription?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
@@ -1469,6 +1574,10 @@ export interface NexusGenInputs {
     create: NexusGenInputs['EventUncheckedCreateWithoutChatInput']; // EventUncheckedCreateWithoutChatInput!
     update: NexusGenInputs['EventUncheckedUpdateWithoutChatInput']; // EventUncheckedUpdateWithoutChatInput!
   }
+  EventUpsertWithoutShortLinksInput: { // input type
+    create: NexusGenInputs['EventUncheckedCreateWithoutShortLinksInput']; // EventUncheckedCreateWithoutShortLinksInput!
+    update: NexusGenInputs['EventUncheckedUpdateWithoutShortLinksInput']; // EventUncheckedUpdateWithoutShortLinksInput!
+  }
   EventWhereInput: { // input type
     AND?: Array<NexusGenInputs['EventWhereInput'] | null> | null; // [EventWhereInput]
     NOT?: Array<NexusGenInputs['EventWhereInput'] | null> | null; // [EventWhereInput]
@@ -1486,6 +1595,7 @@ export interface NexusGenInputs {
     room?: NexusGenInputs['RoomWhereInput'] | null; // RoomWhereInput
     roomId?: NexusGenInputs['StringFilter'] | null; // StringFilter
     shortDescription?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    shortLinks?: NexusGenInputs['ShortLinkListRelationFilter'] | null; // ShortLinkListRelationFilter
     title?: NexusGenInputs['StringFilter'] | null; // StringFilter
     userId?: NexusGenInputs['StringNullableFilter'] | null; // StringNullableFilter
   }
@@ -1530,7 +1640,7 @@ export interface NexusGenInputs {
     chat?: NexusGenInputs['ChatCreateNestedOneWithoutEventInput'] | null; // ChatCreateNestedOneWithoutEventInput
     date: NexusGenScalars['DateTime']; // DateTime!
     description: string; // String!
-    id: string; // String!
+    id?: string | null; // String
     image?: string | null; // String
     participants?: NexusGenInputs['UserCreateNestedManyWithoutEventsParticipatingInput'] | null; // UserCreateNestedManyWithoutEventsParticipatingInput
     responsibles?: NexusGenInputs['UserCreateNestedManyWithoutEventsResponsibleInput'] | null; // UserCreateNestedManyWithoutEventsResponsibleInput
@@ -2414,6 +2524,268 @@ export interface NexusGenInputs {
     chatId: string; // String!
     message: string; // String!
   }
+  ShortLinkCountOrderByAggregateInput: { // input type
+    eventId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    path?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  ShortLinkCreateInput: { // input type
+    event: NexusGenInputs['EventCreateNestedOneWithoutShortLinksInput']; // EventCreateNestedOneWithoutShortLinksInput!
+    path: string; // String!
+    user: NexusGenInputs['UserCreateNestedOneWithoutShortLinksInput']; // UserCreateNestedOneWithoutShortLinksInput!
+  }
+  ShortLinkCreateManyEventInput: { // input type
+    path: string; // String!
+    userId: string; // String!
+  }
+  ShortLinkCreateManyEventInputEnvelope: { // input type
+    data: NexusGenInputs['ShortLinkCreateManyEventInput']; // ShortLinkCreateManyEventInput!
+    skipDuplicates?: boolean | null; // Boolean
+  }
+  ShortLinkCreateManyInput: { // input type
+    eventId: string; // String!
+    path: string; // String!
+    userId: string; // String!
+  }
+  ShortLinkCreateManyUserInput: { // input type
+    eventId: string; // String!
+    path: string; // String!
+  }
+  ShortLinkCreateManyUserInputEnvelope: { // input type
+    data: NexusGenInputs['ShortLinkCreateManyUserInput']; // ShortLinkCreateManyUserInput!
+    skipDuplicates?: boolean | null; // Boolean
+  }
+  ShortLinkCreateNestedManyWithoutEventInput: { // input type
+    connect?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['ShortLinkCreateOrConnectWithoutEventInput'] | null> | null; // [ShortLinkCreateOrConnectWithoutEventInput]
+    create?: Array<NexusGenInputs['ShortLinkCreateWithoutEventInput'] | null> | null; // [ShortLinkCreateWithoutEventInput]
+    createMany?: NexusGenInputs['ShortLinkCreateManyEventInputEnvelope'] | null; // ShortLinkCreateManyEventInputEnvelope
+  }
+  ShortLinkCreateNestedManyWithoutUserInput: { // input type
+    connect?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['ShortLinkCreateOrConnectWithoutUserInput'] | null> | null; // [ShortLinkCreateOrConnectWithoutUserInput]
+    create?: Array<NexusGenInputs['ShortLinkCreateWithoutUserInput'] | null> | null; // [ShortLinkCreateWithoutUserInput]
+    createMany?: NexusGenInputs['ShortLinkCreateManyUserInputEnvelope'] | null; // ShortLinkCreateManyUserInputEnvelope
+  }
+  ShortLinkCreateOrConnectWithoutEventInput: { // input type
+    create: NexusGenInputs['ShortLinkUncheckedCreateWithoutEventInput']; // ShortLinkUncheckedCreateWithoutEventInput!
+    where: NexusGenInputs['ShortLinkWhereUniqueInput']; // ShortLinkWhereUniqueInput!
+  }
+  ShortLinkCreateOrConnectWithoutUserInput: { // input type
+    create: NexusGenInputs['ShortLinkUncheckedCreateWithoutUserInput']; // ShortLinkUncheckedCreateWithoutUserInput!
+    where: NexusGenInputs['ShortLinkWhereUniqueInput']; // ShortLinkWhereUniqueInput!
+  }
+  ShortLinkCreateWithoutEventInput: { // input type
+    path: string; // String!
+    user: NexusGenInputs['UserCreateNestedOneWithoutShortLinksInput']; // UserCreateNestedOneWithoutShortLinksInput!
+  }
+  ShortLinkCreateWithoutUserInput: { // input type
+    event: NexusGenInputs['EventCreateNestedOneWithoutShortLinksInput']; // EventCreateNestedOneWithoutShortLinksInput!
+    path: string; // String!
+  }
+  ShortLinkListRelationFilter: { // input type
+    every?: NexusGenInputs['ShortLinkWhereInput'] | null; // ShortLinkWhereInput
+    none?: NexusGenInputs['ShortLinkWhereInput'] | null; // ShortLinkWhereInput
+    some?: NexusGenInputs['ShortLinkWhereInput'] | null; // ShortLinkWhereInput
+  }
+  ShortLinkMaxOrderByAggregateInput: { // input type
+    eventId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    path?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  ShortLinkMinOrderByAggregateInput: { // input type
+    eventId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    path?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  ShortLinkOrderByRelationAggregateInput: { // input type
+    _count?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  ShortLinkOrderByWithAggregationInput: { // input type
+    _count?: NexusGenInputs['ShortLinkCountOrderByAggregateInput'] | null; // ShortLinkCountOrderByAggregateInput
+    _max?: NexusGenInputs['ShortLinkMaxOrderByAggregateInput'] | null; // ShortLinkMaxOrderByAggregateInput
+    _min?: NexusGenInputs['ShortLinkMinOrderByAggregateInput'] | null; // ShortLinkMinOrderByAggregateInput
+    eventId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    path?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  ShortLinkOrderByWithRelationInput: { // input type
+    event?: NexusGenInputs['EventOrderByWithRelationInput'] | null; // EventOrderByWithRelationInput
+    eventId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    path?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    user?: NexusGenInputs['UserOrderByWithRelationInput'] | null; // UserOrderByWithRelationInput
+    userId?: NexusGenEnums['SortOrder'] | null; // SortOrder
+  }
+  ShortLinkScalarWhereInput: { // input type
+    AND?: Array<NexusGenInputs['ShortLinkScalarWhereInput'] | null> | null; // [ShortLinkScalarWhereInput]
+    NOT?: Array<NexusGenInputs['ShortLinkScalarWhereInput'] | null> | null; // [ShortLinkScalarWhereInput]
+    OR?: Array<NexusGenInputs['ShortLinkScalarWhereInput'] | null> | null; // [ShortLinkScalarWhereInput]
+    eventId?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    path?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    userId?: NexusGenInputs['StringFilter'] | null; // StringFilter
+  }
+  ShortLinkScalarWhereWithAggregatesInput: { // input type
+    AND?: Array<NexusGenInputs['ShortLinkScalarWhereWithAggregatesInput'] | null> | null; // [ShortLinkScalarWhereWithAggregatesInput]
+    NOT?: Array<NexusGenInputs['ShortLinkScalarWhereWithAggregatesInput'] | null> | null; // [ShortLinkScalarWhereWithAggregatesInput]
+    OR?: Array<NexusGenInputs['ShortLinkScalarWhereWithAggregatesInput'] | null> | null; // [ShortLinkScalarWhereWithAggregatesInput]
+    eventId?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+    path?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+    userId?: NexusGenInputs['StringWithAggregatesFilter'] | null; // StringWithAggregatesFilter
+  }
+  ShortLinkUncheckedCreateInput: { // input type
+    eventId: string; // String!
+    path: string; // String!
+    userId: string; // String!
+  }
+  ShortLinkUncheckedCreateNestedManyWithoutEventInput: { // input type
+    connect?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['ShortLinkCreateOrConnectWithoutEventInput'] | null> | null; // [ShortLinkCreateOrConnectWithoutEventInput]
+    create?: Array<NexusGenInputs['ShortLinkCreateWithoutEventInput'] | null> | null; // [ShortLinkCreateWithoutEventInput]
+    createMany?: NexusGenInputs['ShortLinkCreateManyEventInputEnvelope'] | null; // ShortLinkCreateManyEventInputEnvelope
+  }
+  ShortLinkUncheckedCreateNestedManyWithoutUserInput: { // input type
+    connect?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['ShortLinkCreateOrConnectWithoutUserInput'] | null> | null; // [ShortLinkCreateOrConnectWithoutUserInput]
+    create?: Array<NexusGenInputs['ShortLinkCreateWithoutUserInput'] | null> | null; // [ShortLinkCreateWithoutUserInput]
+    createMany?: NexusGenInputs['ShortLinkCreateManyUserInputEnvelope'] | null; // ShortLinkCreateManyUserInputEnvelope
+  }
+  ShortLinkUncheckedCreateWithoutEventInput: { // input type
+    path: string; // String!
+    userId: string; // String!
+  }
+  ShortLinkUncheckedCreateWithoutUserInput: { // input type
+    eventId: string; // String!
+    path: string; // String!
+  }
+  ShortLinkUncheckedUpdateInput: { // input type
+    eventId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    path?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  ShortLinkUncheckedUpdateManyInput: { // input type
+    eventId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    path?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  ShortLinkUncheckedUpdateManyWithoutEventNestedInput: { // input type
+    connect?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['ShortLinkCreateOrConnectWithoutEventInput'] | null> | null; // [ShortLinkCreateOrConnectWithoutEventInput]
+    create?: Array<NexusGenInputs['ShortLinkCreateWithoutEventInput'] | null> | null; // [ShortLinkCreateWithoutEventInput]
+    createMany?: NexusGenInputs['ShortLinkCreateManyEventInputEnvelope'] | null; // ShortLinkCreateManyEventInputEnvelope
+    delete?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['ShortLinkScalarWhereInput'] | null> | null; // [ShortLinkScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    set?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    update?: Array<NexusGenInputs['ShortLinkUpdateWithWhereUniqueWithoutEventInput'] | null> | null; // [ShortLinkUpdateWithWhereUniqueWithoutEventInput]
+    updateMany?: Array<NexusGenInputs['ShortLinkUpdateManyWithWhereWithoutEventInput'] | null> | null; // [ShortLinkUpdateManyWithWhereWithoutEventInput]
+    upsert?: Array<NexusGenInputs['ShortLinkUpsertWithWhereUniqueWithoutEventInput'] | null> | null; // [ShortLinkUpsertWithWhereUniqueWithoutEventInput]
+  }
+  ShortLinkUncheckedUpdateManyWithoutShortLinksInput: { // input type
+    path?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  ShortLinkUncheckedUpdateManyWithoutUserNestedInput: { // input type
+    connect?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['ShortLinkCreateOrConnectWithoutUserInput'] | null> | null; // [ShortLinkCreateOrConnectWithoutUserInput]
+    create?: Array<NexusGenInputs['ShortLinkCreateWithoutUserInput'] | null> | null; // [ShortLinkCreateWithoutUserInput]
+    createMany?: NexusGenInputs['ShortLinkCreateManyUserInputEnvelope'] | null; // ShortLinkCreateManyUserInputEnvelope
+    delete?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['ShortLinkScalarWhereInput'] | null> | null; // [ShortLinkScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    set?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    update?: Array<NexusGenInputs['ShortLinkUpdateWithWhereUniqueWithoutUserInput'] | null> | null; // [ShortLinkUpdateWithWhereUniqueWithoutUserInput]
+    updateMany?: Array<NexusGenInputs['ShortLinkUpdateManyWithWhereWithoutUserInput'] | null> | null; // [ShortLinkUpdateManyWithWhereWithoutUserInput]
+    upsert?: Array<NexusGenInputs['ShortLinkUpsertWithWhereUniqueWithoutUserInput'] | null> | null; // [ShortLinkUpsertWithWhereUniqueWithoutUserInput]
+  }
+  ShortLinkUncheckedUpdateWithoutEventInput: { // input type
+    path?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    userId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  ShortLinkUncheckedUpdateWithoutUserInput: { // input type
+    eventId?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    path?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  ShortLinkUpdateInput: { // input type
+    event?: NexusGenInputs['EventUpdateOneRequiredWithoutShortLinksNestedInput'] | null; // EventUpdateOneRequiredWithoutShortLinksNestedInput
+    path?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    user?: NexusGenInputs['UserUpdateOneRequiredWithoutShortLinksNestedInput'] | null; // UserUpdateOneRequiredWithoutShortLinksNestedInput
+  }
+  ShortLinkUpdateManyMutationInput: { // input type
+    path?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  ShortLinkUpdateManyWithWhereWithoutEventInput: { // input type
+    data: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutShortLinksInput']; // ShortLinkUncheckedUpdateManyWithoutShortLinksInput!
+    where: NexusGenInputs['ShortLinkScalarWhereInput']; // ShortLinkScalarWhereInput!
+  }
+  ShortLinkUpdateManyWithWhereWithoutUserInput: { // input type
+    data: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutShortLinksInput']; // ShortLinkUncheckedUpdateManyWithoutShortLinksInput!
+    where: NexusGenInputs['ShortLinkScalarWhereInput']; // ShortLinkScalarWhereInput!
+  }
+  ShortLinkUpdateManyWithoutEventNestedInput: { // input type
+    connect?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['ShortLinkCreateOrConnectWithoutEventInput'] | null> | null; // [ShortLinkCreateOrConnectWithoutEventInput]
+    create?: Array<NexusGenInputs['ShortLinkCreateWithoutEventInput'] | null> | null; // [ShortLinkCreateWithoutEventInput]
+    createMany?: NexusGenInputs['ShortLinkCreateManyEventInputEnvelope'] | null; // ShortLinkCreateManyEventInputEnvelope
+    delete?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['ShortLinkScalarWhereInput'] | null> | null; // [ShortLinkScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    set?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    update?: Array<NexusGenInputs['ShortLinkUpdateWithWhereUniqueWithoutEventInput'] | null> | null; // [ShortLinkUpdateWithWhereUniqueWithoutEventInput]
+    updateMany?: Array<NexusGenInputs['ShortLinkUpdateManyWithWhereWithoutEventInput'] | null> | null; // [ShortLinkUpdateManyWithWhereWithoutEventInput]
+    upsert?: Array<NexusGenInputs['ShortLinkUpsertWithWhereUniqueWithoutEventInput'] | null> | null; // [ShortLinkUpsertWithWhereUniqueWithoutEventInput]
+  }
+  ShortLinkUpdateManyWithoutUserNestedInput: { // input type
+    connect?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    connectOrCreate?: Array<NexusGenInputs['ShortLinkCreateOrConnectWithoutUserInput'] | null> | null; // [ShortLinkCreateOrConnectWithoutUserInput]
+    create?: Array<NexusGenInputs['ShortLinkCreateWithoutUserInput'] | null> | null; // [ShortLinkCreateWithoutUserInput]
+    createMany?: NexusGenInputs['ShortLinkCreateManyUserInputEnvelope'] | null; // ShortLinkCreateManyUserInputEnvelope
+    delete?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    deleteMany?: Array<NexusGenInputs['ShortLinkScalarWhereInput'] | null> | null; // [ShortLinkScalarWhereInput]
+    disconnect?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    set?: Array<NexusGenInputs['ShortLinkWhereUniqueInput'] | null> | null; // [ShortLinkWhereUniqueInput]
+    update?: Array<NexusGenInputs['ShortLinkUpdateWithWhereUniqueWithoutUserInput'] | null> | null; // [ShortLinkUpdateWithWhereUniqueWithoutUserInput]
+    updateMany?: Array<NexusGenInputs['ShortLinkUpdateManyWithWhereWithoutUserInput'] | null> | null; // [ShortLinkUpdateManyWithWhereWithoutUserInput]
+    upsert?: Array<NexusGenInputs['ShortLinkUpsertWithWhereUniqueWithoutUserInput'] | null> | null; // [ShortLinkUpsertWithWhereUniqueWithoutUserInput]
+  }
+  ShortLinkUpdateWithWhereUniqueWithoutEventInput: { // input type
+    data: NexusGenInputs['ShortLinkUncheckedUpdateWithoutEventInput']; // ShortLinkUncheckedUpdateWithoutEventInput!
+    where: NexusGenInputs['ShortLinkWhereUniqueInput']; // ShortLinkWhereUniqueInput!
+  }
+  ShortLinkUpdateWithWhereUniqueWithoutUserInput: { // input type
+    data: NexusGenInputs['ShortLinkUncheckedUpdateWithoutUserInput']; // ShortLinkUncheckedUpdateWithoutUserInput!
+    where: NexusGenInputs['ShortLinkWhereUniqueInput']; // ShortLinkWhereUniqueInput!
+  }
+  ShortLinkUpdateWithoutEventInput: { // input type
+    path?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    user?: NexusGenInputs['UserUpdateOneRequiredWithoutShortLinksNestedInput'] | null; // UserUpdateOneRequiredWithoutShortLinksNestedInput
+  }
+  ShortLinkUpdateWithoutUserInput: { // input type
+    event?: NexusGenInputs['EventUpdateOneRequiredWithoutShortLinksNestedInput'] | null; // EventUpdateOneRequiredWithoutShortLinksNestedInput
+    path?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  ShortLinkUpsertWithWhereUniqueWithoutEventInput: { // input type
+    create: NexusGenInputs['ShortLinkUncheckedCreateWithoutEventInput']; // ShortLinkUncheckedCreateWithoutEventInput!
+    update: NexusGenInputs['ShortLinkUncheckedUpdateWithoutEventInput']; // ShortLinkUncheckedUpdateWithoutEventInput!
+    where: NexusGenInputs['ShortLinkWhereUniqueInput']; // ShortLinkWhereUniqueInput!
+  }
+  ShortLinkUpsertWithWhereUniqueWithoutUserInput: { // input type
+    create: NexusGenInputs['ShortLinkUncheckedCreateWithoutUserInput']; // ShortLinkUncheckedCreateWithoutUserInput!
+    update: NexusGenInputs['ShortLinkUncheckedUpdateWithoutUserInput']; // ShortLinkUncheckedUpdateWithoutUserInput!
+    where: NexusGenInputs['ShortLinkWhereUniqueInput']; // ShortLinkWhereUniqueInput!
+  }
+  ShortLinkWhereInput: { // input type
+    AND?: Array<NexusGenInputs['ShortLinkWhereInput'] | null> | null; // [ShortLinkWhereInput]
+    NOT?: Array<NexusGenInputs['ShortLinkWhereInput'] | null> | null; // [ShortLinkWhereInput]
+    OR?: Array<NexusGenInputs['ShortLinkWhereInput'] | null> | null; // [ShortLinkWhereInput]
+    event?: NexusGenInputs['EventWhereInput'] | null; // EventWhereInput
+    eventId?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    path?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    user?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    userId?: NexusGenInputs['StringFilter'] | null; // StringFilter
+  }
+  ShortLinkWhereUniqueInput: { // input type
+    path?: string | null; // String
+  }
   SignInInput: { // input type
     password: string; // String!
     username: string; // String!
@@ -2522,6 +2894,7 @@ export interface NexusGenInputs {
     password: string; // String!
     profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkCreateNestedManyWithoutUserInput'] | null; // ShortLinkCreateNestedManyWithoutUserInput
     username: string; // String!
   }
   UserCreateManyInput: { // input type
@@ -2572,6 +2945,11 @@ export interface NexusGenInputs {
     connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutProfileInput'] | null; // UserCreateOrConnectWithoutProfileInput
     create?: NexusGenInputs['UserUncheckedCreateWithoutProfileInput'] | null; // UserUncheckedCreateWithoutProfileInput
   }
+  UserCreateNestedOneWithoutShortLinksInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutShortLinksInput'] | null; // UserCreateOrConnectWithoutShortLinksInput
+    create?: NexusGenInputs['UserUncheckedCreateWithoutShortLinksInput'] | null; // UserUncheckedCreateWithoutShortLinksInput
+  }
   UserCreateOrConnectWithoutChatsInput: { // input type
     create: NexusGenInputs['UserUncheckedCreateWithoutChatsInput']; // UserUncheckedCreateWithoutChatsInput!
     where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
@@ -2604,6 +2982,10 @@ export interface NexusGenInputs {
     create: NexusGenInputs['UserUncheckedCreateWithoutProfileInput']; // UserUncheckedCreateWithoutProfileInput!
     where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
   }
+  UserCreateOrConnectWithoutShortLinksInput: { // input type
+    create: NexusGenInputs['UserUncheckedCreateWithoutShortLinksInput']; // UserUncheckedCreateWithoutShortLinksInput!
+    where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+  }
   UserCreateWithoutChatsInput: { // input type
     child?: NexusGenInputs['UserCreateNestedOneWithoutParentInput'] | null; // UserCreateNestedOneWithoutParentInput
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
@@ -2616,6 +2998,7 @@ export interface NexusGenInputs {
     password: string; // String!
     profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkCreateNestedManyWithoutUserInput'] | null; // ShortLinkCreateNestedManyWithoutUserInput
     username: string; // String!
   }
   UserCreateWithoutChildInput: { // input type
@@ -2630,6 +3013,7 @@ export interface NexusGenInputs {
     password: string; // String!
     profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkCreateNestedManyWithoutUserInput'] | null; // ShortLinkCreateNestedManyWithoutUserInput
     username: string; // String!
   }
   UserCreateWithoutEventsIssuedInput: { // input type
@@ -2644,6 +3028,7 @@ export interface NexusGenInputs {
     password: string; // String!
     profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkCreateNestedManyWithoutUserInput'] | null; // ShortLinkCreateNestedManyWithoutUserInput
     username: string; // String!
   }
   UserCreateWithoutEventsParticipatingInput: { // input type
@@ -2658,6 +3043,7 @@ export interface NexusGenInputs {
     password: string; // String!
     profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkCreateNestedManyWithoutUserInput'] | null; // ShortLinkCreateNestedManyWithoutUserInput
     username: string; // String!
   }
   UserCreateWithoutEventsResponsibleInput: { // input type
@@ -2672,6 +3058,7 @@ export interface NexusGenInputs {
     password: string; // String!
     profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkCreateNestedManyWithoutUserInput'] | null; // ShortLinkCreateNestedManyWithoutUserInput
     username: string; // String!
   }
   UserCreateWithoutMessagesInput: { // input type
@@ -2686,6 +3073,7 @@ export interface NexusGenInputs {
     password: string; // String!
     profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkCreateNestedManyWithoutUserInput'] | null; // ShortLinkCreateNestedManyWithoutUserInput
     username: string; // String!
   }
   UserCreateWithoutParentInput: { // input type
@@ -2700,6 +3088,7 @@ export interface NexusGenInputs {
     password: string; // String!
     profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkCreateNestedManyWithoutUserInput'] | null; // ShortLinkCreateNestedManyWithoutUserInput
     username: string; // String!
   }
   UserCreateWithoutProfileInput: { // input type
@@ -2713,6 +3102,22 @@ export interface NexusGenInputs {
     messages?: NexusGenInputs['MessageCreateNestedManyWithoutSenderInput'] | null; // MessageCreateNestedManyWithoutSenderInput
     parent?: NexusGenInputs['UserCreateNestedOneWithoutChildInput'] | null; // UserCreateNestedOneWithoutChildInput
     password: string; // String!
+    role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkCreateNestedManyWithoutUserInput'] | null; // ShortLinkCreateNestedManyWithoutUserInput
+    username: string; // String!
+  }
+  UserCreateWithoutShortLinksInput: { // input type
+    chats?: NexusGenInputs['ChatCreateNestedManyWithoutMembersInput'] | null; // ChatCreateNestedManyWithoutMembersInput
+    child?: NexusGenInputs['UserCreateNestedOneWithoutParentInput'] | null; // UserCreateNestedOneWithoutParentInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventCreateNestedManyWithoutIssuedByInput'] | null; // EventCreateNestedManyWithoutIssuedByInput
+    eventsParticipating?: NexusGenInputs['EventCreateNestedManyWithoutParticipantsInput'] | null; // EventCreateNestedManyWithoutParticipantsInput
+    eventsResponsible?: NexusGenInputs['EventCreateNestedManyWithoutResponsiblesInput'] | null; // EventCreateNestedManyWithoutResponsiblesInput
+    id?: string | null; // String
+    messages?: NexusGenInputs['MessageCreateNestedManyWithoutSenderInput'] | null; // MessageCreateNestedManyWithoutSenderInput
+    parent?: NexusGenInputs['UserCreateNestedOneWithoutChildInput'] | null; // UserCreateNestedOneWithoutChildInput
+    password: string; // String!
+    profile?: NexusGenInputs['ProfileCreateNestedOneWithoutUserInput'] | null; // ProfileCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
     username: string; // String!
   }
@@ -2765,6 +3170,7 @@ export interface NexusGenInputs {
     password?: NexusGenEnums['SortOrder'] | null; // SortOrder
     profile?: NexusGenInputs['ProfileOrderByWithRelationInput'] | null; // ProfileOrderByWithRelationInput
     role?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    shortLinks?: NexusGenInputs['ShortLinkOrderByRelationAggregateInput'] | null; // ShortLinkOrderByRelationAggregateInput
     username?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   UserRelationFilter: { // input type
@@ -2806,6 +3212,7 @@ export interface NexusGenInputs {
     password: string; // String!
     profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedCreateNestedManyWithoutUserInput'] | null; // ShortLinkUncheckedCreateNestedManyWithoutUserInput
     username: string; // String!
   }
   UserUncheckedCreateNestedManyWithoutChatsInput: { // input type
@@ -2840,6 +3247,7 @@ export interface NexusGenInputs {
     password: string; // String!
     profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedCreateNestedManyWithoutUserInput'] | null; // ShortLinkUncheckedCreateNestedManyWithoutUserInput
     username: string; // String!
   }
   UserUncheckedCreateWithoutChildInput: { // input type
@@ -2854,6 +3262,7 @@ export interface NexusGenInputs {
     password: string; // String!
     profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedCreateNestedManyWithoutUserInput'] | null; // ShortLinkUncheckedCreateNestedManyWithoutUserInput
     username: string; // String!
   }
   UserUncheckedCreateWithoutEventsIssuedInput: { // input type
@@ -2868,6 +3277,7 @@ export interface NexusGenInputs {
     password: string; // String!
     profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedCreateNestedManyWithoutUserInput'] | null; // ShortLinkUncheckedCreateNestedManyWithoutUserInput
     username: string; // String!
   }
   UserUncheckedCreateWithoutEventsParticipatingInput: { // input type
@@ -2882,6 +3292,7 @@ export interface NexusGenInputs {
     password: string; // String!
     profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedCreateNestedManyWithoutUserInput'] | null; // ShortLinkUncheckedCreateNestedManyWithoutUserInput
     username: string; // String!
   }
   UserUncheckedCreateWithoutEventsResponsibleInput: { // input type
@@ -2896,6 +3307,7 @@ export interface NexusGenInputs {
     password: string; // String!
     profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedCreateNestedManyWithoutUserInput'] | null; // ShortLinkUncheckedCreateNestedManyWithoutUserInput
     username: string; // String!
   }
   UserUncheckedCreateWithoutMessagesInput: { // input type
@@ -2910,6 +3322,7 @@ export interface NexusGenInputs {
     password: string; // String!
     profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedCreateNestedManyWithoutUserInput'] | null; // ShortLinkUncheckedCreateNestedManyWithoutUserInput
     username: string; // String!
   }
   UserUncheckedCreateWithoutParentInput: { // input type
@@ -2924,6 +3337,7 @@ export interface NexusGenInputs {
     password: string; // String!
     profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedCreateNestedManyWithoutUserInput'] | null; // ShortLinkUncheckedCreateNestedManyWithoutUserInput
     username: string; // String!
   }
   UserUncheckedCreateWithoutProfileInput: { // input type
@@ -2937,6 +3351,22 @@ export interface NexusGenInputs {
     messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutSenderInput'] | null; // MessageUncheckedCreateNestedManyWithoutSenderInput
     parentId?: string | null; // String
     password: string; // String!
+    role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedCreateNestedManyWithoutUserInput'] | null; // ShortLinkUncheckedCreateNestedManyWithoutUserInput
+    username: string; // String!
+  }
+  UserUncheckedCreateWithoutShortLinksInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedCreateNestedManyWithoutMembersInput'] | null; // ChatUncheckedCreateNestedManyWithoutMembersInput
+    child?: NexusGenInputs['UserUncheckedCreateNestedOneWithoutParentInput'] | null; // UserUncheckedCreateNestedOneWithoutParentInput
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    eventsIssued?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutIssuedByInput'] | null; // EventUncheckedCreateNestedManyWithoutIssuedByInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutParticipantsInput'] | null; // EventUncheckedCreateNestedManyWithoutParticipantsInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedCreateNestedManyWithoutResponsiblesInput'] | null; // EventUncheckedCreateNestedManyWithoutResponsiblesInput
+    id?: string | null; // String
+    messages?: NexusGenInputs['MessageUncheckedCreateNestedManyWithoutSenderInput'] | null; // MessageUncheckedCreateNestedManyWithoutSenderInput
+    parentId?: string | null; // String
+    password: string; // String!
+    profile?: NexusGenInputs['ProfileUncheckedCreateNestedOneWithoutUserInput'] | null; // ProfileUncheckedCreateNestedOneWithoutUserInput
     role: NexusGenEnums['UserRole']; // UserRole!
     username: string; // String!
   }
@@ -2953,6 +3383,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUncheckedUpdateManyWithoutUserNestedInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUncheckedUpdateManyInput: { // input type
@@ -3044,6 +3475,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUncheckedUpdateManyWithoutUserNestedInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUncheckedUpdateWithoutChildInput: { // input type
@@ -3058,6 +3490,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUncheckedUpdateManyWithoutUserNestedInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUncheckedUpdateWithoutEventsIssuedInput: { // input type
@@ -3072,6 +3505,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUncheckedUpdateManyWithoutUserNestedInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUncheckedUpdateWithoutEventsParticipatingInput: { // input type
@@ -3086,6 +3520,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUncheckedUpdateManyWithoutUserNestedInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUncheckedUpdateWithoutEventsResponsibleInput: { // input type
@@ -3100,6 +3535,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUncheckedUpdateManyWithoutUserNestedInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUncheckedUpdateWithoutMessagesInput: { // input type
@@ -3114,6 +3550,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUncheckedUpdateManyWithoutUserNestedInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUncheckedUpdateWithoutParentInput: { // input type
@@ -3128,6 +3565,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUncheckedUpdateManyWithoutUserNestedInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUncheckedUpdateWithoutProfileInput: { // input type
@@ -3141,6 +3579,22 @@ export interface NexusGenInputs {
     messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutSenderNestedInput'] | null; // MessageUncheckedUpdateManyWithoutSenderNestedInput
     parentId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUncheckedUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUncheckedUpdateManyWithoutUserNestedInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUncheckedUpdateWithoutShortLinksInput: { // input type
+    chats?: NexusGenInputs['ChatUncheckedUpdateManyWithoutMembersNestedInput'] | null; // ChatUncheckedUpdateManyWithoutMembersNestedInput
+    child?: NexusGenInputs['UserUncheckedUpdateOneWithoutParentNestedInput'] | null; // UserUncheckedUpdateOneWithoutParentNestedInput
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUncheckedUpdateManyWithoutIssuedByNestedInput'] | null; // EventUncheckedUpdateManyWithoutIssuedByNestedInput
+    eventsParticipating?: NexusGenInputs['EventUncheckedUpdateManyWithoutParticipantsNestedInput'] | null; // EventUncheckedUpdateManyWithoutParticipantsNestedInput
+    eventsResponsible?: NexusGenInputs['EventUncheckedUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUncheckedUpdateManyWithoutResponsiblesNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUncheckedUpdateManyWithoutSenderNestedInput'] | null; // MessageUncheckedUpdateManyWithoutSenderNestedInput
+    parentId?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    profile?: NexusGenInputs['ProfileUncheckedUpdateOneWithoutUserNestedInput'] | null; // ProfileUncheckedUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
@@ -3157,6 +3611,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUpdateManyWithoutUserNestedInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateManyMutationInput: { // input type
@@ -3228,6 +3683,13 @@ export interface NexusGenInputs {
     update?: NexusGenInputs['UserUncheckedUpdateWithoutProfileInput'] | null; // UserUncheckedUpdateWithoutProfileInput
     upsert?: NexusGenInputs['UserUpsertWithoutProfileInput'] | null; // UserUpsertWithoutProfileInput
   }
+  UserUpdateOneRequiredWithoutShortLinksNestedInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutShortLinksInput'] | null; // UserCreateOrConnectWithoutShortLinksInput
+    create?: NexusGenInputs['UserUncheckedCreateWithoutShortLinksInput'] | null; // UserUncheckedCreateWithoutShortLinksInput
+    update?: NexusGenInputs['UserUncheckedUpdateWithoutShortLinksInput'] | null; // UserUncheckedUpdateWithoutShortLinksInput
+    upsert?: NexusGenInputs['UserUpsertWithoutShortLinksInput'] | null; // UserUpsertWithoutShortLinksInput
+  }
   UserUpdateOneWithoutChildNestedInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
     connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutChildInput'] | null; // UserCreateOrConnectWithoutChildInput
@@ -3279,6 +3741,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUpdateManyWithoutUserNestedInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateWithoutChildInput: { // input type
@@ -3293,6 +3756,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUpdateManyWithoutUserNestedInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateWithoutEventsIssuedInput: { // input type
@@ -3307,6 +3771,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUpdateManyWithoutUserNestedInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateWithoutEventsParticipatingInput: { // input type
@@ -3321,6 +3786,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUpdateManyWithoutUserNestedInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateWithoutEventsResponsibleInput: { // input type
@@ -3335,6 +3801,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUpdateManyWithoutUserNestedInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateWithoutMessagesInput: { // input type
@@ -3349,6 +3816,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUpdateManyWithoutUserNestedInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateWithoutParentInput: { // input type
@@ -3363,6 +3831,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUpdateManyWithoutUserNestedInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateWithoutProfileInput: { // input type
@@ -3376,6 +3845,22 @@ export interface NexusGenInputs {
     messages?: NexusGenInputs['MessageUpdateManyWithoutSenderNestedInput'] | null; // MessageUpdateManyWithoutSenderNestedInput
     parent?: NexusGenInputs['UserUpdateOneWithoutChildNestedInput'] | null; // UserUpdateOneWithoutChildNestedInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
+    shortLinks?: NexusGenInputs['ShortLinkUpdateManyWithoutUserNestedInput'] | null; // ShortLinkUpdateManyWithoutUserNestedInput
+    username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+  }
+  UserUpdateWithoutShortLinksInput: { // input type
+    chats?: NexusGenInputs['ChatUpdateManyWithoutMembersNestedInput'] | null; // ChatUpdateManyWithoutMembersNestedInput
+    child?: NexusGenInputs['UserUpdateOneWithoutParentNestedInput'] | null; // UserUpdateOneWithoutParentNestedInput
+    createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
+    eventsIssued?: NexusGenInputs['EventUpdateManyWithoutIssuedByNestedInput'] | null; // EventUpdateManyWithoutIssuedByNestedInput
+    eventsParticipating?: NexusGenInputs['EventUpdateManyWithoutParticipantsNestedInput'] | null; // EventUpdateManyWithoutParticipantsNestedInput
+    eventsResponsible?: NexusGenInputs['EventUpdateManyWithoutResponsiblesNestedInput'] | null; // EventUpdateManyWithoutResponsiblesNestedInput
+    id?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    messages?: NexusGenInputs['MessageUpdateManyWithoutSenderNestedInput'] | null; // MessageUpdateManyWithoutSenderNestedInput
+    parent?: NexusGenInputs['UserUpdateOneWithoutChildNestedInput'] | null; // UserUpdateOneWithoutChildNestedInput
+    password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
+    profile?: NexusGenInputs['ProfileUpdateOneWithoutUserNestedInput'] | null; // ProfileUpdateOneWithoutUserNestedInput
     role?: NexusGenInputs['EnumUserRoleFieldUpdateOperationsInput'] | null; // EnumUserRoleFieldUpdateOperationsInput
     username?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
@@ -3414,6 +3899,10 @@ export interface NexusGenInputs {
     create: NexusGenInputs['UserUncheckedCreateWithoutProfileInput']; // UserUncheckedCreateWithoutProfileInput!
     update: NexusGenInputs['UserUncheckedUpdateWithoutProfileInput']; // UserUncheckedUpdateWithoutProfileInput!
   }
+  UserUpsertWithoutShortLinksInput: { // input type
+    create: NexusGenInputs['UserUncheckedCreateWithoutShortLinksInput']; // UserUncheckedCreateWithoutShortLinksInput!
+    update: NexusGenInputs['UserUncheckedUpdateWithoutShortLinksInput']; // UserUncheckedUpdateWithoutShortLinksInput!
+  }
   UserWhereInput: { // input type
     AND?: Array<NexusGenInputs['UserWhereInput'] | null> | null; // [UserWhereInput]
     NOT?: Array<NexusGenInputs['UserWhereInput'] | null> | null; // [UserWhereInput]
@@ -3431,6 +3920,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFilter'] | null; // StringFilter
     profile?: NexusGenInputs['ProfileWhereInput'] | null; // ProfileWhereInput
     role?: NexusGenInputs['EnumUserRoleFilter'] | null; // EnumUserRoleFilter
+    shortLinks?: NexusGenInputs['ShortLinkListRelationFilter'] | null; // ShortLinkListRelationFilter
     username?: NexusGenInputs['StringFilter'] | null; // StringFilter
   }
   UserWhereUniqueInput: { // input type
@@ -3448,6 +3938,7 @@ export interface NexusGenEnums {
   ProfileScalarFieldEnum: "avatar" | "bio" | "id" | "jobTitle" | "name" | "surname" | "updatedAt" | "userId"
   QueryMode: "default" | "insensitive"
   RoomScalarFieldEnum: "description" | "gallery" | "id" | "image" | "title"
+  ShortLinkScalarFieldEnum: "eventId" | "path" | "userId"
   SortOrder: "asc" | "desc"
   TransactionIsolationLevel: "ReadCommitted" | "ReadUncommitted" | "RepeatableRead" | "Serializable"
   UserRole: "Dean" | "Parent" | "Staff" | "Student"
@@ -3499,6 +3990,11 @@ export interface NexusGenObjects {
     _count?: NexusGenRootTypes['RoomCountAggregateOutputType'] | null; // RoomCountAggregateOutputType
     _max?: NexusGenRootTypes['RoomMaxAggregateOutputType'] | null; // RoomMaxAggregateOutputType
     _min?: NexusGenRootTypes['RoomMinAggregateOutputType'] | null; // RoomMinAggregateOutputType
+  }
+  AggregateShortLink: { // root type
+    _count?: NexusGenRootTypes['ShortLinkCountAggregateOutputType'] | null; // ShortLinkCountAggregateOutputType
+    _max?: NexusGenRootTypes['ShortLinkMaxAggregateOutputType'] | null; // ShortLinkMaxAggregateOutputType
+    _min?: NexusGenRootTypes['ShortLinkMinAggregateOutputType'] | null; // ShortLinkMinAggregateOutputType
   }
   AggregateUser: { // root type
     _count?: NexusGenRootTypes['UserCountAggregateOutputType'] | null; // UserCountAggregateOutputType
@@ -3586,6 +4082,7 @@ export interface NexusGenObjects {
     categories: number; // Int!
     participants: number; // Int!
     responsibles: number; // Int!
+    shortLinks: number; // Int!
   }
   EventMaxAggregateOutputType: { // root type
     approved?: boolean | null; // Boolean
@@ -3711,6 +4208,27 @@ export interface NexusGenObjects {
     image?: string | null; // String
     title?: string | null; // String
   }
+  ShortLink: { // root type
+    eventId: string; // String!
+    path: string; // String!
+    userId: string; // String!
+  }
+  ShortLinkCountAggregateOutputType: { // root type
+    _all: number; // Int!
+    eventId: number; // Int!
+    path: number; // Int!
+    userId: number; // Int!
+  }
+  ShortLinkMaxAggregateOutputType: { // root type
+    eventId?: string | null; // String
+    path?: string | null; // String
+    userId?: string | null; // String
+  }
+  ShortLinkMinAggregateOutputType: { // root type
+    eventId?: string | null; // String
+    path?: string | null; // String
+    userId?: string | null; // String
+  }
   Subscription: {};
   Token: { // root type
     token?: string | null; // String
@@ -3738,6 +4256,7 @@ export interface NexusGenObjects {
     eventsParticipating: number; // Int!
     eventsResponsible: number; // Int!
     messages: number; // Int!
+    shortLinks: number; // Int!
   }
   UserMaxAggregateOutputType: { // root type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
@@ -3799,6 +4318,11 @@ export interface NexusGenFieldTypes {
     _count: NexusGenRootTypes['RoomCountAggregateOutputType'] | null; // RoomCountAggregateOutputType
     _max: NexusGenRootTypes['RoomMaxAggregateOutputType'] | null; // RoomMaxAggregateOutputType
     _min: NexusGenRootTypes['RoomMinAggregateOutputType'] | null; // RoomMinAggregateOutputType
+  }
+  AggregateShortLink: { // field return type
+    _count: NexusGenRootTypes['ShortLinkCountAggregateOutputType'] | null; // ShortLinkCountAggregateOutputType
+    _max: NexusGenRootTypes['ShortLinkMaxAggregateOutputType'] | null; // ShortLinkMaxAggregateOutputType
+    _min: NexusGenRootTypes['ShortLinkMinAggregateOutputType'] | null; // ShortLinkMinAggregateOutputType
   }
   AggregateUser: { // field return type
     _count: NexusGenRootTypes['UserCountAggregateOutputType'] | null; // UserCountAggregateOutputType
@@ -3880,6 +4404,7 @@ export interface NexusGenFieldTypes {
     room: NexusGenRootTypes['Room']; // Room!
     roomId: string; // String!
     shortDescription: string; // String!
+    shortLinks: NexusGenRootTypes['ShortLink'][]; // [ShortLink!]!
     title: string; // String!
     userId: string | null; // String
   }
@@ -3899,6 +4424,7 @@ export interface NexusGenFieldTypes {
     categories: number; // Int!
     participants: number; // Int!
     responsibles: number; // Int!
+    shortLinks: number; // Int!
   }
   EventMaxAggregateOutputType: { // field return type
     approved: boolean | null; // Boolean
@@ -3961,6 +4487,7 @@ export interface NexusGenFieldTypes {
     createOneMessage: NexusGenRootTypes['Message']; // Message!
     createOneProfile: NexusGenRootTypes['Profile']; // Profile!
     createOneRoom: NexusGenRootTypes['Room']; // Room!
+    createOneShortLink: NexusGenRootTypes['ShortLink']; // ShortLink!
     createOneUser: NexusGenRootTypes['User']; // User!
     deleteManyCategory: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManyChat: NexusGenRootTypes['BatchPayload']; // BatchPayload!
@@ -3968,6 +4495,7 @@ export interface NexusGenFieldTypes {
     deleteManyMessage: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManyProfile: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManyRoom: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyShortLink: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManyUser: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteOneCategory: NexusGenRootTypes['Category'] | null; // Category
     deleteOneChat: NexusGenRootTypes['Chat'] | null; // Chat
@@ -3975,12 +4503,15 @@ export interface NexusGenFieldTypes {
     deleteOneMessage: NexusGenRootTypes['Message'] | null; // Message
     deleteOneProfile: NexusGenRootTypes['Profile'] | null; // Profile
     deleteOneRoom: NexusGenRootTypes['Room'] | null; // Room
+    deleteOneShortLink: NexusGenRootTypes['ShortLink'] | null; // ShortLink
     deleteOneUser: NexusGenRootTypes['User'] | null; // User
+    generateShortLink: string; // String!
     issueEvent: NexusGenRootTypes['Event']; // Event!
     login: NexusGenRootTypes['Token']; // Token!
     registerForEvent: NexusGenRootTypes['Event']; // Event!
     sendMessage: NexusGenRootTypes['Message']; // Message!
     signup: NexusGenRootTypes['Token']; // Token!
+    unsignFromEvent: NexusGenRootTypes['Event']; // Event!
     updateManyCategory: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManyChat: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManyEvent: NexusGenRootTypes['BatchPayload']; // BatchPayload!
@@ -3995,6 +4526,7 @@ export interface NexusGenFieldTypes {
     updateOneMessage: NexusGenRootTypes['Message']; // Message!
     updateOneProfile: NexusGenRootTypes['Profile']; // Profile!
     updateOneRoom: NexusGenRootTypes['Room']; // Room!
+    updateOneShortLink: NexusGenRootTypes['ShortLink']; // ShortLink!
     updateOneUser: NexusGenRootTypes['User']; // User!
     upsertOneCategory: NexusGenRootTypes['Category']; // Category!
     upsertOneChat: NexusGenRootTypes['Chat']; // Chat!
@@ -4002,6 +4534,7 @@ export interface NexusGenFieldTypes {
     upsertOneMessage: NexusGenRootTypes['Message']; // Message!
     upsertOneProfile: NexusGenRootTypes['Profile']; // Profile!
     upsertOneRoom: NexusGenRootTypes['Room']; // Room!
+    upsertOneShortLink: NexusGenRootTypes['ShortLink']; // ShortLink!
     upsertOneUser: NexusGenRootTypes['User']; // User!
   }
   Profile: { // field return type
@@ -4053,6 +4586,7 @@ export interface NexusGenFieldTypes {
     aggregateMessage: NexusGenRootTypes['AggregateMessage'] | null; // AggregateMessage
     aggregateProfile: NexusGenRootTypes['AggregateProfile'] | null; // AggregateProfile
     aggregateRoom: NexusGenRootTypes['AggregateRoom'] | null; // AggregateRoom
+    aggregateShortLink: NexusGenRootTypes['AggregateShortLink'] | null; // AggregateShortLink
     aggregateUser: NexusGenRootTypes['AggregateUser'] | null; // AggregateUser
     findFirstCategory: NexusGenRootTypes['Category'] | null; // Category
     findFirstChat: NexusGenRootTypes['Chat'] | null; // Chat
@@ -4060,6 +4594,7 @@ export interface NexusGenFieldTypes {
     findFirstMessage: NexusGenRootTypes['Message'] | null; // Message
     findFirstProfile: NexusGenRootTypes['Profile'] | null; // Profile
     findFirstRoom: NexusGenRootTypes['Room'] | null; // Room
+    findFirstShortLink: NexusGenRootTypes['ShortLink'] | null; // ShortLink
     findFirstUser: NexusGenRootTypes['User'] | null; // User
     findManyCategory: NexusGenRootTypes['Category'][]; // [Category!]!
     findManyCategoryCount: number; // Int!
@@ -4073,14 +4608,18 @@ export interface NexusGenFieldTypes {
     findManyProfileCount: number; // Int!
     findManyRoom: NexusGenRootTypes['Room'][]; // [Room!]!
     findManyRoomCount: number; // Int!
+    findManyShortLink: NexusGenRootTypes['ShortLink'][]; // [ShortLink!]!
+    findManyShortLinkCount: number; // Int!
     findManyUser: NexusGenRootTypes['User'][]; // [User!]!
     findManyUserCount: number; // Int!
+    findMyRegisteredEvents: NexusGenRootTypes['Event'][]; // [Event!]!
     findUniqueCategory: NexusGenRootTypes['Category'] | null; // Category
     findUniqueChat: NexusGenRootTypes['Chat'] | null; // Chat
     findUniqueEvent: NexusGenRootTypes['Event'] | null; // Event
     findUniqueMessage: NexusGenRootTypes['Message'] | null; // Message
     findUniqueProfile: NexusGenRootTypes['Profile'] | null; // Profile
     findUniqueRoom: NexusGenRootTypes['Room'] | null; // Room
+    findUniqueShortLink: NexusGenRootTypes['ShortLink'] | null; // ShortLink
     findUniqueUser: NexusGenRootTypes['User'] | null; // User
     me: NexusGenRootTypes['User']; // User!
   }
@@ -4116,6 +4655,29 @@ export interface NexusGenFieldTypes {
     image: string | null; // String
     title: string | null; // String
   }
+  ShortLink: { // field return type
+    event: NexusGenRootTypes['Event']; // Event!
+    eventId: string; // String!
+    path: string; // String!
+    user: NexusGenRootTypes['User']; // User!
+    userId: string; // String!
+  }
+  ShortLinkCountAggregateOutputType: { // field return type
+    _all: number; // Int!
+    eventId: number; // Int!
+    path: number; // Int!
+    userId: number; // Int!
+  }
+  ShortLinkMaxAggregateOutputType: { // field return type
+    eventId: string | null; // String
+    path: string | null; // String
+    userId: string | null; // String
+  }
+  ShortLinkMinAggregateOutputType: { // field return type
+    eventId: string | null; // String
+    path: string | null; // String
+    userId: string | null; // String
+  }
   Subscription: { // field return type
     chat: NexusGenRootTypes['Message'] | null; // Message
   }
@@ -4137,6 +4699,7 @@ export interface NexusGenFieldTypes {
     password: string; // String!
     profile: NexusGenRootTypes['Profile'] | null; // Profile
     role: NexusGenEnums['UserRole']; // UserRole!
+    shortLinks: NexusGenRootTypes['ShortLink'][]; // [ShortLink!]!
     username: string; // String!
   }
   UserCountAggregateOutputType: { // field return type
@@ -4154,6 +4717,7 @@ export interface NexusGenFieldTypes {
     eventsParticipating: number; // Int!
     eventsResponsible: number; // Int!
     messages: number; // Int!
+    shortLinks: number; // Int!
   }
   UserMaxAggregateOutputType: { // field return type
     createdAt: NexusGenScalars['DateTime'] | null; // DateTime
@@ -4205,6 +4769,11 @@ export interface NexusGenFieldTypeNames {
     _count: 'RoomCountAggregateOutputType'
     _max: 'RoomMaxAggregateOutputType'
     _min: 'RoomMinAggregateOutputType'
+  }
+  AggregateShortLink: { // field return type name
+    _count: 'ShortLinkCountAggregateOutputType'
+    _max: 'ShortLinkMaxAggregateOutputType'
+    _min: 'ShortLinkMinAggregateOutputType'
   }
   AggregateUser: { // field return type name
     _count: 'UserCountAggregateOutputType'
@@ -4286,6 +4855,7 @@ export interface NexusGenFieldTypeNames {
     room: 'Room'
     roomId: 'String'
     shortDescription: 'String'
+    shortLinks: 'ShortLink'
     title: 'String'
     userId: 'String'
   }
@@ -4305,6 +4875,7 @@ export interface NexusGenFieldTypeNames {
     categories: 'Int'
     participants: 'Int'
     responsibles: 'Int'
+    shortLinks: 'Int'
   }
   EventMaxAggregateOutputType: { // field return type name
     approved: 'Boolean'
@@ -4367,6 +4938,7 @@ export interface NexusGenFieldTypeNames {
     createOneMessage: 'Message'
     createOneProfile: 'Profile'
     createOneRoom: 'Room'
+    createOneShortLink: 'ShortLink'
     createOneUser: 'User'
     deleteManyCategory: 'BatchPayload'
     deleteManyChat: 'BatchPayload'
@@ -4374,6 +4946,7 @@ export interface NexusGenFieldTypeNames {
     deleteManyMessage: 'BatchPayload'
     deleteManyProfile: 'BatchPayload'
     deleteManyRoom: 'BatchPayload'
+    deleteManyShortLink: 'BatchPayload'
     deleteManyUser: 'BatchPayload'
     deleteOneCategory: 'Category'
     deleteOneChat: 'Chat'
@@ -4381,12 +4954,15 @@ export interface NexusGenFieldTypeNames {
     deleteOneMessage: 'Message'
     deleteOneProfile: 'Profile'
     deleteOneRoom: 'Room'
+    deleteOneShortLink: 'ShortLink'
     deleteOneUser: 'User'
+    generateShortLink: 'String'
     issueEvent: 'Event'
     login: 'Token'
     registerForEvent: 'Event'
     sendMessage: 'Message'
     signup: 'Token'
+    unsignFromEvent: 'Event'
     updateManyCategory: 'BatchPayload'
     updateManyChat: 'BatchPayload'
     updateManyEvent: 'BatchPayload'
@@ -4401,6 +4977,7 @@ export interface NexusGenFieldTypeNames {
     updateOneMessage: 'Message'
     updateOneProfile: 'Profile'
     updateOneRoom: 'Room'
+    updateOneShortLink: 'ShortLink'
     updateOneUser: 'User'
     upsertOneCategory: 'Category'
     upsertOneChat: 'Chat'
@@ -4408,6 +4985,7 @@ export interface NexusGenFieldTypeNames {
     upsertOneMessage: 'Message'
     upsertOneProfile: 'Profile'
     upsertOneRoom: 'Room'
+    upsertOneShortLink: 'ShortLink'
     upsertOneUser: 'User'
   }
   Profile: { // field return type name
@@ -4459,6 +5037,7 @@ export interface NexusGenFieldTypeNames {
     aggregateMessage: 'AggregateMessage'
     aggregateProfile: 'AggregateProfile'
     aggregateRoom: 'AggregateRoom'
+    aggregateShortLink: 'AggregateShortLink'
     aggregateUser: 'AggregateUser'
     findFirstCategory: 'Category'
     findFirstChat: 'Chat'
@@ -4466,6 +5045,7 @@ export interface NexusGenFieldTypeNames {
     findFirstMessage: 'Message'
     findFirstProfile: 'Profile'
     findFirstRoom: 'Room'
+    findFirstShortLink: 'ShortLink'
     findFirstUser: 'User'
     findManyCategory: 'Category'
     findManyCategoryCount: 'Int'
@@ -4479,14 +5059,18 @@ export interface NexusGenFieldTypeNames {
     findManyProfileCount: 'Int'
     findManyRoom: 'Room'
     findManyRoomCount: 'Int'
+    findManyShortLink: 'ShortLink'
+    findManyShortLinkCount: 'Int'
     findManyUser: 'User'
     findManyUserCount: 'Int'
+    findMyRegisteredEvents: 'Event'
     findUniqueCategory: 'Category'
     findUniqueChat: 'Chat'
     findUniqueEvent: 'Event'
     findUniqueMessage: 'Message'
     findUniqueProfile: 'Profile'
     findUniqueRoom: 'Room'
+    findUniqueShortLink: 'ShortLink'
     findUniqueUser: 'User'
     me: 'User'
   }
@@ -4522,6 +5106,29 @@ export interface NexusGenFieldTypeNames {
     image: 'String'
     title: 'String'
   }
+  ShortLink: { // field return type name
+    event: 'Event'
+    eventId: 'String'
+    path: 'String'
+    user: 'User'
+    userId: 'String'
+  }
+  ShortLinkCountAggregateOutputType: { // field return type name
+    _all: 'Int'
+    eventId: 'Int'
+    path: 'Int'
+    userId: 'Int'
+  }
+  ShortLinkMaxAggregateOutputType: { // field return type name
+    eventId: 'String'
+    path: 'String'
+    userId: 'String'
+  }
+  ShortLinkMinAggregateOutputType: { // field return type name
+    eventId: 'String'
+    path: 'String'
+    userId: 'String'
+  }
   Subscription: { // field return type name
     chat: 'Message'
   }
@@ -4543,6 +5150,7 @@ export interface NexusGenFieldTypeNames {
     password: 'String'
     profile: 'Profile'
     role: 'UserRole'
+    shortLinks: 'ShortLink'
     username: 'String'
   }
   UserCountAggregateOutputType: { // field return type name
@@ -4560,6 +5168,7 @@ export interface NexusGenFieldTypeNames {
     eventsParticipating: 'Int'
     eventsResponsible: 'Int'
     messages: 'Int'
+    shortLinks: 'Int'
   }
   UserMaxAggregateOutputType: { // field return type name
     createdAt: 'DateTime'
@@ -4633,6 +5242,14 @@ export interface NexusGenArgTypes {
       take?: number | null; // Int
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
+    shortLinks: { // args
+      cursor?: NexusGenInputs['ShortLinkWhereUniqueInput'] | null; // ShortLinkWhereUniqueInput
+      distinct?: NexusGenEnums['ShortLinkScalarFieldEnum'] | null; // ShortLinkScalarFieldEnum
+      orderBy?: NexusGenInputs['ShortLinkOrderByWithRelationInput'] | null; // ShortLinkOrderByWithRelationInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['ShortLinkWhereInput'] | null; // ShortLinkWhereInput
+    }
   }
   Mutation: {
     approveEvent: { // args
@@ -4656,6 +5273,9 @@ export interface NexusGenArgTypes {
     createOneRoom: { // args
       data: NexusGenInputs['RoomCreateInput']; // RoomCreateInput!
     }
+    createOneShortLink: { // args
+      data: NexusGenInputs['ShortLinkCreateInput']; // ShortLinkCreateInput!
+    }
     createOneUser: { // args
       data: NexusGenInputs['UserCreateInput']; // UserCreateInput!
     }
@@ -4676,6 +5296,9 @@ export interface NexusGenArgTypes {
     }
     deleteManyRoom: { // args
       where?: NexusGenInputs['RoomWhereInput'] | null; // RoomWhereInput
+    }
+    deleteManyShortLink: { // args
+      where?: NexusGenInputs['ShortLinkWhereInput'] | null; // ShortLinkWhereInput
     }
     deleteManyUser: { // args
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
@@ -4698,8 +5321,14 @@ export interface NexusGenArgTypes {
     deleteOneRoom: { // args
       where: NexusGenInputs['RoomWhereUniqueInput']; // RoomWhereUniqueInput!
     }
+    deleteOneShortLink: { // args
+      where: NexusGenInputs['ShortLinkWhereUniqueInput']; // ShortLinkWhereUniqueInput!
+    }
     deleteOneUser: { // args
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+    }
+    generateShortLink: { // args
+      eventId: string; // String!
     }
     issueEvent: { // args
       data: NexusGenInputs['IssueEventInput']; // IssueEventInput!
@@ -4715,6 +5344,9 @@ export interface NexusGenArgTypes {
     }
     signup: { // args
       data: NexusGenInputs['SignUpInput']; // SignUpInput!
+    }
+    unsignFromEvent: { // args
+      eventId: string; // String!
     }
     updateManyCategory: { // args
       data: NexusGenInputs['CategoryUpdateManyMutationInput']; // CategoryUpdateManyMutationInput!
@@ -4771,6 +5403,10 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['RoomUpdateInput']; // RoomUpdateInput!
       where: NexusGenInputs['RoomWhereUniqueInput']; // RoomWhereUniqueInput!
     }
+    updateOneShortLink: { // args
+      data: NexusGenInputs['ShortLinkUpdateInput']; // ShortLinkUpdateInput!
+      where: NexusGenInputs['ShortLinkWhereUniqueInput']; // ShortLinkWhereUniqueInput!
+    }
     updateOneUser: { // args
       data: NexusGenInputs['UserUpdateInput']; // UserUpdateInput!
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
@@ -4804,6 +5440,11 @@ export interface NexusGenArgTypes {
       create: NexusGenInputs['RoomCreateInput']; // RoomCreateInput!
       update: NexusGenInputs['RoomUpdateInput']; // RoomUpdateInput!
       where: NexusGenInputs['RoomWhereUniqueInput']; // RoomWhereUniqueInput!
+    }
+    upsertOneShortLink: { // args
+      create: NexusGenInputs['ShortLinkCreateInput']; // ShortLinkCreateInput!
+      update: NexusGenInputs['ShortLinkUpdateInput']; // ShortLinkUpdateInput!
+      where: NexusGenInputs['ShortLinkWhereUniqueInput']; // ShortLinkWhereUniqueInput!
     }
     upsertOneUser: { // args
       create: NexusGenInputs['UserCreateInput']; // UserCreateInput!
@@ -4853,6 +5494,13 @@ export interface NexusGenArgTypes {
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['RoomWhereInput'] | null; // RoomWhereInput
+    }
+    aggregateShortLink: { // args
+      cursor?: NexusGenInputs['ShortLinkWhereUniqueInput'] | null; // ShortLinkWhereUniqueInput
+      orderBy?: Array<NexusGenInputs['ShortLinkOrderByWithRelationInput'] | null> | null; // [ShortLinkOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['ShortLinkWhereInput'] | null; // ShortLinkWhereInput
     }
     aggregateUser: { // args
       cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
@@ -4908,6 +5556,14 @@ export interface NexusGenArgTypes {
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['RoomWhereInput'] | null; // RoomWhereInput
+    }
+    findFirstShortLink: { // args
+      cursor?: NexusGenInputs['ShortLinkWhereUniqueInput'] | null; // ShortLinkWhereUniqueInput
+      distinct?: Array<NexusGenEnums['ShortLinkScalarFieldEnum'] | null> | null; // [ShortLinkScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['ShortLinkOrderByWithRelationInput'] | null> | null; // [ShortLinkOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['ShortLinkWhereInput'] | null; // ShortLinkWhereInput
     }
     findFirstUser: { // args
       cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
@@ -5013,6 +5669,22 @@ export interface NexusGenArgTypes {
       take?: number | null; // Int
       where?: NexusGenInputs['RoomWhereInput'] | null; // RoomWhereInput
     }
+    findManyShortLink: { // args
+      cursor?: NexusGenInputs['ShortLinkWhereUniqueInput'] | null; // ShortLinkWhereUniqueInput
+      distinct?: Array<NexusGenEnums['ShortLinkScalarFieldEnum'] | null> | null; // [ShortLinkScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['ShortLinkOrderByWithRelationInput'] | null> | null; // [ShortLinkOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['ShortLinkWhereInput'] | null; // ShortLinkWhereInput
+    }
+    findManyShortLinkCount: { // args
+      cursor?: NexusGenInputs['ShortLinkWhereUniqueInput'] | null; // ShortLinkWhereUniqueInput
+      distinct?: Array<NexusGenEnums['ShortLinkScalarFieldEnum'] | null> | null; // [ShortLinkScalarFieldEnum]
+      orderBy?: Array<NexusGenInputs['ShortLinkOrderByWithRelationInput'] | null> | null; // [ShortLinkOrderByWithRelationInput]
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['ShortLinkWhereInput'] | null; // ShortLinkWhereInput
+    }
     findManyUser: { // args
       cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
       distinct?: Array<NexusGenEnums['UserScalarFieldEnum'] | null> | null; // [UserScalarFieldEnum]
@@ -5046,6 +5718,9 @@ export interface NexusGenArgTypes {
     }
     findUniqueRoom: { // args
       where: NexusGenInputs['RoomWhereUniqueInput']; // RoomWhereUniqueInput!
+    }
+    findUniqueShortLink: { // args
+      where: NexusGenInputs['ShortLinkWhereUniqueInput']; // ShortLinkWhereUniqueInput!
     }
     findUniqueUser: { // args
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
@@ -5106,6 +5781,14 @@ export interface NexusGenArgTypes {
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
+    }
+    shortLinks: { // args
+      cursor?: NexusGenInputs['ShortLinkWhereUniqueInput'] | null; // ShortLinkWhereUniqueInput
+      distinct?: NexusGenEnums['ShortLinkScalarFieldEnum'] | null; // ShortLinkScalarFieldEnum
+      orderBy?: NexusGenInputs['ShortLinkOrderByWithRelationInput'] | null; // ShortLinkOrderByWithRelationInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+      where?: NexusGenInputs['ShortLinkWhereInput'] | null; // ShortLinkWhereInput
     }
   }
 }

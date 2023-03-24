@@ -76,6 +76,20 @@ export const Event = objectType({
         return root.categories
       },
     })
+    t.list.field('shortLinks', {
+      type: 'ShortLink',
+      args: {
+        where: 'ShortLinkWhereInput',
+        orderBy: 'ShortLinkOrderByWithRelationInput',
+        cursor: 'ShortLinkWhereUniqueInput',
+        take: 'Int',
+        skip: 'Int',
+        distinct: 'ShortLinkScalarFieldEnum',
+      },
+      resolve(root: any) {
+        return root.shortLinks
+      },
+    })
     t.field('_count', {
       type: 'EventCountOutputType',
       resolve(root: any) {

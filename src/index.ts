@@ -29,7 +29,7 @@ const serverCleanup = useServer({ schema, context: async (ctx, msg, args) => {
 } }, wsServer);
 
 const server = new ApolloServer({
-  schema: applyMiddleware(schema, permissions),
+  schema: schema,
   introspection: true,
   plugins: [
     ApolloServerPluginDrainHttpServer({ httpServer }),

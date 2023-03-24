@@ -40,6 +40,12 @@ type AggregateRoom {
   _min: RoomMinAggregateOutputType
 }
 
+type AggregateShortLink {
+  _count: ShortLinkCountAggregateOutputType
+  _max: ShortLinkMaxAggregateOutputType
+  _min: ShortLinkMinAggregateOutputType
+}
+
 type AggregateUser {
   _count: UserCountAggregateOutputType
   _max: UserMaxAggregateOutputType
@@ -775,6 +781,7 @@ type Event {
   room: Room!
   roomId: String!
   shortDescription: String!
+  shortLinks(cursor: ShortLinkWhereUniqueInput, distinct: ShortLinkScalarFieldEnum, orderBy: ShortLinkOrderByWithRelationInput, skip: Int, take: Int, where: ShortLinkWhereInput): [ShortLink!]!
   title: String!
   userId: String
 }
@@ -808,6 +815,7 @@ type EventCountOutputType {
   categories: Int!
   participants: Int!
   responsibles: Int!
+  shortLinks: Int!
 }
 
 input EventCreateInput {
@@ -823,6 +831,7 @@ input EventCreateInput {
   responsibles: UserCreateNestedManyWithoutEventsResponsibleInput
   room: RoomCreateNestedOneWithoutEventsInput!
   shortDescription: String!
+  shortLinks: ShortLinkCreateNestedManyWithoutEventInput
   title: String!
 }
 
@@ -908,6 +917,12 @@ input EventCreateNestedOneWithoutChatInput {
   create: EventUncheckedCreateWithoutChatInput
 }
 
+input EventCreateNestedOneWithoutShortLinksInput {
+  connect: EventWhereUniqueInput
+  connectOrCreate: EventCreateOrConnectWithoutShortLinksInput
+  create: EventUncheckedCreateWithoutShortLinksInput
+}
+
 input EventCreateOrConnectWithoutCategoriesInput {
   create: EventUncheckedCreateWithoutCategoriesInput!
   where: EventWhereUniqueInput!
@@ -938,6 +953,11 @@ input EventCreateOrConnectWithoutRoomInput {
   where: EventWhereUniqueInput!
 }
 
+input EventCreateOrConnectWithoutShortLinksInput {
+  create: EventUncheckedCreateWithoutShortLinksInput!
+  where: EventWhereUniqueInput!
+}
+
 input EventCreateWithoutCategoriesInput {
   approved: Boolean
   chat: ChatCreateNestedOneWithoutEventInput
@@ -950,6 +970,7 @@ input EventCreateWithoutCategoriesInput {
   responsibles: UserCreateNestedManyWithoutEventsResponsibleInput
   room: RoomCreateNestedOneWithoutEventsInput!
   shortDescription: String!
+  shortLinks: ShortLinkCreateNestedManyWithoutEventInput
   title: String!
 }
 
@@ -965,6 +986,7 @@ input EventCreateWithoutChatInput {
   responsibles: UserCreateNestedManyWithoutEventsResponsibleInput
   room: RoomCreateNestedOneWithoutEventsInput!
   shortDescription: String!
+  shortLinks: ShortLinkCreateNestedManyWithoutEventInput
   title: String!
 }
 
@@ -980,6 +1002,7 @@ input EventCreateWithoutIssuedByInput {
   responsibles: UserCreateNestedManyWithoutEventsResponsibleInput
   room: RoomCreateNestedOneWithoutEventsInput!
   shortDescription: String!
+  shortLinks: ShortLinkCreateNestedManyWithoutEventInput
   title: String!
 }
 
@@ -995,6 +1018,7 @@ input EventCreateWithoutParticipantsInput {
   responsibles: UserCreateNestedManyWithoutEventsResponsibleInput
   room: RoomCreateNestedOneWithoutEventsInput!
   shortDescription: String!
+  shortLinks: ShortLinkCreateNestedManyWithoutEventInput
   title: String!
 }
 
@@ -1010,6 +1034,7 @@ input EventCreateWithoutResponsiblesInput {
   participants: UserCreateNestedManyWithoutEventsParticipatingInput
   room: RoomCreateNestedOneWithoutEventsInput!
   shortDescription: String!
+  shortLinks: ShortLinkCreateNestedManyWithoutEventInput
   title: String!
 }
 
@@ -1024,6 +1049,23 @@ input EventCreateWithoutRoomInput {
   issuedBy: UserCreateNestedOneWithoutEventsIssuedInput
   participants: UserCreateNestedManyWithoutEventsParticipatingInput
   responsibles: UserCreateNestedManyWithoutEventsResponsibleInput
+  shortDescription: String!
+  shortLinks: ShortLinkCreateNestedManyWithoutEventInput
+  title: String!
+}
+
+input EventCreateWithoutShortLinksInput {
+  approved: Boolean
+  categories: CategoryCreateNestedManyWithoutEventsInput
+  chat: ChatCreateNestedOneWithoutEventInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  issuedBy: UserCreateNestedOneWithoutEventsIssuedInput
+  participants: UserCreateNestedManyWithoutEventsParticipatingInput
+  responsibles: UserCreateNestedManyWithoutEventsResponsibleInput
+  room: RoomCreateNestedOneWithoutEventsInput!
   shortDescription: String!
   title: String!
 }
@@ -1115,6 +1157,7 @@ input EventOrderByWithRelationInput {
   room: RoomOrderByWithRelationInput
   roomId: SortOrder
   shortDescription: SortOrder
+  shortLinks: ShortLinkOrderByRelationAggregateInput
   title: SortOrder
   userId: SortOrder
 }
@@ -1178,6 +1221,7 @@ input EventUncheckedCreateInput {
   responsibles: UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
   roomId: String!
   shortDescription: String!
+  shortLinks: ShortLinkUncheckedCreateNestedManyWithoutEventInput
   title: String!
   userId: String
 }
@@ -1225,6 +1269,7 @@ input EventUncheckedCreateWithoutCategoriesInput {
   responsibles: UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
   roomId: String!
   shortDescription: String!
+  shortLinks: ShortLinkUncheckedCreateNestedManyWithoutEventInput
   title: String!
   userId: String
 }
@@ -1240,6 +1285,7 @@ input EventUncheckedCreateWithoutChatInput {
   responsibles: UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
   roomId: String!
   shortDescription: String!
+  shortLinks: ShortLinkUncheckedCreateNestedManyWithoutEventInput
   title: String!
   userId: String
 }
@@ -1256,6 +1302,7 @@ input EventUncheckedCreateWithoutIssuedByInput {
   responsibles: UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
   roomId: String!
   shortDescription: String!
+  shortLinks: ShortLinkUncheckedCreateNestedManyWithoutEventInput
   title: String!
 }
 
@@ -1270,6 +1317,7 @@ input EventUncheckedCreateWithoutParticipantsInput {
   responsibles: UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
   roomId: String!
   shortDescription: String!
+  shortLinks: ShortLinkUncheckedCreateNestedManyWithoutEventInput
   title: String!
   userId: String
 }
@@ -1285,6 +1333,7 @@ input EventUncheckedCreateWithoutResponsiblesInput {
   participants: UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
   roomId: String!
   shortDescription: String!
+  shortLinks: ShortLinkUncheckedCreateNestedManyWithoutEventInput
   title: String!
   userId: String
 }
@@ -1299,6 +1348,23 @@ input EventUncheckedCreateWithoutRoomInput {
   image: String
   participants: UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
   responsibles: UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
+  shortDescription: String!
+  shortLinks: ShortLinkUncheckedCreateNestedManyWithoutEventInput
+  title: String!
+  userId: String
+}
+
+input EventUncheckedCreateWithoutShortLinksInput {
+  approved: Boolean
+  categories: CategoryUncheckedCreateNestedManyWithoutEventsInput
+  chat: ChatUncheckedCreateNestedOneWithoutEventInput
+  date: DateTime!
+  description: String!
+  id: String!
+  image: String
+  participants: UserUncheckedCreateNestedManyWithoutEventsParticipatingInput
+  responsibles: UserUncheckedCreateNestedManyWithoutEventsResponsibleInput
+  roomId: String!
   shortDescription: String!
   title: String!
   userId: String
@@ -1316,6 +1382,7 @@ input EventUncheckedUpdateInput {
   responsibles: UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
   roomId: StringFieldUpdateOperationsInput
   shortDescription: StringFieldUpdateOperationsInput
+  shortLinks: ShortLinkUncheckedUpdateManyWithoutEventNestedInput
   title: StringFieldUpdateOperationsInput
   userId: NullableStringFieldUpdateOperationsInput
 }
@@ -1457,6 +1524,7 @@ input EventUncheckedUpdateWithoutCategoriesInput {
   responsibles: UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
   roomId: StringFieldUpdateOperationsInput
   shortDescription: StringFieldUpdateOperationsInput
+  shortLinks: ShortLinkUncheckedUpdateManyWithoutEventNestedInput
   title: StringFieldUpdateOperationsInput
   userId: NullableStringFieldUpdateOperationsInput
 }
@@ -1472,6 +1540,7 @@ input EventUncheckedUpdateWithoutChatInput {
   responsibles: UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
   roomId: StringFieldUpdateOperationsInput
   shortDescription: StringFieldUpdateOperationsInput
+  shortLinks: ShortLinkUncheckedUpdateManyWithoutEventNestedInput
   title: StringFieldUpdateOperationsInput
   userId: NullableStringFieldUpdateOperationsInput
 }
@@ -1488,6 +1557,7 @@ input EventUncheckedUpdateWithoutIssuedByInput {
   responsibles: UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
   roomId: StringFieldUpdateOperationsInput
   shortDescription: StringFieldUpdateOperationsInput
+  shortLinks: ShortLinkUncheckedUpdateManyWithoutEventNestedInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -1502,6 +1572,7 @@ input EventUncheckedUpdateWithoutParticipantsInput {
   responsibles: UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
   roomId: StringFieldUpdateOperationsInput
   shortDescription: StringFieldUpdateOperationsInput
+  shortLinks: ShortLinkUncheckedUpdateManyWithoutEventNestedInput
   title: StringFieldUpdateOperationsInput
   userId: NullableStringFieldUpdateOperationsInput
 }
@@ -1517,6 +1588,7 @@ input EventUncheckedUpdateWithoutResponsiblesInput {
   participants: UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
   roomId: StringFieldUpdateOperationsInput
   shortDescription: StringFieldUpdateOperationsInput
+  shortLinks: ShortLinkUncheckedUpdateManyWithoutEventNestedInput
   title: StringFieldUpdateOperationsInput
   userId: NullableStringFieldUpdateOperationsInput
 }
@@ -1531,6 +1603,23 @@ input EventUncheckedUpdateWithoutRoomInput {
   image: NullableStringFieldUpdateOperationsInput
   participants: UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
   responsibles: UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
+  shortDescription: StringFieldUpdateOperationsInput
+  shortLinks: ShortLinkUncheckedUpdateManyWithoutEventNestedInput
+  title: StringFieldUpdateOperationsInput
+  userId: NullableStringFieldUpdateOperationsInput
+}
+
+input EventUncheckedUpdateWithoutShortLinksInput {
+  approved: BoolFieldUpdateOperationsInput
+  categories: CategoryUncheckedUpdateManyWithoutEventsNestedInput
+  chat: ChatUncheckedUpdateOneWithoutEventNestedInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  participants: UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput
+  responsibles: UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput
+  roomId: StringFieldUpdateOperationsInput
   shortDescription: StringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   userId: NullableStringFieldUpdateOperationsInput
@@ -1549,6 +1638,7 @@ input EventUpdateInput {
   responsibles: UserUpdateManyWithoutEventsResponsibleNestedInput
   room: RoomUpdateOneRequiredWithoutEventsNestedInput
   shortDescription: StringFieldUpdateOperationsInput
+  shortLinks: ShortLinkUpdateManyWithoutEventNestedInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -1662,6 +1752,14 @@ input EventUpdateOneRequiredWithoutChatNestedInput {
   upsert: EventUpsertWithoutChatInput
 }
 
+input EventUpdateOneRequiredWithoutShortLinksNestedInput {
+  connect: EventWhereUniqueInput
+  connectOrCreate: EventCreateOrConnectWithoutShortLinksInput
+  create: EventUncheckedCreateWithoutShortLinksInput
+  update: EventUncheckedUpdateWithoutShortLinksInput
+  upsert: EventUpsertWithoutShortLinksInput
+}
+
 input EventUpdateWithWhereUniqueWithoutCategoriesInput {
   data: EventUncheckedUpdateWithoutCategoriesInput!
   where: EventWhereUniqueInput!
@@ -1699,6 +1797,7 @@ input EventUpdateWithoutCategoriesInput {
   responsibles: UserUpdateManyWithoutEventsResponsibleNestedInput
   room: RoomUpdateOneRequiredWithoutEventsNestedInput
   shortDescription: StringFieldUpdateOperationsInput
+  shortLinks: ShortLinkUpdateManyWithoutEventNestedInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -1714,6 +1813,7 @@ input EventUpdateWithoutChatInput {
   responsibles: UserUpdateManyWithoutEventsResponsibleNestedInput
   room: RoomUpdateOneRequiredWithoutEventsNestedInput
   shortDescription: StringFieldUpdateOperationsInput
+  shortLinks: ShortLinkUpdateManyWithoutEventNestedInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -1729,6 +1829,7 @@ input EventUpdateWithoutIssuedByInput {
   responsibles: UserUpdateManyWithoutEventsResponsibleNestedInput
   room: RoomUpdateOneRequiredWithoutEventsNestedInput
   shortDescription: StringFieldUpdateOperationsInput
+  shortLinks: ShortLinkUpdateManyWithoutEventNestedInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -1744,6 +1845,7 @@ input EventUpdateWithoutParticipantsInput {
   responsibles: UserUpdateManyWithoutEventsResponsibleNestedInput
   room: RoomUpdateOneRequiredWithoutEventsNestedInput
   shortDescription: StringFieldUpdateOperationsInput
+  shortLinks: ShortLinkUpdateManyWithoutEventNestedInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -1759,6 +1861,7 @@ input EventUpdateWithoutResponsiblesInput {
   participants: UserUpdateManyWithoutEventsParticipatingNestedInput
   room: RoomUpdateOneRequiredWithoutEventsNestedInput
   shortDescription: StringFieldUpdateOperationsInput
+  shortLinks: ShortLinkUpdateManyWithoutEventNestedInput
   title: StringFieldUpdateOperationsInput
 }
 
@@ -1773,6 +1876,23 @@ input EventUpdateWithoutRoomInput {
   issuedBy: UserUpdateOneWithoutEventsIssuedNestedInput
   participants: UserUpdateManyWithoutEventsParticipatingNestedInput
   responsibles: UserUpdateManyWithoutEventsResponsibleNestedInput
+  shortDescription: StringFieldUpdateOperationsInput
+  shortLinks: ShortLinkUpdateManyWithoutEventNestedInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input EventUpdateWithoutShortLinksInput {
+  approved: BoolFieldUpdateOperationsInput
+  categories: CategoryUpdateManyWithoutEventsNestedInput
+  chat: ChatUpdateOneWithoutEventNestedInput
+  date: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  id: StringFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  issuedBy: UserUpdateOneWithoutEventsIssuedNestedInput
+  participants: UserUpdateManyWithoutEventsParticipatingNestedInput
+  responsibles: UserUpdateManyWithoutEventsResponsibleNestedInput
+  room: RoomUpdateOneRequiredWithoutEventsNestedInput
   shortDescription: StringFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
 }
@@ -1812,6 +1932,11 @@ input EventUpsertWithoutChatInput {
   update: EventUncheckedUpdateWithoutChatInput!
 }
 
+input EventUpsertWithoutShortLinksInput {
+  create: EventUncheckedCreateWithoutShortLinksInput!
+  update: EventUncheckedUpdateWithoutShortLinksInput!
+}
+
 input EventWhereInput {
   AND: [EventWhereInput]
   NOT: [EventWhereInput]
@@ -1829,6 +1954,7 @@ input EventWhereInput {
   room: RoomWhereInput
   roomId: StringFilter
   shortDescription: StringFilter
+  shortLinks: ShortLinkListRelationFilter
   title: StringFilter
   userId: StringNullableFilter
 }
@@ -1878,7 +2004,7 @@ input IssueEventInput {
   chat: ChatCreateNestedOneWithoutEventInput
   date: DateTime!
   description: String!
-  id: String!
+  id: String
   image: String
   participants: UserCreateNestedManyWithoutEventsParticipatingInput
   responsibles: UserCreateNestedManyWithoutEventsResponsibleInput
@@ -2304,6 +2430,7 @@ type Mutation {
   createOneMessage(data: MessageCreateInput!): Message!
   createOneProfile(data: ProfileCreateInput!): Profile!
   createOneRoom(data: RoomCreateInput!): Room!
+  createOneShortLink(data: ShortLinkCreateInput!): ShortLink!
   createOneUser(data: UserCreateInput!): User!
   deleteManyCategory(where: CategoryWhereInput): BatchPayload!
   deleteManyChat(where: ChatWhereInput): BatchPayload!
@@ -2311,6 +2438,7 @@ type Mutation {
   deleteManyMessage(where: MessageWhereInput): BatchPayload!
   deleteManyProfile(where: ProfileWhereInput): BatchPayload!
   deleteManyRoom(where: RoomWhereInput): BatchPayload!
+  deleteManyShortLink(where: ShortLinkWhereInput): BatchPayload!
   deleteManyUser(where: UserWhereInput): BatchPayload!
   deleteOneCategory(where: CategoryWhereUniqueInput!): Category
   deleteOneChat(where: ChatWhereUniqueInput!): Chat
@@ -2318,12 +2446,15 @@ type Mutation {
   deleteOneMessage(where: MessageWhereUniqueInput!): Message
   deleteOneProfile(where: ProfileWhereUniqueInput!): Profile
   deleteOneRoom(where: RoomWhereUniqueInput!): Room
+  deleteOneShortLink(where: ShortLinkWhereUniqueInput!): ShortLink
   deleteOneUser(where: UserWhereUniqueInput!): User
+  generateShortLink(eventId: String!): String!
   issueEvent(data: IssueEventInput!): Event!
   login(data: SignInInput!): Token!
   registerForEvent(eventId: String!): Event!
   sendMessage(data: SendMessageInput!): Message!
   signup(data: SignUpInput!): Token!
+  unsignFromEvent(eventId: String!): Event!
   updateManyCategory(data: CategoryUpdateManyMutationInput!, where: CategoryWhereInput): BatchPayload!
   updateManyChat(data: ChatUpdateManyMutationInput!, where: ChatWhereInput): BatchPayload!
   updateManyEvent(data: EventUpdateManyMutationInput!, where: EventWhereInput): BatchPayload!
@@ -2338,6 +2469,7 @@ type Mutation {
   updateOneMessage(data: MessageUpdateInput!, where: MessageWhereUniqueInput!): Message!
   updateOneProfile(data: ProfileUpdateInput!, where: ProfileWhereUniqueInput!): Profile!
   updateOneRoom(data: RoomUpdateInput!, where: RoomWhereUniqueInput!): Room!
+  updateOneShortLink(data: ShortLinkUpdateInput!, where: ShortLinkWhereUniqueInput!): ShortLink!
   updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
   upsertOneCategory(create: CategoryCreateInput!, update: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category!
   upsertOneChat(create: ChatCreateInput!, update: ChatUpdateInput!, where: ChatWhereUniqueInput!): Chat!
@@ -2345,6 +2477,7 @@ type Mutation {
   upsertOneMessage(create: MessageCreateInput!, update: MessageUpdateInput!, where: MessageWhereUniqueInput!): Message!
   upsertOneProfile(create: ProfileCreateInput!, update: ProfileUpdateInput!, where: ProfileWhereUniqueInput!): Profile!
   upsertOneRoom(create: RoomCreateInput!, update: RoomUpdateInput!, where: RoomWhereUniqueInput!): Room!
+  upsertOneShortLink(create: ShortLinkCreateInput!, update: ShortLinkUpdateInput!, where: ShortLinkWhereUniqueInput!): ShortLink!
   upsertOneUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
 }
 
@@ -2838,6 +2971,7 @@ type Query {
   aggregateMessage(cursor: MessageWhereUniqueInput, orderBy: [MessageOrderByWithRelationInput], skip: Int, take: Int, where: MessageWhereInput): AggregateMessage
   aggregateProfile(cursor: ProfileWhereUniqueInput, orderBy: [ProfileOrderByWithRelationInput], skip: Int, take: Int, where: ProfileWhereInput): AggregateProfile
   aggregateRoom(cursor: RoomWhereUniqueInput, orderBy: [RoomOrderByWithRelationInput], skip: Int, take: Int, where: RoomWhereInput): AggregateRoom
+  aggregateShortLink(cursor: ShortLinkWhereUniqueInput, orderBy: [ShortLinkOrderByWithRelationInput], skip: Int, take: Int, where: ShortLinkWhereInput): AggregateShortLink
   aggregateUser(cursor: UserWhereUniqueInput, orderBy: [UserOrderByWithRelationInput], skip: Int, take: Int, where: UserWhereInput): AggregateUser
   findFirstCategory(cursor: CategoryWhereUniqueInput, distinct: [CategoryScalarFieldEnum], orderBy: [CategoryOrderByWithRelationInput], skip: Int, take: Int, where: CategoryWhereInput): Category
   findFirstChat(cursor: ChatWhereUniqueInput, distinct: [ChatScalarFieldEnum], orderBy: [ChatOrderByWithRelationInput], skip: Int, take: Int, where: ChatWhereInput): Chat
@@ -2845,6 +2979,7 @@ type Query {
   findFirstMessage(cursor: MessageWhereUniqueInput, distinct: [MessageScalarFieldEnum], orderBy: [MessageOrderByWithRelationInput], skip: Int, take: Int, where: MessageWhereInput): Message
   findFirstProfile(cursor: ProfileWhereUniqueInput, distinct: [ProfileScalarFieldEnum], orderBy: [ProfileOrderByWithRelationInput], skip: Int, take: Int, where: ProfileWhereInput): Profile
   findFirstRoom(cursor: RoomWhereUniqueInput, distinct: [RoomScalarFieldEnum], orderBy: [RoomOrderByWithRelationInput], skip: Int, take: Int, where: RoomWhereInput): Room
+  findFirstShortLink(cursor: ShortLinkWhereUniqueInput, distinct: [ShortLinkScalarFieldEnum], orderBy: [ShortLinkOrderByWithRelationInput], skip: Int, take: Int, where: ShortLinkWhereInput): ShortLink
   findFirstUser(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum], orderBy: [UserOrderByWithRelationInput], skip: Int, take: Int, where: UserWhereInput): User
   findManyCategory(cursor: CategoryWhereUniqueInput, distinct: [CategoryScalarFieldEnum], orderBy: [CategoryOrderByWithRelationInput], skip: Int, take: Int, where: CategoryWhereInput): [Category!]!
   findManyCategoryCount(cursor: CategoryWhereUniqueInput, distinct: [CategoryScalarFieldEnum], orderBy: [CategoryOrderByWithRelationInput], skip: Int, take: Int, where: CategoryWhereInput): Int!
@@ -2858,14 +2993,18 @@ type Query {
   findManyProfileCount(cursor: ProfileWhereUniqueInput, distinct: [ProfileScalarFieldEnum], orderBy: [ProfileOrderByWithRelationInput], skip: Int, take: Int, where: ProfileWhereInput): Int!
   findManyRoom(cursor: RoomWhereUniqueInput, distinct: [RoomScalarFieldEnum], orderBy: [RoomOrderByWithRelationInput], skip: Int, take: Int, where: RoomWhereInput): [Room!]!
   findManyRoomCount(cursor: RoomWhereUniqueInput, distinct: [RoomScalarFieldEnum], orderBy: [RoomOrderByWithRelationInput], skip: Int, take: Int, where: RoomWhereInput): Int!
+  findManyShortLink(cursor: ShortLinkWhereUniqueInput, distinct: [ShortLinkScalarFieldEnum], orderBy: [ShortLinkOrderByWithRelationInput], skip: Int, take: Int, where: ShortLinkWhereInput): [ShortLink!]!
+  findManyShortLinkCount(cursor: ShortLinkWhereUniqueInput, distinct: [ShortLinkScalarFieldEnum], orderBy: [ShortLinkOrderByWithRelationInput], skip: Int, take: Int, where: ShortLinkWhereInput): Int!
   findManyUser(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum], orderBy: [UserOrderByWithRelationInput], skip: Int, take: Int, where: UserWhereInput): [User!]!
   findManyUserCount(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum], orderBy: [UserOrderByWithRelationInput], skip: Int, take: Int, where: UserWhereInput): Int!
+  findMyRegisteredEvents: [Event!]!
   findUniqueCategory(where: CategoryWhereUniqueInput!): Category
   findUniqueChat(where: ChatWhereUniqueInput!): Chat
   findUniqueEvent(where: EventWhereUniqueInput!): Event
   findUniqueMessage(where: MessageWhereUniqueInput!): Message
   findUniqueProfile(where: ProfileWhereUniqueInput!): Profile
   findUniqueRoom(where: RoomWhereUniqueInput!): Room
+  findUniqueShortLink(where: ShortLinkWhereUniqueInput!): ShortLink
   findUniqueUser(where: UserWhereUniqueInput!): User
   me: User!
 }
@@ -3124,6 +3263,348 @@ input SendMessageInput {
   message: String!
 }
 
+type ShortLink {
+  event: Event!
+  eventId: String!
+  path: String!
+  user: User!
+  userId: String!
+}
+
+type ShortLinkCountAggregateOutputType {
+  _all: Int!
+  eventId: Int!
+  path: Int!
+  userId: Int!
+}
+
+input ShortLinkCountOrderByAggregateInput {
+  eventId: SortOrder
+  path: SortOrder
+  userId: SortOrder
+}
+
+input ShortLinkCreateInput {
+  event: EventCreateNestedOneWithoutShortLinksInput!
+  path: String!
+  user: UserCreateNestedOneWithoutShortLinksInput!
+}
+
+input ShortLinkCreateManyEventInput {
+  path: String!
+  userId: String!
+}
+
+input ShortLinkCreateManyEventInputEnvelope {
+  data: ShortLinkCreateManyEventInput!
+  skipDuplicates: Boolean
+}
+
+input ShortLinkCreateManyInput {
+  eventId: String!
+  path: String!
+  userId: String!
+}
+
+input ShortLinkCreateManyUserInput {
+  eventId: String!
+  path: String!
+}
+
+input ShortLinkCreateManyUserInputEnvelope {
+  data: ShortLinkCreateManyUserInput!
+  skipDuplicates: Boolean
+}
+
+input ShortLinkCreateNestedManyWithoutEventInput {
+  connect: [ShortLinkWhereUniqueInput]
+  connectOrCreate: [ShortLinkCreateOrConnectWithoutEventInput]
+  create: [ShortLinkCreateWithoutEventInput]
+  createMany: ShortLinkCreateManyEventInputEnvelope
+}
+
+input ShortLinkCreateNestedManyWithoutUserInput {
+  connect: [ShortLinkWhereUniqueInput]
+  connectOrCreate: [ShortLinkCreateOrConnectWithoutUserInput]
+  create: [ShortLinkCreateWithoutUserInput]
+  createMany: ShortLinkCreateManyUserInputEnvelope
+}
+
+input ShortLinkCreateOrConnectWithoutEventInput {
+  create: ShortLinkUncheckedCreateWithoutEventInput!
+  where: ShortLinkWhereUniqueInput!
+}
+
+input ShortLinkCreateOrConnectWithoutUserInput {
+  create: ShortLinkUncheckedCreateWithoutUserInput!
+  where: ShortLinkWhereUniqueInput!
+}
+
+input ShortLinkCreateWithoutEventInput {
+  path: String!
+  user: UserCreateNestedOneWithoutShortLinksInput!
+}
+
+input ShortLinkCreateWithoutUserInput {
+  event: EventCreateNestedOneWithoutShortLinksInput!
+  path: String!
+}
+
+input ShortLinkListRelationFilter {
+  every: ShortLinkWhereInput
+  none: ShortLinkWhereInput
+  some: ShortLinkWhereInput
+}
+
+type ShortLinkMaxAggregateOutputType {
+  eventId: String
+  path: String
+  userId: String
+}
+
+input ShortLinkMaxOrderByAggregateInput {
+  eventId: SortOrder
+  path: SortOrder
+  userId: SortOrder
+}
+
+type ShortLinkMinAggregateOutputType {
+  eventId: String
+  path: String
+  userId: String
+}
+
+input ShortLinkMinOrderByAggregateInput {
+  eventId: SortOrder
+  path: SortOrder
+  userId: SortOrder
+}
+
+input ShortLinkOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ShortLinkOrderByWithAggregationInput {
+  _count: ShortLinkCountOrderByAggregateInput
+  _max: ShortLinkMaxOrderByAggregateInput
+  _min: ShortLinkMinOrderByAggregateInput
+  eventId: SortOrder
+  path: SortOrder
+  userId: SortOrder
+}
+
+input ShortLinkOrderByWithRelationInput {
+  event: EventOrderByWithRelationInput
+  eventId: SortOrder
+  path: SortOrder
+  user: UserOrderByWithRelationInput
+  userId: SortOrder
+}
+
+enum ShortLinkScalarFieldEnum {
+  eventId
+  path
+  userId
+}
+
+input ShortLinkScalarWhereInput {
+  AND: [ShortLinkScalarWhereInput]
+  NOT: [ShortLinkScalarWhereInput]
+  OR: [ShortLinkScalarWhereInput]
+  eventId: StringFilter
+  path: StringFilter
+  userId: StringFilter
+}
+
+input ShortLinkScalarWhereWithAggregatesInput {
+  AND: [ShortLinkScalarWhereWithAggregatesInput]
+  NOT: [ShortLinkScalarWhereWithAggregatesInput]
+  OR: [ShortLinkScalarWhereWithAggregatesInput]
+  eventId: StringWithAggregatesFilter
+  path: StringWithAggregatesFilter
+  userId: StringWithAggregatesFilter
+}
+
+input ShortLinkUncheckedCreateInput {
+  eventId: String!
+  path: String!
+  userId: String!
+}
+
+input ShortLinkUncheckedCreateNestedManyWithoutEventInput {
+  connect: [ShortLinkWhereUniqueInput]
+  connectOrCreate: [ShortLinkCreateOrConnectWithoutEventInput]
+  create: [ShortLinkCreateWithoutEventInput]
+  createMany: ShortLinkCreateManyEventInputEnvelope
+}
+
+input ShortLinkUncheckedCreateNestedManyWithoutUserInput {
+  connect: [ShortLinkWhereUniqueInput]
+  connectOrCreate: [ShortLinkCreateOrConnectWithoutUserInput]
+  create: [ShortLinkCreateWithoutUserInput]
+  createMany: ShortLinkCreateManyUserInputEnvelope
+}
+
+input ShortLinkUncheckedCreateWithoutEventInput {
+  path: String!
+  userId: String!
+}
+
+input ShortLinkUncheckedCreateWithoutUserInput {
+  eventId: String!
+  path: String!
+}
+
+input ShortLinkUncheckedUpdateInput {
+  eventId: StringFieldUpdateOperationsInput
+  path: StringFieldUpdateOperationsInput
+  userId: StringFieldUpdateOperationsInput
+}
+
+input ShortLinkUncheckedUpdateManyInput {
+  eventId: StringFieldUpdateOperationsInput
+  path: StringFieldUpdateOperationsInput
+  userId: StringFieldUpdateOperationsInput
+}
+
+input ShortLinkUncheckedUpdateManyWithoutEventNestedInput {
+  connect: [ShortLinkWhereUniqueInput]
+  connectOrCreate: [ShortLinkCreateOrConnectWithoutEventInput]
+  create: [ShortLinkCreateWithoutEventInput]
+  createMany: ShortLinkCreateManyEventInputEnvelope
+  delete: [ShortLinkWhereUniqueInput]
+  deleteMany: [ShortLinkScalarWhereInput]
+  disconnect: [ShortLinkWhereUniqueInput]
+  set: [ShortLinkWhereUniqueInput]
+  update: [ShortLinkUpdateWithWhereUniqueWithoutEventInput]
+  updateMany: [ShortLinkUpdateManyWithWhereWithoutEventInput]
+  upsert: [ShortLinkUpsertWithWhereUniqueWithoutEventInput]
+}
+
+input ShortLinkUncheckedUpdateManyWithoutShortLinksInput {
+  path: StringFieldUpdateOperationsInput
+  userId: StringFieldUpdateOperationsInput
+}
+
+input ShortLinkUncheckedUpdateManyWithoutUserNestedInput {
+  connect: [ShortLinkWhereUniqueInput]
+  connectOrCreate: [ShortLinkCreateOrConnectWithoutUserInput]
+  create: [ShortLinkCreateWithoutUserInput]
+  createMany: ShortLinkCreateManyUserInputEnvelope
+  delete: [ShortLinkWhereUniqueInput]
+  deleteMany: [ShortLinkScalarWhereInput]
+  disconnect: [ShortLinkWhereUniqueInput]
+  set: [ShortLinkWhereUniqueInput]
+  update: [ShortLinkUpdateWithWhereUniqueWithoutUserInput]
+  updateMany: [ShortLinkUpdateManyWithWhereWithoutUserInput]
+  upsert: [ShortLinkUpsertWithWhereUniqueWithoutUserInput]
+}
+
+input ShortLinkUncheckedUpdateWithoutEventInput {
+  path: StringFieldUpdateOperationsInput
+  userId: StringFieldUpdateOperationsInput
+}
+
+input ShortLinkUncheckedUpdateWithoutUserInput {
+  eventId: StringFieldUpdateOperationsInput
+  path: StringFieldUpdateOperationsInput
+}
+
+input ShortLinkUpdateInput {
+  event: EventUpdateOneRequiredWithoutShortLinksNestedInput
+  path: StringFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutShortLinksNestedInput
+}
+
+input ShortLinkUpdateManyMutationInput {
+  path: StringFieldUpdateOperationsInput
+}
+
+input ShortLinkUpdateManyWithWhereWithoutEventInput {
+  data: ShortLinkUncheckedUpdateManyWithoutShortLinksInput!
+  where: ShortLinkScalarWhereInput!
+}
+
+input ShortLinkUpdateManyWithWhereWithoutUserInput {
+  data: ShortLinkUncheckedUpdateManyWithoutShortLinksInput!
+  where: ShortLinkScalarWhereInput!
+}
+
+input ShortLinkUpdateManyWithoutEventNestedInput {
+  connect: [ShortLinkWhereUniqueInput]
+  connectOrCreate: [ShortLinkCreateOrConnectWithoutEventInput]
+  create: [ShortLinkCreateWithoutEventInput]
+  createMany: ShortLinkCreateManyEventInputEnvelope
+  delete: [ShortLinkWhereUniqueInput]
+  deleteMany: [ShortLinkScalarWhereInput]
+  disconnect: [ShortLinkWhereUniqueInput]
+  set: [ShortLinkWhereUniqueInput]
+  update: [ShortLinkUpdateWithWhereUniqueWithoutEventInput]
+  updateMany: [ShortLinkUpdateManyWithWhereWithoutEventInput]
+  upsert: [ShortLinkUpsertWithWhereUniqueWithoutEventInput]
+}
+
+input ShortLinkUpdateManyWithoutUserNestedInput {
+  connect: [ShortLinkWhereUniqueInput]
+  connectOrCreate: [ShortLinkCreateOrConnectWithoutUserInput]
+  create: [ShortLinkCreateWithoutUserInput]
+  createMany: ShortLinkCreateManyUserInputEnvelope
+  delete: [ShortLinkWhereUniqueInput]
+  deleteMany: [ShortLinkScalarWhereInput]
+  disconnect: [ShortLinkWhereUniqueInput]
+  set: [ShortLinkWhereUniqueInput]
+  update: [ShortLinkUpdateWithWhereUniqueWithoutUserInput]
+  updateMany: [ShortLinkUpdateManyWithWhereWithoutUserInput]
+  upsert: [ShortLinkUpsertWithWhereUniqueWithoutUserInput]
+}
+
+input ShortLinkUpdateWithWhereUniqueWithoutEventInput {
+  data: ShortLinkUncheckedUpdateWithoutEventInput!
+  where: ShortLinkWhereUniqueInput!
+}
+
+input ShortLinkUpdateWithWhereUniqueWithoutUserInput {
+  data: ShortLinkUncheckedUpdateWithoutUserInput!
+  where: ShortLinkWhereUniqueInput!
+}
+
+input ShortLinkUpdateWithoutEventInput {
+  path: StringFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutShortLinksNestedInput
+}
+
+input ShortLinkUpdateWithoutUserInput {
+  event: EventUpdateOneRequiredWithoutShortLinksNestedInput
+  path: StringFieldUpdateOperationsInput
+}
+
+input ShortLinkUpsertWithWhereUniqueWithoutEventInput {
+  create: ShortLinkUncheckedCreateWithoutEventInput!
+  update: ShortLinkUncheckedUpdateWithoutEventInput!
+  where: ShortLinkWhereUniqueInput!
+}
+
+input ShortLinkUpsertWithWhereUniqueWithoutUserInput {
+  create: ShortLinkUncheckedCreateWithoutUserInput!
+  update: ShortLinkUncheckedUpdateWithoutUserInput!
+  where: ShortLinkWhereUniqueInput!
+}
+
+input ShortLinkWhereInput {
+  AND: [ShortLinkWhereInput]
+  NOT: [ShortLinkWhereInput]
+  OR: [ShortLinkWhereInput]
+  event: EventWhereInput
+  eventId: StringFilter
+  path: StringFilter
+  user: UserWhereInput
+  userId: StringFilter
+}
+
+input ShortLinkWhereUniqueInput {
+  path: String
+}
+
 input SignInInput {
   password: String!
   username: String!
@@ -3255,6 +3736,7 @@ type User {
   password: String!
   profile: Profile
   role: UserRole!
+  shortLinks(cursor: ShortLinkWhereUniqueInput, distinct: ShortLinkScalarFieldEnum, orderBy: ShortLinkOrderByWithRelationInput, skip: Int, take: Int, where: ShortLinkWhereInput): [ShortLink!]!
   username: String!
 }
 
@@ -3283,6 +3765,7 @@ type UserCountOutputType {
   eventsParticipating: Int!
   eventsResponsible: Int!
   messages: Int!
+  shortLinks: Int!
 }
 
 input UserCreateInput {
@@ -3298,6 +3781,7 @@ input UserCreateInput {
   password: String!
   profile: ProfileCreateNestedOneWithoutUserInput
   role: UserRole!
+  shortLinks: ShortLinkCreateNestedManyWithoutUserInput
   username: String!
 }
 
@@ -3358,6 +3842,12 @@ input UserCreateNestedOneWithoutProfileInput {
   create: UserUncheckedCreateWithoutProfileInput
 }
 
+input UserCreateNestedOneWithoutShortLinksInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutShortLinksInput
+  create: UserUncheckedCreateWithoutShortLinksInput
+}
+
 input UserCreateOrConnectWithoutChatsInput {
   create: UserUncheckedCreateWithoutChatsInput!
   where: UserWhereUniqueInput!
@@ -3398,6 +3888,11 @@ input UserCreateOrConnectWithoutProfileInput {
   where: UserWhereUniqueInput!
 }
 
+input UserCreateOrConnectWithoutShortLinksInput {
+  create: UserUncheckedCreateWithoutShortLinksInput!
+  where: UserWhereUniqueInput!
+}
+
 input UserCreateWithoutChatsInput {
   child: UserCreateNestedOneWithoutParentInput
   createdAt: DateTime
@@ -3410,6 +3905,7 @@ input UserCreateWithoutChatsInput {
   password: String!
   profile: ProfileCreateNestedOneWithoutUserInput
   role: UserRole!
+  shortLinks: ShortLinkCreateNestedManyWithoutUserInput
   username: String!
 }
 
@@ -3425,6 +3921,7 @@ input UserCreateWithoutChildInput {
   password: String!
   profile: ProfileCreateNestedOneWithoutUserInput
   role: UserRole!
+  shortLinks: ShortLinkCreateNestedManyWithoutUserInput
   username: String!
 }
 
@@ -3440,6 +3937,7 @@ input UserCreateWithoutEventsIssuedInput {
   password: String!
   profile: ProfileCreateNestedOneWithoutUserInput
   role: UserRole!
+  shortLinks: ShortLinkCreateNestedManyWithoutUserInput
   username: String!
 }
 
@@ -3455,6 +3953,7 @@ input UserCreateWithoutEventsParticipatingInput {
   password: String!
   profile: ProfileCreateNestedOneWithoutUserInput
   role: UserRole!
+  shortLinks: ShortLinkCreateNestedManyWithoutUserInput
   username: String!
 }
 
@@ -3470,6 +3969,7 @@ input UserCreateWithoutEventsResponsibleInput {
   password: String!
   profile: ProfileCreateNestedOneWithoutUserInput
   role: UserRole!
+  shortLinks: ShortLinkCreateNestedManyWithoutUserInput
   username: String!
 }
 
@@ -3485,6 +3985,7 @@ input UserCreateWithoutMessagesInput {
   password: String!
   profile: ProfileCreateNestedOneWithoutUserInput
   role: UserRole!
+  shortLinks: ShortLinkCreateNestedManyWithoutUserInput
   username: String!
 }
 
@@ -3500,6 +4001,7 @@ input UserCreateWithoutParentInput {
   password: String!
   profile: ProfileCreateNestedOneWithoutUserInput
   role: UserRole!
+  shortLinks: ShortLinkCreateNestedManyWithoutUserInput
   username: String!
 }
 
@@ -3514,6 +4016,23 @@ input UserCreateWithoutProfileInput {
   messages: MessageCreateNestedManyWithoutSenderInput
   parent: UserCreateNestedOneWithoutChildInput
   password: String!
+  role: UserRole!
+  shortLinks: ShortLinkCreateNestedManyWithoutUserInput
+  username: String!
+}
+
+input UserCreateWithoutShortLinksInput {
+  chats: ChatCreateNestedManyWithoutMembersInput
+  child: UserCreateNestedOneWithoutParentInput
+  createdAt: DateTime
+  eventsIssued: EventCreateNestedManyWithoutIssuedByInput
+  eventsParticipating: EventCreateNestedManyWithoutParticipantsInput
+  eventsResponsible: EventCreateNestedManyWithoutResponsiblesInput
+  id: String
+  messages: MessageCreateNestedManyWithoutSenderInput
+  parent: UserCreateNestedOneWithoutChildInput
+  password: String!
+  profile: ProfileCreateNestedOneWithoutUserInput
   role: UserRole!
   username: String!
 }
@@ -3590,6 +4109,7 @@ input UserOrderByWithRelationInput {
   password: SortOrder
   profile: ProfileOrderByWithRelationInput
   role: SortOrder
+  shortLinks: ShortLinkOrderByRelationAggregateInput
   username: SortOrder
 }
 
@@ -3651,6 +4171,7 @@ input UserUncheckedCreateInput {
   password: String!
   profile: ProfileUncheckedCreateNestedOneWithoutUserInput
   role: UserRole!
+  shortLinks: ShortLinkUncheckedCreateNestedManyWithoutUserInput
   username: String!
 }
 
@@ -3690,6 +4211,7 @@ input UserUncheckedCreateWithoutChatsInput {
   password: String!
   profile: ProfileUncheckedCreateNestedOneWithoutUserInput
   role: UserRole!
+  shortLinks: ShortLinkUncheckedCreateNestedManyWithoutUserInput
   username: String!
 }
 
@@ -3705,6 +4227,7 @@ input UserUncheckedCreateWithoutChildInput {
   password: String!
   profile: ProfileUncheckedCreateNestedOneWithoutUserInput
   role: UserRole!
+  shortLinks: ShortLinkUncheckedCreateNestedManyWithoutUserInput
   username: String!
 }
 
@@ -3720,6 +4243,7 @@ input UserUncheckedCreateWithoutEventsIssuedInput {
   password: String!
   profile: ProfileUncheckedCreateNestedOneWithoutUserInput
   role: UserRole!
+  shortLinks: ShortLinkUncheckedCreateNestedManyWithoutUserInput
   username: String!
 }
 
@@ -3735,6 +4259,7 @@ input UserUncheckedCreateWithoutEventsParticipatingInput {
   password: String!
   profile: ProfileUncheckedCreateNestedOneWithoutUserInput
   role: UserRole!
+  shortLinks: ShortLinkUncheckedCreateNestedManyWithoutUserInput
   username: String!
 }
 
@@ -3750,6 +4275,7 @@ input UserUncheckedCreateWithoutEventsResponsibleInput {
   password: String!
   profile: ProfileUncheckedCreateNestedOneWithoutUserInput
   role: UserRole!
+  shortLinks: ShortLinkUncheckedCreateNestedManyWithoutUserInput
   username: String!
 }
 
@@ -3765,6 +4291,7 @@ input UserUncheckedCreateWithoutMessagesInput {
   password: String!
   profile: ProfileUncheckedCreateNestedOneWithoutUserInput
   role: UserRole!
+  shortLinks: ShortLinkUncheckedCreateNestedManyWithoutUserInput
   username: String!
 }
 
@@ -3780,6 +4307,7 @@ input UserUncheckedCreateWithoutParentInput {
   password: String!
   profile: ProfileUncheckedCreateNestedOneWithoutUserInput
   role: UserRole!
+  shortLinks: ShortLinkUncheckedCreateNestedManyWithoutUserInput
   username: String!
 }
 
@@ -3794,6 +4322,23 @@ input UserUncheckedCreateWithoutProfileInput {
   messages: MessageUncheckedCreateNestedManyWithoutSenderInput
   parentId: String
   password: String!
+  role: UserRole!
+  shortLinks: ShortLinkUncheckedCreateNestedManyWithoutUserInput
+  username: String!
+}
+
+input UserUncheckedCreateWithoutShortLinksInput {
+  chats: ChatUncheckedCreateNestedManyWithoutMembersInput
+  child: UserUncheckedCreateNestedOneWithoutParentInput
+  createdAt: DateTime
+  eventsIssued: EventUncheckedCreateNestedManyWithoutIssuedByInput
+  eventsParticipating: EventUncheckedCreateNestedManyWithoutParticipantsInput
+  eventsResponsible: EventUncheckedCreateNestedManyWithoutResponsiblesInput
+  id: String
+  messages: MessageUncheckedCreateNestedManyWithoutSenderInput
+  parentId: String
+  password: String!
+  profile: ProfileUncheckedCreateNestedOneWithoutUserInput
   role: UserRole!
   username: String!
 }
@@ -3811,6 +4356,7 @@ input UserUncheckedUpdateInput {
   password: StringFieldUpdateOperationsInput
   profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUncheckedUpdateManyWithoutUserNestedInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -3911,6 +4457,7 @@ input UserUncheckedUpdateWithoutChatsInput {
   password: StringFieldUpdateOperationsInput
   profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUncheckedUpdateManyWithoutUserNestedInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -3926,6 +4473,7 @@ input UserUncheckedUpdateWithoutChildInput {
   password: StringFieldUpdateOperationsInput
   profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUncheckedUpdateManyWithoutUserNestedInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -3941,6 +4489,7 @@ input UserUncheckedUpdateWithoutEventsIssuedInput {
   password: StringFieldUpdateOperationsInput
   profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUncheckedUpdateManyWithoutUserNestedInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -3956,6 +4505,7 @@ input UserUncheckedUpdateWithoutEventsParticipatingInput {
   password: StringFieldUpdateOperationsInput
   profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUncheckedUpdateManyWithoutUserNestedInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -3971,6 +4521,7 @@ input UserUncheckedUpdateWithoutEventsResponsibleInput {
   password: StringFieldUpdateOperationsInput
   profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUncheckedUpdateManyWithoutUserNestedInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -3986,6 +4537,7 @@ input UserUncheckedUpdateWithoutMessagesInput {
   password: StringFieldUpdateOperationsInput
   profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUncheckedUpdateManyWithoutUserNestedInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -4001,6 +4553,7 @@ input UserUncheckedUpdateWithoutParentInput {
   password: StringFieldUpdateOperationsInput
   profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUncheckedUpdateManyWithoutUserNestedInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -4015,6 +4568,23 @@ input UserUncheckedUpdateWithoutProfileInput {
   messages: MessageUncheckedUpdateManyWithoutSenderNestedInput
   parentId: NullableStringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUncheckedUpdateManyWithoutUserNestedInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUncheckedUpdateWithoutShortLinksInput {
+  chats: ChatUncheckedUpdateManyWithoutMembersNestedInput
+  child: UserUncheckedUpdateOneWithoutParentNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUncheckedUpdateManyWithoutIssuedByNestedInput
+  eventsParticipating: EventUncheckedUpdateManyWithoutParticipantsNestedInput
+  eventsResponsible: EventUncheckedUpdateManyWithoutResponsiblesNestedInput
+  id: StringFieldUpdateOperationsInput
+  messages: MessageUncheckedUpdateManyWithoutSenderNestedInput
+  parentId: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  profile: ProfileUncheckedUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
   username: StringFieldUpdateOperationsInput
 }
@@ -4032,6 +4602,7 @@ input UserUpdateInput {
   password: StringFieldUpdateOperationsInput
   profile: ProfileUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUpdateManyWithoutUserNestedInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -4113,6 +4684,14 @@ input UserUpdateOneRequiredWithoutProfileNestedInput {
   upsert: UserUpsertWithoutProfileInput
 }
 
+input UserUpdateOneRequiredWithoutShortLinksNestedInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutShortLinksInput
+  create: UserUncheckedCreateWithoutShortLinksInput
+  update: UserUncheckedUpdateWithoutShortLinksInput
+  upsert: UserUpsertWithoutShortLinksInput
+}
+
 input UserUpdateOneWithoutChildNestedInput {
   connect: UserWhereUniqueInput
   connectOrCreate: UserCreateOrConnectWithoutChildInput
@@ -4170,6 +4749,7 @@ input UserUpdateWithoutChatsInput {
   password: StringFieldUpdateOperationsInput
   profile: ProfileUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUpdateManyWithoutUserNestedInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -4185,6 +4765,7 @@ input UserUpdateWithoutChildInput {
   password: StringFieldUpdateOperationsInput
   profile: ProfileUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUpdateManyWithoutUserNestedInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -4200,6 +4781,7 @@ input UserUpdateWithoutEventsIssuedInput {
   password: StringFieldUpdateOperationsInput
   profile: ProfileUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUpdateManyWithoutUserNestedInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -4215,6 +4797,7 @@ input UserUpdateWithoutEventsParticipatingInput {
   password: StringFieldUpdateOperationsInput
   profile: ProfileUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUpdateManyWithoutUserNestedInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -4230,6 +4813,7 @@ input UserUpdateWithoutEventsResponsibleInput {
   password: StringFieldUpdateOperationsInput
   profile: ProfileUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUpdateManyWithoutUserNestedInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -4245,6 +4829,7 @@ input UserUpdateWithoutMessagesInput {
   password: StringFieldUpdateOperationsInput
   profile: ProfileUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUpdateManyWithoutUserNestedInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -4260,6 +4845,7 @@ input UserUpdateWithoutParentInput {
   password: StringFieldUpdateOperationsInput
   profile: ProfileUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUpdateManyWithoutUserNestedInput
   username: StringFieldUpdateOperationsInput
 }
 
@@ -4274,6 +4860,23 @@ input UserUpdateWithoutProfileInput {
   messages: MessageUpdateManyWithoutSenderNestedInput
   parent: UserUpdateOneWithoutChildNestedInput
   password: StringFieldUpdateOperationsInput
+  role: EnumUserRoleFieldUpdateOperationsInput
+  shortLinks: ShortLinkUpdateManyWithoutUserNestedInput
+  username: StringFieldUpdateOperationsInput
+}
+
+input UserUpdateWithoutShortLinksInput {
+  chats: ChatUpdateManyWithoutMembersNestedInput
+  child: UserUpdateOneWithoutParentNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  eventsIssued: EventUpdateManyWithoutIssuedByNestedInput
+  eventsParticipating: EventUpdateManyWithoutParticipantsNestedInput
+  eventsResponsible: EventUpdateManyWithoutResponsiblesNestedInput
+  id: StringFieldUpdateOperationsInput
+  messages: MessageUpdateManyWithoutSenderNestedInput
+  parent: UserUpdateOneWithoutChildNestedInput
+  password: StringFieldUpdateOperationsInput
+  profile: ProfileUpdateOneWithoutUserNestedInput
   role: EnumUserRoleFieldUpdateOperationsInput
   username: StringFieldUpdateOperationsInput
 }
@@ -4321,6 +4924,11 @@ input UserUpsertWithoutProfileInput {
   update: UserUncheckedUpdateWithoutProfileInput!
 }
 
+input UserUpsertWithoutShortLinksInput {
+  create: UserUncheckedCreateWithoutShortLinksInput!
+  update: UserUncheckedUpdateWithoutShortLinksInput!
+}
+
 input UserWhereInput {
   AND: [UserWhereInput]
   NOT: [UserWhereInput]
@@ -4338,6 +4946,7 @@ input UserWhereInput {
   password: StringFilter
   profile: ProfileWhereInput
   role: EnumUserRoleFilter
+  shortLinks: ShortLinkListRelationFilter
   username: StringFilter
 }
 

@@ -54,6 +54,11 @@ export const RoomScalarFieldEnum = enumType({
   members: ['id', 'title', 'image', 'description', 'gallery'],
 })
 
+export const ShortLinkScalarFieldEnum = enumType({
+  name: 'ShortLinkScalarFieldEnum',
+  members: ['userId', 'eventId', 'path'],
+})
+
 export const SortOrder = enumType({
   name: 'SortOrder',
   members: ['asc', 'desc'],
@@ -247,6 +252,7 @@ export const EventWhereInput = inputObjectType({
     t.field('room', { type: 'RoomWhereInput' })
     t.field('responsibles', { type: 'UserListRelationFilter' })
     t.field('categories', { type: 'CategoryListRelationFilter' })
+    t.field('shortLinks', { type: 'ShortLinkListRelationFilter' })
   },
 })
 
@@ -271,6 +277,7 @@ export const EventOrderByWithRelationInput = inputObjectType({
     t.field('room', { type: 'RoomOrderByWithRelationInput' })
     t.field('responsibles', { type: 'UserOrderByRelationAggregateInput' })
     t.field('categories', { type: 'CategoryOrderByRelationAggregateInput' })
+    t.field('shortLinks', { type: 'ShortLinkOrderByRelationAggregateInput' })
   },
 })
 
@@ -589,6 +596,7 @@ export const UserWhereInput = inputObjectType({
     t.field('chats', { type: 'ChatListRelationFilter' })
     t.field('parent', { type: 'UserWhereInput' })
     t.field('child', { type: 'UserWhereInput' })
+    t.field('shortLinks', { type: 'ShortLinkListRelationFilter' })
     t.field('eventsResponsible', { type: 'EventListRelationFilter' })
     t.field('eventsIssued', { type: 'EventListRelationFilter' })
     t.field('eventsParticipating', { type: 'EventListRelationFilter' })
@@ -612,6 +620,7 @@ export const UserOrderByWithRelationInput = inputObjectType({
     t.field('chats', { type: 'ChatOrderByRelationAggregateInput' })
     t.field('parent', { type: 'UserOrderByWithRelationInput' })
     t.field('child', { type: 'UserOrderByWithRelationInput' })
+    t.field('shortLinks', { type: 'ShortLinkOrderByRelationAggregateInput' })
     t.field('eventsResponsible', { type: 'EventOrderByRelationAggregateInput' })
     t.field('eventsIssued', { type: 'EventOrderByRelationAggregateInput' })
     t.field('eventsParticipating', {
@@ -665,6 +674,77 @@ export const UserScalarWhereWithAggregatesInput = inputObjectType({
     t.field('password', { type: 'StringWithAggregatesFilter' })
     t.field('role', { type: 'EnumUserRoleWithAggregatesFilter' })
     t.field('parentId', { type: 'StringNullableWithAggregatesFilter' })
+  },
+})
+
+export const ShortLinkWhereInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkWhereInput',
+  definition(t) {
+    t.list.field('AND', { type: 'ShortLinkWhereInput' })
+    t.list.field('OR', { type: 'ShortLinkWhereInput' })
+    t.list.field('NOT', { type: 'ShortLinkWhereInput' })
+    t.field('userId', { type: 'StringFilter' })
+    t.field('eventId', { type: 'StringFilter' })
+    t.field('path', { type: 'StringFilter' })
+    t.field('user', { type: 'UserWhereInput' })
+    t.field('event', { type: 'EventWhereInput' })
+  },
+})
+
+export const ShortLinkOrderByWithRelationInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkOrderByWithRelationInput',
+  definition(t) {
+    t.field('userId', { type: 'SortOrder' })
+    t.field('eventId', { type: 'SortOrder' })
+    t.field('path', { type: 'SortOrder' })
+    t.field('user', { type: 'UserOrderByWithRelationInput' })
+    t.field('event', { type: 'EventOrderByWithRelationInput' })
+  },
+})
+
+export const ShortLinkWhereUniqueInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkWhereUniqueInput',
+  definition(t) {
+    t.field('path', { type: 'String' })
+  },
+})
+
+export const ShortLinkOrderByWithAggregationInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkOrderByWithAggregationInput',
+  definition(t) {
+    t.field('userId', { type: 'SortOrder' })
+    t.field('eventId', { type: 'SortOrder' })
+    t.field('path', { type: 'SortOrder' })
+    t.field('_count', { type: 'ShortLinkCountOrderByAggregateInput' })
+    t.field('_max', { type: 'ShortLinkMaxOrderByAggregateInput' })
+    t.field('_min', { type: 'ShortLinkMinOrderByAggregateInput' })
+  },
+})
+
+export const ShortLinkScalarWhereWithAggregatesInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkScalarWhereWithAggregatesInput',
+  definition(t) {
+    t.list.field('AND', { type: 'ShortLinkScalarWhereWithAggregatesInput' })
+    t.list.field('OR', { type: 'ShortLinkScalarWhereWithAggregatesInput' })
+    t.list.field('NOT', { type: 'ShortLinkScalarWhereWithAggregatesInput' })
+    t.field('userId', { type: 'StringWithAggregatesFilter' })
+    t.field('eventId', { type: 'StringWithAggregatesFilter' })
+    t.field('path', { type: 'StringWithAggregatesFilter' })
   },
 })
 
@@ -881,6 +961,9 @@ export const EventCreateInput = inputObjectType({
     t.field('categories', {
       type: 'CategoryCreateNestedManyWithoutEventsInput',
     })
+    t.field('shortLinks', {
+      type: 'ShortLinkCreateNestedManyWithoutEventInput',
+    })
   },
 })
 
@@ -908,6 +991,9 @@ export const EventUncheckedCreateInput = inputObjectType({
     })
     t.field('categories', {
       type: 'CategoryUncheckedCreateNestedManyWithoutEventsInput',
+    })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedCreateNestedManyWithoutEventInput',
     })
   },
 })
@@ -937,6 +1023,9 @@ export const EventUpdateInput = inputObjectType({
     t.field('categories', {
       type: 'CategoryUpdateManyWithoutEventsNestedInput',
     })
+    t.field('shortLinks', {
+      type: 'ShortLinkUpdateManyWithoutEventNestedInput',
+    })
   },
 })
 
@@ -964,6 +1053,9 @@ export const EventUncheckedUpdateInput = inputObjectType({
     })
     t.field('categories', {
       type: 'CategoryUncheckedUpdateManyWithoutEventsNestedInput',
+    })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedUpdateManyWithoutEventNestedInput',
     })
   },
 })
@@ -1353,6 +1445,7 @@ export const UserCreateInput = inputObjectType({
     t.field('chats', { type: 'ChatCreateNestedManyWithoutMembersInput' })
     t.field('parent', { type: 'UserCreateNestedOneWithoutChildInput' })
     t.field('child', { type: 'UserCreateNestedOneWithoutParentInput' })
+    t.field('shortLinks', { type: 'ShortLinkCreateNestedManyWithoutUserInput' })
     t.field('eventsResponsible', {
       type: 'EventCreateNestedManyWithoutResponsiblesInput',
     })
@@ -1387,6 +1480,9 @@ export const UserUncheckedCreateInput = inputObjectType({
       type: 'ChatUncheckedCreateNestedManyWithoutMembersInput',
     })
     t.field('child', { type: 'UserUncheckedCreateNestedOneWithoutParentInput' })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedCreateNestedManyWithoutUserInput',
+    })
     t.field('eventsResponsible', {
       type: 'EventUncheckedCreateNestedManyWithoutResponsiblesInput',
     })
@@ -1415,6 +1511,7 @@ export const UserUpdateInput = inputObjectType({
     t.field('chats', { type: 'ChatUpdateManyWithoutMembersNestedInput' })
     t.field('parent', { type: 'UserUpdateOneWithoutChildNestedInput' })
     t.field('child', { type: 'UserUpdateOneWithoutParentNestedInput' })
+    t.field('shortLinks', { type: 'ShortLinkUpdateManyWithoutUserNestedInput' })
     t.field('eventsResponsible', {
       type: 'EventUpdateManyWithoutResponsiblesNestedInput',
     })
@@ -1449,6 +1546,9 @@ export const UserUncheckedUpdateInput = inputObjectType({
       type: 'ChatUncheckedUpdateManyWithoutMembersNestedInput',
     })
     t.field('child', { type: 'UserUncheckedUpdateOneWithoutParentNestedInput' })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedUpdateManyWithoutUserNestedInput',
+    })
     t.field('eventsResponsible', {
       type: 'EventUncheckedUpdateManyWithoutResponsiblesNestedInput',
     })
@@ -1502,6 +1602,96 @@ export const UserUncheckedUpdateManyInput = inputObjectType({
     t.field('password', { type: 'StringFieldUpdateOperationsInput' })
     t.field('role', { type: 'EnumUserRoleFieldUpdateOperationsInput' })
     t.field('parentId', { type: 'NullableStringFieldUpdateOperationsInput' })
+  },
+})
+
+export const ShortLinkCreateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkCreateInput',
+  definition(t) {
+    t.nonNull.field('path', { type: 'String' })
+    t.nonNull.field('user', {
+      type: 'UserCreateNestedOneWithoutShortLinksInput',
+    })
+    t.nonNull.field('event', {
+      type: 'EventCreateNestedOneWithoutShortLinksInput',
+    })
+  },
+})
+
+export const ShortLinkUncheckedCreateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUncheckedCreateInput',
+  definition(t) {
+    t.nonNull.field('userId', { type: 'String' })
+    t.nonNull.field('eventId', { type: 'String' })
+    t.nonNull.field('path', { type: 'String' })
+  },
+})
+
+export const ShortLinkUpdateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUpdateInput',
+  definition(t) {
+    t.field('path', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('user', {
+      type: 'UserUpdateOneRequiredWithoutShortLinksNestedInput',
+    })
+    t.field('event', {
+      type: 'EventUpdateOneRequiredWithoutShortLinksNestedInput',
+    })
+  },
+})
+
+export const ShortLinkUncheckedUpdateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUncheckedUpdateInput',
+  definition(t) {
+    t.field('userId', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('eventId', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('path', { type: 'StringFieldUpdateOperationsInput' })
+  },
+})
+
+export const ShortLinkCreateManyInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkCreateManyInput',
+  definition(t) {
+    t.nonNull.field('userId', { type: 'String' })
+    t.nonNull.field('eventId', { type: 'String' })
+    t.nonNull.field('path', { type: 'String' })
+  },
+})
+
+export const ShortLinkUpdateManyMutationInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUpdateManyMutationInput',
+  definition(t) {
+    t.field('path', { type: 'StringFieldUpdateOperationsInput' })
+  },
+})
+
+export const ShortLinkUncheckedUpdateManyInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUncheckedUpdateManyInput',
+  definition(t) {
+    t.field('userId', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('eventId', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('path', { type: 'StringFieldUpdateOperationsInput' })
   },
 })
 
@@ -1848,6 +2038,18 @@ export const CategoryListRelationFilter = inputObjectType({
   },
 })
 
+export const ShortLinkListRelationFilter = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkListRelationFilter',
+  definition(t) {
+    t.field('every', { type: 'ShortLinkWhereInput' })
+    t.field('some', { type: 'ShortLinkWhereInput' })
+    t.field('none', { type: 'ShortLinkWhereInput' })
+  },
+})
+
 export const UserOrderByRelationAggregateInput = inputObjectType({
   nonNullDefaults: {
     input: false,
@@ -1863,6 +2065,16 @@ export const CategoryOrderByRelationAggregateInput = inputObjectType({
     input: false,
   },
   name: 'CategoryOrderByRelationAggregateInput',
+  definition(t) {
+    t.field('_count', { type: 'SortOrder' })
+  },
+})
+
+export const ShortLinkOrderByRelationAggregateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkOrderByRelationAggregateInput',
   definition(t) {
     t.field('_count', { type: 'SortOrder' })
   },
@@ -2225,6 +2437,42 @@ export const EnumUserRoleWithAggregatesFilter = inputObjectType({
   },
 })
 
+export const ShortLinkCountOrderByAggregateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkCountOrderByAggregateInput',
+  definition(t) {
+    t.field('userId', { type: 'SortOrder' })
+    t.field('eventId', { type: 'SortOrder' })
+    t.field('path', { type: 'SortOrder' })
+  },
+})
+
+export const ShortLinkMaxOrderByAggregateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkMaxOrderByAggregateInput',
+  definition(t) {
+    t.field('userId', { type: 'SortOrder' })
+    t.field('eventId', { type: 'SortOrder' })
+    t.field('path', { type: 'SortOrder' })
+  },
+})
+
+export const ShortLinkMinOrderByAggregateInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkMinOrderByAggregateInput',
+  definition(t) {
+    t.field('userId', { type: 'SortOrder' })
+    t.field('eventId', { type: 'SortOrder' })
+    t.field('path', { type: 'SortOrder' })
+  },
+})
+
 export const EventCreateNestedManyWithoutCategoriesInput = inputObjectType({
   nonNullDefaults: {
     input: false,
@@ -2538,6 +2786,21 @@ export const CategoryCreateNestedManyWithoutEventsInput = inputObjectType({
   },
 })
 
+export const ShortLinkCreateNestedManyWithoutEventInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkCreateNestedManyWithoutEventInput',
+  definition(t) {
+    t.list.field('create', { type: 'ShortLinkCreateWithoutEventInput' })
+    t.list.field('connectOrCreate', {
+      type: 'ShortLinkCreateOrConnectWithoutEventInput',
+    })
+    t.field('createMany', { type: 'ShortLinkCreateManyEventInputEnvelope' })
+    t.list.field('connect', { type: 'ShortLinkWhereUniqueInput' })
+  },
+})
+
 export const UserUncheckedCreateNestedManyWithoutEventsParticipatingInput =
   inputObjectType({
     nonNullDefaults: {
@@ -2596,6 +2859,22 @@ export const CategoryUncheckedCreateNestedManyWithoutEventsInput =
         type: 'CategoryCreateOrConnectWithoutEventsInput',
       })
       t.list.field('connect', { type: 'CategoryWhereUniqueInput' })
+    },
+  })
+
+export const ShortLinkUncheckedCreateNestedManyWithoutEventInput =
+  inputObjectType({
+    nonNullDefaults: {
+      input: false,
+    },
+    name: 'ShortLinkUncheckedCreateNestedManyWithoutEventInput',
+    definition(t) {
+      t.list.field('create', { type: 'ShortLinkCreateWithoutEventInput' })
+      t.list.field('connectOrCreate', {
+        type: 'ShortLinkCreateOrConnectWithoutEventInput',
+      })
+      t.field('createMany', { type: 'ShortLinkCreateManyEventInputEnvelope' })
+      t.list.field('connect', { type: 'ShortLinkWhereUniqueInput' })
     },
   })
 
@@ -2756,6 +3035,34 @@ export const CategoryUpdateManyWithoutEventsNestedInput = inputObjectType({
   },
 })
 
+export const ShortLinkUpdateManyWithoutEventNestedInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUpdateManyWithoutEventNestedInput',
+  definition(t) {
+    t.list.field('create', { type: 'ShortLinkCreateWithoutEventInput' })
+    t.list.field('connectOrCreate', {
+      type: 'ShortLinkCreateOrConnectWithoutEventInput',
+    })
+    t.list.field('upsert', {
+      type: 'ShortLinkUpsertWithWhereUniqueWithoutEventInput',
+    })
+    t.field('createMany', { type: 'ShortLinkCreateManyEventInputEnvelope' })
+    t.list.field('set', { type: 'ShortLinkWhereUniqueInput' })
+    t.list.field('disconnect', { type: 'ShortLinkWhereUniqueInput' })
+    t.list.field('delete', { type: 'ShortLinkWhereUniqueInput' })
+    t.list.field('connect', { type: 'ShortLinkWhereUniqueInput' })
+    t.list.field('update', {
+      type: 'ShortLinkUpdateWithWhereUniqueWithoutEventInput',
+    })
+    t.list.field('updateMany', {
+      type: 'ShortLinkUpdateManyWithWhereWithoutEventInput',
+    })
+    t.list.field('deleteMany', { type: 'ShortLinkScalarWhereInput' })
+  },
+})
+
 export const UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput =
   inputObjectType({
     nonNullDefaults: {
@@ -2857,6 +3164,35 @@ export const CategoryUncheckedUpdateManyWithoutEventsNestedInput =
         type: 'CategoryUpdateManyWithWhereWithoutEventsInput',
       })
       t.list.field('deleteMany', { type: 'CategoryScalarWhereInput' })
+    },
+  })
+
+export const ShortLinkUncheckedUpdateManyWithoutEventNestedInput =
+  inputObjectType({
+    nonNullDefaults: {
+      input: false,
+    },
+    name: 'ShortLinkUncheckedUpdateManyWithoutEventNestedInput',
+    definition(t) {
+      t.list.field('create', { type: 'ShortLinkCreateWithoutEventInput' })
+      t.list.field('connectOrCreate', {
+        type: 'ShortLinkCreateOrConnectWithoutEventInput',
+      })
+      t.list.field('upsert', {
+        type: 'ShortLinkUpsertWithWhereUniqueWithoutEventInput',
+      })
+      t.field('createMany', { type: 'ShortLinkCreateManyEventInputEnvelope' })
+      t.list.field('set', { type: 'ShortLinkWhereUniqueInput' })
+      t.list.field('disconnect', { type: 'ShortLinkWhereUniqueInput' })
+      t.list.field('delete', { type: 'ShortLinkWhereUniqueInput' })
+      t.list.field('connect', { type: 'ShortLinkWhereUniqueInput' })
+      t.list.field('update', {
+        type: 'ShortLinkUpdateWithWhereUniqueWithoutEventInput',
+      })
+      t.list.field('updateMany', {
+        type: 'ShortLinkUpdateManyWithWhereWithoutEventInput',
+      })
+      t.list.field('deleteMany', { type: 'ShortLinkScalarWhereInput' })
     },
   })
 
@@ -3217,6 +3553,21 @@ export const UserCreateNestedOneWithoutParentInput = inputObjectType({
   },
 })
 
+export const ShortLinkCreateNestedManyWithoutUserInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkCreateNestedManyWithoutUserInput',
+  definition(t) {
+    t.list.field('create', { type: 'ShortLinkCreateWithoutUserInput' })
+    t.list.field('connectOrCreate', {
+      type: 'ShortLinkCreateOrConnectWithoutUserInput',
+    })
+    t.field('createMany', { type: 'ShortLinkCreateManyUserInputEnvelope' })
+    t.list.field('connect', { type: 'ShortLinkWhereUniqueInput' })
+  },
+})
+
 export const EventCreateNestedManyWithoutResponsiblesInput = inputObjectType({
   nonNullDefaults: {
     input: false,
@@ -3319,6 +3670,22 @@ export const UserUncheckedCreateNestedOneWithoutParentInput = inputObjectType({
     t.field('connect', { type: 'UserWhereUniqueInput' })
   },
 })
+
+export const ShortLinkUncheckedCreateNestedManyWithoutUserInput =
+  inputObjectType({
+    nonNullDefaults: {
+      input: false,
+    },
+    name: 'ShortLinkUncheckedCreateNestedManyWithoutUserInput',
+    definition(t) {
+      t.list.field('create', { type: 'ShortLinkCreateWithoutUserInput' })
+      t.list.field('connectOrCreate', {
+        type: 'ShortLinkCreateOrConnectWithoutUserInput',
+      })
+      t.field('createMany', { type: 'ShortLinkCreateManyUserInputEnvelope' })
+      t.list.field('connect', { type: 'ShortLinkWhereUniqueInput' })
+    },
+  })
 
 export const EventUncheckedCreateNestedManyWithoutResponsiblesInput =
   inputObjectType({
@@ -3480,6 +3847,34 @@ export const UserUpdateOneWithoutParentNestedInput = inputObjectType({
     t.field('delete', { type: 'Boolean' })
     t.field('connect', { type: 'UserWhereUniqueInput' })
     t.field('update', { type: 'UserUncheckedUpdateWithoutParentInput' })
+  },
+})
+
+export const ShortLinkUpdateManyWithoutUserNestedInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUpdateManyWithoutUserNestedInput',
+  definition(t) {
+    t.list.field('create', { type: 'ShortLinkCreateWithoutUserInput' })
+    t.list.field('connectOrCreate', {
+      type: 'ShortLinkCreateOrConnectWithoutUserInput',
+    })
+    t.list.field('upsert', {
+      type: 'ShortLinkUpsertWithWhereUniqueWithoutUserInput',
+    })
+    t.field('createMany', { type: 'ShortLinkCreateManyUserInputEnvelope' })
+    t.list.field('set', { type: 'ShortLinkWhereUniqueInput' })
+    t.list.field('disconnect', { type: 'ShortLinkWhereUniqueInput' })
+    t.list.field('delete', { type: 'ShortLinkWhereUniqueInput' })
+    t.list.field('connect', { type: 'ShortLinkWhereUniqueInput' })
+    t.list.field('update', {
+      type: 'ShortLinkUpdateWithWhereUniqueWithoutUserInput',
+    })
+    t.list.field('updateMany', {
+      type: 'ShortLinkUpdateManyWithWhereWithoutUserInput',
+    })
+    t.list.field('deleteMany', { type: 'ShortLinkScalarWhereInput' })
   },
 })
 
@@ -3659,6 +4054,35 @@ export const UserUncheckedUpdateOneWithoutParentNestedInput = inputObjectType({
   },
 })
 
+export const ShortLinkUncheckedUpdateManyWithoutUserNestedInput =
+  inputObjectType({
+    nonNullDefaults: {
+      input: false,
+    },
+    name: 'ShortLinkUncheckedUpdateManyWithoutUserNestedInput',
+    definition(t) {
+      t.list.field('create', { type: 'ShortLinkCreateWithoutUserInput' })
+      t.list.field('connectOrCreate', {
+        type: 'ShortLinkCreateOrConnectWithoutUserInput',
+      })
+      t.list.field('upsert', {
+        type: 'ShortLinkUpsertWithWhereUniqueWithoutUserInput',
+      })
+      t.field('createMany', { type: 'ShortLinkCreateManyUserInputEnvelope' })
+      t.list.field('set', { type: 'ShortLinkWhereUniqueInput' })
+      t.list.field('disconnect', { type: 'ShortLinkWhereUniqueInput' })
+      t.list.field('delete', { type: 'ShortLinkWhereUniqueInput' })
+      t.list.field('connect', { type: 'ShortLinkWhereUniqueInput' })
+      t.list.field('update', {
+        type: 'ShortLinkUpdateWithWhereUniqueWithoutUserInput',
+      })
+      t.list.field('updateMany', {
+        type: 'ShortLinkUpdateManyWithWhereWithoutUserInput',
+      })
+      t.list.field('deleteMany', { type: 'ShortLinkScalarWhereInput' })
+    },
+  })
+
 export const EventUncheckedUpdateManyWithoutResponsiblesNestedInput =
   inputObjectType({
     nonNullDefaults: {
@@ -3741,6 +4165,68 @@ export const EventUncheckedUpdateManyWithoutParticipantsNestedInput =
         type: 'EventUpdateManyWithWhereWithoutParticipantsInput',
       })
       t.list.field('deleteMany', { type: 'EventScalarWhereInput' })
+    },
+  })
+
+export const UserCreateNestedOneWithoutShortLinksInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserCreateNestedOneWithoutShortLinksInput',
+  definition(t) {
+    t.field('create', { type: 'UserUncheckedCreateWithoutShortLinksInput' })
+    t.field('connectOrCreate', {
+      type: 'UserCreateOrConnectWithoutShortLinksInput',
+    })
+    t.field('connect', { type: 'UserWhereUniqueInput' })
+  },
+})
+
+export const EventCreateNestedOneWithoutShortLinksInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'EventCreateNestedOneWithoutShortLinksInput',
+  definition(t) {
+    t.field('create', { type: 'EventUncheckedCreateWithoutShortLinksInput' })
+    t.field('connectOrCreate', {
+      type: 'EventCreateOrConnectWithoutShortLinksInput',
+    })
+    t.field('connect', { type: 'EventWhereUniqueInput' })
+  },
+})
+
+export const UserUpdateOneRequiredWithoutShortLinksNestedInput =
+  inputObjectType({
+    nonNullDefaults: {
+      input: false,
+    },
+    name: 'UserUpdateOneRequiredWithoutShortLinksNestedInput',
+    definition(t) {
+      t.field('create', { type: 'UserUncheckedCreateWithoutShortLinksInput' })
+      t.field('connectOrCreate', {
+        type: 'UserCreateOrConnectWithoutShortLinksInput',
+      })
+      t.field('upsert', { type: 'UserUpsertWithoutShortLinksInput' })
+      t.field('connect', { type: 'UserWhereUniqueInput' })
+      t.field('update', { type: 'UserUncheckedUpdateWithoutShortLinksInput' })
+    },
+  })
+
+export const EventUpdateOneRequiredWithoutShortLinksNestedInput =
+  inputObjectType({
+    nonNullDefaults: {
+      input: false,
+    },
+    name: 'EventUpdateOneRequiredWithoutShortLinksNestedInput',
+    definition(t) {
+      t.field('create', { type: 'EventUncheckedCreateWithoutShortLinksInput' })
+      t.field('connectOrCreate', {
+        type: 'EventCreateOrConnectWithoutShortLinksInput',
+      })
+      t.field('upsert', { type: 'EventUpsertWithoutShortLinksInput' })
+      t.field('connect', { type: 'EventWhereUniqueInput' })
+      t.field('update', { type: 'EventUncheckedUpdateWithoutShortLinksInput' })
     },
   })
 
@@ -4016,6 +4502,9 @@ export const EventCreateWithoutCategoriesInput = inputObjectType({
     t.field('responsibles', {
       type: 'UserCreateNestedManyWithoutEventsResponsibleInput',
     })
+    t.field('shortLinks', {
+      type: 'ShortLinkCreateNestedManyWithoutEventInput',
+    })
   },
 })
 
@@ -4040,6 +4529,9 @@ export const EventUncheckedCreateWithoutCategoriesInput = inputObjectType({
     t.field('chat', { type: 'ChatUncheckedCreateNestedOneWithoutEventInput' })
     t.field('responsibles', {
       type: 'UserUncheckedCreateNestedManyWithoutEventsResponsibleInput',
+    })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedCreateNestedManyWithoutEventInput',
     })
   },
 })
@@ -4148,6 +4640,9 @@ export const EventCreateWithoutRoomInput = inputObjectType({
     t.field('categories', {
       type: 'CategoryCreateNestedManyWithoutEventsInput',
     })
+    t.field('shortLinks', {
+      type: 'ShortLinkCreateNestedManyWithoutEventInput',
+    })
   },
 })
 
@@ -4174,6 +4669,9 @@ export const EventUncheckedCreateWithoutRoomInput = inputObjectType({
     })
     t.field('categories', {
       type: 'CategoryUncheckedCreateNestedManyWithoutEventsInput',
+    })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedCreateNestedManyWithoutEventInput',
     })
   },
 })
@@ -4252,6 +4750,7 @@ export const UserCreateWithoutEventsParticipatingInput = inputObjectType({
     t.field('chats', { type: 'ChatCreateNestedManyWithoutMembersInput' })
     t.field('parent', { type: 'UserCreateNestedOneWithoutChildInput' })
     t.field('child', { type: 'UserCreateNestedOneWithoutParentInput' })
+    t.field('shortLinks', { type: 'ShortLinkCreateNestedManyWithoutUserInput' })
     t.field('eventsResponsible', {
       type: 'EventCreateNestedManyWithoutResponsiblesInput',
     })
@@ -4285,6 +4784,9 @@ export const UserUncheckedCreateWithoutEventsParticipatingInput =
       })
       t.field('child', {
         type: 'UserUncheckedCreateNestedOneWithoutParentInput',
+      })
+      t.field('shortLinks', {
+        type: 'ShortLinkUncheckedCreateNestedManyWithoutUserInput',
       })
       t.field('eventsResponsible', {
         type: 'EventUncheckedCreateNestedManyWithoutResponsiblesInput',
@@ -4366,6 +4868,7 @@ export const UserCreateWithoutEventsIssuedInput = inputObjectType({
     t.field('chats', { type: 'ChatCreateNestedManyWithoutMembersInput' })
     t.field('parent', { type: 'UserCreateNestedOneWithoutChildInput' })
     t.field('child', { type: 'UserCreateNestedOneWithoutParentInput' })
+    t.field('shortLinks', { type: 'ShortLinkCreateNestedManyWithoutUserInput' })
     t.field('eventsResponsible', {
       type: 'EventCreateNestedManyWithoutResponsiblesInput',
     })
@@ -4397,6 +4900,9 @@ export const UserUncheckedCreateWithoutEventsIssuedInput = inputObjectType({
       type: 'ChatUncheckedCreateNestedManyWithoutMembersInput',
     })
     t.field('child', { type: 'UserUncheckedCreateNestedOneWithoutParentInput' })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedCreateNestedManyWithoutUserInput',
+    })
     t.field('eventsResponsible', {
       type: 'EventUncheckedCreateNestedManyWithoutResponsiblesInput',
     })
@@ -4474,6 +4980,7 @@ export const UserCreateWithoutEventsResponsibleInput = inputObjectType({
     t.field('chats', { type: 'ChatCreateNestedManyWithoutMembersInput' })
     t.field('parent', { type: 'UserCreateNestedOneWithoutChildInput' })
     t.field('child', { type: 'UserCreateNestedOneWithoutParentInput' })
+    t.field('shortLinks', { type: 'ShortLinkCreateNestedManyWithoutUserInput' })
     t.field('eventsIssued', {
       type: 'EventCreateNestedManyWithoutIssuedByInput',
     })
@@ -4507,6 +5014,9 @@ export const UserUncheckedCreateWithoutEventsResponsibleInput = inputObjectType(
       })
       t.field('child', {
         type: 'UserUncheckedCreateNestedOneWithoutParentInput',
+      })
+      t.field('shortLinks', {
+        type: 'ShortLinkUncheckedCreateNestedManyWithoutUserInput',
       })
       t.field('eventsIssued', {
         type: 'EventUncheckedCreateNestedManyWithoutIssuedByInput',
@@ -4564,6 +5074,54 @@ export const CategoryCreateOrConnectWithoutEventsInput = inputObjectType({
     t.nonNull.field('create', {
       type: 'CategoryUncheckedCreateWithoutEventsInput',
     })
+  },
+})
+
+export const ShortLinkCreateWithoutEventInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkCreateWithoutEventInput',
+  definition(t) {
+    t.nonNull.field('path', { type: 'String' })
+    t.nonNull.field('user', {
+      type: 'UserCreateNestedOneWithoutShortLinksInput',
+    })
+  },
+})
+
+export const ShortLinkUncheckedCreateWithoutEventInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUncheckedCreateWithoutEventInput',
+  definition(t) {
+    t.nonNull.field('userId', { type: 'String' })
+    t.nonNull.field('path', { type: 'String' })
+  },
+})
+
+export const ShortLinkCreateOrConnectWithoutEventInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkCreateOrConnectWithoutEventInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'ShortLinkWhereUniqueInput' })
+    t.nonNull.field('create', {
+      type: 'ShortLinkUncheckedCreateWithoutEventInput',
+    })
+  },
+})
+
+export const ShortLinkCreateManyEventInputEnvelope = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkCreateManyEventInputEnvelope',
+  definition(t) {
+    t.nonNull.field('data', { type: 'ShortLinkCreateManyEventInput' })
+    t.field('skipDuplicates', { type: 'Boolean' })
   },
 })
 
@@ -4702,6 +5260,7 @@ export const UserUpdateWithoutEventsIssuedInput = inputObjectType({
     t.field('chats', { type: 'ChatUpdateManyWithoutMembersNestedInput' })
     t.field('parent', { type: 'UserUpdateOneWithoutChildNestedInput' })
     t.field('child', { type: 'UserUpdateOneWithoutParentNestedInput' })
+    t.field('shortLinks', { type: 'ShortLinkUpdateManyWithoutUserNestedInput' })
     t.field('eventsResponsible', {
       type: 'EventUpdateManyWithoutResponsiblesNestedInput',
     })
@@ -4733,6 +5292,9 @@ export const UserUncheckedUpdateWithoutEventsIssuedInput = inputObjectType({
       type: 'ChatUncheckedUpdateManyWithoutMembersNestedInput',
     })
     t.field('child', { type: 'UserUncheckedUpdateOneWithoutParentNestedInput' })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedUpdateManyWithoutUserNestedInput',
+    })
     t.field('eventsResponsible', {
       type: 'EventUncheckedUpdateManyWithoutResponsiblesNestedInput',
     })
@@ -4882,6 +5444,63 @@ export const CategoryScalarWhereInput = inputObjectType({
   },
 })
 
+export const ShortLinkUpsertWithWhereUniqueWithoutEventInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUpsertWithWhereUniqueWithoutEventInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'ShortLinkWhereUniqueInput' })
+    t.nonNull.field('update', {
+      type: 'ShortLinkUncheckedUpdateWithoutEventInput',
+    })
+    t.nonNull.field('create', {
+      type: 'ShortLinkUncheckedCreateWithoutEventInput',
+    })
+  },
+})
+
+export const ShortLinkUpdateWithWhereUniqueWithoutEventInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUpdateWithWhereUniqueWithoutEventInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'ShortLinkWhereUniqueInput' })
+    t.nonNull.field('data', {
+      type: 'ShortLinkUncheckedUpdateWithoutEventInput',
+    })
+  },
+})
+
+export const ShortLinkUpdateManyWithWhereWithoutEventInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUpdateManyWithWhereWithoutEventInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'ShortLinkScalarWhereInput' })
+    t.nonNull.field('data', {
+      type: 'ShortLinkUncheckedUpdateManyWithoutShortLinksInput',
+    })
+  },
+})
+
+export const ShortLinkScalarWhereInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkScalarWhereInput',
+  definition(t) {
+    t.list.field('AND', { type: 'ShortLinkScalarWhereInput' })
+    t.list.field('OR', { type: 'ShortLinkScalarWhereInput' })
+    t.list.field('NOT', { type: 'ShortLinkScalarWhereInput' })
+    t.field('userId', { type: 'StringFilter' })
+    t.field('eventId', { type: 'StringFilter' })
+    t.field('path', { type: 'StringFilter' })
+  },
+})
+
 export const UserCreateWithoutMessagesInput = inputObjectType({
   nonNullDefaults: {
     input: false,
@@ -4897,6 +5516,7 @@ export const UserCreateWithoutMessagesInput = inputObjectType({
     t.field('chats', { type: 'ChatCreateNestedManyWithoutMembersInput' })
     t.field('parent', { type: 'UserCreateNestedOneWithoutChildInput' })
     t.field('child', { type: 'UserCreateNestedOneWithoutParentInput' })
+    t.field('shortLinks', { type: 'ShortLinkCreateNestedManyWithoutUserInput' })
     t.field('eventsResponsible', {
       type: 'EventCreateNestedManyWithoutResponsiblesInput',
     })
@@ -4928,6 +5548,9 @@ export const UserUncheckedCreateWithoutMessagesInput = inputObjectType({
       type: 'ChatUncheckedCreateNestedManyWithoutMembersInput',
     })
     t.field('child', { type: 'UserUncheckedCreateNestedOneWithoutParentInput' })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedCreateNestedManyWithoutUserInput',
+    })
     t.field('eventsResponsible', {
       type: 'EventUncheckedCreateNestedManyWithoutResponsiblesInput',
     })
@@ -5024,6 +5647,7 @@ export const UserUpdateWithoutMessagesInput = inputObjectType({
     t.field('chats', { type: 'ChatUpdateManyWithoutMembersNestedInput' })
     t.field('parent', { type: 'UserUpdateOneWithoutChildNestedInput' })
     t.field('child', { type: 'UserUpdateOneWithoutParentNestedInput' })
+    t.field('shortLinks', { type: 'ShortLinkUpdateManyWithoutUserNestedInput' })
     t.field('eventsResponsible', {
       type: 'EventUpdateManyWithoutResponsiblesNestedInput',
     })
@@ -5055,6 +5679,9 @@ export const UserUncheckedUpdateWithoutMessagesInput = inputObjectType({
       type: 'ChatUncheckedUpdateManyWithoutMembersNestedInput',
     })
     t.field('child', { type: 'UserUncheckedUpdateOneWithoutParentNestedInput' })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedUpdateManyWithoutUserNestedInput',
+    })
     t.field('eventsResponsible', {
       type: 'EventUncheckedUpdateManyWithoutResponsiblesNestedInput',
     })
@@ -5125,6 +5752,7 @@ export const UserCreateWithoutChatsInput = inputObjectType({
     t.field('messages', { type: 'MessageCreateNestedManyWithoutSenderInput' })
     t.field('parent', { type: 'UserCreateNestedOneWithoutChildInput' })
     t.field('child', { type: 'UserCreateNestedOneWithoutParentInput' })
+    t.field('shortLinks', { type: 'ShortLinkCreateNestedManyWithoutUserInput' })
     t.field('eventsResponsible', {
       type: 'EventCreateNestedManyWithoutResponsiblesInput',
     })
@@ -5156,6 +5784,9 @@ export const UserUncheckedCreateWithoutChatsInput = inputObjectType({
       type: 'MessageUncheckedCreateNestedManyWithoutSenderInput',
     })
     t.field('child', { type: 'UserUncheckedCreateNestedOneWithoutParentInput' })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedCreateNestedManyWithoutUserInput',
+    })
     t.field('eventsResponsible', {
       type: 'EventUncheckedCreateNestedManyWithoutResponsiblesInput',
     })
@@ -5255,6 +5886,9 @@ export const EventCreateWithoutChatInput = inputObjectType({
     t.field('categories', {
       type: 'CategoryCreateNestedManyWithoutEventsInput',
     })
+    t.field('shortLinks', {
+      type: 'ShortLinkCreateNestedManyWithoutEventInput',
+    })
   },
 })
 
@@ -5281,6 +5915,9 @@ export const EventUncheckedCreateWithoutChatInput = inputObjectType({
     })
     t.field('categories', {
       type: 'CategoryUncheckedCreateNestedManyWithoutEventsInput',
+    })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedCreateNestedManyWithoutEventInput',
     })
   },
 })
@@ -5424,6 +6061,9 @@ export const EventUpdateWithoutChatInput = inputObjectType({
     t.field('categories', {
       type: 'CategoryUpdateManyWithoutEventsNestedInput',
     })
+    t.field('shortLinks', {
+      type: 'ShortLinkUpdateManyWithoutEventNestedInput',
+    })
   },
 })
 
@@ -5451,6 +6091,9 @@ export const EventUncheckedUpdateWithoutChatInput = inputObjectType({
     t.field('categories', {
       type: 'CategoryUncheckedUpdateManyWithoutEventsNestedInput',
     })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedUpdateManyWithoutEventNestedInput',
+    })
   },
 })
 
@@ -5469,6 +6112,7 @@ export const UserCreateWithoutProfileInput = inputObjectType({
     t.field('chats', { type: 'ChatCreateNestedManyWithoutMembersInput' })
     t.field('parent', { type: 'UserCreateNestedOneWithoutChildInput' })
     t.field('child', { type: 'UserCreateNestedOneWithoutParentInput' })
+    t.field('shortLinks', { type: 'ShortLinkCreateNestedManyWithoutUserInput' })
     t.field('eventsResponsible', {
       type: 'EventCreateNestedManyWithoutResponsiblesInput',
     })
@@ -5500,6 +6144,9 @@ export const UserUncheckedCreateWithoutProfileInput = inputObjectType({
       type: 'ChatUncheckedCreateNestedManyWithoutMembersInput',
     })
     t.field('child', { type: 'UserUncheckedCreateNestedOneWithoutParentInput' })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedCreateNestedManyWithoutUserInput',
+    })
     t.field('eventsResponsible', {
       type: 'EventUncheckedCreateNestedManyWithoutResponsiblesInput',
     })
@@ -5555,6 +6202,7 @@ export const UserUpdateWithoutProfileInput = inputObjectType({
     t.field('chats', { type: 'ChatUpdateManyWithoutMembersNestedInput' })
     t.field('parent', { type: 'UserUpdateOneWithoutChildNestedInput' })
     t.field('child', { type: 'UserUpdateOneWithoutParentNestedInput' })
+    t.field('shortLinks', { type: 'ShortLinkUpdateManyWithoutUserNestedInput' })
     t.field('eventsResponsible', {
       type: 'EventUpdateManyWithoutResponsiblesNestedInput',
     })
@@ -5586,6 +6234,9 @@ export const UserUncheckedUpdateWithoutProfileInput = inputObjectType({
       type: 'ChatUncheckedUpdateManyWithoutMembersNestedInput',
     })
     t.field('child', { type: 'UserUncheckedUpdateOneWithoutParentNestedInput' })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedUpdateManyWithoutUserNestedInput',
+    })
     t.field('eventsResponsible', {
       type: 'EventUncheckedUpdateManyWithoutResponsiblesNestedInput',
     })
@@ -5749,6 +6400,7 @@ export const UserCreateWithoutChildInput = inputObjectType({
     t.field('messages', { type: 'MessageCreateNestedManyWithoutSenderInput' })
     t.field('chats', { type: 'ChatCreateNestedManyWithoutMembersInput' })
     t.field('parent', { type: 'UserCreateNestedOneWithoutChildInput' })
+    t.field('shortLinks', { type: 'ShortLinkCreateNestedManyWithoutUserInput' })
     t.field('eventsResponsible', {
       type: 'EventCreateNestedManyWithoutResponsiblesInput',
     })
@@ -5781,6 +6433,9 @@ export const UserUncheckedCreateWithoutChildInput = inputObjectType({
     })
     t.field('chats', {
       type: 'ChatUncheckedCreateNestedManyWithoutMembersInput',
+    })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedCreateNestedManyWithoutUserInput',
     })
     t.field('eventsResponsible', {
       type: 'EventUncheckedCreateNestedManyWithoutResponsiblesInput',
@@ -5820,6 +6475,7 @@ export const UserCreateWithoutParentInput = inputObjectType({
     t.field('messages', { type: 'MessageCreateNestedManyWithoutSenderInput' })
     t.field('chats', { type: 'ChatCreateNestedManyWithoutMembersInput' })
     t.field('child', { type: 'UserCreateNestedOneWithoutParentInput' })
+    t.field('shortLinks', { type: 'ShortLinkCreateNestedManyWithoutUserInput' })
     t.field('eventsResponsible', {
       type: 'EventCreateNestedManyWithoutResponsiblesInput',
     })
@@ -5853,6 +6509,9 @@ export const UserUncheckedCreateWithoutParentInput = inputObjectType({
       type: 'ChatUncheckedCreateNestedManyWithoutMembersInput',
     })
     t.field('child', { type: 'UserUncheckedCreateNestedOneWithoutParentInput' })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedCreateNestedManyWithoutUserInput',
+    })
     t.field('eventsResponsible', {
       type: 'EventUncheckedCreateNestedManyWithoutResponsiblesInput',
     })
@@ -5873,6 +6532,54 @@ export const UserCreateOrConnectWithoutParentInput = inputObjectType({
   definition(t) {
     t.nonNull.field('where', { type: 'UserWhereUniqueInput' })
     t.nonNull.field('create', { type: 'UserUncheckedCreateWithoutParentInput' })
+  },
+})
+
+export const ShortLinkCreateWithoutUserInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkCreateWithoutUserInput',
+  definition(t) {
+    t.nonNull.field('path', { type: 'String' })
+    t.nonNull.field('event', {
+      type: 'EventCreateNestedOneWithoutShortLinksInput',
+    })
+  },
+})
+
+export const ShortLinkUncheckedCreateWithoutUserInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUncheckedCreateWithoutUserInput',
+  definition(t) {
+    t.nonNull.field('eventId', { type: 'String' })
+    t.nonNull.field('path', { type: 'String' })
+  },
+})
+
+export const ShortLinkCreateOrConnectWithoutUserInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkCreateOrConnectWithoutUserInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'ShortLinkWhereUniqueInput' })
+    t.nonNull.field('create', {
+      type: 'ShortLinkUncheckedCreateWithoutUserInput',
+    })
+  },
+})
+
+export const ShortLinkCreateManyUserInputEnvelope = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkCreateManyUserInputEnvelope',
+  definition(t) {
+    t.nonNull.field('data', { type: 'ShortLinkCreateManyUserInput' })
+    t.field('skipDuplicates', { type: 'Boolean' })
   },
 })
 
@@ -5898,6 +6605,9 @@ export const EventCreateWithoutResponsiblesInput = inputObjectType({
     t.field('categories', {
       type: 'CategoryCreateNestedManyWithoutEventsInput',
     })
+    t.field('shortLinks', {
+      type: 'ShortLinkCreateNestedManyWithoutEventInput',
+    })
   },
 })
 
@@ -5922,6 +6632,9 @@ export const EventUncheckedCreateWithoutResponsiblesInput = inputObjectType({
     t.field('chat', { type: 'ChatUncheckedCreateNestedOneWithoutEventInput' })
     t.field('categories', {
       type: 'CategoryUncheckedCreateNestedManyWithoutEventsInput',
+    })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedCreateNestedManyWithoutEventInput',
     })
   },
 })
@@ -5963,6 +6676,9 @@ export const EventCreateWithoutIssuedByInput = inputObjectType({
     t.field('categories', {
       type: 'CategoryCreateNestedManyWithoutEventsInput',
     })
+    t.field('shortLinks', {
+      type: 'ShortLinkCreateNestedManyWithoutEventInput',
+    })
   },
 })
 
@@ -5989,6 +6705,9 @@ export const EventUncheckedCreateWithoutIssuedByInput = inputObjectType({
     })
     t.field('categories', {
       type: 'CategoryUncheckedCreateNestedManyWithoutEventsInput',
+    })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedCreateNestedManyWithoutEventInput',
     })
   },
 })
@@ -6039,6 +6758,9 @@ export const EventCreateWithoutParticipantsInput = inputObjectType({
     t.field('categories', {
       type: 'CategoryCreateNestedManyWithoutEventsInput',
     })
+    t.field('shortLinks', {
+      type: 'ShortLinkCreateNestedManyWithoutEventInput',
+    })
   },
 })
 
@@ -6063,6 +6785,9 @@ export const EventUncheckedCreateWithoutParticipantsInput = inputObjectType({
     })
     t.field('categories', {
       type: 'CategoryUncheckedCreateNestedManyWithoutEventsInput',
+    })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedCreateNestedManyWithoutEventInput',
     })
   },
 })
@@ -6250,6 +6975,7 @@ export const UserUpdateWithoutChildInput = inputObjectType({
     t.field('messages', { type: 'MessageUpdateManyWithoutSenderNestedInput' })
     t.field('chats', { type: 'ChatUpdateManyWithoutMembersNestedInput' })
     t.field('parent', { type: 'UserUpdateOneWithoutChildNestedInput' })
+    t.field('shortLinks', { type: 'ShortLinkUpdateManyWithoutUserNestedInput' })
     t.field('eventsResponsible', {
       type: 'EventUpdateManyWithoutResponsiblesNestedInput',
     })
@@ -6282,6 +7008,9 @@ export const UserUncheckedUpdateWithoutChildInput = inputObjectType({
     })
     t.field('chats', {
       type: 'ChatUncheckedUpdateManyWithoutMembersNestedInput',
+    })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedUpdateManyWithoutUserNestedInput',
     })
     t.field('eventsResponsible', {
       type: 'EventUncheckedUpdateManyWithoutResponsiblesNestedInput',
@@ -6321,6 +7050,7 @@ export const UserUpdateWithoutParentInput = inputObjectType({
     t.field('messages', { type: 'MessageUpdateManyWithoutSenderNestedInput' })
     t.field('chats', { type: 'ChatUpdateManyWithoutMembersNestedInput' })
     t.field('child', { type: 'UserUpdateOneWithoutParentNestedInput' })
+    t.field('shortLinks', { type: 'ShortLinkUpdateManyWithoutUserNestedInput' })
     t.field('eventsResponsible', {
       type: 'EventUpdateManyWithoutResponsiblesNestedInput',
     })
@@ -6354,6 +7084,9 @@ export const UserUncheckedUpdateWithoutParentInput = inputObjectType({
       type: 'ChatUncheckedUpdateManyWithoutMembersNestedInput',
     })
     t.field('child', { type: 'UserUncheckedUpdateOneWithoutParentNestedInput' })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedUpdateManyWithoutUserNestedInput',
+    })
     t.field('eventsResponsible', {
       type: 'EventUncheckedUpdateManyWithoutResponsiblesNestedInput',
     })
@@ -6362,6 +7095,48 @@ export const UserUncheckedUpdateWithoutParentInput = inputObjectType({
     })
     t.field('eventsParticipating', {
       type: 'EventUncheckedUpdateManyWithoutParticipantsNestedInput',
+    })
+  },
+})
+
+export const ShortLinkUpsertWithWhereUniqueWithoutUserInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUpsertWithWhereUniqueWithoutUserInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'ShortLinkWhereUniqueInput' })
+    t.nonNull.field('update', {
+      type: 'ShortLinkUncheckedUpdateWithoutUserInput',
+    })
+    t.nonNull.field('create', {
+      type: 'ShortLinkUncheckedCreateWithoutUserInput',
+    })
+  },
+})
+
+export const ShortLinkUpdateWithWhereUniqueWithoutUserInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUpdateWithWhereUniqueWithoutUserInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'ShortLinkWhereUniqueInput' })
+    t.nonNull.field('data', {
+      type: 'ShortLinkUncheckedUpdateWithoutUserInput',
+    })
+  },
+})
+
+export const ShortLinkUpdateManyWithWhereWithoutUserInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUpdateManyWithWhereWithoutUserInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'ShortLinkScalarWhereInput' })
+    t.nonNull.field('data', {
+      type: 'ShortLinkUncheckedUpdateManyWithoutShortLinksInput',
     })
   },
 })
@@ -6500,6 +7275,298 @@ export const EventUpdateManyWithWhereWithoutParticipantsInput = inputObjectType(
   },
 )
 
+export const UserCreateWithoutShortLinksInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserCreateWithoutShortLinksInput',
+  definition(t) {
+    t.field('id', { type: 'String' })
+    t.nonNull.field('username', { type: 'String' })
+    t.field('createdAt', { type: 'DateTime' })
+    t.nonNull.field('password', { type: 'String' })
+    t.nonNull.field('role', { type: 'UserRole' })
+    t.field('profile', { type: 'ProfileCreateNestedOneWithoutUserInput' })
+    t.field('messages', { type: 'MessageCreateNestedManyWithoutSenderInput' })
+    t.field('chats', { type: 'ChatCreateNestedManyWithoutMembersInput' })
+    t.field('parent', { type: 'UserCreateNestedOneWithoutChildInput' })
+    t.field('child', { type: 'UserCreateNestedOneWithoutParentInput' })
+    t.field('eventsResponsible', {
+      type: 'EventCreateNestedManyWithoutResponsiblesInput',
+    })
+    t.field('eventsIssued', {
+      type: 'EventCreateNestedManyWithoutIssuedByInput',
+    })
+    t.field('eventsParticipating', {
+      type: 'EventCreateNestedManyWithoutParticipantsInput',
+    })
+  },
+})
+
+export const UserUncheckedCreateWithoutShortLinksInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserUncheckedCreateWithoutShortLinksInput',
+  definition(t) {
+    t.field('id', { type: 'String' })
+    t.nonNull.field('username', { type: 'String' })
+    t.field('createdAt', { type: 'DateTime' })
+    t.nonNull.field('password', { type: 'String' })
+    t.nonNull.field('role', { type: 'UserRole' })
+    t.field('parentId', { type: 'String' })
+    t.field('profile', {
+      type: 'ProfileUncheckedCreateNestedOneWithoutUserInput',
+    })
+    t.field('messages', {
+      type: 'MessageUncheckedCreateNestedManyWithoutSenderInput',
+    })
+    t.field('chats', {
+      type: 'ChatUncheckedCreateNestedManyWithoutMembersInput',
+    })
+    t.field('child', { type: 'UserUncheckedCreateNestedOneWithoutParentInput' })
+    t.field('eventsResponsible', {
+      type: 'EventUncheckedCreateNestedManyWithoutResponsiblesInput',
+    })
+    t.field('eventsIssued', {
+      type: 'EventUncheckedCreateNestedManyWithoutIssuedByInput',
+    })
+    t.field('eventsParticipating', {
+      type: 'EventUncheckedCreateNestedManyWithoutParticipantsInput',
+    })
+  },
+})
+
+export const UserCreateOrConnectWithoutShortLinksInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserCreateOrConnectWithoutShortLinksInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'UserWhereUniqueInput' })
+    t.nonNull.field('create', {
+      type: 'UserUncheckedCreateWithoutShortLinksInput',
+    })
+  },
+})
+
+export const EventCreateWithoutShortLinksInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'EventCreateWithoutShortLinksInput',
+  definition(t) {
+    t.nonNull.field('id', { type: 'String' })
+    t.field('approved', { type: 'Boolean' })
+    t.nonNull.field('title', { type: 'String' })
+    t.nonNull.field('shortDescription', { type: 'String' })
+    t.nonNull.field('description', { type: 'String' })
+    t.nonNull.field('date', { type: 'DateTime' })
+    t.field('image', { type: 'String' })
+    t.field('participants', {
+      type: 'UserCreateNestedManyWithoutEventsParticipatingInput',
+    })
+    t.field('chat', { type: 'ChatCreateNestedOneWithoutEventInput' })
+    t.field('issuedBy', { type: 'UserCreateNestedOneWithoutEventsIssuedInput' })
+    t.nonNull.field('room', { type: 'RoomCreateNestedOneWithoutEventsInput' })
+    t.field('responsibles', {
+      type: 'UserCreateNestedManyWithoutEventsResponsibleInput',
+    })
+    t.field('categories', {
+      type: 'CategoryCreateNestedManyWithoutEventsInput',
+    })
+  },
+})
+
+export const EventUncheckedCreateWithoutShortLinksInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'EventUncheckedCreateWithoutShortLinksInput',
+  definition(t) {
+    t.nonNull.field('id', { type: 'String' })
+    t.field('approved', { type: 'Boolean' })
+    t.nonNull.field('title', { type: 'String' })
+    t.nonNull.field('shortDescription', { type: 'String' })
+    t.nonNull.field('description', { type: 'String' })
+    t.nonNull.field('roomId', { type: 'String' })
+    t.nonNull.field('date', { type: 'DateTime' })
+    t.field('image', { type: 'String' })
+    t.field('userId', { type: 'String' })
+    t.field('participants', {
+      type: 'UserUncheckedCreateNestedManyWithoutEventsParticipatingInput',
+    })
+    t.field('chat', { type: 'ChatUncheckedCreateNestedOneWithoutEventInput' })
+    t.field('responsibles', {
+      type: 'UserUncheckedCreateNestedManyWithoutEventsResponsibleInput',
+    })
+    t.field('categories', {
+      type: 'CategoryUncheckedCreateNestedManyWithoutEventsInput',
+    })
+  },
+})
+
+export const EventCreateOrConnectWithoutShortLinksInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'EventCreateOrConnectWithoutShortLinksInput',
+  definition(t) {
+    t.nonNull.field('where', { type: 'EventWhereUniqueInput' })
+    t.nonNull.field('create', {
+      type: 'EventUncheckedCreateWithoutShortLinksInput',
+    })
+  },
+})
+
+export const UserUpsertWithoutShortLinksInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserUpsertWithoutShortLinksInput',
+  definition(t) {
+    t.nonNull.field('update', {
+      type: 'UserUncheckedUpdateWithoutShortLinksInput',
+    })
+    t.nonNull.field('create', {
+      type: 'UserUncheckedCreateWithoutShortLinksInput',
+    })
+  },
+})
+
+export const UserUpdateWithoutShortLinksInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserUpdateWithoutShortLinksInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('username', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
+    t.field('password', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('role', { type: 'EnumUserRoleFieldUpdateOperationsInput' })
+    t.field('profile', { type: 'ProfileUpdateOneWithoutUserNestedInput' })
+    t.field('messages', { type: 'MessageUpdateManyWithoutSenderNestedInput' })
+    t.field('chats', { type: 'ChatUpdateManyWithoutMembersNestedInput' })
+    t.field('parent', { type: 'UserUpdateOneWithoutChildNestedInput' })
+    t.field('child', { type: 'UserUpdateOneWithoutParentNestedInput' })
+    t.field('eventsResponsible', {
+      type: 'EventUpdateManyWithoutResponsiblesNestedInput',
+    })
+    t.field('eventsIssued', {
+      type: 'EventUpdateManyWithoutIssuedByNestedInput',
+    })
+    t.field('eventsParticipating', {
+      type: 'EventUpdateManyWithoutParticipantsNestedInput',
+    })
+  },
+})
+
+export const UserUncheckedUpdateWithoutShortLinksInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'UserUncheckedUpdateWithoutShortLinksInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('username', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('createdAt', { type: 'DateTimeFieldUpdateOperationsInput' })
+    t.field('password', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('role', { type: 'EnumUserRoleFieldUpdateOperationsInput' })
+    t.field('parentId', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.field('profile', {
+      type: 'ProfileUncheckedUpdateOneWithoutUserNestedInput',
+    })
+    t.field('messages', {
+      type: 'MessageUncheckedUpdateManyWithoutSenderNestedInput',
+    })
+    t.field('chats', {
+      type: 'ChatUncheckedUpdateManyWithoutMembersNestedInput',
+    })
+    t.field('child', { type: 'UserUncheckedUpdateOneWithoutParentNestedInput' })
+    t.field('eventsResponsible', {
+      type: 'EventUncheckedUpdateManyWithoutResponsiblesNestedInput',
+    })
+    t.field('eventsIssued', {
+      type: 'EventUncheckedUpdateManyWithoutIssuedByNestedInput',
+    })
+    t.field('eventsParticipating', {
+      type: 'EventUncheckedUpdateManyWithoutParticipantsNestedInput',
+    })
+  },
+})
+
+export const EventUpsertWithoutShortLinksInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'EventUpsertWithoutShortLinksInput',
+  definition(t) {
+    t.nonNull.field('update', {
+      type: 'EventUncheckedUpdateWithoutShortLinksInput',
+    })
+    t.nonNull.field('create', {
+      type: 'EventUncheckedCreateWithoutShortLinksInput',
+    })
+  },
+})
+
+export const EventUpdateWithoutShortLinksInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'EventUpdateWithoutShortLinksInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('approved', { type: 'BoolFieldUpdateOperationsInput' })
+    t.field('title', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('shortDescription', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('description', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('date', { type: 'DateTimeFieldUpdateOperationsInput' })
+    t.field('image', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.field('participants', {
+      type: 'UserUpdateManyWithoutEventsParticipatingNestedInput',
+    })
+    t.field('chat', { type: 'ChatUpdateOneWithoutEventNestedInput' })
+    t.field('issuedBy', { type: 'UserUpdateOneWithoutEventsIssuedNestedInput' })
+    t.field('room', { type: 'RoomUpdateOneRequiredWithoutEventsNestedInput' })
+    t.field('responsibles', {
+      type: 'UserUpdateManyWithoutEventsResponsibleNestedInput',
+    })
+    t.field('categories', {
+      type: 'CategoryUpdateManyWithoutEventsNestedInput',
+    })
+  },
+})
+
+export const EventUncheckedUpdateWithoutShortLinksInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'EventUncheckedUpdateWithoutShortLinksInput',
+  definition(t) {
+    t.field('id', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('approved', { type: 'BoolFieldUpdateOperationsInput' })
+    t.field('title', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('shortDescription', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('description', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('roomId', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('date', { type: 'DateTimeFieldUpdateOperationsInput' })
+    t.field('image', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.field('userId', { type: 'NullableStringFieldUpdateOperationsInput' })
+    t.field('participants', {
+      type: 'UserUncheckedUpdateManyWithoutEventsParticipatingNestedInput',
+    })
+    t.field('chat', { type: 'ChatUncheckedUpdateOneWithoutEventNestedInput' })
+    t.field('responsibles', {
+      type: 'UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput',
+    })
+    t.field('categories', {
+      type: 'CategoryUncheckedUpdateManyWithoutEventsNestedInput',
+    })
+  },
+})
+
 export const EventUpdateWithoutCategoriesInput = inputObjectType({
   nonNullDefaults: {
     input: false,
@@ -6521,6 +7588,9 @@ export const EventUpdateWithoutCategoriesInput = inputObjectType({
     t.field('room', { type: 'RoomUpdateOneRequiredWithoutEventsNestedInput' })
     t.field('responsibles', {
       type: 'UserUpdateManyWithoutEventsResponsibleNestedInput',
+    })
+    t.field('shortLinks', {
+      type: 'ShortLinkUpdateManyWithoutEventNestedInput',
     })
   },
 })
@@ -6546,6 +7616,9 @@ export const EventUncheckedUpdateWithoutCategoriesInput = inputObjectType({
     t.field('chat', { type: 'ChatUncheckedUpdateOneWithoutEventNestedInput' })
     t.field('responsibles', {
       type: 'UserUncheckedUpdateManyWithoutEventsResponsibleNestedInput',
+    })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedUpdateManyWithoutEventNestedInput',
     })
   },
 })
@@ -6609,6 +7682,9 @@ export const EventUpdateWithoutRoomInput = inputObjectType({
     t.field('categories', {
       type: 'CategoryUpdateManyWithoutEventsNestedInput',
     })
+    t.field('shortLinks', {
+      type: 'ShortLinkUpdateManyWithoutEventNestedInput',
+    })
   },
 })
 
@@ -6636,6 +7712,20 @@ export const EventUncheckedUpdateWithoutRoomInput = inputObjectType({
     t.field('categories', {
       type: 'CategoryUncheckedUpdateManyWithoutEventsNestedInput',
     })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedUpdateManyWithoutEventNestedInput',
+    })
+  },
+})
+
+export const ShortLinkCreateManyEventInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkCreateManyEventInput',
+  definition(t) {
+    t.nonNull.field('userId', { type: 'String' })
+    t.nonNull.field('path', { type: 'String' })
   },
 })
 
@@ -6655,6 +7745,7 @@ export const UserUpdateWithoutEventsParticipatingInput = inputObjectType({
     t.field('chats', { type: 'ChatUpdateManyWithoutMembersNestedInput' })
     t.field('parent', { type: 'UserUpdateOneWithoutChildNestedInput' })
     t.field('child', { type: 'UserUpdateOneWithoutParentNestedInput' })
+    t.field('shortLinks', { type: 'ShortLinkUpdateManyWithoutUserNestedInput' })
     t.field('eventsResponsible', {
       type: 'EventUpdateManyWithoutResponsiblesNestedInput',
     })
@@ -6688,6 +7779,9 @@ export const UserUncheckedUpdateWithoutEventsParticipatingInput =
       })
       t.field('child', {
         type: 'UserUncheckedUpdateOneWithoutParentNestedInput',
+      })
+      t.field('shortLinks', {
+        type: 'ShortLinkUncheckedUpdateManyWithoutUserNestedInput',
       })
       t.field('eventsResponsible', {
         type: 'EventUncheckedUpdateManyWithoutResponsiblesNestedInput',
@@ -6729,6 +7823,7 @@ export const UserUpdateWithoutEventsResponsibleInput = inputObjectType({
     t.field('chats', { type: 'ChatUpdateManyWithoutMembersNestedInput' })
     t.field('parent', { type: 'UserUpdateOneWithoutChildNestedInput' })
     t.field('child', { type: 'UserUpdateOneWithoutParentNestedInput' })
+    t.field('shortLinks', { type: 'ShortLinkUpdateManyWithoutUserNestedInput' })
     t.field('eventsIssued', {
       type: 'EventUpdateManyWithoutIssuedByNestedInput',
     })
@@ -6762,6 +7857,9 @@ export const UserUncheckedUpdateWithoutEventsResponsibleInput = inputObjectType(
       })
       t.field('child', {
         type: 'UserUncheckedUpdateOneWithoutParentNestedInput',
+      })
+      t.field('shortLinks', {
+        type: 'ShortLinkUncheckedUpdateManyWithoutUserNestedInput',
       })
       t.field('eventsIssued', {
         type: 'EventUncheckedUpdateManyWithoutIssuedByNestedInput',
@@ -6821,6 +7919,42 @@ export const CategoryUncheckedUpdateManyWithoutCategoriesInput =
     },
   })
 
+export const ShortLinkUpdateWithoutEventInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUpdateWithoutEventInput',
+  definition(t) {
+    t.field('path', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('user', {
+      type: 'UserUpdateOneRequiredWithoutShortLinksNestedInput',
+    })
+  },
+})
+
+export const ShortLinkUncheckedUpdateWithoutEventInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUncheckedUpdateWithoutEventInput',
+  definition(t) {
+    t.field('userId', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('path', { type: 'StringFieldUpdateOperationsInput' })
+  },
+})
+
+export const ShortLinkUncheckedUpdateManyWithoutShortLinksInput =
+  inputObjectType({
+    nonNullDefaults: {
+      input: false,
+    },
+    name: 'ShortLinkUncheckedUpdateManyWithoutShortLinksInput',
+    definition(t) {
+      t.field('userId', { type: 'StringFieldUpdateOperationsInput' })
+      t.field('path', { type: 'StringFieldUpdateOperationsInput' })
+    },
+  })
+
 export const MessageCreateManyChatInput = inputObjectType({
   nonNullDefaults: {
     input: false,
@@ -6849,6 +7983,7 @@ export const UserUpdateWithoutChatsInput = inputObjectType({
     t.field('messages', { type: 'MessageUpdateManyWithoutSenderNestedInput' })
     t.field('parent', { type: 'UserUpdateOneWithoutChildNestedInput' })
     t.field('child', { type: 'UserUpdateOneWithoutParentNestedInput' })
+    t.field('shortLinks', { type: 'ShortLinkUpdateManyWithoutUserNestedInput' })
     t.field('eventsResponsible', {
       type: 'EventUpdateManyWithoutResponsiblesNestedInput',
     })
@@ -6880,6 +8015,9 @@ export const UserUncheckedUpdateWithoutChatsInput = inputObjectType({
       type: 'MessageUncheckedUpdateManyWithoutSenderNestedInput',
     })
     t.field('child', { type: 'UserUncheckedUpdateOneWithoutParentNestedInput' })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedUpdateManyWithoutUserNestedInput',
+    })
     t.field('eventsResponsible', {
       type: 'EventUncheckedUpdateManyWithoutResponsiblesNestedInput',
     })
@@ -6958,6 +8096,17 @@ export const MessageCreateManySenderInput = inputObjectType({
     t.nonNull.field('message', { type: 'String' })
     t.nonNull.field('chatId', { type: 'String' })
     t.field('sentDate', { type: 'DateTime' })
+  },
+})
+
+export const ShortLinkCreateManyUserInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkCreateManyUserInput',
+  definition(t) {
+    t.nonNull.field('eventId', { type: 'String' })
+    t.nonNull.field('path', { type: 'String' })
   },
 })
 
@@ -7044,6 +8193,30 @@ export const ChatUncheckedUpdateManyWithoutChatsInput = inputObjectType({
   },
 })
 
+export const ShortLinkUpdateWithoutUserInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUpdateWithoutUserInput',
+  definition(t) {
+    t.field('path', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('event', {
+      type: 'EventUpdateOneRequiredWithoutShortLinksNestedInput',
+    })
+  },
+})
+
+export const ShortLinkUncheckedUpdateWithoutUserInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'ShortLinkUncheckedUpdateWithoutUserInput',
+  definition(t) {
+    t.field('eventId', { type: 'StringFieldUpdateOperationsInput' })
+    t.field('path', { type: 'StringFieldUpdateOperationsInput' })
+  },
+})
+
 export const EventUpdateWithoutResponsiblesInput = inputObjectType({
   nonNullDefaults: {
     input: false,
@@ -7065,6 +8238,9 @@ export const EventUpdateWithoutResponsiblesInput = inputObjectType({
     t.field('room', { type: 'RoomUpdateOneRequiredWithoutEventsNestedInput' })
     t.field('categories', {
       type: 'CategoryUpdateManyWithoutEventsNestedInput',
+    })
+    t.field('shortLinks', {
+      type: 'ShortLinkUpdateManyWithoutEventNestedInput',
     })
   },
 })
@@ -7090,6 +8266,9 @@ export const EventUncheckedUpdateWithoutResponsiblesInput = inputObjectType({
     t.field('chat', { type: 'ChatUncheckedUpdateOneWithoutEventNestedInput' })
     t.field('categories', {
       type: 'CategoryUncheckedUpdateManyWithoutEventsNestedInput',
+    })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedUpdateManyWithoutEventNestedInput',
     })
   },
 })
@@ -7137,6 +8316,9 @@ export const EventUpdateWithoutIssuedByInput = inputObjectType({
     t.field('categories', {
       type: 'CategoryUpdateManyWithoutEventsNestedInput',
     })
+    t.field('shortLinks', {
+      type: 'ShortLinkUpdateManyWithoutEventNestedInput',
+    })
   },
 })
 
@@ -7163,6 +8345,9 @@ export const EventUncheckedUpdateWithoutIssuedByInput = inputObjectType({
     })
     t.field('categories', {
       type: 'CategoryUncheckedUpdateManyWithoutEventsNestedInput',
+    })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedUpdateManyWithoutEventNestedInput',
     })
   },
 })
@@ -7208,6 +8393,9 @@ export const EventUpdateWithoutParticipantsInput = inputObjectType({
     t.field('categories', {
       type: 'CategoryUpdateManyWithoutEventsNestedInput',
     })
+    t.field('shortLinks', {
+      type: 'ShortLinkUpdateManyWithoutEventNestedInput',
+    })
   },
 })
 
@@ -7232,6 +8420,9 @@ export const EventUncheckedUpdateWithoutParticipantsInput = inputObjectType({
     })
     t.field('categories', {
       type: 'CategoryUncheckedUpdateManyWithoutEventsNestedInput',
+    })
+    t.field('shortLinks', {
+      type: 'ShortLinkUncheckedUpdateManyWithoutEventNestedInput',
     })
   },
 })
@@ -7338,6 +8529,18 @@ export const AggregateUser = objectType({
     t.nullable.field('_count', { type: 'UserCountAggregateOutputType' })
     t.nullable.field('_min', { type: 'UserMinAggregateOutputType' })
     t.nullable.field('_max', { type: 'UserMaxAggregateOutputType' })
+  },
+})
+
+export const AggregateShortLink = objectType({
+  nonNullDefaults: {
+    output: true,
+  },
+  name: 'AggregateShortLink',
+  definition(t) {
+    t.nullable.field('_count', { type: 'ShortLinkCountAggregateOutputType' })
+    t.nullable.field('_min', { type: 'ShortLinkMinAggregateOutputType' })
+    t.nullable.field('_max', { type: 'ShortLinkMaxAggregateOutputType' })
   },
 })
 
@@ -7465,6 +8668,7 @@ export const EventCountOutputType = objectType({
     t.field('participants', { type: 'Int' })
     t.field('responsibles', { type: 'Int' })
     t.field('categories', { type: 'Int' })
+    t.field('shortLinks', { type: 'Int' })
   },
 })
 
@@ -7674,6 +8878,7 @@ export const UserCountOutputType = objectType({
   definition(t) {
     t.field('messages', { type: 'Int' })
     t.field('chats', { type: 'Int' })
+    t.field('shortLinks', { type: 'Int' })
     t.field('eventsResponsible', { type: 'Int' })
     t.field('eventsIssued', { type: 'Int' })
     t.field('eventsParticipating', { type: 'Int' })
@@ -7723,5 +8928,42 @@ export const UserMaxAggregateOutputType = objectType({
     t.nullable.field('password', { type: 'String' })
     t.nullable.field('role', { type: 'UserRole' })
     t.nullable.field('parentId', { type: 'String' })
+  },
+})
+
+export const ShortLinkCountAggregateOutputType = objectType({
+  nonNullDefaults: {
+    output: true,
+  },
+  name: 'ShortLinkCountAggregateOutputType',
+  definition(t) {
+    t.field('userId', { type: 'Int' })
+    t.field('eventId', { type: 'Int' })
+    t.field('path', { type: 'Int' })
+    t.field('_all', { type: 'Int' })
+  },
+})
+
+export const ShortLinkMinAggregateOutputType = objectType({
+  nonNullDefaults: {
+    output: true,
+  },
+  name: 'ShortLinkMinAggregateOutputType',
+  definition(t) {
+    t.nullable.field('userId', { type: 'String' })
+    t.nullable.field('eventId', { type: 'String' })
+    t.nullable.field('path', { type: 'String' })
+  },
+})
+
+export const ShortLinkMaxAggregateOutputType = objectType({
+  nonNullDefaults: {
+    output: true,
+  },
+  name: 'ShortLinkMaxAggregateOutputType',
+  definition(t) {
+    t.nullable.field('userId', { type: 'String' })
+    t.nullable.field('eventId', { type: 'String' })
+    t.nullable.field('path', { type: 'String' })
   },
 })

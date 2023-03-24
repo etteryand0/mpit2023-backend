@@ -1,5 +1,8 @@
 const {Generator} = require('@paljs/generator')
 
 new Generator({ name: 'nexus', schemaPath: './prisma/schema.prisma' }, {
-  output: './src/generated/'
+  output: './src/generated/',
+  excludeQueriesAndMutationsByModel: {
+    ShortLink: ['updateMany']
+  }
 }).run();

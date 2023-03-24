@@ -59,6 +59,20 @@ export const User = objectType({
         return root.child
       },
     })
+    t.list.field('shortLinks', {
+      type: 'ShortLink',
+      args: {
+        where: 'ShortLinkWhereInput',
+        orderBy: 'ShortLinkOrderByWithRelationInput',
+        cursor: 'ShortLinkWhereUniqueInput',
+        take: 'Int',
+        skip: 'Int',
+        distinct: 'ShortLinkScalarFieldEnum',
+      },
+      resolve(root: any) {
+        return root.shortLinks
+      },
+    })
     t.list.field('eventsResponsible', {
       type: 'Event',
       args: {

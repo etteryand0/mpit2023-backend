@@ -1,4 +1,5 @@
 export * from './InputTypes'
+export * from './ShortLink'
 export * from './User'
 export * from './Profile'
 export * from './Chat'
