@@ -18,9 +18,7 @@ import { permissions } from "./shield";
 
 const app = express()
 
-app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? 'https://sergin.space/' : undefined
-}))
+// app.use(cors())
 
 const httpServer = createServer(app)
 
