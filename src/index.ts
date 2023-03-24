@@ -18,13 +18,15 @@ import { permissions } from "./shield";
 
 const app = express()
 
-// app.use(cors())
+app.use(cors({
+  origin: ['https://sergin.space', 'http://localhost:3000'],
+}))
 
 const httpServer = createServer(app)
 
 const wsServer = new WebSocketServer({
   server: httpServer,
-  path: '/api/graphql',
+  path: '/graphql',
 })
 const serverCleanup = useServer({ schema, context: async (ctx, msg, args) => {
   return {pubsub}
@@ -50,7 +52,7 @@ const server = new ApolloServer({
 const run = async () => {
   await server.start()
   
-  app.use('/api/graphql', json(), expressMiddleware(server, {
+  app.use('/graphql', json(), expressMiddleware(server, {
     context: createContext
   }))
 
@@ -59,7 +61,7 @@ const run = async () => {
     tempFileDir : process.env.TEMP_FILE_DIR 
   }))
   
-  app.post('/api/upload', function(req: any, res) {
+  app.post('/upload', function(req: any, res) {
     if (!req.files) {
       return res.status(400).send('No file was uploaded.');
     }
