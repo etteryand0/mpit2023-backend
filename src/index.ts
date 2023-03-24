@@ -22,7 +22,7 @@ const httpServer = createServer(app)
 
 const wsServer = new WebSocketServer({
   server: httpServer,
-  path: '/graphql',
+  path: '/api/graphql',
 })
 const serverCleanup = useServer({ schema, context: async (ctx, msg, args) => {
   return {pubsub}
@@ -48,7 +48,7 @@ const server = new ApolloServer({
 const run = async () => {
   await server.start()
   
-  app.use('/graphql', cors(), json(), expressMiddleware(server, {
+  app.use('/api/graphql', cors(), json(), expressMiddleware(server, {
     context: createContext
   }))
 
@@ -57,7 +57,7 @@ const run = async () => {
     tempFileDir : process.env.TEMP_FILE_DIR 
   }))
   
-  app.post('/upload', function(req: any, res) {
+  app.post('/api/upload', function(req: any, res) {
     if (!req.files || Object.keys(req.files).length === 0) {
       return res.status(400).send('No files were uploaded.');
     }
@@ -76,7 +76,7 @@ const run = async () => {
   });
 
   httpServer.listen(4000, () => {
-    console.log(`🚀  Server ready at: localhost:4000`)
+    console.log(`🚀  Server ready at: localhost:4000/api`)
   })
 }
 
