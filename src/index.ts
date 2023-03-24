@@ -18,7 +18,9 @@ import { permissions } from "./shield";
 
 const app = express()
 
-app.use(cors())
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' ? 'https://sergin.space/' : undefined
+}))
 
 const httpServer = createServer(app)
 
@@ -50,7 +52,7 @@ const server = new ApolloServer({
 const run = async () => {
   await server.start()
   
-  app.use('/api/graphql', cors(), json(), expressMiddleware(server, {
+  app.use('/api/graphql', json(), expressMiddleware(server, {
     context: createContext
   }))
 
